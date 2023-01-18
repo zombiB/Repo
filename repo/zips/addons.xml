@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='utf-8'?>
+<addons><addon id="Yonn1981_Repo" name="Yonn1981 Repo" version="1.00" provider-name="Yonn1981">
+    <extension point="xbmc.addon.repository" name="Yonn1981 Repo">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Yonn1981 Repo</summary>
+        <description>Persoanl Kodi Repository</description>
+        <disclaimer />
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.bein" name="Bein Sports" version="0.0.3" provider-name="Zombi">
+  <requires>
+	<import addon="script.module.metahandler" version="1.0.2" />
+	<import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.common.plugin.cache" version="0.9.1" />
+	<import addon="script.module.parsedom" version="0.9.1" />
+	<import addon="plugin.video.youtube" version="2.9.2" />
+	<import addon="script.module.simplejson" version="2.0.10" />
+	<import addon="script.module.urlresolver" optional="true" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="fr">Bein Sports</summary>
+    <description lang="fr">résumés et reportages sports</description>
+    <summary lang="en">Bein Sports</summary>
+    <description lang="en">Sports highlights and interviews</description>
+    <platform>all</platform>
+  </extension>
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.5.6" provider-name="zombi">
+    <requires>
+
+        <trycatch>
+            <try>
+                <import addon="xbmc.python" version="3.0.0" />
+            </try>
+
+            <catch>
+                <import addon="xbmc.python" version="2.24.0" />
+            </catch>
+        </trycatch>
+        <import addon="repository.zombi" />
+        <import addon="script.module.pyqrcode" />
+        <import addon="script.kodi.loguploader" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.resolveurl" version="5.1.00" />
+        <import addon="script.module.dnspython" optional="true" />
+        <import addon="script.module.selenium" optional="true" />
+        
+    </requires>
+
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+ 
+    <extension point="kodi.context.item">
+        <menu id="kodi.core.main">
+            <item library="resources/lib/gui/menuInformation.py">
+		        <label>[COLOR lightcoral]$ADDON[plugin.video.matrix 30208][/COLOR]</label>
+				<visible>Window.IsVisible(home) + ListItem.Property(sMeta)</visible>
+            </item>
+            <item library="resources/lib/gui/menuAddBookmark.py">
+		        <label>[COLOR lightcoral]$ADDON[plugin.video.matrix 30210][/COLOR]</label>
+				<visible>Window.IsVisible(home) + !ListItem.Property(isBookmark) + ListItem.Property(sMeta)</visible>
+            </item>
+            <item library="resources/lib/gui/menuSimil.py">
+		        <label>[COLOR lightcoral]$ADDON[plugin.video.matrix 30213][/COLOR]</label>
+				<visible>Window.IsVisible(home) + ListItem.Property(sMeta)</visible>
+            </item>
+            <item library="resources/lib/gui/menuDelBookmark.py">
+		        <label>$ADDON[plugin.video.matrix 30412]</label>
+				<visible>Window.IsVisible(home) + ListItem.Property(isBookmark)</visible>
+            </item>
+            <item library="resources/lib/gui/menuDelViewing.py">
+		        <label>$ADDON[plugin.video.matrix 30412]</label>
+				<visible>Window.IsVisible(home) + ListItem.Property(isViewing)</visible>
+            </item>
+		</menu>
+    </extension>
+
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="fr_FR">Matrix is an arabic addon</summary>
+        <description lang="fr_FR">Matrix lets u access arabic video websites in a beautiful and easy way</description>
+        <disclaimer lang="fr_FR">This add-on doesn’t host any content of any kind. It only shows content from websites available online. All this add-on does is make simple HTTP requests to retrieve and display content just like any web browser would do!</disclaimer>
+        <summary lang="fr_CA">Matrix is an arabic addon</summary>
+        <description lang="fr_CA">Matrix lets u access arabic video websites in a beautiful and easy way</description>
+        <disclaimer lang="fr_CA">This add-on doesn’t host any content of any kind. It only shows content from websites available online. All this add-on does is make simple HTTP requests to retrieve and display content just like any web browser would do!</disclaimer>
+        <summary lang="en_GB">Matrix is an arabic addon</summary>
+        <description lang="en_GB">Matrix lets u access arabic video websites in a beautiful and easy way</description>
+        <disclaimer lang="en_GB">Matrix is an arabic addon</disclaimer>
+        <summary lang="en_NZ">Matrix lets u access arabic video websites in a beautiful and easy way</summary>
+        <description lang="en_NZ">Matrix lets u access arabic video websites in a beautiful and easy way</description>
+        <disclaimer lang="en_NZ">This add-on doesn’t host any content of any kind. It only shows content from websites available online. All this add-on does is make simple HTTP requests to retrieve and display content just like any web browser would do!</disclaimer>
+        <summary lang="en_US">Matrix is an arabic addon</summary>
+        <description lang="en_US">Matrix lets u access arabic video websites in a beautiful and easy way</description>
+        <disclaimer lang="en_US">This add-on doesn’t host any content of any kind. It only shows content from websites available online. All this add-on does is make simple HTTP requests to retrieve and display content just like any web browser would do!</disclaimer>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE</license>
+        <forum>https://github.com/zombiB/zombi-addons/issues</forum>
+        <source>https://github.com/zombiB/zombi-addons/issues</source>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>screenshot-01.jpg</screenshot>
+            <screenshot>screenshot-02.jpg</screenshot>
+            <screenshot>screenshot-03.jpg</screenshot>
+            <screenshot>screenshot-04.jpg</screenshot>
+        </assets>
+    </extension>
+</addon></addons>
