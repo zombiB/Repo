@@ -2,19 +2,19 @@
     "sites": {
         "aflamfree": {
             "label": "Aflamfree",
-            "active": "True",
+            "active": "True"
         },
         "ahdaf": {
             "label": "Ahdaf",
-            "active": "True",
+            "active": "True"
         },
         "akoam": {
             "label": "Akoam",
-            "active": "True",
+            "active": "True"
         },
         "akwam": {
             "label": "Akwam",
-            "active": "True",
+            "active": "True"
         },
         "alarab": {
             "label": "Alarab",
@@ -30,227 +30,227 @@
         },
         "alfajertv": {
             "label": "Alfajertv",
-            "active": "True",
+            "active": "True"
         },
         "aljazeera": {
             "label": "Aljazeera",
-            "active": "True",
+            "active": "True"
         },
         "alwanfilm": {
             "label": "Alwanfilm",
-            "active": "True",
+            "active": "True"
         },
         "animeblkom": {
             "label": "Animeblkom",
-            "active": "True",
+            "active": "True"
         },
         "animeup": {
             "label": "Animeup",
-            "active": "True",
+            "active": "True"
         },
         "animezid": {
             "label": "Animezid",
-            "active": "True",
+            "active": "True"
         },
         "arabsciences": {
             "label": "Arabsciences",
-            "active": "True",
+            "active": "True"
         },
         "aracinema_co": {
             "label": "Aramosalsal",
-            "active": "True",
+            "active": "True"
         },
         "arbcinema": {
             "label": "Arbcinema",
-            "active": "True",
+            "active": "True"
         },
         "arblionz": {
             "label": "Arblionz",
-            "active": "True",
+            "active": "True"
         },
         "asiaarabs": {
             "label": "Asiaarabs",
-            "active": "True",
+            "active": "True"
         },
         "awaan": {
             "label": "Awaan",
-            "active": "True",
+            "active": "True"
         },
         "beinmatch": {
             "label": "Beinmatch",
-            "active": "True",
+            "active": "True"
         },
         "beinsports_net": {
             "label": "Beinsports",
-            "active": "True",
+            "active": "True"
         },
         "btolat": {
             "label": "Btolat",
-            "active": "True",
+            "active": "True"
         },
         "cartoonrbi": {
             "label": "CartoonArbi",
-            "active": "True",
+            "active": "True"
         },
         "cdrama": {
             "label": "Cdrama",
-            "active": "True",
+            "active": "True"
         },
         "cimanow": {
             "label": "Cimanow",
-            "active": "True",
+            "active": "True"
         },
         "cimau": {
             "label": "Cimaau",
-            "active": "True",
+            "active": "True"
         },
         "detectiveconanar": {
             "label": "Detectiveconanar",
-            "active": "True",
+            "active": "True"
         },
         "docarabic": {
             "label": "Docarabic",
-            "active": "True",
+            "active": "True"
         },
         "egyclub": {
             "label": "Egyclub",
-            "active": "True",
+            "active": "True"
         },
         "egydead": {
             "label": "Egydead",
-            "active": "True",
+            "active": "True"
         },
         "ehna": {
             "label": "Ehna",
-            "active": "True",
+            "active": "True"
         },
         "esseq": {
             "label": "Esseq",
-            "active": "True",
+            "active": "True"
         },
         "familymoviz": {
             "label": "Familymoviz",
-            "active": "True",
+            "active": "True"
         },
         "fansubs": {
             "label": "Fansubstv",
-            "active": "True",
+            "active": "True"
         },
         "faselhd": {
             "label": "Faselhd",
-            "active": "True",
+            "active": "True"
         },
         "fnteam": {
             "label": "Fnteam",
-            "active": "True",
+            "active": "True"
         },
         "gateanime": {
             "label": "Gateanime",
-            "active": "True",
+            "active": "True"
         },
         "geoarabic": {
             "label": "Geoarabic",
-            "active": "True",
+            "active": "True"
         },
         "halacima": {
             "label": "Halacima",
-            "active": "True",
+            "active": "True"
         },
         "hidaya": {
             "label": "Hidaya",
-            "active": "True",
+            "active": "True"
         },
         "katkoute": {
             "label": "Katkoute",
-            "active": "True",
+            "active": "True"
         },
         "koralive": {
             "label": "Koralive",
-            "active": "True",
+            "active": "True"
         },
         "lodynet": {
             "label": "Lodynet",
-            "active": "True",
+            "active": "True"
         },
         "pakistani": {
             "label": "Pakistani",
-            "active": "True",
+            "active": "True"
         },
         "prstej": {
             "label": "Prstej",
-            "active": "True",
+            "active": "True"
         },
         "rotana": {
             "label": "Rotana",
-            "active": "True",
+            "active": "True"
         },
         "shoofvod": {
             "label": "Shoofvod",
-            "active": "True",
+            "active": "True"
         },
         "spacepowerfan": {
             "label": "Spacepowerfan",
-            "active": "True",
+            "active": "True"
         },
         "stardima": {
             "label": "Stardima",
-            "active": "True",
+            "active": "True"
         },
         "themoviedb_org": {
             "label": "The Movie Database",
-            "active": "True",
+            "active": "True"
         },
         "toonsland": {
             "label": "Toonsland",
-            "active": "True",
+            "active": "True"
         },
         "topimdb": {
             "label": "Top IMDB",
-            "active": "True",
+            "active": "True"
         },
         "tuktukcinema": {
             "label": "Tuktukcinema",
-            "active": "True",
+            "active": "True"
         },
         "tvfun": {
             "label": "Tvfun",
-            "active": "True",
+            "active": "True"
         },
         "tvnine": {
             "label": "Tvninesix",
-            "active": "True",
+            "active": "True"
         },
         "watanflix": {
             "label": "Watanflix",
-            "active": "True",
+            "active": "True"
         },
         "xsanime": {
             "label": "Xsanime",
-            "active": "True",
+            "active": "True"
         },
         "yallalive": {
             "label": "Yallalive",
-            "active": "True",
+            "active": "True"
         },
         "movizland": {
             "label": "Movizland",
-            "active": "True",
+            "active": "True"
         },
         "mycima": {
             "label": "Mycima",
-            "active": "True",
+            "active": "True"
         },
         "shooflive": {
             "label": "Shooflive",
-            "active": "True",
+            "active": "True"
         },
         "shahidu": {
             "label": "Shahidu",
-            "active": "True",
+            "active": "True"
         },
         "cimaclub": {
             "label": "Cimaclub",
-            "active": "True",
+            "active": "True"
         }
     }
 }
