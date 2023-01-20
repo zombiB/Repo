@@ -6,6 +6,21 @@
             <checksum>https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/</datadir>
         </dir>
+        <dir>
+         <info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
+         <checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
+         <datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
+        </dir>
+        <dir>
+        <info compressed="false">https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master</datadir>
+        </dir>
+         <dir>
+        <info compressed="false">https://raw.githubusercontent.com/Arias800/Fichier-divers/master/addon.xml</info>
+        <checksum>https://raw.githubusercontent.com/Arias800/Fichier-divers/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/Arias800/script.module.dnspython/master</datadir>
+        </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Yonn1981 Repo</summary>
