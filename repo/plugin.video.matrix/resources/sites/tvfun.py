@@ -15,7 +15,7 @@ SITE_IDENTIFIER = 'tvfun'
 SITE_NAME = 'Tvfun'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = 'https://m.tvfun.me/'
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

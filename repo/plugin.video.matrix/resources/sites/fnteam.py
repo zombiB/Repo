@@ -13,7 +13,7 @@ SITE_IDENTIFIER = 'fnteam'
 SITE_NAME = 'Fnteam'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = "https://www.fn-team.com/"
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 
 MOVIE_AR = ('http://www.fn-team.com/?cat=5', 'showMovies')
 SERIE_AR = ('http://www.fn-team.com/?cat=25', 'showSeries')

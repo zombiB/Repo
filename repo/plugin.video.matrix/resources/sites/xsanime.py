@@ -15,7 +15,7 @@ SITE_IDENTIFIER = 'xsanime'
 SITE_NAME = 'Xsanime'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = 'https://v.xsanime.com/'
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

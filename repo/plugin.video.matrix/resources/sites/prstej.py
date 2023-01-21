@@ -15,7 +15,7 @@ SITE_IDENTIFIER = 'prstej'
 SITE_NAME = 'Prstej'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = 'https://v.3rb.tv/'
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

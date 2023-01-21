@@ -15,7 +15,7 @@ SITE_IDENTIFIER = 'animeup'
 SITE_NAME = 'Animeup'
 SITE_DESC = 'arabic vod'
 
-URL_MAIN = "https://anime4up.tv/"
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

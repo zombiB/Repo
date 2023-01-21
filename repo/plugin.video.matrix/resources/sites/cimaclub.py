@@ -16,7 +16,7 @@ SITE_IDENTIFIER = 'cimaclub'
 SITE_NAME = 'Cimaclub'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = "https://ciima-clup.gives/c135"
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

@@ -14,7 +14,7 @@ SITE_IDENTIFIER = 'halacima'
 SITE_NAME = 'Halacima'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = "https://halacima.us/"
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

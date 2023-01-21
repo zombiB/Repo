@@ -17,7 +17,7 @@ SITE_IDENTIFIER = 'ehna'
 SITE_NAME = 'Ehna'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = "https://e7nna.online/"
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 try:
     import requests
     url = URL_MAIN

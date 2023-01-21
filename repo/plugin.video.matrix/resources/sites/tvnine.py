@@ -15,7 +15,7 @@ SITE_IDENTIFIER = 'tvnine'
 SITE_NAME = 'Tvninesix'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = 'https://www.tv96.tv'
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
 
 SPORT_LIVE = ('https://www.tv96.tv', 'showMovies')
 
