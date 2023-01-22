@@ -20,10 +20,10 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0'
 
-URL_SEARCH_DRAMAS = (URL_MAIN + 'search-0-1+', 'showSeries')
-URL_SEARCH_ANIMS = (URL_MAIN + 'search-0-1+', 'showSeries')
+URL_SEARCH_MOVIES = (URL_MAIN + 'search-0-1+', 'showSeries')
+URL_SEARCH_SERIES = (URL_MAIN + 'search-0-1+', 'showSeries')
 
-ANIM_ANIMS = (True, 'showMenuAnimes')
+ANIM_NEWS = (True, 'showMenuAnimes')
 ANIM_ANNEES = (True, 'ShowYearsAnimes')
 ANIM_GENRES = (True, 'ShowGenreAnimes')
 ANIM_ALPHA = (True, 'ShowAlphaAnimes')
@@ -44,14 +44,14 @@ def load():
     oGui = cGui()
 
     oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', URL_SEARCH_DRAMAS[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'Recherche', 'search.png', oOutputParameterHandler)
+    oOutputParameterHandler.addParameter('siteUrl', URL_SEARCH_MOVIES[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'بحث', 'search.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', DRAMA_DRAMAS[0])
-    oGui.addDir(SITE_IDENTIFIER, DRAMA_DRAMAS[1], 'Dramas', 'dramas.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, DRAMA_DRAMAS[1], 'دراما', 'dramas.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', ANIM_ANIMS[0])
-    oGui.addDir(SITE_IDENTIFIER, ANIM_ANIMS[1], 'Animés', 'animes.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, ANIM_ANIMS[1], 'انمي', 'animes.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', TOKUSATSU_TOKUSATSUS[0])
     oGui.addDir(SITE_IDENTIFIER, TOKUSATSU_TOKUSATSUS[1], 'Tokusatsu', 'films.png', oOutputParameterHandler)

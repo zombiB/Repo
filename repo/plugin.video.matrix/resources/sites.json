@@ -61,7 +61,7 @@
             "url": "https://animeblkom.net/"
         },
         "animeup": {
-            "label": "Animeup",
+            "label": "Anime4up",
             "active": "True",
             "url": "https://anime4up.tv/"
         },
@@ -101,7 +101,7 @@
             "url": "https://a.arabseed.ink"
         },
         "asiaarabs": {
-            "label": "Asiaarabs",
+            "label": "Asia4arabs",
             "active": "True",
             "url": "https://www.asia4arabs.com/"
         },
@@ -135,13 +135,18 @@
             "active": "True",
             "url": "https://cdrama.in/"
         },
+        "cimaclub": {
+            "label": "Cimaclub",
+            "active": "True",
+            "url": "https://ciima-clup.life/"
+        },
         "cimanow": {
             "label": "Cimanow",
             "active": "True",
             "url": "https://cimanow.cc/"
         },
         "cimau": {
-            "label": "Cimaau",
+            "label": "Cima4u",
             "active": "True",
             "url": "https://cima4uu.world/"
         },
@@ -235,6 +240,16 @@
             "active": "True",
             "url": "https://n.lodynet.ink/"
         },
+        "movizland": {
+            "label": "Movizland",
+            "active": "True",
+            "url": "https://movizland.date/"
+        },
+        "mycima": {
+            "label": "Mycima",
+            "active": "True",
+            "url": "https://myciiima.autos/"
+        },
         "pakistani": {
             "label": "Pakistani",
             "active": "True",
@@ -249,6 +264,16 @@
             "label": "Rotana",
             "active": "True",
             "url": "https://rotana.net/"
+        },
+        "shahidu": {
+            "label": "Shahid4u",
+            "active": "True",
+            "url": "https://shaheed4u.info/"
+        },
+        "shooflive": {
+            "label": "Shooflive",
+            "active": "True",
+            "url": "https://r.shooflive.co/"
         },
         "shoofvod": {
             "label": "Shoofvod",
@@ -309,31 +334,6 @@
             "label": "Yallalive",
             "active": "True",
             "url": "https://hd.yallalive.is/"
-        },
-        "movizland": {
-            "label": "Movizland",
-            "active": "True",
-            "url": "https://movizland.date/"
-        },
-        "mycima": {
-            "label": "Mycima",
-            "active": "True",
-            "url": "https://myciiima.autos/"
-        },
-        "shooflive": {
-            "label": "Shooflive",
-            "active": "True",
-            "url": "https://t.shooflive.co"
-        },
-        "shahidu": {
-            "label": "Shahidu",
-            "active": "True",
-            "url": "https://shaheed4u.design/"
-        },
-        "cimaclub": {
-            "label": "Cimaclub",
-            "active": "True",
-            "url": "https://ciima-clup.gives/c135"
         }
     }
 }
