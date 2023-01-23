@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
+# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
 # Meme code que thevideo
 # https://vidup.me/embed-xxx-703x405.html
 # https://vidup.me/embed/xxx-703x405.html
@@ -19,7 +19,6 @@ import ssl
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
-from resources.lib.comaddon import VSlog
 
 UA = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0"
 
@@ -38,7 +37,6 @@ class cHoster(iHoster):
         return ''
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = False
 
         request_headers = {"User-Agent": UA}
@@ -59,7 +57,7 @@ class cHoster(iHoster):
 
         response.close()
 
-        if (aResult):
+        if aResult:
             url = []
             qua = []
 

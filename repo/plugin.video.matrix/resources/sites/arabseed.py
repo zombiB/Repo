@@ -557,56 +557,88 @@ def __checkForNextPage(sHtmlContent):
     return False
 
 def showHosters():
-    import requests
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-	
-    import requests
-    s = requests.Session()            
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': Quote(sUrl)}
-    r = s.post(sUrl, headers=headers)
-    sHtmlContent = r.content.decode('utf8')
+    
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request();
 
     oParser = cParser()
             
-    sPattern =  '<a href="(.+?)" class="a.watchBTn">' 
+    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
-        murl = aResult[1][0] 
-        host = murl.split('/')[2]
-        VSlog(murl)
-        VSlog(host)
-        oRequestHandler = cRequestHandler(murl)
-        cook = oRequestHandler.GetCookies()
-        VSlog(cook)
-        hdr = {'host' : host,'referer' : 'https://a.arabseed.ink/','user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
-        St=requests.Session()
-        sHtmlContent = St.post(murl,headers=hdr)
-        sHtmlContent = sHtmlContent.content.decode('utf8')
-        VSlog(sHtmlContent)
-   
-        sPattern = 'data-link="(.+?)" class'
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
+        m3url2 = aResult[1][0] 
+        oRequest = cRequestHandler(m3url2)
+        sHtmlContent2 = oRequest.request()
+
+
+    # (.+?) .+? ([^<]+)
+               
+    sPattern = 'fa-play"></i> <span>(.+?)</span>.+?<iframe.+?src="(.+?)"'
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent2, sPattern)
+
+
 	
-        if aResult[0] is True:
-           for aEntry in aResult[1]:
+    if aResult[0] is True:
+        for aEntry in aResult[1]:
         
-               url = aEntry
-               sThumb = sThumb
-               if url.startswith('//'):
-                  url = 'https:' + url
-								            
-               sHosterUrl = url
-               if 'dood' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               oHoster = cHosterGui().checkHoster(sHosterUrl)
-               if oHoster != False:
-                  oHoster.setDisplayName(sMovieTitle)
-                  oHoster.setFileName(sMovieTitle)
-                  cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+            url = aEntry[1]
+            sTitle = aEntry[0] .replace('"',"")
+            sTitle = ('%s  [COLOR coral]%s[/COLOR]') % (sMovieTitle, sTitle)
+            if url.startswith('//'):
+               url = 'https:' + url
+				
+					
+            
+            sHosterUrl = url
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN  
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+            
+    sPattern =  '<a href="([^<]+)" class="downloadBTn">' 
+    aResult = oParser.parse(sHtmlContent,sPattern)
+    if aResult[0] is True:
+        m3url = aResult[1][0] 
+        oRequest = cRequestHandler(m3url)
+        sHtmlContent = oRequest.request()
+
+
+    # (.+?) .+? ([^<]+)
+               
+
+    sPattern = 'rel="nofollow" href="(.+?)" class="download.+?</span><p>(.+?)</p></a>'
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+
+
+	
+    if aResult[0] is True:
+        for aEntry in aResult[1]:
+        
+            url = aEntry[0]
+            sTitle = aEntry[1].replace('"',"")
+            sTitle = ('%s  [COLOR coral]%s[/COLOR]') % (sMovieTitle, sTitle)
+            if url.startswith('//'):
+               url = 'https:' + url
+				
+					
+            
+            sHosterUrl = url
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN  
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+
     oGui.setEndOfDirectory()

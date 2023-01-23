@@ -1,11 +1,11 @@
-#-*- coding: utf-8 -*-
-#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
-#http://uqload.com/embed-xxx.html
+# -*- coding: utf-8 -*-
+# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+# http://uqload.com/embed-xxx.html
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
-from resources.lib.comaddon import VSlog
 UA = 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36'
+
 
 class cHoster(iHoster):
 
@@ -13,7 +13,6 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'uqload', 'Uqload')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = ''
         oParser = cParser()
 

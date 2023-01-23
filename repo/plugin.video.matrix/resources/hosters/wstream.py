@@ -6,7 +6,6 @@ from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.packer import cPacker
 from resources.lib.comaddon import dialog
-from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -14,7 +13,6 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'wstream', 'WStream')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = False
 
         # VSlog(self._url)
