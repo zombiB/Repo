@@ -582,7 +582,7 @@ def showHosters():
         oRequestHandler = cRequestHandler(murl)
         cook = oRequestHandler.GetCookies()
         VSlog(cook)
-        hdr = {'host' : host,'referer' : sUrl,'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
+        hdr = {'host' : host,'referer' : sUrl,'user-agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'}
         St=requests.Session()
         sHtmlContent = St.post(murl,headers=hdr)
         sHtmlContent = sHtmlContent.content.decode('utf8')
@@ -598,7 +598,7 @@ def showHosters():
                url = aEntry
                sThumb = sThumb
                if url.startswith('//'):
-                  url = 'https:' + url
+                  url = 'http:' + url
 								            
                sHosterUrl = url
                oHoster = cHosterGui().checkHoster(sHosterUrl)
