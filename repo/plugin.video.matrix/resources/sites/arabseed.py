@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # zombi https://github.com/zombiB/zombi-addons/
 
 import re
@@ -17,16 +17,7 @@ SITE_NAME = 'arabseed'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
-try:
-    import requests
-    url = URL_MAIN
-    session = requests.Session()  # so connections are recycled
-    resp = session.head(url, allow_redirects=True)
-    URL_MAIN = resp.url.split('/')[2]
-    URL_MAIN = 'https://' + URL_MAIN
-    VSlog(URL_MAIN)
-except:
-    pass 
+
 MOVIE_CLASSIC = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d9%83%d9%84%d8%a7%d8%b3%d9%8a%d9%83%d9%8a%d9%87/', 'showMovies')
 MOVIE_EN = (URL_MAIN + '/category/foreign-movies3/', 'showMovies')
 MOVIE_AR = (URL_MAIN + '/category/arabic-movies-5/', 'showMovies')
@@ -591,7 +582,7 @@ def showHosters():
         oRequestHandler = cRequestHandler(murl)
         cook = oRequestHandler.GetCookies()
         VSlog(cook)
-        hdr = {'host' : host,'referer' : 'https://a.arabseed.ink/','user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
+        hdr = {'host' : host,'referer' : 'https://a.arabseed.ink/main','user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
         St=requests.Session()
         sHtmlContent = St.post(murl,headers=hdr)
         sHtmlContent = sHtmlContent.content.decode('utf8')
