@@ -555,6 +555,119 @@ def __checkForNextPage(sHtmlContent):
 
     return False
 
+
+
+def showServers():
+    oGui = cGui()
+    import requests
+   
+    oInputParameterHandler = cInputParameterHandler()
+    sUrl = oInputParameterHandler.getValue('siteUrl')
+    sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
+    sThumb = oInputParameterHandler.getValue('sThumb')
+    sDesc = oInputParameterHandler.getValue('sDesc')
+
+    #print sHtmlContent 
+
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request()
+
+   
+    oParser = cParser()
+    sId2 = ''
+
+    sPattern = 'vplayer = "(.+?)",'
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    
+    if (aResult[0]):
+        sId2 = aResult[1][0]
+    #Recuperation infos
+    sId = ''
+     # (.+?) ([^<]+) .+?
+    sPattern = 'onclick="getPlayer(.+?)">'
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    
+    if (aResult[0]):
+        for aEntry in aResult[1]:
+            
+            headers = {'Host': 'arabseed.ink',
+							'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
+							'Accept': '*/*',
+							'Accept-Language': 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+							'X-Requested-With': 'XMLHttpRequest',
+							'Referer': sUrl,
+							'Connection': 'keep-alive'}
+            sId = aEntry.replace("('","").replace("')","")
+            data = {'server':sId,'vplayer':sId2,'Ajax':'1'}
+            s = requests.Session()			
+            r = s.post(URL_MAIN+'/ajax/getPlayer',data = data)
+            sHtmlContent1 = r.content.decode('utf8',errors='ignore')  
+            VSlog(sHtmlContent1)   
+            sPattern = "src='(.+?)' frameborder"
+            oParser = cParser()
+            aResult = oParser.parse(sHtmlContent1, sPattern)
+            if aResult[0] is True:
+                    url = aResult[1][0]
+                    sTitle = sMovieTitle
+                    if url.startswith('//'):
+                       url = 'http:' + url
+            
+                    sHosterUrl = url 
+                    oHoster = cHosterGui().checkHoster(sHosterUrl)
+                    if oHoster != False:
+                       oHoster.setDisplayName(sTitle)
+                       oHoster.setFileName(sTitle)
+                       cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)  
+				
+   
+    # (.+?) ([^<]+) .+?
+    sPattern = '<a target="_blank" href="(.+?)" title='
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    if aResult[0] is True:
+        for aEntry in aResult[1]:
+            
+            url = aEntry
+            sTitle = sMovieTitle
+            if url.startswith('//'):
+               url = 'http:' + url
+            
+            sHosterUrl = url 
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sTitle)
+               oHoster.setFileName(sTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+	    #Affichage du menu  
+    oGui.addText(SITE_IDENTIFIER,'[COLOR olive]---------------------------[/COLOR]')
+  # ([^<]+) .+?
+    sPattern = '<a class="" href="([^<]+)" title="([^<]+)"><span>([^<]+)</span><span class="numEp">([^<]+)</span>'
+
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+	
+	
+    if aResult[0] is True:
+        oOutputParameterHandler = cOutputParameterHandler() 
+        for aEntry in aResult[1]:
+ 
+            sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مترجم ","").replace("مشاهدة وتحميل","").replace("اون لاين","").replace("الموسم العاشر","S10").replace("الموسم الحادي عشر","S11").replace("الموسم الثاني عشر","S12").replace("الموسم الثالث عشر","S13").replace("الموسم الرابع عشر","S14").replace("الموسم الخامس عشر","S15").replace("الموسم السادس عشر","S16").replace("الموسم السابع عشر","S17").replace("الموسم الثامن عشر","S18").replace("الموسم التاسع عشر","S19").replace("الموسم العشرون","S20").replace("الموسم الحادي و العشرون","S21").replace("الموسم الثاني و العشرون","S22").replace("الموسم الثالث و العشرون","S23").replace("الموسم الرابع والعشرون","S24").replace("الموسم الخامس و العشرون","S25").replace("الموسم السادس والعشرون","S26").replace("الموسم السابع والعشرون","S27").replace("الموسم الثامن والعشرون","S28").replace("الموسم التاسع والعشرون","S29").replace("الموسم الثلاثون","S30").replace("الموسم الحادي و الثلاثون","S31").replace("الموسم الثاني والثلاثون","S32").replace("الموسم الاول","S1").replace("الموسم الأول","S1").replace(" الثانى","2").replace("الموسم الثاني","S2").replace("الموسم الثالث","S3").replace("الموسم الثالث","S3").replace("الموسم الرابع","S4").replace("الموسم الخامس","S5").replace("الموسم السادس","S6").replace("الموسم السابع","S7").replace("الموسم الثامن","S8").replace("الموسم التاسع","S9").replace("الحلقة "," E").replace("الموسم","S").replace("S ","S") 
+            sThumb = aEntry[2]
+            siteUrl = aEntry[0].replace("/episodes/","/watch_episodes/")
+            sDesc = ""
+			
+
+
+            oOutputParameterHandler.addParameter('siteUrl',siteUrl)
+            oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
+            oOutputParameterHandler.addParameter('sThumb', sThumb)
+            oGui.addEpisode(SITE_IDENTIFIER, 'showServers', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+
+       
+    oGui.setEndOfDirectory()
+
+
 def showHosters():
     import requests
     oGui = cGui()
@@ -582,7 +695,7 @@ def showHosters():
         oRequestHandler = cRequestHandler(murl)
         cook = oRequestHandler.GetCookies()
         VSlog(cook)
-        hdr = {'host' : host,'referer' : murl,'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
+        hdr = {'host' : host,'referer' : sUrl,'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
         St=requests.Session()
         sHtmlContent = St.post(murl,headers=hdr)
         sHtmlContent = sHtmlContent.content.decode('utf8')
