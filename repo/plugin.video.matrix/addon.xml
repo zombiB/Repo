@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.matrix" name="matrix" version="5.5.8i" provider-name="zombi">
+<addon id="plugin.video.matrix" name="matrix" version="5.5.8j" provider-name="zombi">
     <requires>
 
         <trycatch>
@@ -11,7 +11,7 @@
                 <import addon="xbmc.python" version="2.24.0"/>
             </catch>
         </trycatch>
-        <import addon="repository.Yonn1981 Repo"/>
+        <import addon="Yonn1981_Repo"/>
         <import addon="script.module.pyqrcode"/>
         <import addon="script.kodi.loguploader"/>
         <import addon="script.module.requests"/>
