@@ -13,6 +13,7 @@ import ssl
 
 from resources.hosters.hoster import iHoster
 from resources.lib.parser import cParser
+from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -24,6 +25,7 @@ class cHoster(iHoster):
         return False
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         myContext = ssl._create_unverified_context()
 
         req = urllib2.Request(self._url)

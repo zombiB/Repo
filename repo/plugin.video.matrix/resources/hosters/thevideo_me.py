@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+# Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
 # http://www.video.tt/embed/xxx
 # http://thevideo.me/embed-xxx-xxx.html
 
@@ -15,6 +15,7 @@ import ssl
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
+from resources.lib.comaddon import VSlog
 
 UA = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0"
 
@@ -45,14 +46,16 @@ class cHoster(iHoster):
         else:
             self._url = "https://vev.io/embed/" + sId
 
+
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = False
         aResult = False
 
         request_headers = {"User-Agent": UA}
 
         # thevideo.me doesn't exist so take redirection
-        req = urllib2.Request(self._url, headers=request_headers)
+        req = urllib2.Request(self._url,headers=request_headers)
         gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
         response = urllib2.urlopen(req, context=gcontext)
         # sHtmlContent = response.read()
@@ -70,7 +73,7 @@ class cHoster(iHoster):
 
         # VSlog(aResult['qualities'])
 
-        if aResult:
+        if (aResult):
             # initialisation des tableaux
             url = []
             qua = []
@@ -80,7 +83,7 @@ class cHoster(iHoster):
                 url.append(aResult['qualities'][i])
                 qua.append(str(i))
 
-            # dialog qualite
+            # dialog qualiter
             api_call = dialog().VSselectqual(qua, url)
 
         # xbmc.sleep(5000)

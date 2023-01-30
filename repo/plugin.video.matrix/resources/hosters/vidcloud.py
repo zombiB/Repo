@@ -1,10 +1,10 @@
-# coding: utf-8
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
-# Vidcloud / vcstream.to
+#coding: utf-8
+#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
+#Vidcloud / vcstream.to
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
-
+from resources.lib.comaddon import VSlog
 
 class cHoster(iHoster):
 
@@ -12,15 +12,16 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'vidcloud', 'VidCloud')
 
     def __getIdFromUrl(self, sUrl):
-        # https://vcstream.to/embed/5bcf5b4c39aff/The.Spy.Who.Dumped.Me.mp4
+        #https://vcstream.to/embed/5bcf5b4c39aff/The.Spy.Who.Dumped.Me.mp4
         sPattern = 'vcstream.to/embed/([^<]+)/'
         oParser = cParser()
         aResult = oParser.parse(sUrl, sPattern)
-        if aResult[0]:
+        if (aResult[0]):
             return aResult[1][0]
         return ''
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = False
 
         sId = self.__getIdFromUrl(self._url)
@@ -33,7 +34,7 @@ class cHoster(iHoster):
         oParser = cParser()
         aResult = oParser.parse(sHtmlContent, sPattern)
 
-        if aResult[0]:
+        if (aResult[0]):
             api_call = aResult[1][0].replace('\\\\', '').replace(':\\"', '')
 
         if api_call:

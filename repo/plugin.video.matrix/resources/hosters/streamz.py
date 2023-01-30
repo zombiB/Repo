@@ -26,6 +26,7 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'streamz', 'Streamz')
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = False
 
         oParser = cParser()

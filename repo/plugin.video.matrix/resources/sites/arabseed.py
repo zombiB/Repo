@@ -45,10 +45,10 @@ def load():
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'SEARCH MOVIES', 'search.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'SEARCH_MOVIES', 'search.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSeriesSearch', 'SEARCH SERIES', 'search.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeriesSearch', 'SEARCH_SERIES', 'search.png', oOutputParameterHandler)
  
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
@@ -93,6 +93,14 @@ def load():
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', SERIE_TR[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات تركية', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_HEND[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_DUBBED[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مدبلجة', 'mslsl.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', ANIM_NEWS[0])
@@ -555,11 +563,6 @@ def __checkForNextPage(sHtmlContent):
 
     return False
 
-
-
-
-
-
 def showHosters():
     import requests
     oGui = cGui()
@@ -577,7 +580,7 @@ def showHosters():
 
     oParser = cParser()
             
-    sPattern =  '<a href="([^<]+)" class="a.watchBTn">' 
+    sPattern =  '<a href="([^<]+)" class="a.downloadBTn">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
         murl = aResult[1][0] 
@@ -587,7 +590,7 @@ def showHosters():
         oRequestHandler = cRequestHandler(murl)
         cook = oRequestHandler.GetCookies()
         VSlog(cook)
-        hdr = {'host' : host,'referer' : murl,'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
+        hdr = {'host' : host,'referer' : URL_MAIN,'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
         St=requests.Session()
         sHtmlContent = St.post(murl,headers=hdr)
         sHtmlContent = sHtmlContent.content.decode('utf8')
@@ -606,6 +609,12 @@ def showHosters():
                   url = 'http:' + url
 								            
                sHosterUrl = url
+               if 'userload' in sHosterUrl:
+                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+               if 'moshahda' in sHosterUrl:
+                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+               if 'mystream' in sHosterUrl:
+                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
                oHoster = cHosterGui().checkHoster(sHosterUrl)
                if oHoster != False:
                   oHoster.setDisplayName(sMovieTitle)

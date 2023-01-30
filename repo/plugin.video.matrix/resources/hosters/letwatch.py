@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+#-*- coding: utf-8 -*-
+#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
 import re
 
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.lib.packer import cPacker
 from resources.hosters.hoster import iHoster
-
+from resources.lib.comaddon import VSlog
 
 class cHoster(iHoster):
 
@@ -16,14 +16,14 @@ class cHoster(iHoster):
     def __getUrlFromJavascriptCode(self, sHtmlContent):
         # oParser = cParser()
         # sPattern = "(eval\(function.*?)(.+?)</script>"
-        # aResult = oParser.parse(sHtmlContent, sPattern)
+        #aResult = oParser.parse(sHtmlContent, sPattern)
 
         aResult = re.search('(eval\(function.*?)\s*</script>', sHtmlContent, re.DOTALL)
 
-        if aResult.group(1):
+        if (aResult.group(1)):
             sJavascript = aResult.group(1)
 
-            # sUnpacked = cJsUnpacker().unpackByString(sJavascript)
+            #sUnpacked = cJsUnpacker().unpackByString(sJavascript)
             sUnpacked = cPacker().unpack(sJavascript)
 
             return sUnpacked
@@ -31,6 +31,9 @@ class cHoster(iHoster):
         return False
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
+        api_call = False
+
         oRequest = cRequestHandler(self._url)
         sHtmlContent = oRequest.request()
 
@@ -45,6 +48,7 @@ class cHoster(iHoster):
 
         oParser = cParser()
         aResult = oParser.parse(sUnpacked, sPattern)
+
 
         if aResult[0] is True:
             api_call = aResult[1][0]

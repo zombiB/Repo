@@ -5,6 +5,7 @@ import re
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
+from resources.lib.comaddon import VSlog
 # meme code que gorillavid
 
 
@@ -21,7 +22,8 @@ class cHoster(iHoster):
             return aResult[1][0]
         return ''
 
-    def _getMediaLinkForGuest(self, api_call=None):
+    def _getMediaLinkForGuest(self, api_call = None):
+        VSlog(self._url)
         oParser = cParser()
 
         sId = self.__getIdFromUrl()

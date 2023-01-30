@@ -2,6 +2,7 @@
 # vStream https://github.com/Kodi-vStream/venom-xbmc-addons
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
+from resources.lib.comaddon import VSlog
 from resources.lib.handler.premiumHandler import cPremiumHandler
 
 UA = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0'
@@ -25,6 +26,7 @@ class cHoster(iHoster):
         pass
 
     def _getMediaLinkByPremiumUser(self):
+        VSlog(self._url)
         api_call = False
 
         if not self.oPremiumHandler.Authentificate():

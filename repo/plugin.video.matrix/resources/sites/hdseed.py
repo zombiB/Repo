@@ -13,7 +13,7 @@ SITE_IDENTIFIER = 'hdseed'
 SITE_NAME = 'Hdseed'
 SITE_DESC = 'arabic vod'
  
-URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER) 
+URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 KID_MOVIES = (URL_MAIN + '/genre/movies/', 'showMovies')
 

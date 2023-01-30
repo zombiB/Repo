@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # vStream https://github.com/Kodi-vStream/venom-xbmc-addons
 # Ovni-crea
 import requests
@@ -36,4 +36,3 @@ class cHoster(iHoster):
                 VSlog('Hoster RealDebrid - play : ' + HostURL)
 
         return True, api_call
-
