@@ -71,10 +71,6 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كلاسيكية', 'film.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', MOVIE_HI[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام هندية', 'film.png', oOutputParameterHandler)
-    
-    oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', KID_MOVIES[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كرتون', 'crtoon.png', oOutputParameterHandler)
 
@@ -580,7 +576,7 @@ def showHosters():
 
     oParser = cParser()
             
-    sPattern =  '<a href="([^<]+)" class="a.downloadBTn">' 
+    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
         murl = aResult[1][0] 
@@ -590,7 +586,7 @@ def showHosters():
         oRequestHandler = cRequestHandler(murl)
         cook = oRequestHandler.GetCookies()
         VSlog(cook)
-        hdr = {'host' : host,'referer' : URL_MAIN,'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
+        hdr = {'host' : host,'referer' : sUrl,'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
         St=requests.Session()
         sHtmlContent = St.post(murl,headers=hdr)
         sHtmlContent = sHtmlContent.content.decode('utf8')

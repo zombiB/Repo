@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.matrix" name="matrix" version="5.5.9a" provider-name="zombi">
+<addon id="plugin.video.matrix" name="matrix" version="5.5.9b" provider-name="zombi">
     <requires>
 
         <trycatch>
