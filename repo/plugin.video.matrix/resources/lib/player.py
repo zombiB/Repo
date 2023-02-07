@@ -227,7 +227,7 @@ class cPlayer(xbmc.Player):
                     # Mais on a tout de meme terminé donc le temps actuel est egal au temps total.
                     if (pourcent > 0.90) or (pourcent == 0.0 and self.currentTime == self.totalTime):
         
-                        # Marquer VU dans la BDD matrix
+                        # Marquer VU dans la BDD Vstream
                         sTitleWatched = self.infotag.getOriginalTitle()
                         if sTitleWatched:
                             meta = {}
@@ -331,7 +331,7 @@ class cPlayer(xbmc.Player):
                         ms = resumePoint-h*3600
                         m = ms//60
                         s = ms-m*60
-                        ret = dialog().VSselect(['Resume from %02d:%02d:%02d' %(h, m, s), 'Play from the beginning'], 'Resume')
+                        ret = dialog().VSselect(['Reprendre depuis %02d:%02d:%02d' %(h, m, s), 'Lire depuis le début'], 'Reprendre la lecture')
                         if ret == 0:
                             self.seekTime(resumePoint)
                         elif ret == 1:
@@ -341,11 +341,12 @@ class cPlayer(xbmc.Player):
 
 
     def __setWatchlist(self, sEpisode=''):
-        # Suivi de lecture dans Trakt
+        # Suivi de lecture dans Trakt si compte
+        if self.ADDON.getSetting('bstoken') == '':
+            return
         plugins = __import__('resources.lib.trakt', fromlist=['trakt']).cTrakt()
         function = getattr(plugins, 'getAction')
         function(Action = "SetWatched", sEpisode = sEpisode)
-        return
 
     def __getPlayerType(self):
         sPlayerType = self.ADDON.getSetting('playerType')
@@ -364,3 +365,4 @@ class cPlayer(xbmc.Player):
                 return xbmc.PLAYER_CORE_DVDPLAYER
         except:
             return False
+

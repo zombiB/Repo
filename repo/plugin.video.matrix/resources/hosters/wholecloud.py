@@ -6,7 +6,6 @@ import re
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
-from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -23,7 +22,6 @@ class cHoster(iHoster):
         return ''
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = False
 
         sId = self.__getIdFromUrl()

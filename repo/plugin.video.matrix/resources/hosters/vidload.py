@@ -1,9 +1,7 @@
-#coding: utf-8
-#
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
-from resources.lib.comaddon import VSlog
 from resources.hosters.hoster import iHoster
+
 
 class cHoster(iHoster):
 
@@ -11,11 +9,10 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'vidload', 'VidLoad')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         oRequest = cRequestHandler(self._url)
         sHtmlContent = oRequest.request()
 
-        sPattern =  'var token="([^"]+)".+?var crsf="([^"]+)"'
+        sPattern = 'var token="([^"]+)".+?var crsf="([^"]+)"'
         oParser = cParser()
         aResult = oParser.parse(sHtmlContent, sPattern)
         if aResult[0] is True:

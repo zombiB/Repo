@@ -85,7 +85,7 @@ if False:
 # -----------------------------------------------------------
 
 # Cookie path
-# C:\Users\BRIX\AppData\Roaming\Kodi\userdata\addon_data\plugin.video.matrix\
+# C:\Users\BRIX\AppData\Roaming\Kodi\userdata\addon_data\plugin.video.vstream\
 
 # Light method
 # Ne marche que si meme user-agent

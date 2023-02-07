@@ -115,7 +115,7 @@ class UpNext:
             oOutputParameterHandler.addParameter('sTmdbId', sTmdbId)
 
             sParams = oOutputParameterHandler.getParameterAsUri()
-            url = 'plugin://plugin.video.matrix/?site=cHosterGui&function=play&%s' % sParams
+            url = 'plugin://plugin.video.vstream/?site=cHosterGui&function=play&%s' % sParams
 
             # sThumbnail = guiElement.getThumbnail()
             sThumbnail = sThumb
@@ -250,7 +250,7 @@ class UpNext:
                 "id": 1,
                 "method": "JSONRPC.NotifyAll",
                 "params": {
-                    "sender": "%s.SIGNAL" % 'plugin.video.matrix',
+                    "sender": "%s.SIGNAL" % 'plugin.video.vStream',
                     "message": 'upnext_data',
                     "data": [data],
                 }

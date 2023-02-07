@@ -59,7 +59,7 @@ class cTMDb:
 
     URL = 'https://api.themoviedb.org/3/'
     URL_TRAILER = 'plugin://plugin.video.youtube/play/?video_id=%s' # ancien : 'plugin://plugin.video.youtube/?action=play_video&videoid=%s'
-    CACHE = 'special://home/userdata/addon_data/plugin.video.matrix/video_cache.db'
+    CACHE = 'special://home/userdata/addon_data/plugin.video.vstream/video_cache.db'
 
     # important seul xbmcvfs peux lire le special
     if not isMatrix():
@@ -67,7 +67,7 @@ class cTMDb:
     else:
         REALCACHE = VSPath(CACHE)
 
-    def __init__(self, api_key='', debug=False, lang='en'):
+    def __init__(self, api_key='', debug=False, lang='fr'):
 
         self.ADDON = addon()
 
@@ -252,8 +252,8 @@ class cTMDb:
                 import pyqrcode
                 from resources.lib.librecaptcha.gui import cInputWindowYesNo
                 qr = pyqrcode.create(url + result['request_token'])
-                qr.png(VSPath('special://home/userdata/addon_data/plugin.video.matrix/qrcode.png'), scale=5)
-                oSolver = cInputWindowYesNo(captcha='special://home/userdata/addon_data/plugin.video.matrix/qrcode.png', msg="Scanner le QRCode pour acceder au lien d'autorisation", roundnum=1)
+                qr.png(VSPath('special://home/userdata/addon_data/plugin.video.vstream/qrcode.png'), scale=5)
+                oSolver = cInputWindowYesNo(captcha='special://home/userdata/addon_data/plugin.video.vstream/qrcode.png', msg="Scanner le QRCode pour acceder au lien d'autorisation", roundnum=1)
                 retArg = oSolver.get()
                 DIALOG = dialog()
                 if retArg == "N":
@@ -659,7 +659,7 @@ class cTMDb:
                     for trailer in trailers['results']:
                         if trailer['type'] == 'Trailer' and trailer['site'] == 'YouTube':
                             trailer_id = trailer['key']  # Au moins c'est un trailer, pas forcement français
-                            if 'ar' in trailer['iso_639_1']:
+                            if 'fr' in trailer['iso_639_1']:
                                 trailer_id = trailer['key']
                                 break
                     # pas de trailer, on prend la premiere vidéo disponible
@@ -741,6 +741,19 @@ class cTMDb:
         return _meta
 
     def _clean_title(self, title):
+        # vire accent
+        try:
+            bMatrix = isMatrix()
+            if not bMatrix:
+                title = unicode(title, 'utf-8')
+            title = unicodedata.normalize('NFD', title).encode('ascii', 'ignore').decode('unicode_escape')
+            if not bMatrix:
+                title = title.encode('utf-8')  # on repasse en utf-8
+        except Exception as e:
+            pass
+
+        # Vire tous les caracteres non alphabetiques
+        title = re.sub('[^%s]' % (string.ascii_lowercase + string.digits), '', title.lower())
         return title
 
     def _cache_search(self, media_type, name, tmdb_id='', year='', season='', episode=''):

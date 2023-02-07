@@ -2,11 +2,8 @@
 # vStream https://github.com/Kodi-vStream/venom-xbmc-addons
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
-from resources.lib.comaddon import dialog
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import xbmcgui
-from resources.lib.comaddon import VSlog
-UA = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0'
 
 
 class cHoster(iHoster):
@@ -15,35 +12,26 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'vk', 'Vk')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         url = []
         qua = []
 
         oRequest = cRequestHandler(self._url)
         sHtmlContent = oRequest.request()
-    # (.+?) # ([^<]+) .+? 
-        sPattern = ',"hls":"(.+?)",'
+
+        sPattern = '"url.+?":"(.+?)\.(\d+).mp4'
 
         oParser = cParser()
         aResult = oParser.parse(sHtmlContent, sPattern)
         if aResult[0] is True:
-            api_call = aResult[1][0]+ '|User-Agent=' + UA + '&Referer=' + self._url 
-            VSlog(api_call)
 
-            if api_call:
-                return True, api_call
-    # (.+?) # ([^<]+) .+? 
-        sPattern = 'quality="(.+?)" frameRate.+?<BaseURL>(.+?)<\/BaseURL>'
+            for aEntry in aResult[1]:
+                url.append(aEntry[0])
+                qua.append(str(aEntry[1]))
 
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
-        if aResult[0] is True:
-            url=[]
-            qua=[]
-            for i in aResult[1]:
-                url.append(str(i[1]))
-                qua.append(str(i[0]))
-            api_call = dialog().VSselectqual(qua, url)
+            dialog2 = xbmcgui.Dialog()
+            ret = dialog2.select('Select Quality', qua)
+            # sUrl = url[ret] + '.' + qua[ret] + '.mp4'
+            api_call = ('%s.%s.mp4') % (url[ret], qua[ret])
 
             if api_call:
                 return True, api_call

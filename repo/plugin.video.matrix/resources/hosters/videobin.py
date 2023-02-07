@@ -4,7 +4,6 @@ from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
-from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -13,12 +12,11 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'videobin', 'VideoBIN')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         oParser = cParser()
         oRequest = cRequestHandler(self._url)
         sHtmlContent = oRequest.request()
 
-        #accelère le traitement
+        # accelère le traitement
         sHtmlContent = oParser.abParse(sHtmlContent, 'var player', 'vvplay')
         # Traitement pour les liens m3u8
         sHtmlContent = sHtmlContent.replace(',', '').replace('master.m3u8', 'index-v1-a1.m3u8')
@@ -29,8 +27,8 @@ class cHoster(iHoster):
             api_call = ''
 
             # initialisation des tableaux
-            url=[]
-            qua=[]
+            url = []
+            qua = []
             n = 1
 
             # Remplissage des tableaux

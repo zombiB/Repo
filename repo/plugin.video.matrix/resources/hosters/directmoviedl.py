@@ -4,7 +4,6 @@
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
-from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -13,7 +12,6 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'directmoviedl', 'DirectMovieDl')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = False
 
         if 'movie.directmoviedl' in self._url:

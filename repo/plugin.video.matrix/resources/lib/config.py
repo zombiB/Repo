@@ -17,7 +17,7 @@ import json
 
 
 class GestionCookie:
-    PathCache = 'special://userdata/addon_data/plugin.video.matrix'
+    PathCache = 'special://userdata/addon_data/plugin.video.vstream'
 
     def MakeListwithCookies(self, c):
         t = {}
@@ -104,7 +104,7 @@ class cConfig:
         # self.__sIcon = os.path.join(self.__oPath,'resources', 'art','icon.png')
         # self.__sFanart = os.path.join(self.__oPath,'resources','art','fanart.jpg')
         # self.__sFileFav = os.path.join(self.__oCache,'favourite.db').decode('utf-8')
-        # self.__sFileDB = os.path.join(self.__oCache,'matrix.db').decode('utf-8')
+        # self.__sFileDB = os.path.join(self.__oCache,'vstream.db').decode('utf-8')
         # self.__sFileCache = os.path.join(self.__oCache,'video_cache.db').decode('utf-8')
 
     def isDharma(self):
@@ -134,7 +134,7 @@ def WindowsBoxes(sTitle, siteUrl, metaType, year, sSite, sFav, sCat):
     ADDON = addon()
     DIALOG = dialog()
 
-    # Sinon on gere par matrix via la lib TMDB
+    # Sinon on gere par vStream via la lib TMDB
     sType = str(metaType).replace('1', 'movie').replace('2', 'tvshow').replace('3', 'collection').replace('4', 'anime')\
                          .replace('5', 'season').replace('6', 'episode')
 
@@ -148,7 +148,7 @@ def WindowsBoxes(sTitle, siteUrl, metaType, year, sSite, sFav, sCat):
             sType = 'tvshow'
         meta = cTMDb().get_meta(sType, sTitle, tmdb_id=tmdb_id, year=year, season=season, episode=episode)
     except:
-        DIALOG.VSok("Veuillez vider le cache des métadonnées Paramètre - outils - 'vider le cache de matrix'")
+        DIALOG.VSok("Veuillez vider le cache des métadonnées Paramètre - outils - 'vider le cache de vStream'")
         pass
 
     # si rien ne marche
@@ -396,7 +396,7 @@ def WindowsBoxes(sTitle, siteUrl, metaType, year, sSite, sFav, sCat):
                 except:
                     return
                 # self.getControl(50).setVisible(True)
-                self.setProperty('matrix_menu', 'Person')
+                self.setProperty('vstream_menu', 'Person')
 
             # click sur similaire
             elif controlId == 9:
@@ -487,7 +487,7 @@ def WindowsBoxes(sTitle, siteUrl, metaType, year, sSite, sFav, sCat):
             if action.getId() in (9, 10, 11, 30, 92, 216, 247, 257, 275, 61467, 61448):
                 self.close()
 
-    path = 'special://home/addons/plugin.video.matrix'
+    path = 'special://home/addons/plugin.video.vstream'
     # self.__oPath.decode('utf-8')
     args = ('DialogInfo4.xml', path, 'default', '720p')
     kwargs = {}

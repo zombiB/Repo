@@ -24,9 +24,9 @@ class cDb(object):
 
         # Le cas par defaut.
         if name == 'Master user':
-            DB = 'special://home/userdata/addon_data/plugin.video.matrix/matrix.db'
+            DB = 'special://home/userdata/addon_data/plugin.video.vstream/vstream.db'
         else:
-            DB = 'special://home/userdata/profiles/' + name + '/addon_data/plugin.video.matrix/matrix.db'
+            DB = 'special://home/userdata/profiles/' + name + '/addon_data/plugin.video.vstream/vstream.db'
 
         try:
             REALDB = VSPath(DB).decode('utf-8')

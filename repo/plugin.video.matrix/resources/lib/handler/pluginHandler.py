@@ -63,14 +63,14 @@ class cPluginHandler:
         addons = addon()
         sitesManager = siteManager()
 
-        sFolder = "special://home/addons/plugin.video.matrix/resources/sites"
+        sFolder = "special://home/addons/plugin.video.vstream/resources/sites"
         sFolder = sFolder.replace('\\', '/')
 
         aFileNames = self.__getFileNamesFromFolder(sFolder)
 
         aPlugins = []
         for sFileName in aFileNames:
-            if not sitesManager.isEnable(sFileName):    # Site désactivé par la team
+            if not sitesManager.isEnable(sFileName):    # Site dÃ©sactivÃ© par la team
                 continue
             if force or sitesManager.isActive(sFileName):
                 # wir versuchen das plugin zu importieren
@@ -95,14 +95,14 @@ class cPluginHandler:
 
     def getAllPlugins(self):
         sitesManager = siteManager()
-        sFolder = "special://home/addons/plugin.video.matrix/resources/sites"
+        sFolder = "special://home/addons/plugin.video.vstream/resources/sites"
         sFolder = sFolder.replace('\\', '/')
 
         aFileNames = self.__getFileNamesFromFolder(sFolder)
 
         aPlugins = []
         for sFileName in aFileNames:
-            if not sitesManager.isEnable(sFileName):    # Site désactivé par la team
+            if not sitesManager.isEnable(sFileName):    # Site dÃ©sactivÃ© par la team
                 continue
             # wir versuchen das plugin zu importieren
             aPlugin = self.__importPlugin(sFileName)

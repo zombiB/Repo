@@ -275,7 +275,6 @@ class cHoster(iHoster):
         self._url = 'http://' + self.getHost(url) + '/embed.php?c=' + self.__getIdFromUrl(url)
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = False
 
         oParser = cParser()

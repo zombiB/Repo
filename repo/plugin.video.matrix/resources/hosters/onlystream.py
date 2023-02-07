@@ -1,11 +1,11 @@
-#-*- coding: utf-8 -*-
-#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
+# -*- coding: utf-8 -*-
+# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.packer import cPacker
 from resources.lib.comaddon import dialog
-from resources.lib.comaddon import VSlog
+
 
 class cHoster(iHoster):
 
@@ -13,14 +13,13 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'onlystream', 'OnlyStream')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         api_call = False
 
         oParser = cParser()
         oRequest = cRequestHandler(self._url)
         sHtmlContent = oRequest.request()
 
-        sPattern =  '(?:file|src): *"([^"]+)"[^{}<>]+?(?:, *label: *"([^"]+)")*}'
+        sPattern = '(?:file|src): *"([^"]+)"[^{}<>]+?(?:, *label: *"([^"]+)")*}'
         aResult = oParser.parse(sHtmlContent, sPattern)
 
         if aResult[0] is True:
@@ -32,15 +31,16 @@ class cHoster(iHoster):
             if aResult[0] is True:
                 sHtmlContent = cPacker().unpack(aResult[1][0])
 
-                sPattern =  '(?:file|src): *"([^"]+)"[^{}<>]+?(?:, *label: *"([^"]+)")*}'
+                sPattern = '(?:file|src): *"([^"]+)"[^{}<>]+?(?:, *label: *"([^"]+)")*}'
                 aResult = oParser.parse(sHtmlContent, sPattern)
                 if aResult[0] is True:
-                    url=[]
-                    qua=[]
+                    url = []
+                    qua = []
                     for i in aResult[1]:
                         url.append(str(i[0]))
                         if len(i) > 1:
                             q = str(i[1])
+                            qua.append(q)
                         else:
                             q = "Inconnu"
                             qua.append(q)
