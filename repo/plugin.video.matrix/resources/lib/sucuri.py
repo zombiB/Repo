@@ -16,7 +16,7 @@ import unicodedata
 from resources.lib.comaddon import VSlog, VSPath
 from resources.lib.util import urlEncode
 
-PathCache = VSPath(xbmcaddon.Addon('plugin.video.vstream').getAddonInfo('profile'))
+PathCache = VSPath(xbmcaddon.Addon('plugin.video.matrix').getAddonInfo('profile'))
 UA = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; de-DE; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 
 

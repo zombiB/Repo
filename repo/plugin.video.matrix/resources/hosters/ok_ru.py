@@ -14,6 +14,7 @@ from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
 from resources.lib.util import cUtil
+from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -29,6 +30,7 @@ class cHoster(iHoster):
         return ''
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         v = self.getHostAndIdFromUrl(self._url)
         sId = v[1]
         sHost = v[0]
@@ -47,7 +49,12 @@ class cHoster(iHoster):
 
         page = json.loads(sHtmlContent)
         page = json.loads(page['flashvars']['metadata'])
+        VSlog(page)
         if page:
+            sPattern = "'hlsMasterPlaylistUrl': '(.+?)',"
+            aResult = oParser.parse(page, sPattern)
+            if (aResult[0] == True):
+                api_call = aResult[1][0]
             url = []
             qua = []
             for x in page['videos']:
@@ -55,9 +62,10 @@ class cHoster(iHoster):
                 qua.append(x['name'])
 
             # Si au moins 1 url
-            if url:
+            if (url):
                 # dialogue qualité
                 api_call = dialog().VSselectqual(qua, url)
+
 
         if api_call:
             api_call = api_call + '|Referer=' + self._url

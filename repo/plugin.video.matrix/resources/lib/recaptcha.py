@@ -32,7 +32,7 @@ from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.util import urlEncode, Noredirection
 
 UA = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0'
-__addon__ = xbmcaddon.Addon('plugin.video.vstream')
+__addon__ = xbmcaddon.Addon('plugin.video.matrix')
 __sLang__ = 'fr'
 
 
@@ -209,7 +209,7 @@ def ResolveCaptcha(key, urlOuo):
 
     url = 'https://www.google.com' + str(captchaScrap[0]) + '?' + query_string
 
-    filePath = 'special://home/userdata/addon_data/plugin.video.vstream/Captcha.raw'
+    filePath = 'special://home/userdata/addon_data/plugin.video.matrix/Captcha.raw'
 
     oRequestHandler = cRequestHandler(url)
     htmlcontent = oRequestHandler.request()

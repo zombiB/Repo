@@ -2,12 +2,15 @@
 # vStream https://github.com/Kodi-vStream/venom-xbmc-addons
 import re
 
-from resources.hosters.hoster import iHoster
-from resources.lib.comaddon import VSlog
 from resources.lib.handler.requestHandler import cRequestHandler
-from resources.lib.jsparser import JsParser
-from resources.lib.packer import cPacker
 from resources.lib.parser import cParser
+from resources.hosters.hoster import iHoster
+# from resources.lib.aadecode import AADecoder
+from resources.lib.jjdecode import JJDecoder
+from resources.lib.packer import cPacker
+from resources.lib.jsparser import JsParser
+from resources.lib.comaddon import VSlog
+
 
 UA = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0'
 
@@ -22,13 +25,14 @@ class cHoster(iHoster):
         return host
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         oRequest = cRequestHandler(self._url.replace('sn', 'embed'))
         oRequest.addHeaderEntry('User-Agent', UA)
         oRequest.addHeaderEntry('Host', 'www.speedvid.net')
         sHtmlContent = oRequest.request()
 
         # suppression commentaires
-        sHtmlContent = re.sub(r'<!--.*?-->', '', sHtmlContent)
+        sHtmlContent = re.sub( r'<!--.*?-->', '', sHtmlContent )
 
         oParser = cParser()
 
@@ -36,13 +40,14 @@ class cHoster(iHoster):
         # fh.write(sHtmlContent)
         # fh.close()
 
-        # decodage de la page html
+        # decodage de la pahe html
         sHtmlContent3 = sHtmlContent
         code = ''
         maxboucle = 10
-        while maxboucle > 0:
+        while (maxboucle > 0):
             VSlog('loop : ' + str(maxboucle))
             sHtmlContent3 = checkCpacker(sHtmlContent3)
+            # sHtmlContent3 = CheckJJDecoder(sHtmlContent3)
             sHtmlContent3 = checkAADecoder(sHtmlContent3)
 
             maxboucle = maxboucle - 1
@@ -109,10 +114,10 @@ class cHoster(iHoster):
             if aResult[0] is True:
                 api_call = aResult[1][0]
 
-        VSlog('API_CALL: ' + api_call)
+        VSlog('API_CALL: ' + api_call )
 
         if api_call:
-            api_call = api_call + '|User-Agent=' + UA  # + #'|Host=' + api_call.replace('http://','').rsplit('/', 2)[0]
+            api_call = api_call + '|User-Agent=' + UA  #+ #'|Host=' + api_call.replace('http://','').rsplit('/', 2)[0]
 
             return True, api_call
 
@@ -123,7 +128,7 @@ class cHoster(iHoster):
 def checkCpacker(strToPack):
     sPattern = '>([^>]+\(p,a,c,k,e(?:.|\s)+?\)\)\s*)<'
     aResult = re.search(sPattern, strToPack, re.DOTALL | re.UNICODE)
-    if aResult:
+    if (aResult):
         # VSlog('Cpacker encryption')
         str2 = aResult.group(1)
 
@@ -164,7 +169,7 @@ def checkCpacker(strToPack):
 
 def checkAADecoder(stringToDecode):
     aResult = re.search('([>;]\s*)(ﾟωﾟ.+?\(\'_\'\);)', str, re.DOTALL | re.UNICODE)
-    if aResult:
+    if (aResult):
         VSlog('AA encryption')
 
         # tmp = aResult.group(1) + AADecoder(aResult.group(2)).decode()

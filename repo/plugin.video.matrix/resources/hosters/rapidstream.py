@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
-# https://rapidstream.co/embed-zxxx-635x445.html tfarjo twd
-
+#-*- coding: utf-8 -*-
+#https://rapidstream.co/embed-zxxx-635x445.html tfarjo twd
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
-
+from resources.lib.comaddon import VSlog
 
 class cHoster(iHoster):
 
@@ -12,6 +11,7 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'rapidstream', 'Rapidstream')
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = ''
         oParser = cParser()
 

@@ -85,7 +85,7 @@ class cRechercheHandler:
         elif sCat == '5':
             sSearch = 'URL_SEARCH_MISC'
         elif sCat == '6':
-            sSearch = 'URL_SEARCH_REPLAY'
+            sSearch = 'URL_SEARCH'
         elif sCat == '7':
             sSearch = 'URL_SEARCH_MOVIES'
         elif sCat == '8':
@@ -125,7 +125,7 @@ class cRechercheHandler:
             VSlog(str(e))
             pass
 
-        sFolder = "special://home/addons/plugin.video.vstream/resources/sites"
+        sFolder = "special://home/addons/plugin.video.matrix/resources/sites"
         sFolder = sFolder.replace('\\', '/')
         VSlog("Sites Folder: " + sFolder)
 

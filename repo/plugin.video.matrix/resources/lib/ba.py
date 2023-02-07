@@ -48,9 +48,7 @@ class cShowBA:
 
     def SearchBA(self, window=False):
 
-        sSearchTitle = self.search + ' - Bande Annonce VF'
-        if self.year:
-            sSearchTitle += ' (%s)' % self.year
+        sTitle = self.search + ' Trailer'
 
         # Le lien sur la BA est déjà connu
         urlTrailer = self.sTrailerUrl
@@ -70,7 +68,7 @@ class cShowBA:
             url = 'https://www.youtube.com/results'
 
             sHtmlContent = requests.get(url,
-                                        params={'search_query': sSearchTitle},
+                                        params={'search_query': sTitle},
                                         cookies={'CONSENT': GestionCookie().Readcookie("youtube")},
                                         headers=headers).text
 
@@ -95,7 +93,7 @@ class cShowBA:
 
             oGuiElement = cGuiElement()
             oGuiElement.setSiteName(SITE_IDENTIFIER)
-            oGuiElement.setTitle(sSearchTitle)
+            oGuiElement.setTitle(sTitle)
             oGuiElement.setMediaUrl(api_call)
             oGuiElement.setThumbnail(oGuiElement.getIcon())
 

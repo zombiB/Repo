@@ -40,6 +40,7 @@ class cEnregistremement:
 
         marge = ADDON.getSetting('marge_auto')
         timedelta = datetime.timedelta(minutes = int(marge))
+
         duree += timedelta
 
         realPath = VSPath(pathEnregistrement + '/' + str(heureFichier) + '.py').replace('\\', '\\\\')
@@ -54,7 +55,7 @@ f = open("'''+currentPath+'''/test.txt",'w')
 f.write('Fini avec code erreur ' + str(p_status))
 f.close()''')
         f.close()
-        oDialog = dialog().VSinfo('Redémarrer Kodi pour prendre en compte la planification', 'Vstream', 10)
+        oDialog = dialog().VSinfo('Redémarrer Kodi pour prendre en compte la planification', 'matrix', 10)
         oGui.setEndOfDirectory()
 
 def GetTimeObject(duree, formats):

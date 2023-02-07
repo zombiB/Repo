@@ -34,6 +34,7 @@ class cHoster(iHoster):
             VSlog('ID error')
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = False
 
         oRequest = cRequestHandler(self._url)

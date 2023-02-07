@@ -15,14 +15,11 @@ class cSearch:
     def __init__(self):
         self.addons = addon()
 
-    def searchGlobal(self, sSearchText = '', sCat = ''):
+    def searchGlobal(self):
         try:
-            if not sSearchText:
-                oInputParameterHandler = cInputParameterHandler()
-                sSearchText = oInputParameterHandler.getValue('searchtext')
-                sCat = oInputParameterHandler.getValue('sCat')
-
-            sSearchText = sSearchText.replace(':', ' ')
+            oInputParameterHandler = cInputParameterHandler()
+            sSearchText = oInputParameterHandler.getValue('searchtext')
+            sCat = oInputParameterHandler.getValue('sCat')
 
             listPlugins = self._initSearch(sSearchText, sCat)
 

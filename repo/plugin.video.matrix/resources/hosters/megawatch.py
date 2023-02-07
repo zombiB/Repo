@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+#-*- coding: utf-8 -*-
+#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.hosters.hoster import iHoster
 from resources.lib.parser import cParser
 from resources.lib.packer import cPacker
+from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -15,6 +16,7 @@ class cHoster(iHoster):
         return False
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = False
 
         oRequest = cRequestHandler(self._url)
@@ -29,9 +31,9 @@ class cHoster(iHoster):
             sHtmlContent = cPacker().unpack(aResult[1][0])
 
         sPattern = '{file:"(http.+?mp4)"}'
-        aResult = oParser.parse(sHtmlContent, sPattern)
+        aResult = oParser.parse(sHtmlContent,sPattern)
         if aResult[0] is True:
-            api_call = aResult[1][0]  # pas de choix qualité trouvé pour le moment
+            api_call = aResult[1][0] #pas de choix qualité trouvé pour le moment
 
         if api_call:
             return True, api_call

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+# Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
 
 import sys
 try:  # Python 2
@@ -13,6 +13,7 @@ import xbmc
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
+from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -21,12 +22,13 @@ class cHoster(iHoster):
 
     def getMediaLink(self):
         if 'site=cDownload&function' not in sys.argv[2]:
-            oDialog = dialog().VSok("ATTENTION, Pas de streaming sans premium\n" +
-                                    "Pour voir le film passer par l'option 'Télécharger et Lire' du menu contextuel.")
+            oDialog = dialog().VSok("ATTENTION, Pas de streaming sans premium\n" + \
+                "Pour voir le film passer par l'option 'Télécharger et Lire' du menu contextuel.")
             return False, False
         return self._getMediaLinkForGuest()
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         # http:///dl/12345XXYEEEEREERERE
 
         UA = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0'

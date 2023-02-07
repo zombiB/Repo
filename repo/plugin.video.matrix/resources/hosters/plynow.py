@@ -11,6 +11,8 @@ except:
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
+from resources.lib.comaddon import VSlog
+
 UA = 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36'
 
 
@@ -20,6 +22,7 @@ class cHoster(iHoster):
 
     def _getMediaLinkForGuest(self):
         oParser = cParser()
+        VSlog(self._url)
 
         oRequest = cRequestHandler(self._url)
         sHtmlContent = oRequest.request()
@@ -27,7 +30,7 @@ class cHoster(iHoster):
         # On récupere l'array
         sPattern = '<script>\s*\(function\(\).+?=(.+?)var player'
         aResult = oParser.parse(sHtmlContent, sPattern)
-        if aResult:
+        if (aResult):
             for aEntry in aResult[1]:
                 uHv4sb = aEntry
 

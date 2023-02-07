@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+#-*- coding: utf-8 -*-
+#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
 import json
 
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import dialog
+from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -13,6 +14,7 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'dustreaming', 'Dustreaming')
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = ''
 
         url = self._url.replace('/v/', '/api/source/')
@@ -31,7 +33,7 @@ class cHoster(iHoster):
                 url.append(x['file'])
                 qua.append(x['label'])
 
-            if url:
+            if (url):
                 api_call = dialog().VSselectqual(qua, url)
 
         if api_call:

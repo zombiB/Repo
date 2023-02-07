@@ -12,6 +12,7 @@ except ImportError:  # Python 3
 from resources.hosters.hoster import iHoster
 from resources.lib.parser import cParser
 from resources.lib.comaddon import dialog
+from resources.lib.comaddon import VSlog
 
 
 class cHoster(iHoster):
@@ -20,6 +21,7 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'mailru', 'MailRu')
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         api_call = False
 
         UA = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'

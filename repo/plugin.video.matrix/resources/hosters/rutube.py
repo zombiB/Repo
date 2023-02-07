@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+#-*- coding: utf-8 -*-
+# https://github.com/Kodi-vStream/venom-xbmc-addons
 from resources.hosters.hoster import iHoster
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
-from resources.lib.comaddon import dialog
+from resources.lib.comaddon import dialog, VSlog
 from resources.lib.util import QuotePlus
-
 
 class cHoster(iHoster):
 
@@ -23,7 +22,7 @@ class cHoster(iHoster):
         self._url = 'http://rutube.ru/play/embed/' + str(self._url)
 
     def __getIdFromUrl(self, url):
-        sPattern = "\/play\/embed\/(\w+)"  # au cas ou test \/play\/embed\/(\w+)(?:\?|\\?)
+        sPattern = "\/play\/embed\/(\w+)" #au cas ou test \/play\/embed\/(\w+)(?:\?|\\?)
         oParser = cParser()
         aResult = oParser.parse(url, sPattern)
         if aResult[0] is True:
@@ -32,7 +31,7 @@ class cHoster(iHoster):
         return ''
 
     def __getRestFromUrl(self, url):
-        # sPattern = "\?([\w]=[\w-]+)"
+        #sPattern = "\?([\w]=[\w-]+)"
         sPattern = "\?([^ ]+)"
         oParser = cParser()
         aResult = oParser.parse(url, sPattern)
@@ -42,6 +41,7 @@ class cHoster(iHoster):
         return ''
 
     def _getMediaLinkForGuest(self):
+        VSlog(self._url)
         stream_url = False
 
         oParser = cParser()
@@ -58,14 +58,14 @@ class cHoster(iHoster):
         sPattern = '"m3u8": *"([^"]+)"'
         aResult = oParser.parse(sHtmlContent, sPattern)
 
-        if not aResult:
+        if not (aResult):
             sPattern = '"default": *"([^"]+)"'
             aResult = oParser.parse(sHtmlContent, sPattern)
 
         if aResult[0] is True:
             url2 = aResult[1][0]
         else:
-            return False, False
+            return False,False
 
         oRequest = cRequestHandler(url2)
         sHtmlContent = oRequest.request()
@@ -74,17 +74,17 @@ class cHoster(iHoster):
         aResult = oParser.parse(sHtmlContent, sPattern)
 
         if aResult[0] is True:
-            url = []
-            qua = []
+            url=[]
+            qua=[]
 
             for aEntry in aResult[1]:
                 url.append(aEntry[0] + aEntry[1])
                 qua.append(aEntry[1])
 
-            # tableau
+            #tableau
             stream_url = dialog().VSselectqual(qua, url)
 
-        if stream_url:
+        if (stream_url):
             return True, stream_url
         else:
             return False, False

@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
+#-*- coding: utf-8 -*-
+#Vstream https://github.com/Kodi-vStream/venom-xbmc-addons
 from resources.hosters.hoster import iHoster
-import urlresolver
-
+from resources.lib.comaddon import VSlog
+import resolveurl
 
 class cHoster(iHoster):
 
@@ -17,10 +17,13 @@ class cHoster(iHoster):
         self.__sRealHost = sName
 
     def _getMediaLinkForGuest(self):
-        hmf = urlresolver.HostedMediaFile(url=self._url)
+        VSlog(self._url)
+        hmf = resolveurl.HostedMediaFile(url = self._url)
         if hmf.valid_url():
             stream_url = hmf.resolve()
             if stream_url:
                 return True, stream_url
 
         return False, False
+
+

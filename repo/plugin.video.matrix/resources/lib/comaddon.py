@@ -36,11 +36,11 @@ class addon(xbmcaddon.Addon):
 
 L'utilisation de subclass peut provoquer des fuites de mémoire, signalé par ce message :
 
-the python script "\plugin.video.vstream\default.py" has left several classes in memory that we couldn't clean up. The classes include: class XBMCAddon::xbmcaddon::Addon
+the python script "\plugin.video.matrix\default.py" has left several classes in memory that we couldn't clean up. The classes include: class XBMCAddon::xbmcaddon::Addon
 
 # https://stackoverflow.com/questions/26588266/xbmc-addon-memory-leak
 """
-ADDONVS = xbmcaddon.Addon('plugin.video.vstream')  # singleton
+ADDONVS = xbmcaddon.Addon('plugin.video.matrix')  # singleton
 
 
 # class addon(xbmcaddon.Addon):
@@ -78,13 +78,13 @@ class dialog:
     def __init__(self):
         self.DIALOG = xbmcgui.Dialog()
 
-    def VSok(self, desc, title='vStream'):
+    def VSok(self, desc, title='matrix'):
         return self.DIALOG.ok(title, desc)
 
-    def VSyesno(self, desc, title='vStream'):
+    def VSyesno(self, desc, title='matrix'):
         return self.DIALOG.yesno(title, desc)
 
-    def VSselect(self, desc, title='vStream'):
+    def VSselect(self, desc, title='matrix'):
         return self.DIALOG.select(title, desc)
 
     def numeric(self, dialogType, heading, defaultt):
@@ -105,7 +105,7 @@ class dialog:
             return list_url[ret]
         return ''
 
-    def VSinfo(self, desc, title='vStream', iseconds=0, sound=False):
+    def VSinfo(self, desc, title='matrix', iseconds=0, sound=False):
         if (iseconds == 0):
             iseconds = 1000
         else:
@@ -117,9 +117,9 @@ class dialog:
         return self.DIALOG.notification(str(title), str(desc), xbmcgui.NOTIFICATION_INFO, iseconds, sound)
 
     def VSerror(self, e):
-        return self.DIALOG.notification('vStream', 'Erreur: ' + str(e), xbmcgui.NOTIFICATION_ERROR, 2000), VSlog('Erreur: ' + str(e))
+        return self.DIALOG.notification('matrix', 'Error: ' + str(e), xbmcgui.NOTIFICATION_ERROR, 2000), VSlog('Error: ' + str(e))
 
-    def VStextView(self, desc, title='vStream'):
+    def VStextView(self, desc, title='matrix'):
         return self.DIALOG.textviewer(title, desc)
 
 
@@ -153,7 +153,6 @@ class empty:
 
     def getProgress(self):
         return 100  # simuler la fin de la progression
-
 # Basé sur UrlResolver
 class CountdownDialog(object):
     __INTERVALS = 5
@@ -246,7 +245,7 @@ class progress:
     def VScreate(self, title='', desc='', large=False):
         # l'option "large" permet de forcer un sablier large, seul le sablier large peut être annulé.
 
-        # Ne pas afficher le sablier si nous ne sommes pas dans un menu vStream
+        # Ne pas afficher le sablier si nous ne sommes pas dans un menu matrix
         currentWindow = xbmcgui.getCurrentWindowId()
         if currentWindow != 10025 and currentWindow != 10028:  # 10025 = videonav, 10000 = home
             return empty()
@@ -260,7 +259,6 @@ class progress:
         if self.PROGRESS == None:
             if not title:
                 title = addon().VSlang(30140)
-            
             if large:
                 self.PROGRESS = xbmcgui.DialogProgress()
             elif ADDONVS.getSetting('spinner_small') == 'true':
@@ -276,8 +274,7 @@ class progress:
             return
 
         if not search and window(10101).getProperty('search') == 'true':
-            return
-
+            return				
         if not text:
             text= addon().VSlang(30140)
 
@@ -288,7 +285,6 @@ class progress:
             self.PROGRESS.update(iPercent, text )
         else:
             self.PROGRESS.update(iPercent, message = text )
-
     def iscanceled(self):
         if isinstance(self.PROGRESS, xbmcgui.DialogProgress):
             return self.PROGRESS.iscanceled()
@@ -335,7 +331,7 @@ class listitem(xbmcgui.ListItem):
 
     # Permet l'ajout d'un menu après la création d'un item
     def addMenu(self, sFile, sFunction, sTitle, oOutputParameterHandler=False):
-        sPluginPath = 'plugin://plugin.video.vstream/'  # cPluginHandler().getPluginPath()
+        sPluginPath = 'plugin://plugin.video.matrix/'  # cPluginHandler().getPluginPath()
         nbContextMenu = self.getProperty('nbcontextmenu')
         nbContextMenu = int(nbContextMenu) if nbContextMenu else 0
 
@@ -367,7 +363,7 @@ def VSlog(e, level=xbmc.LOGDEBUG):
                 level = xbmc.LOGINFO
             else:
                 level = xbmc.LOGNOTICE
-        xbmc.log('\t[PLUGIN] vStream: ' + str(e), level)
+        xbmc.log('\t[PLUGIN] matrix: ' + str(e), level)
 
     except:
         pass
@@ -459,15 +455,15 @@ class siteManager:
     def __init__(self):
         
         # Propriétés par défaut
-        self.defaultPath = VSPath('special://home/addons/plugin.video.vstream/resources/sites.json')
+        self.defaultPath = VSPath('special://home/addons/plugin.video.matrix/resources/sites.json')
         self.defaultData = None
 
         # Propriétés selon le profil        
         name = VSProfil()
         if name == 'Master user':   # Le cas par defaut
-            path = VSPath('special://home/userdata/addon_data/plugin.video.vstream/sites.json')
+            path = VSPath('special://home/userdata/addon_data/plugin.video.matrix/sites.json')
         else:
-            path = VSPath('special://home/userdata/profiles/' + name + '/addon_data/plugin.video.vstream/sites.json')
+            path = VSPath('special://home/userdata/profiles/' + name + '/addon_data/plugin.video.matrix/sites.json')
         
         # Résolution du chemin
         try:
