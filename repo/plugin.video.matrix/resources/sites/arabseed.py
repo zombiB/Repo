@@ -532,6 +532,10 @@ def showEps():
                 sMovieTitle = "مدبلج"+sMovieTitle
             sTitle = sMovieTitle+sEp
             siteUrl = aEntry[0]
+            import base64
+            if '&list=' in siteUrl:
+                url_tmp = siteUrl.split('&list=')[-1].replace('%3D','=')
+                siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')
             sThumb = sThumb
             sDesc = ''
             sHost = ''
