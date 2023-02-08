@@ -576,7 +576,7 @@ def showHosters():
     oParser = cParser()
 
     sPattern =  '<div class="watchBTn"><span><a href="(.+?)">' 
-    aResult =aResult2 oParser.parse(sHtmlContent,sPattern)
+    aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
         m3url = aResult[1][0]
         oRequestHandler = cRequestHandler(m3url)
