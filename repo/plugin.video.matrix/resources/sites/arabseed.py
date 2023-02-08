@@ -564,13 +564,20 @@ def __checkForNextPage(sHtmlContent):
     return False
 
 def showHosters():
-    
+    import requests
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-	
+    
+    import requests
+    s = requests.Session()            
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
+							'Referer': Quote(sUrl)}
+    r = s.post(sUrl, headers=headers)
+    sHtmlContent = r.content.decode('utf8')	
+
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
@@ -648,7 +655,5 @@ def showHosters():
             if oHoster != False:
                oHoster.setDisplayName(sMovieTitle)
                oHoster.setFileName(sMovieTitle)
-               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-				
-              
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)         
     oGui.setEndOfDirectory()
