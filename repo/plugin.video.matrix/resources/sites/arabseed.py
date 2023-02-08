@@ -575,8 +575,8 @@ def showHosters():
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
 
-    sPattern =  '<div class="skipAd"><span><a href="(.+?)">' 
-    aResult = oParser.parse(sHtmlContent,sPattern)
+    sPattern =  '<div class="watchBTn"><span><a href="(.+?)">' 
+    aResult =aResult2 oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
         m3url = aResult[1][0]
         oRequestHandler = cRequestHandler(m3url)
@@ -590,43 +590,65 @@ def showHosters():
     sPattern = 'href="(.+?)"><img' 
     aResult2 = re.findall(sPattern, sHtmlContent)
 
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0] is True:
-        murl = aResult[1][0] 
-        host = murl.split('/')[2]
-        VSlog(murl)
-        VSlog(host)
-        oRequestHandler = cRequestHandler(murl)
-        cook = oRequestHandler.GetCookies()
-        VSlog(cook)
-        hdr = {'host' : host,'referer' : 'https://a.arabseed.ink/main','user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
-        St=requests.Session()
-        sHtmlContent = St.post(murl,headers=hdr)
-        sHtmlContent = sHtmlContent.content.decode('utf8')
-        VSlog(sHtmlContent)
-   
-        sPattern = 'data-link="(.+?)" class'
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
+    if aResult:
+        for aEntry in aResult:
+            
+            url = aEntry[1]
+            host  = aEntry[0]
+            sTitle = sMovieTitle
+            if 'ok' in host:
+               url =  'https://www.ok.ru/videoembed/'+ url
+            if 'tune' in host:
+               url =  'https://tune.pk/js/open/embed.js?vid='+url+'&userid=827492&_=1601112672793'
+            if 'estream' in host:
+               url =  'https://arabveturk.com/embed-'+url+'.html'
+            if 'now' in host:
+               url =  'https://extremenow.net/embed-'+url+'.html'
+            if 'online' in host:
+               url =  'https://player.vimeo.com/video/'+url+'?title=0&byline=0'
+            if 'youtube' in host:
+               url =  'https://www.youtube.com/watch?v='+url
+            if url.startswith('//'):
+               url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'moshahda' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'mystream' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+
 	
-        if aResult[0] is True:
-           for aEntry in aResult[1]:
-        
-               url = aEntry
-               sThumb = sThumb
-               if url.startswith('//'):
-                  url = 'http:' + url
-								            
-               sHosterUrl = url
-               if 'userload' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               if 'moshahda' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               if 'mystream' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
-               oHoster = cHosterGui().checkHoster(sHosterUrl)
-               if oHoster != False:
-                  oHoster.setDisplayName(sMovieTitle)
-                  oHoster.setFileName(sMovieTitle)
-                  cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+    if aResult2:
+        for aEntry in aResult2:
+            
+            url = aEntry
+            sTitle = sMovieTitle
+            if url.startswith('//'):
+               url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'moshahda' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'mystream' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+				
+              
     oGui.setEndOfDirectory()
