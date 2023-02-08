@@ -507,117 +507,126 @@ def showEps():
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-    oParser = cParser()
  
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
-
-    sStart = '<div class="ContainerEpisodesList"'
-    sEnd = '<div style="clear: both;"></div>'
-    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
-    # (.+?) .+? ([^<]+)
-    sPattern = '<a href="(.+?)">.+?<em>(.+?)</em>'
+    # (.+?) .+?  ([^<]+)
+    sPattern = '<article class="postEp">.+?<a href="(.+?)" title=.+?<div class="poster"><div class="imgSer" style="background-image:url(.+?);">.+?class="title">(.+?)</div>'
+    
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
     
+   
     if aResult[0] is True:
-        oOutputParameterHandler = cOutputParameterHandler() 
+        oOutputParameterHandler = cOutputParameterHandler()  
         for aEntry in aResult[1]:
 
  
-            sEp = "E"+aEntry[1].replace(" ","")
-            if "مدبلج" in sMovieTitle:
-                sMovieTitle = sMovieTitle.replace("مدبلج","")
-                sMovieTitle = "مدبلج"+sMovieTitle
-            sTitle = sMovieTitle+sEp
-            siteUrl = aEntry[0]
+            sTitle = aEntry[2].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("الموسم"," S").replace("S ","S").replace("الحلقة "," E").replace("حلقة "," E")
+            siteUrl = aEntry[0] 
             import base64
-            if '&list=' in siteUrl:
-                url_tmp = siteUrl.split('&list=')[-1].replace('%3D','=')
+            if 'list=' in siteUrl:
+                url_tmp = siteUrl.split('list=')[-1].replace('%3D','=')
                 siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')
             sThumb = sThumb
             sDesc = ''
-            sHost = ''
+ 
 
             oOutputParameterHandler.addParameter('siteUrl', siteUrl)
             oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
-            oOutputParameterHandler.addParameter('sHost', sHost)
             oOutputParameterHandler.addParameter('sThumb', sThumb)
-            
-
  
             oGui.addEpisode(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
-       
+        
     oGui.setEndOfDirectory() 
 
- 
-def __checkForNextPage(sHtmlContent):
-    sPattern = '<a class="next page-numbers" href="(.+?)">'
-	
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
- 
-    if aResult[0] is True:
-        return URL_MAIN+aResult[1][0]
-
-    return False
-
 def showHosters():
-    import requests
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-	
-    import requests
-    s = requests.Session()            
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': Quote(sUrl)}
-    r = s.post(sUrl, headers=headers)
-    sHtmlContent = r.content.decode('utf8')
-
+    
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request()
     oParser = cParser()
             
-    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
+    sPattern =  '<div class="skipAd"><span><a href="(.+?)">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
-        murl = aResult[1][0] 
-        host = murl.split('/')[2]
-        VSlog(murl)
-        VSlog(host)
-        oRequestHandler = cRequestHandler(murl)
-        cook = oRequestHandler.GetCookies()
-        VSlog(cook)
-        hdr = {'host' : host,'referer' : 'https://a.arabseed.ink/main','user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
-        St=requests.Session()
-        sHtmlContent = St.post(murl,headers=hdr)
-        sHtmlContent = sHtmlContent.content.decode('utf8')
-        VSlog(sHtmlContent)
-   
-        sPattern = 'data-link="(.+?)" class'
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
+        m3url = aResult[1][0]
+        oRequestHandler = cRequestHandler(m3url)
+        oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
+        oRequestHandler.addHeaderEntry('referer', 'https://a.arabseed.ink/')
+        sHtmlContent = oRequestHandler.request() 
+
+    # (.+?) .+? ([^<]+)        	
+    sPattern = 'data-name="(.+?)" data-server="(.+?)">' 
+    aResult = re.findall(sPattern, sHtmlContent)
+    sPattern = 'href="(.+?)"><img' 
+    aResult2 = re.findall(sPattern, sHtmlContent)
+
 	
-        if aResult[0] is True:
-           for aEntry in aResult[1]:
-        
-               url = aEntry
-               sThumb = sThumb
-               if url.startswith('//'):
-                  url = 'http:' + url
-								            
-               sHosterUrl = url
-               if 'userload' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               if 'moshahda' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               if 'mystream' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
-               oHoster = cHosterGui().checkHoster(sHosterUrl)
-               if oHoster != False:
-                  oHoster.setDisplayName(sMovieTitle)
-                  oHoster.setFileName(sMovieTitle)
-                  cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+    if aResult:
+        for aEntry in aResult:
+            
+            url = aEntry[1]
+            host  = aEntry[0]
+            sTitle = sMovieTitle
+            if 'ok' in host:
+               url =  'https://www.ok.ru/videoembed/'+ url
+            if 'tune' in host:
+               url =  'https://tune.pk/js/open/embed.js?vid='+url+'&userid=827492&_=1601112672793'
+            if 'estream' in host:
+               url =  'https://arabveturk.com/embed-'+url+'.html'
+            if 'now' in host:
+               url =  'https://extremenow.net/embed-'+url+'.html'
+            if 'online' in host:
+               url =  'https://player.vimeo.com/video/'+url+'?title=0&byline=0'
+            if 'youtube' in host:
+               url =  'https://www.youtube.com/watch?v='+url
+            if url.startswith('//'):
+               url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'moshahda' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'mystream' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+
+	
+    if aResult2:
+        for aEntry in aResult2:
+            
+            url = aEntry
+            sTitle = sMovieTitle
+            if url.startswith('//'):
+               url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'moshahda' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'mystream' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+				
+              
     oGui.setEndOfDirectory()
