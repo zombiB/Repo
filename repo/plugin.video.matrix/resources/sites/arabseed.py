@@ -13,7 +13,7 @@ from resources.lib.parser import cParser
 from resources.lib.util import Quote
  
 SITE_IDENTIFIER = 'arabseed'
-SITE_NAME = 'arabseed'
+SITE_NAME = 'Arabseed'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
@@ -586,7 +586,7 @@ def showHosters():
 
     oParser = cParser()
             
-    sPattern =  '<a href="([^<]+)" class="downloadBTn">' 
+    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
         murl = aResult[1][0] 
