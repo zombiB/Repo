@@ -218,6 +218,9 @@ def showEps():
             if '?post=' in siteUrl:
                 url_tmp = siteUrl.split('?post=')[-1].replace('%3D','=')
                 siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')
+            if '?url=' in siteUrl:
+                url_tmp = siteUrl.split('?url=')[-1].replace('%3D','=')
+                siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')                
             sThumb = sThumb
             sDesc = ''
  
