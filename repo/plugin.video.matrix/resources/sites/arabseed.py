@@ -596,7 +596,7 @@ def showHosters():
         oRequestHandler = cRequestHandler(murl)
         cook = oRequestHandler.GetCookies()
         VSlog(cook)
-        hdr = {'host' : host,'referer' : 'https://e.arabseed.ink/','user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
+        hdr = {'host' : host,'referer' : Quote(sUrl),'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
         St=requests.Session()
         sHtmlContent = St.post(murl,headers=hdr)
         sHtmlContent = sHtmlContent.content.decode('utf8')
