@@ -25,6 +25,11 @@
             "active": "True",
             "url": "https://to.akwam.us/"
         },
+        "akwamEg": {
+            "label": "AkwamEg",
+            "active": "True",
+            "url": "https://eg-akw.com/"
+        },        
         "alarab": {
             "label": "Alarab",
             "active": "True",
@@ -248,7 +253,7 @@
         "mycima": {
             "label": "Mycima",
             "active": "True",
-            "url": "https://myciiima.autos/"
+            "url": "https://weciima.autos/"
         },
         "pakistani": {
             "label": "Pakistani",
