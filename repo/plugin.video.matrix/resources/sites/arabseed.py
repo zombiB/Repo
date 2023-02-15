@@ -584,7 +584,7 @@ def showHosters():
 
     sURL_MAIN='0'
     # (.+?) ([^<]+)
-    sPattern = 'title="‎عرب سيد &#8211; Arabseed" href="(.+?)">'
+    sPattern = 'title="عرب سيد &#8211; Arabseed" href="(.+?)">'
     aResult = oParser.parse(sHtmlContent, sPattern)    
     if (aResult[0]):
         sURL_MAIN = aResult[1][0]
@@ -596,7 +596,7 @@ def showHosters():
     import requests
     s = requests.Session()            
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
-    data = {'id':mId,'action':'getpostServers'}
+    data = {'post_id':mId,'server':'server'}
     r = s.post(sURL_MAIN +'/wp-admin/admin-ajax.php', headers=headers,data = data)
     sHtmlContent = r.content.decode('utf8')
             
