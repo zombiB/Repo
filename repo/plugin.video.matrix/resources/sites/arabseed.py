@@ -570,60 +570,77 @@ def __checkForNextPage(sHtmlContent):
     return False
 
 def showHosters():
-    import requests
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-	
+
+
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request() 
+
+    oParser = cParser()         
+
+    sURL_MAIN='0'
+    # (.+?) ([^<]+)
+    sPattern = 'title="‎عرب سيد &#8211; Arabseed" href="(.+?)">'
+    aResult = oParser.parse(sHtmlContent, sPattern)    
+    if (aResult[0]):
+        sURL_MAIN = aResult[1][0]
+			
+    sPattern =  'data-id="(.+?)">' 
+    aResult = oParser.parse(sHtmlContent,sPattern)
+    if aResult[0] is True:
+        mId = aResult[1][0] 
+    import requests
+    s = requests.Session()            
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
+    data = {'id':mId,'action':'getpostServers'}
+    r = s.post(sURL_MAIN +'/wp-admin/admin-ajax.php', headers=headers,data = data)
+    sHtmlContent = r.content.decode('utf8')
+            
+    sPattern =  '<a class="watchBTn" href="([^<]+)" target=' 
+    aResult = oParser.parse(sHtmlContent,sPattern)
+    m3url=''
+    if aResult[0] is True:
+        m3url = aResult[1][0] 
+        if m3url.startswith('//'):
+           m3url = 'https:' + m3url
     import requests
     s = requests.Session()            
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': Quote(sUrl)}
-    r = s.post(sUrl, headers=headers)
+							'Referer': sURL_MAIN }
+    r = s.get(m3url, headers=headers)
     sHtmlContent = r.content.decode('utf8')
 
+    # ([^<]+) .+? (.+?)
+               
+    sPattern = '<iframe src="(.+?)" id="containerIframe" frameborder='
     oParser = cParser()
-            
-    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0] is True:
-        murl = aResult[1][0] 
-        host = murl.split('/')[2]
-        VSlog(murl)
-        VSlog(host)
-        oRequestHandler = cRequestHandler(murl)
-        cook = oRequestHandler.GetCookies()
-        VSlog(cook)
-        hdr = {'host' : host,'referer' : Quote(sUrl),'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
-        St=requests.Session()
-        sHtmlContent = St.post(murl,headers=hdr)
-        sHtmlContent = sHtmlContent.content.decode('utf8')
-        VSlog(sHtmlContent)
-   
-        sPattern = 'data-link"(.+?)" class'
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
+    aResult = oParser.parse(sHtmlContent, sPattern)
+
 	
-        if aResult[0] is True:
-           for aEntry in aResult[1]:
-        
-               url = aEntry
-               sThumb = sThumb
-               if url.startswith('//'):
-                  url = 'http:' + url
-								            
-               sHosterUrl = url
-               if 'userload' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               if 'moshahda' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-               if 'mystream' in sHosterUrl:
-                  sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
-               oHoster = cHosterGui().checkHoster(sHosterUrl)
-               if oHoster != False:
-                  oHoster.setDisplayName(sMovieTitle)
-                  oHoster.setFileName(sMovieTitle)
-                  cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+    if aResult[0] is True:
+        for aEntry in aResult[1]:
+            
+            sHosterUrl = aEntry
+            sHosterUrl = sHosterUrl.replace("upbbom","ddsdd")
+            sTitle =  ""
+            if sHosterUrl.startswith('//'):
+                sHosterUrl = 'http:' + sHosterUrl
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'moshahda' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
+            if 'mystream' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN   
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster != False:
+                oHoster.setDisplayName(sMovieTitle)
+                oHoster.setFileName(sMovieTitle)
+                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+				
+
+                
     oGui.setEndOfDirectory()
