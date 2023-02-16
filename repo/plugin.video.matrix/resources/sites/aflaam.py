@@ -100,7 +100,7 @@ def showSearch():
     oGui = cGui() 
     sSearchText = oGui.showKeyBoard()
     if sSearchText is not False:
-        sUrl = URL_MAIN + '/search?q='+sSearchText+'&section=movie&year=0&rating=0&formats=0&quality=0'
+        sUrl = URL_MAIN + '/search?q='+sSearchText+'&year=0&rating=0&formats=0&quality=0'
         showMovies(sUrl)
         oGui.setEndOfDirectory()
         return
@@ -109,7 +109,7 @@ def showSearchSeries():
     oGui = cGui()
     sSearchText = oGui.showKeyBoard()
     if sSearchText is not False:
-        sUrl = URL_MAIN + '/search?q=+'+sSearchText+'&section=series&year=0&rating=0&formats=0&quality=0'
+        sUrl = URL_MAIN + '/search?q=+'+sSearchText+'&year=0&rating=0&formats=0&quality=0'
         showSeriesSearch(sUrl)
         oGui.setEndOfDirectory()
         return  
@@ -117,7 +117,7 @@ def showSearchSeries():
 def showMovies(sSearch = ''):
     oGui = cGui()
     if sSearch:
-      sUrl = sSearch+'&section=movie&year=0&rating=0&formats=0&quality=0'
+      sUrl = sSearch+'&year=0&rating=0&formats=0&quality=0'
     else:
         oInputParameterHandler = cInputParameterHandler()
         sUrl = oInputParameterHandler.getValue('siteUrl')
@@ -131,7 +131,7 @@ def showMovies(sSearch = ''):
     
 
  # ([^<]+) .+?
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="([^<]+)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="badge badge-pill badge-secondary ml-1">([^<]+)</span>'
+    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="([^<]+)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="icon-star mr-2">([^<]+)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -175,7 +175,7 @@ def showMovies(sSearch = ''):
 def showSeriesSearch(sSearch = ''):
     oGui = cGui()
     if sSearch:
-      sUrl = sSearch+'&section=series&year=0&rating=0&formats=0&quality=0'
+      sUrl = sSearch+'&year=0&rating=0&formats=0&quality=0'
     else:
         oInputParameterHandler = cInputParameterHandler()
         sUrl = oInputParameterHandler.getValue('siteUrl')
@@ -187,7 +187,7 @@ def showSeriesSearch(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
-    sPattern = '<span class="label quality">(.+?)</span>.+?<a href="(.+?)" class="box">.+?data-src="(.+?)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="badge badge-pill badge-secondary ml-1">(.+?)</span>'
+    sPattern = '<span class="label quality">(.+?)</span>.+?<a href="(.+?)" class="box">.+?data-src="(.+?)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="icon-star mr-2">(.+?)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -243,7 +243,7 @@ def showSeries(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="([^<]+)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="badge badge-pill badge-secondary ml-1">([^<]+)</span>'
+    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="([^<]+)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="icon-star mr-2">([^<]+)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -297,7 +297,7 @@ def showEpisodes():
     oParser = cParser()
 
     sStart = 'id="series-episodes">'
-    sEnd = '<div class="widget-4 widget widget-style-1 more mb-4">'
+    sEnd = '<div class="widget-body row flex-wrap">'
     sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
   
      # (.+?) ([^<]+) .+?
@@ -309,7 +309,7 @@ def showEpisodes():
         for aEntry in aResult[1]:
  
             sEp = aEntry[0].split(':')[0]
-            sEp = sEp.replace("الحلقة "," E").replace("حلقة "," E")
+            sEp = sEp.replace("Episode "," E").replace("Episode "," E")
             sTitle = sMovieTitle+''+sEp
             siteUrl = aEntry[1]
             sThumb = aEntry[2]
