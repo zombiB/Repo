@@ -589,7 +589,7 @@ def showHosters():
     if (aResult[0]):
         sURL_MAIN = aResult[1][0]
 			
-    sPattern =  'data-id="(.+?)">' 
+    sPattern =  'data-post="(.+?)">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0] is True:
         mId = aResult[1][0] 
@@ -616,31 +616,31 @@ def showHosters():
 
     # ([^<]+) .+? (.+?)
                
-    sPattern = '<iframe src="(.+?)" id="containerIframe" frameborder='
+    sPattern = 'data-link"(.+?)" class'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
-
 	
     if aResult[0] is True:
         for aEntry in aResult[1]:
-            
-            sHosterUrl = aEntry
-            sHosterUrl = sHosterUrl.replace("upbbom","ddsdd")
-            sTitle =  ""
-            if sHosterUrl.startswith('//'):
-                sHosterUrl = 'http:' + sHosterUrl
+        
+            url = aEntry
+            sThumb = sThumb
+            if url.startswith('//'):
+                url = 'http:' + url
+								            
+            sHosterUrl = url
+            if 'reviewtech' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             if 'userload' in sHosterUrl:
                 sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             if 'moshahda' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             if 'mystream' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN   
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
             oHoster = cHosterGui().checkHoster(sHosterUrl)
             if oHoster != False:
                 oHoster.setDisplayName(sMovieTitle)
                 oHoster.setFileName(sMovieTitle)
                 cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-				
 
-                
     oGui.setEndOfDirectory()
