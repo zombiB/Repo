@@ -128,7 +128,7 @@ def showMovies(sSearch = ''):
     
 
  # ([^<]+) .+?
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<image x="0" y="0" filter="url(#blur-effect-1)" xlink:href="([^<]+)" />.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="label rating"><i class="icon-star mr-2">([^<]+)</span>'
+    sPattern = '<span class="label quality">([^<]+)</span>.+?xlink:href="([^<]+)" />.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="label rating"><i class="icon-star mr-2">([^<]+)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -184,7 +184,7 @@ def showSeriesSearch(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<image x="0" y="0" filter="url(#blur-effect-1)" xlink:href="([^<]+)" />.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="label rating"><i class="icon-star mr-2">([^<]+)</span>'
+    sPattern = '<span class="label quality">([^<]+)</span>.+?xlink:href="([^<]+)" />.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="label rating"><i class="icon-star mr-2">([^<]+)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -240,7 +240,7 @@ def showSeries(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<image x="0" y="0" filter="url(#blur-effect-1)" xlink:href="([^<]+)" />.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="label rating"><i class="icon-star mr-2">([^<]+)</span>'
+    sPattern = '<span class="label quality">([^<]+)</span>.+?xlink:href="([^<]+)" />.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="label rating"><i class="icon-star mr-2">([^<]+)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
