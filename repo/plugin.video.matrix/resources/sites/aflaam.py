@@ -28,30 +28,11 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 MOVIE_FAM = (URL_MAIN + '/movies?section=0&category=33&rating=0&year=0&language=0&formats=0&quality=0', 'showMovies')
 MOVIE_AR = (URL_MAIN + '/movies?section=1', 'showMovies')
-    MOVIE_DUBBED = (URL_MAIN + '/movies?section=0&category=71&rating=0&year=0&language=0&formats=0&quality=0', 'showMovies')
 MOVIE_EN = (URL_MAIN + '/movies?section=2', 'showMovies')
 MOVIE_HI = (URL_MAIN + '/movies?section=3', 'showMovies')
-    MOVIE_ASIAN = (URL_MAIN + '/movies?section=33', 'showMovies')
 KID_MOVIES = (URL_MAIN + 'movies?section=2&category=30', 'showMovies')
-    MOVIE_TURK = (URL_MAIN + '/movies?section=32', 'showMovies')
 MOVIE_TOP = (URL_MAIN + '/movies?section=2&category=0&rating=8&year=0&language=0&formats=0&quality=0', 'showMovies')
-    RAMADAN_SERIES = (URL_MAIN + '/series?section=0&category=87&rating=0&year=0&language=0&formats=0&quality=0', 'showSeries')
 SERIE_EN = (URL_MAIN + '/series?section=2', 'showSeries')
-    SERIE_AR = (URL_MAIN + '/series?section=29', 'showSeries')
-    SERIE_HEND = (URL_MAIN + '/series?section=31', 'showSeries')
-    SERIE_ASIA = (URL_MAIN + '/series?section=33', 'showSeries')
-    SERIE_TR = (URL_MAIN + '/series?section=32', 'showSeries')
-    SERIE_DUBBED = (URL_MAIN + '/series?section=30&category=71&rating=0&year=0&language=0&formats=0&quality=0', 'showSeries')
-
-    SERIE_TR_AR = (URL_MAIN + '/series?section=32&category=71&rating=0&year=0&language=0&formats=0&quality=0', 'showSeries')
-    SERIE_HEND_AR = (URL_MAIN + '/series?section=31&category=71&rating=0&year=0&language=0&formats=0&quality=0', 'showSeries')
-    ANIM_NEWS = (URL_MAIN + '/series?category=30', 'showSeries')
-
-DOC_NEWS = (URL_MAIN + '/movies?category=28', 'showMovies')
-DOC_SERIES = (URL_MAIN + '/shows?section=46&category=0&rating=0&year=0&formats=0&quality=0', 'showSeries')
-
-REPLAYTV_NEWS = (URL_MAIN + '/shows?section=42', 'showSeries')
-REPLAYTV_PLAY = (URL_MAIN + '/shows?section=45', 'showMovies')
 
 MOVIE_ANNEES = (True, 'showYears')
 
