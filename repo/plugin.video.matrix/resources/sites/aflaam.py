@@ -116,8 +116,11 @@ def showSearchSeries():
 		
 def showMovies(sSearch = ''):
     oGui = cGui()
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
+    if sSearch:
+      sUrl = sSearch+'&section=movie&year=0&rating=0&formats=0&quality=0'
+    else:
+        oInputParameterHandler = cInputParameterHandler()
+        sUrl = oInputParameterHandler.getValue('siteUrl')
  
     oRequestHandler = cRequestHandler(sUrl)
     oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
@@ -128,7 +131,7 @@ def showMovies(sSearch = ''):
 
 
  # ([^<]+) .+?
-    sPattern = '<a href="([^<]+)" class="box">.+?<span class="label quality">([^<]+)</span>.+?.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?</picture>'
+    sPattern = '<div class="entry-image">.+?<a href="([^<]+)" class="box">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?</picture>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
