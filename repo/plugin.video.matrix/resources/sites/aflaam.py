@@ -131,7 +131,7 @@ def showMovies(sSearch = ''):
 
 
  # ([^<]+) .+?
-    sPattern = '<div class="actions d-flex">.+?<a href="([^<]+)" class="icn size-1">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)">'
+    sPattern = '<div class="entry-box">.+?class="icon-play"></i></a>.+?<a href="([^<]+)" class="icn size-1">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)">'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
