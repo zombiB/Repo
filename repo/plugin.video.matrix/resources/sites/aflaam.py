@@ -131,22 +131,22 @@ def showMovies(sSearch = ''):
 
 
  # ([^<]+) .+?
-    sPattern = '<div class="entry-box">.+?class="icon-play"></i></a>.+?<a href="([^<]+)" class="icn size-1">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)">'
+    sPattern = '<div class="entry-box">.+?class="icon-play"></i></a>.+?<a href="([^<]+)" class="box">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)">'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
 	
-    if aResult[1] is True:
-        total = len(aResult[0])
+    if aResult[0] is True:
+        total = len(aResult[1])
         progress_ = progress().VScreate(SITE_NAME)
         oOutputParameterHandler = cOutputParameterHandler()
-        for aEntry in aResult[0]:
+        for aEntry in aResult[1]:
             progress_.VSupdate(progress_, total)
             if progress_.iscanceled():
                 break
  
-            sTitle = aEntry[3].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("برنامج","").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
+            sTitle = aEntry[3]
             siteUrl = aEntry[0]
             sThumb = aEntry[2]
             sDesc = ''
