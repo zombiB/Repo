@@ -131,17 +131,17 @@ def showMovies(sSearch = ''):
 
 
  # ([^<]+) .+?
-    sPattern = '<div class="entry-box">.+?class="icon-play"></i></a>.+?<a href="([^<]+)" class="box">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)">'
+    sPattern = '<div class="actions d-flex">.+?</div>.+?<a href="([^<]+)" class="box">.+?<span class="label quality">([^<]+)</span>.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)">'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
 	
-    if aResult[0] is True:
-        total = len(aResult[1])
+    if aResult[1] is True:
+        total = len(aResult[0])
         progress_ = progress().VScreate(SITE_NAME)
         oOutputParameterHandler = cOutputParameterHandler()
-        for aEntry in aResult[1]:
+        for aEntry in aResult[0]:
             progress_.VSupdate(progress_, total)
             if progress_.iscanceled():
                 break
@@ -308,8 +308,8 @@ def showEpisodes():
         oOutputParameterHandler = cOutputParameterHandler()
         for aEntry in aResult[1]:
  
-            sEp = aEntry[2].split(':')[2]
-            sEp = sEp.replace("Episode "," E").replace("Episode "," E")
+            sEp = aEntry[2]
+            sEp = sEp
             sTitle = sMovieTitle+''+sEp
             siteUrl = aEntry[0]
             sThumb = aEntry[1]
