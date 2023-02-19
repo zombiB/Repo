@@ -52,7 +52,7 @@
     <description lang="en">Sports highlights and interviews</description>
     <platform>all</platform>
   </extension>
-</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.0ab" provider-name="zombi">
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.0ad" provider-name="zombi">
     <requires>
 
         <trycatch>

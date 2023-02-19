@@ -38,7 +38,10 @@ class cHoster(iHoster):
 
        
         if 'akwam' in api_call:
-            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://on.akwam.cc/'
+            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://akwam.im/'
+        if 'aflaam' in api_call:
+            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://aflaam.com/'
+
         if 'panet' in api_call:
             api_call = api_call + '|AUTH=TLS&verifypeer=false' 
         if 'scorarab' in api_call:

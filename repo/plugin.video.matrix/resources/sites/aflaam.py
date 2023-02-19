@@ -103,7 +103,7 @@ def showMovies(sSearch = ''):
                 break
  
             sTitle = aEntry[2].replace("مشاهدة","").replace("حلقات كاملة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("كامله","").replace("بجودة عالية","").replace("كاملة","").replace("برنامج","").replace("جودة عالية","").replace("كامل","").replace("اونلاين","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مباشرة","").replace("HD","").replace("بدون تحميل","").replace("انتاج ","").replace("على العرب","").replace("مدبلج للعربية","مدبلج").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("الحلقة "," E").replace("حلقة "," E")
-            siteUrl = URL_MAIN+aEntry[0]
+            siteUrl = aEntry[0]
             sThumb = aEntry[1]
             sDesc = ''
             sYear = ''
@@ -119,6 +119,29 @@ def showMovies(sSearch = ''):
                 oGui.addEpisode(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
             else:
                 oGui.addMovie(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+    
+    # .+? ([^<]+)
+    sPattern = '<a href="([^<]+)" class="link-show d-flex align-items-center mx-2 ml-2">'
+    
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    
+   
+    if aResult[0]:
+        oOutputParameterHandler = cOutputParameterHandler()
+        for aEntry in aResult[1]: 
+            siteUrl = sUrl
+            sThumb = sThumb
+            sDesc = ""
+ 
+            oOutputParameterHandler.addParameter('siteUrl', siteUrl)
+            oOutputParameterHandler.addParameter('sMovieTitle', sMovieTitle)
+            oOutputParameterHandler.addParameter('sThumb', sThumb)
+            oOutputParameterHandler.addParameter('sDesc', sDesc)
+            
+
+ 
+            oGui.addMovie(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
         
         progress_.VSclose(progress_)
  
@@ -158,7 +181,7 @@ def showSeries(sSearch = ''):
  
             
             sTitle = aEntry[2].replace("مشاهدة","").replace("HD رمضان 2022","").replace("حلقات كاملة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("برنامج","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مباشرة","").replace("HD","").replace("انتاج ","").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("الحلقة "," E").replace("حلقة "," E")
-            siteUrl = URL_MAIN+aEntry[0]
+            siteUrl = aEntry[0]
             sThumb = aEntry[1]
             sDesc = ''
             sYear = ''
@@ -218,7 +241,7 @@ def showEps():
     sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
   
      # (.+?) ([^<]+) .+?
-    sPattern = '<a href="([^<]+)">.+?img src="([^<]+)" class="img-fluid w-100" alt="([^<]+)"'
+    sPattern = '<a href="([^<]+)">.+?img src="([^<]+)" class="img-fluid w-100" alt="([^<]+)".+?class="font-size-50">([^<]+)<'
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
     if aResult[0]:
@@ -227,7 +250,8 @@ def showEps():
  
             sEp = aEntry[2].split(':')[0]
             sEp = sEp.replace("الحلقة "," E").replace("حلقة "," E")
-            sTitle = sMovieTitle+''+sEp
+            sEpNo = aEntry[3]
+            sTitle = sMovieTitle+' E'+sEpNo+' '+sEp
             siteUrl = aEntry[0]
             sThumb = aEntry[1]
             sDesc = ''
@@ -241,7 +265,7 @@ def showEps():
         
 
     # .+? ([^<]+)
-    sPattern = '<a href="http([^<]+)/watch/(.+?)"'
+    sPattern = '<a href="([^<]+)" class="link-show d-flex align-items-center mx-2 ml-2">'
     
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -291,81 +315,31 @@ def showHosters():
 
     oParser = cParser()
             
-# ([^<]+) .+? (.+?)"
-    sPattern =  '<a href="([^<]+)" class="link-show d-flex align-items-center mx-2 ml-2">' 
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0]:
-        murl =  aResult[1][0]
-        oRequest = cRequestHandler(murl)
-        sHtmlContent = oRequest.request()
+
 # ([^<]+) .+? (.+?)
     sPattern =  '<a href="([^<]+)" class="link-show d-flex align-items-center mx-2 ml-2">' 
     aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0]:
+    if aResult[0] :
         murl =  aResult[1][0]
         oRequest = cRequestHandler(murl)
         sHtmlContent = oRequest.request()
             
+
     oParser = cParser()           
-    sPattern =  '<source src="(.+?)".+?type="video/mp4"type="video/mp4" size="(.+?)"' 
+    sPattern =  '<source.+?src="(.+?)".+?type="video/mp4".+?size="(.+?)"' 
 	
                                                                  
     aResult = oParser.parse(sHtmlContent,sPattern)
 
-    if aResult[0]:
+    if aResult[0] :
        for aEntry1 in aResult[1]:
            sHosterUrl = aEntry1[0] 
            sHost = aEntry1[1]  
            sTitle = ('%s  [COLOR coral](%sp)[/COLOR]') % (sMovieTitle, sHost)  
            oHoster = cHosterGui().checkHoster(sHosterUrl)
-           if oHoster:
+           if oHoster != False:
               oHoster.setDisplayName(sTitle)
               oHoster.setFileName(sMovieTitle)
               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-                
-    oGui.setEndOfDirectory()
-
-def showHosters2():
-    oGui = cGui()
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
-    sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
-    sThumb = oInputParameterHandler.getValue('sThumb')
-    
-    oRequestHandler = cRequestHandler(sUrl)
-    sHtmlContent = oRequestHandler.request()
-
-    oParser = cParser()
-            
-    sPattern =  '<a href="([^<]+)" cclass="link-download d-flex align-items-center mx-2 ml-2"' 
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0]:
-        murl =  aResult[1][0]
-        oRequest = cRequestHandler(murl)
-        sHtmlContent2 = oRequest.request()
-
-
-    # (.+?) .+? ([^<]+)
-               
-    sPattern = 'download="([^<]+)"'
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent2, sPattern)
-
-
-	
-    if aResult[0]: 
-       for aEntry in aResult[1]:      
-           url = aEntry[0]
-           sHost = aEntry[1]				
-           sTitle = ('%s  [COLOR coral]%sp[/COLOR]') % (sMovieTitle, sHost)
-				
-					
-            
-       sHosterUrl = url
-       oHoster = cHosterGui().checkHoster(sHosterUrl)
-       if oHoster:
-          oHoster.setDisplayName(sTitle)
-          oHoster.setFileName(sMovieTitle)
-          cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
                 
     oGui.setEndOfDirectory()
