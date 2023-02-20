@@ -10,11 +10,6 @@
             "active": "True",
             "url": "https://aflaam.com/"
         },
-        "_4kstreamz": {
-            "label": "4kstreamz",
-            "active": "True",
-            "url": "https://www.4kstreamz.net/"
-        },
         "ahdaf": {
             "label": "Ahdaf",
             "active": "True",
@@ -74,11 +69,6 @@
             "label": "Anime4up",
             "active": "True",
             "url": "https://anime4up.tv/"
-        },
-        "animeultime": {
-            "label": "Anime Ultime",
-            "active": "True",
-            "url": "http://www.anime-ultime.net/"
         },
         "animezid": {
             "label": "Animezid",
