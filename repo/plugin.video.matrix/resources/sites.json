@@ -98,7 +98,7 @@
         "arabseed": {
             "label": "Arabseed",
             "active": "True",
-            "url": "https://a.arabseed.ink"
+            "url": "https://k1.arabseed.world"
         },
         "asiaarabs": {
             "label": "Asia4arabs",
@@ -204,6 +204,11 @@
             "label": "Fnteam",
             "active": "True",
             "url": "https://www.fn-team.com/"
+        },
+        "fushaar": {
+            "label": "Fushaar",
+            "active": "True",
+            "url": "https://www.fushaar.com/"
         },
         "gateanime": {
             "label": "Gateanime",
