@@ -8,18 +8,9 @@ from resources.lib.gui.gui import cGui
 from resources.lib.handler.inputParameterHandler import cInputParameterHandler
 from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
 from resources.lib.handler.requestHandler import cRequestHandler
-from resources.lib.parser import cParser
 from resources.lib.comaddon import progress, VSlog, siteManager
-from resources.lib.util import cUtil, Unquote
+from resources.lib.parser import cParser
 
-try:  # Python 2
-    import urllib2
-    from urllib2 import URLError as UrlError
-
-except ImportError:  # Python 3
-    import urllib.request as urllib2
-    from urllib.error import URLError as UrlError
-	
 SITE_IDENTIFIER = 's3uditv'
 SITE_NAME = 'S3udi-TV'
 SITE_DESC = 'arabic vod'
@@ -111,11 +102,9 @@ def showMovies(sSearch = ''):
         oInputParameterHandler = cInputParameterHandler()
         sUrl = oInputParameterHandler.getValue('siteUrl')
 
-
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
- 
-     # (.+?) ([^<]+) .+?
+      # (.+?) ([^<]+) .+?
     sPattern = '<a href="([^<]+)" class="movie" title="([^<]+)".+?data-src="([^<]+)">' 
 
     oParser = cParser()
@@ -137,7 +126,9 @@ def showMovies(sSearch = ''):
             if "حلقة"  in aEntry[1]:
                 continue
  
-            sTitle = aEntry[1].replace("اون لاين","").replace("HD","").replace("كامل","").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("برنامج","").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
+            sTitle = aEntry[1].replace("مشاهدة","").replace("مشاهده","").replace("مترجم","").replace("فيلم","").replace("اونلاين","").replace("اون لاين","").replace("برنامج","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("4K","").replace("All","").replace("BDRip","").replace("HDCAM","").replace("HDTC","").replace("HDTV","").replace("HD","").replace("720","").replace("HDCam","").replace("Full HD","").replace("1080","").replace("HC","").replace("Web-dl","").replace("انمي","")
+ 
+ 
             siteUrl = aEntry[0].replace("watch.php","play.php")
             sDesc = ""
             sThumb = aEntry[2]
@@ -157,13 +148,16 @@ def showMovies(sSearch = ''):
             oGui.addMovie(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
 
         progress_.VSclose(progress_)
-        
+ 
         sNextPage = __checkForNextPage(sHtmlContent)
         if sNextPage:
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
             oGui.addDir(SITE_IDENTIFIER, 'showMovies', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
-    if not sSearch: 
+
+        progress_.VSclose(progress_)
+ 
+    if not sSearch:
         oGui.setEndOfDirectory()
 
 
@@ -180,7 +174,7 @@ def showSeries(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
-    sPattern = '<a href="([^<]+)" class="movie" title="([^<]+)".+?data-src="([^<]+)">' 
+    sPattern = '<a href="([^<]+)" class="movie" title="([^<]+)">.+?data-src="([^<]+)">' 
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -200,7 +194,7 @@ def showSeries(sSearch = ''):
             sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("مشاهده","").replace("برنامج","").replace("مترجمة","").replace("فيلم","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مترجم ","").replace("مشاهدة وتحميل","").replace("اون لاين","")
             sThumb = aEntry[2]
             sDesc = ''
-            sTitle = sTitle.split('موسم')[0].split('الحلقة')[0]
+            sTitle = sTitle.split('الموسم')[0].split('الحلقة')[0]
             sYear = ''
             m = re.search('([0-9]{4})', sTitle)
             if m:
@@ -213,18 +207,37 @@ def showSeries(sSearch = ''):
             oOutputParameterHandler.addParameter('sYear', sYear)
             oOutputParameterHandler.addParameter('sThumb', sThumb)
 
-            oGui.addTV(SITE_IDENTIFIER, 'showEps', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+            oGui.addTV(SITE_IDENTIFIER, 'showEpisodes', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
  
         sNextPage = __checkForNextPage(sHtmlContent)
         if sNextPage:
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
             oGui.addDir(SITE_IDENTIFIER, 'showSeries', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
+
+        progress_.VSclose(progress_)
  
-    if not sSearch: 
+  # ([^<]+) .+? (.+?)
+ 
+    if not sSearch:
         oGui.setEndOfDirectory()
+ 
+      # (.+?) ([^<]+) .+?
+	
+def __checkForNextPage(sHtmlContent):
+    sPattern = 'href="([^<]+)".+?>&raquo;</a>'
+	
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+ 
+    if aResult[0]:
+        
+        return URL_MAIN+aResult[1][0]
+
+    return False
+
   
-def showEps():
+def showEpisodes():
     oGui = cGui()
     
     oInputParameterHandler = cInputParameterHandler()
@@ -236,7 +249,7 @@ def showEps():
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
 
-    sPattern = '<div class="SeasonsEpisodes" style="display:none;" data-serie="(.+?)">(.+?)</div>'
+    sPattern = '<div class="SeasonsEpisodes".+?data-serie="(.+?)">(.+?)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -249,7 +262,7 @@ def showEps():
             sHtmlContent = aEntry[1]
  # ([^<]+) .+?
 
-            sPattern = '<a class="" href="(.+?)" title.+?<em>(.+?)</em><span>'
+            sPattern = '<a href="(.+?)" class.+?<em>(.+?)</em></a>'
 
             oParser = cParser()
             aResult = oParser.parse(sHtmlContent, sPattern)
@@ -275,19 +288,6 @@ def showEps():
  
        
     oGui.setEndOfDirectory()
-
-	
-def __checkForNextPage(sHtmlContent):
-    sPattern = 'onclick="return false;".+?href="([^<]+)"'
-	
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
- 
-    if aResult[0]:
-        
-        return URL_MAIN+aResult[1][0]
-
-    return False
 
 def showHosters():
     oGui = cGui()
