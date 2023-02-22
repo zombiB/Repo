@@ -85,8 +85,8 @@ def load():
 
 def showSeriesSearch():
     oGui = cGui()
- 
     sSearchText = oGui.showKeyBoard()
+ 
     if sSearchText:
         sUrl = URL_MAIN + '/search.php?keywords='+sSearchText
         showSeries(sUrl)
@@ -95,8 +95,8 @@ def showSeriesSearch():
  
 def showSearch():
     oGui = cGui()
- 
     sSearchText = oGui.showKeyBoard()
+ 
     if sSearchText:
         sUrl = URL_MAIN + '/search.php?keywords='+sSearchText
         showMovies(sUrl)
@@ -278,15 +278,14 @@ def showEps():
 
 	
 def __checkForNextPage(sHtmlContent):
-    sPattern = '<li class="">.+?<a href="(.+?)"'
+    sPattern = 'onclick="return false;".+?href="([^<]+)"'
 	
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
  
     if aResult[0]:
-        aResult = URL_MAIN+aResult[1][0]
         
-        return aResult
+        return URL_MAIN+aResult[1][0]
 
     return False
 

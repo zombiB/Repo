@@ -254,18 +254,6 @@ def showSeries(sSearch = ''):
     if not sSearch: 
         oGui.setEndOfDirectory()
   
-def __checkForNextPage(sHtmlContent):
-    sPattern = '<a class="page-link" href="(.+?)">'
-	
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
- 
-    if aResult[0]:
-        aResult = URL_MAIN+aResult[1][0]
-        
-        return aResult
-
-    return False
 
 def showEps():
     oGui = cGui()
@@ -337,11 +325,11 @@ def showEps():
 
 	
 def __checkForNextPage(sHtmlContent):
-    sPattern = 'class="page-link" href="([^<]+)">'	 
+    sPattern = 'href="([^<]+)" rel="next"'	 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
  
-    if aResult[0] is True:
+    if aResult[0] :
         return aResult[1][0]
 
     return False

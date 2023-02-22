@@ -134,15 +134,12 @@ def showMovies(sSearch = ''):
 
 
 def __checkForNextPage(sHtmlContent):
-    sPattern = '<link rel="next" href="(.+?)" />'
-	
+    sPattern = 'rel="next" href="([^<]+)"'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
  
-    if aResult[0]:
-        aResult = URL_MAIN+aResult[1][0]
-        
-        return aResult
+    if aResult[0] :
+        return aResult[1][0]
 
     return False
 
@@ -171,8 +168,7 @@ def showHosters():
         for aEntry in aResult[1]:
             
             url = aEntry
-            sHost = aEntry[1]
-            sTitle = ('%s  [COLOR coral](%sp)[/COLOR]') % (sMovieTitle, sHost)
+            sTitle = ""
             sThumb = sThumb
             if url.startswith('//'):
                url = 'http:' + url
@@ -185,7 +181,7 @@ def showHosters():
                 sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             oHoster = cHosterGui().checkHoster(sHosterUrl)
             if oHoster:
-               oHoster.setDisplayName(sTitle)
+               oHoster.setDisplayName(sMovieTitle)
                oHoster.setFileName(sMovieTitle)
                cHosterGui().showHoster(oGui, oHoster, sHosterUrl + "|verifypeer=false", sThumb)
                 
