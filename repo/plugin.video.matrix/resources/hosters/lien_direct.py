@@ -38,9 +38,13 @@ class cHoster(iHoster):
 
        
         if 'akwam' in api_call:
-            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://akwam.im/'
+            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://to.akwam.im/'
         if 'aflaam' in api_call:
             api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://aflaam.com/'
+        if 'fushaar' in api_call:
+            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://fushaar.com/'
+            if 's3udi' in api_call:
+            api_call = api_call + '|AUTH=TLS&verifypeer=false'  + '&Referer=https://m.s3udi.tv/'
 
         if 'panet' in api_call:
             api_call = api_call + '|AUTH=TLS&verifypeer=false' 

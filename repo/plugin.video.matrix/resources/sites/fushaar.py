@@ -31,8 +31,8 @@ MOVIE_EN = (URL_MAIN, 'showMovies')
 KID_MOVIES = (URL_MAIN + 'gerne/animation/', 'showMovies')
 MOVIE_TOP = (URL_MAIN + 'newest/', 'showMovies')
 
-URL_SEARCH = ('https://www.egy-club.com/?s=', 'showMovies')
-URL_SEARCH_MOVIES = ('https://www.egy-club.com/?s=', 'showMovies')
+URL_SEARCH = (URL_MAIN + '?s=', 'showMovies')
+URL_SEARCH_MOVIES = (URL_MAIN + '?s=', 'showMovies')
 FUNCTION_SEARCH = 'showMovies'
 
 
@@ -43,13 +43,6 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
     oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'Search Movies', 'search.png', oOutputParameterHandler)
 
-    oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSearchSeries', 'Search Series', 'search.png', oOutputParameterHandler)
-
-    oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSearchAll', 'Search All', 'search.png', oOutputParameterHandler)
-    
-    
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'film.png', oOutputParameterHandler)
@@ -59,6 +52,15 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كرتون', 'crtoon.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
+
+def showSearchAll():
+    oGui = cGui()
+    sSearchText = oGui.showKeyBoard()
+    if sSearchText != False:
+        sUrl = URL_MAIN + '/?s='+sSearchText
+        showMovies(sUrl)
+        oGui.setEndOfDirectory()
+        return  
 
 def showSearch():
     oGui = cGui()
@@ -101,7 +103,7 @@ def showMovies(sSearch = ''):
  
             sTitle = aEntry[1].replace("تحميل","").replace("مشاهدة","").replace("مشاهده","").replace("مباشره","").replace("مترجمة","").replace("مسلسل","").replace("انمي","").replace("مترجم","").replace("كاملة","").replace("جودة عالية","").replace("كامل","").replace("فلم","").replace("فيلم","").replace("اونلاين","").replace("اون لاين","").replace("اولاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("4K","").replace("All","").replace("BDRip","").replace("HDCAM","").replace("HDTC","").replace("HDTV","").replace("HD","").replace("720","").replace("HDCam","").replace("Full HD","").replace("1080","").replace("HC","").replace("Web-dl","").replace("أون لاين","")
             siteUrl = aEntry[0]
-            sThumb = aEntry[2]
+            sThumb = aEntry[2] + "|verifypeer=false"
             sDesc = ''
             sYear = ''
             m = re.search('([0-9]{4})', sTitle)
@@ -126,8 +128,8 @@ def showMovies(sSearch = ''):
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
             oGui.addDir(SITE_IDENTIFIER, 'showMovies', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
- 
-    oGui.setEndOfDirectory()
+    if not sSearch:
+        oGui.setEndOfDirectory()
 
 
 
@@ -169,7 +171,8 @@ def showHosters():
         for aEntry in aResult[1]:
             
             url = aEntry
-            sTitle = ""
+            sHost = aEntry[1]
+            sTitle = ('%s  [COLOR coral](%sp)[/COLOR]') % (sMovieTitle, sHost)
             sThumb = sThumb
             if url.startswith('//'):
                url = 'http:' + url
@@ -177,13 +180,13 @@ def showHosters():
 				            
             sHosterUrl = url 
             if 'fushaar' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+                sHosterUrl = sHosterUrl 
             if 'uptobox' in sHosterUrl:
                 sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             oHoster = cHosterGui().checkHoster(sHosterUrl)
             if oHoster:
-               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setDisplayName(sTitle)
                oHoster.setFileName(sMovieTitle)
-               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl + "|verifypeer=false", sThumb)
                 
     oGui.setEndOfDirectory()

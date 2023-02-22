@@ -17,7 +17,7 @@
         },
         "akoam": {
             "label": "Akoam",
-            "active": "True",
+            "active": "False",
             "url": "https://old.akwam.to/"
         },
         "akwam": {
@@ -27,7 +27,7 @@
         },
         "akwamEg": {
             "label": "AkwamEg",
-            "active": "True",
+            "active": "False",
             "url": "https://a.eg-akw.com/"
         },        
         "alarab": {
@@ -92,7 +92,7 @@
         },
         "arblionz": {
             "label": "Arblionz",
-            "active": "True",
+            "active": "False",
             "url": "https://tv.arlionztv.store/"
         },
         "arabseed": {
@@ -198,7 +198,7 @@
         "faselhd": {
             "label": "Faselhd",
             "active": "True",
-            "url": "https://www.faselhd.club/"
+            "url": "https://www.faselhd.ac/"
         },
         "fnteam": {
             "label": "Fnteam",
@@ -270,9 +270,14 @@
             "active": "True",
             "url": "https://rotana.net/"
         },
+        "s3uditv": {
+            "label": "S3uditv",
+            "active": "True",
+            "url": "https://m.s3udi.tv/"
+        },
         "shahidu": {
             "label": "Shahid4u",
-            "active": "True",
+            "active": "false",
             "url": "https://shaheed4u.info/"
         },
         "shooflive": {
