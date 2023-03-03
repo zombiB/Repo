@@ -98,7 +98,7 @@
         "arabseed": {
             "label": "Arabseed",
             "active": "True",
-            "url": "https://k1.arabseed.world"
+            "url": "https://m2.arabseed.world"
         },
         "asiaarabs": {
             "label": "Asia4arabs",
@@ -253,7 +253,7 @@
         "mycima": {
             "label": "Mycima",
             "active": "True",
-            "url": "https://weciima.mom/"
+            "url": "https://wecimaa.click/"
         },
         "pakistani": {
             "label": "Pakistani",
@@ -274,11 +274,6 @@
             "label": "S3uditv",
             "active": "True",
             "url": "https://m.s3udi.tv/"
-        },
-        "shahidu": {
-            "label": "Shahid4u",
-            "active": "false",
-            "url": "https://shaheed4u.info/"
         },
         "shooflive": {
             "label": "Shooflive",

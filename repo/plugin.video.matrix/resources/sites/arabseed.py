@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # zombi https://github.com/zombiB/zombi-addons/
 
 import re
@@ -11,22 +11,14 @@ from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.comaddon import progress, VSlog, siteManager
 from resources.lib.parser import cParser
 from resources.lib.util import Quote
+from resources.lib.comaddon import progress, siteManager
  
 SITE_IDENTIFIER = 'arabseed'
-SITE_NAME = 'Arabseed'
+SITE_NAME = 'arabseed'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
-try:
-    import requests
-    url = URL_MAIN
-    session = requests.Session()  # so connections are recycled
-    resp = session.head(url, allow_redirects=True)
-    URL_MAIN = resp.url.split('/')[2]
-    URL_MAIN = 'https://' + URL_MAIN
-    VSlog(URL_MAIN)
-except:
-    pass 
+
 MOVIE_CLASSIC = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d9%83%d9%84%d8%a7%d8%b3%d9%8a%d9%83%d9%8a%d9%87/', 'showMovies')
 MOVIE_EN = (URL_MAIN + '/category/foreign-movies4/', 'showMovies')
 MOVIE_AR = (URL_MAIN + '/category/arabic-movies-5/', 'showMovies')
@@ -35,7 +27,8 @@ MOVIE_HI = (URL_MAIN + '/category/indian-movies/', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d8%a7%d8%b3%d9%8a%d9%88%d9%8a%d8%a9/', 'showMovies')
 MOVIE_TURK = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d8%aa%d8%b1%d9%83%d9%8a%d8%a9/', 'showMovies')
 KID_MOVIES = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d8%a7%d9%86%d9%8a%d9%85%d9%8a%d8%b4%d9%86/', 'showMovies')
-SERIE_TR = (URL_MAIN + '/category/turkish-series-1/', 'showSeries')
+SERIE_TR = (URL_MAIN + '/category/2925', 'showSeries')
+SERIE_DUBBED = (URL_MAIN + '/category/25308', 'showSeries')
 SERIE_ASIA = (URL_MAIN + '/category/72239', 'showSeries')
 SERIE_HEND = (URL_MAIN + '/category/76025', 'showSeries')
 SERIE_EN = (URL_MAIN + '/category/4', 'showSeries')
@@ -109,6 +102,10 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'mslsl.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_DUBBED[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مدبلجة', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', ANIM_NEWS[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات إنمي', 'anime.png', oOutputParameterHandler)  
  
@@ -165,7 +162,7 @@ def showMovies(sSearch = ''):
     import requests
     s = requests.Session()            
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': Quote(sUrl)}
+							'Referer': Quote(URL_MAIN)}
     r = s.post(sUrl, headers=headers)
     sHtmlContent = r.content.decode('utf8')
 
@@ -182,7 +179,7 @@ def showMovies(sSearch = ''):
        import requests
        s = requests.Session()            
        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': Quote(sUrl)}
+							'Referer': Quote(URL_MAIN)}
        psearch = sUrl.rsplit('?find=', 1)[1]
        data = {'search':psearch,'type':'movies'}
        r = s.post(sURL_MAIN + '/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php', headers=headers,data = data)
@@ -359,7 +356,7 @@ def showSeries(sSearch = ''):
        import requests
        s = requests.Session()            
        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': Quote(sUrl)}
+							'Referer': Quote(URL_MAIN)}
        psearch = sUrl.rsplit('?find=', 1)[1]
        data = {'search':psearch,'type':'series'}
        r = s.post(sURL_MAIN + '/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php', headers=headers,data = data)
@@ -570,77 +567,51 @@ def __checkForNextPage(sHtmlContent):
     return False
 
 def showHosters():
+    import requests
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-
-
-    oRequestHandler = cRequestHandler(sUrl)
-    sHtmlContent = oRequestHandler.request() 
-
-    oParser = cParser()         
-
-    sURL_MAIN='0'
-    # (.+?) ([^<]+)
-    sPattern = 'title="عرب سيد &#8211; Arabseed" href="(.+?)">'
-    aResult = oParser.parse(sHtmlContent, sPattern)    
-    if (aResult[0]):
-        sURL_MAIN = aResult[1][0]
-			
-    sPattern =  'data-post="(.+?)">' 
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0] is True:
-        mId = aResult[1][0] 
-    import requests
-    s = requests.Session()            
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
-    data = {'post_id':mId,'server':'server'}
-    r = s.post(sURL_MAIN +'/wp-admin/admin-ajax.php', headers=headers,data = data)
-    sHtmlContent = r.content.decode('utf8')
-            
-    sPattern =  '<a class="watchBTn" href="([^<]+)" target=' 
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    m3url=''
-    if aResult[0] is True:
-        m3url = aResult[1][0] 
-        if m3url.startswith('//'):
-           m3url = 'https:' + m3url
-    import requests
-    s = requests.Session()            
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
-							'Referer': sURL_MAIN }
-    r = s.get(m3url, headers=headers)
-    sHtmlContent = r.content.decode('utf8')
-
-    # ([^<]+) .+? (.+?)
-               
-    sPattern = 'data-link"(.+?)" class'
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
+    cook = oInputParameterHandler.getValue('cook')
 	
+    oRequest = cRequestHandler(sUrl)
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request()
+    cook = oRequestHandler.GetCookies()
+    oRequest.addHeaderEntry('Referer', Quote(URL_MAIN))
+    oRequest.addHeaderEntry('Cookie', cook)
+    sHtmlContent = oRequest.request()
+    oParser = cParser()
+            
+    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
+    aResult = oParser.parse(sHtmlContent,sPattern)
+    
     if aResult[0] is True:
-        for aEntry in aResult[1]:
-        
-            url = aEntry
-            sThumb = sThumb
-            if url.startswith('//'):
-                url = 'http:' + url
-								            
-            sHosterUrl = url
-            if 'reviewtech' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-            if 'userload' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-            if 'moshahda' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-            if 'mystream' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
-            oHoster = cHosterGui().checkHoster(sHosterUrl)
-            if oHoster != False:
-                oHoster.setDisplayName(sMovieTitle)
-                oHoster.setFileName(sMovieTitle)
-                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+        murl = aResult[1][0] 
+        host = murl
+        oRequestHandler = cRequestHandler(host)
+        cook = oRequestHandler.GetCookies()
+        hdr = {'host' : host,'referer' : Quote(URL_MAIN),'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
+        St=requests.Session()
+        sHtmlContent = St.post(host,headers=hdr)
+        sHtmlContent = sHtmlContent.content.decode('utf8')
 
+
+        sPattern = '<a href="([^<]+)" class="watchBTn">'
+        oParser = cParser()
+        aResult = oParser.parse(sHtmlContent, sPattern)
+
+        sHtmlContent = oRequest.request()   
+        sPattern = 'data-link="(.+?)" class'
+        oParser = cParser()
+        aResult = oParser.parse(sHtmlContent, sPattern)
+	
+    if aResult[0]:
+        sHosterUrl = aResult[1][0]
+        oHoster = cHosterGui().checkHoster(sHosterUrl)
+        if oHoster:
+            oHoster.setDisplayName(sMovieTitle)
+            oHoster.setFileName(sMovieTitle)
+            cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
     oGui.setEndOfDirectory()
