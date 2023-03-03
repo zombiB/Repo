@@ -269,6 +269,10 @@ def showHosters():
                url =  'https://arabveturk.com/embed-'+url+'.html'
             if 'now' in host:
                url =  'https://extremenow.net/embed-'+url+'.html'
+            if 'box' in host:
+               url =  'https://youdboox.com/embed-'+url+'.html'
+            if 'Pro HD' in host:
+               url =  'https://embedo.co/e/'+url
             if 'online' in host:
                url =  'https://player.vimeo.com/video/'+url+'?title=0&byline=0'
             if 'youtube' in host:
