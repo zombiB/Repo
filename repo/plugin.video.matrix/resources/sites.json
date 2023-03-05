@@ -15,21 +15,11 @@
             "active": "True",
             "url": "https://www.ahdaf-kooora.com/"
         },
-        "akoam": {
-            "label": "Akoam",
-            "active": "False",
-            "url": "https://old.akwam.to/"
-        },
         "akwam": {
             "label": "Akwam",
             "active": "True",
-            "url": "https://to.akwam.us/"
+            "url": "https://to.akwam.im/"
         },
-        "akwamEg": {
-            "label": "AkwamEg",
-            "active": "False",
-            "url": "https://a.eg-akw.com/"
-        },        
         "alarab": {
             "label": "Alarab",
             "active": "True",
@@ -38,7 +28,7 @@
         "alarabclub": {
             "label": "Alarabclub",
             "active": "True",
-            "url": "https://alarabclub.live/"
+            "url": "https://alarabclub.com/"
         },
         "alarabiya": {
             "label": "Alarabiya",
@@ -48,7 +38,7 @@
         "alfajertv": {
             "label": "Alfajertv",
             "active": "True",
-            "url": "https://show.alfajertv.com"
+            "url": "https://show.alfajertv.com/"
         },
         "aljazeera": {
             "label": "Aljazeera",
@@ -80,6 +70,11 @@
             "active": "True",
             "url": "https://arabsciences.com/"
         },
+        "arabseed": {
+            "label": "Arabseed",
+            "active": "True",
+            "url": "https://m1.arabseed.cfd"
+        },
         "aracinema_co": {
             "label": "Aramosalsal",
             "active": "True",
@@ -89,16 +84,6 @@
             "label": "Arbcinema",
             "active": "True",
             "url": "https://ok.arbcinema.com/"
-        },
-        "arblionz": {
-            "label": "Arblionz",
-            "active": "False",
-            "url": "https://tv.arlionztv.store/"
-        },
-        "arabseed": {
-            "label": "Arabseed",
-            "active": "True",
-            "url": "https://m1.arabseed.cfd"
         },
         "asiaarabs": {
             "label": "Asia4arabs",
@@ -148,7 +133,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cimaaa4u.makeup/"
+            "url": "https://cimaaa4u.fun/"
         },
         "daddyhd": {
             "label": "DaddyHD",
@@ -173,7 +158,7 @@
         "egydead": {
             "label": "Egydead",
             "active": "True",
-            "url": "https://w6.egydead.live/"
+            "url": "https://w4.egydead.live/"
         },
         "ehna": {
             "label": "Ehna",
@@ -183,7 +168,7 @@
         "esseq": {
             "label": "Esseq",
             "active": "True",
-            "url": "https://ee.e3sk.net"
+            "url": "https://ee.e3sk.net/"
         },
         "familymoviz": {
             "label": "Familymoviz",
@@ -253,12 +238,12 @@
         "movizland": {
             "label": "Movizland",
             "active": "True",
-            "url": "https://movizland.xyz/"
+            "url": "https://movizland.men/"
         },
         "mycima": {
             "label": "Mycima",
             "active": "True",
-            "url": "https://wecimaa.click/"
+            "url": "https://weciima.autos/"
         },
         "pakistani": {
             "label": "Pakistani",
@@ -326,14 +311,14 @@
             "url": "https://m.tvfun.me/"
         },
         "tvnine": {
-            "label": "Tvninesix",
+            "label": "Tv96",
             "active": "True",
-            "url": "https://www.tv96.tv"
+            "url": "https://www.tv96.tv/"
         },
         "watanflix": {
             "label": "Watanflix",
             "active": "True",
-            "url": "http://watanflix.com/"
+            "url": "https://watanflix.com/"
         },
         "xsanime": {
             "label": "Xsanime",
