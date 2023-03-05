@@ -42,7 +42,8 @@ REPLAYTV_NEWS = (URL_MAIN + '/category/%D8%A8%D8%B1%D8%A7%D9%85%D8%AC-%D8%AA%D9%
 URL_SEARCH_MOVIES = (URL_MAIN + '/find/?find=', 'showMovies')
 URL_SEARCH_SERIES = (URL_MAIN + '/find/?find=', 'showSeries')
 FUNCTION_SEARCH = 'showMovies'
- 
+
+
 def load():
     oGui = cGui()
 
