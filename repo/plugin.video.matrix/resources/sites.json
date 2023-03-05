@@ -98,7 +98,7 @@
         "arabseed": {
             "label": "Arabseed",
             "active": "True",
-            "url": "https://m2.arabseed.world"
+            "url": "https://m1.arabseed.cfd"
         },
         "asiaarabs": {
             "label": "Asia4arabs",
@@ -229,6 +229,11 @@
             "label": "Hidaya",
             "active": "True",
             "url": "https://hidaya.tn/"
+        },
+        "honadrama": {
+            "label": "Honadrama",
+            "active": "True",
+            "url": "https://honadrama.us/"
         },
         "katkoute": {
             "label": "Katkoute",

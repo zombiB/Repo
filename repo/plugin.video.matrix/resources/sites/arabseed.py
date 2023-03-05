@@ -14,7 +14,7 @@ from resources.lib.util import Quote
 from resources.lib.comaddon import progress, siteManager
  
 SITE_IDENTIFIER = 'arabseed'
-SITE_NAME = 'arabseed'
+SITE_NAME = 'Arabseed'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
@@ -567,51 +567,51 @@ def __checkForNextPage(sHtmlContent):
     return False
 
 def showHosters():
-    import requests
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-    cook = oInputParameterHandler.getValue('cook')
-	
-    oRequest = cRequestHandler(sUrl)
+    
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
-    cook = oRequestHandler.GetCookies()
-    oRequest.addHeaderEntry('Referer', Quote(URL_MAIN))
-    oRequest.addHeaderEntry('Cookie', cook)
-    sHtmlContent = oRequest.request()
     oParser = cParser()
-            
-    sPattern =  '<a href="([^<]+)" class="watchBTn">' 
+
+         
+    sPattern =  '<a href="([^<]+)" class="watchBTn">'
     aResult = oParser.parse(sHtmlContent,sPattern)
-    
-    if aResult[0] is True:
-        murl = aResult[1][0] 
-        host = murl
-        oRequestHandler = cRequestHandler(host)
-        cook = oRequestHandler.GetCookies()
-        hdr = {'host' : host,'referer' : Quote(URL_MAIN),'user-agent' : 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'}
-        St=requests.Session()
-        sHtmlContent = St.post(host,headers=hdr)
-        sHtmlContent = sHtmlContent.content.decode('utf8')
+    if aResult[0]:
+        m3url = aResult[1][0]
+        oRequestHandler = cRequestHandler(m3url)
+        oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
+        oRequestHandler.addHeaderEntry('referer', URL_MAIN)
+        sHtmlContent = oRequestHandler.request() 
 
 
-        sPattern = '<a href="([^<]+)" class="watchBTn">'
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
+    # (.+?) .+? ([^<]+)        	
+    sPattern = 'data-link="(.+?)" class'
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
 
-        sHtmlContent = oRequest.request()   
-        sPattern = 'data-link="(.+?)" class'
-        oParser = cParser()
-        aResult = oParser.parse(sHtmlContent, sPattern)
 	
     if aResult[0]:
-        sHosterUrl = aResult[1][0]
-        oHoster = cHosterGui().checkHoster(sHosterUrl)
-        if oHoster:
-            oHoster.setDisplayName(sMovieTitle)
-            oHoster.setFileName(sMovieTitle)
-            cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+        for aEntry in aResult[1]:
+            
+            url = aEntry
+            sTitle = " "
+            if url.startswith('//'):
+                url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url 
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster:
+                sDisplayTitle = sTitle
+                oHoster.setDisplayName(sDisplayTitle)
+                oHoster.setFileName(sMovieTitle)
+                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+
+
+
     oGui.setEndOfDirectory()
