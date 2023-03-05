@@ -563,7 +563,7 @@ def showHosters():
     # (.+?)
                
 
-    sPattern = 'name="player_iframe" src="([^<]+)" frameborde'
+    sPattern = 'name="iframe" src="([^<]+)" frameborde'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 
@@ -630,7 +630,7 @@ def showHosters():
                 oHoster.setFileName(sMovieTitle)
                 cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
 				                        
-    sPattern = 'href="(.+?)"><i class="far fa-download"'
+    sPattern = '<a href="(.+?)" class="download-btn" '
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 
@@ -651,25 +651,6 @@ def showHosters():
                oHoster.setFileName(sMovieTitle)
                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
 				
-    sPattern = 'class="dl-link"><a href="(.+?)"'
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
 
-	
-    if aResult[0]:
-        for aEntry in aResult[1]:
-            
-            url = aEntry
-            sTitle = " "
-            if url.startswith('//'):
-               url = 'http:' + url
-            
-            sHosterUrl = url
-            oHoster = cHosterGui().checkHoster(sHosterUrl)
-            if oHoster:
-                sDisplayTitle = sMovieTitle+sTitle
-                oHoster.setDisplayName(sDisplayTitle)
-                oHoster.setFileName(sMovieTitle)
-                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
                 
     oGui.setEndOfDirectory()
