@@ -22,7 +22,7 @@ class cUpdate:
         time_service = self.__strptime(setting_time)
         time_sleep = datetime.timedelta(hours = 72)
         if time_now - time_service > time_sleep:
-            sUrl = 'https://raw.githubusercontent.com/zombiB/zombi-addons/master/plugin.video.matrix/resources/sites.json'
+            sUrl = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/plugin.video.matrix/resources/sites.json'
             oRequestHandler = cRequestHandler(sUrl)
             properties = oRequestHandler.request(jsonDecode=True)
             if properties == "":
