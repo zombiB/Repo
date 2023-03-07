@@ -20,6 +20,11 @@
             "active": "True",
             "url": "https://to.akwam.im/"
         },
+        "akwamEg": {
+            "label": "AkwamEg",
+            "active": "True",
+            "url": "https://ak4eg.cam/"
+        },
         "alarab": {
             "label": "Alarab",
             "active": "True",
@@ -243,7 +248,7 @@
         "movizland": {
             "label": "Movizland",
             "active": "True",
-            "url": "https://movizland.men/"
+            "url": "https://movizland.xyz/"
         },
         "mycima": {
             "label": "Mycima",
