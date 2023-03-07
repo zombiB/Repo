@@ -25,11 +25,6 @@
             "active": "True",
             "url": "https://vod2.alarab.com/"
         },
-        "alarabclub": {
-            "label": "Alarabclub",
-            "active": "True",
-            "url": "https://alarabclub.com/"
-        },
         "alarabiya": {
             "label": "Alarabiya",
             "active": "True",
@@ -125,6 +120,11 @@
             "active": "True",
             "url": "https://cdrama.in/"
         },
+        "ciimalight": {
+            "label": "Ciimalight",
+            "active": "True",
+            "url": "https://cc.cimalight.vip/"
+        },
         "cimaclub": {
             "label": "Cimaclub",
             "active": "True",
@@ -155,6 +155,11 @@
             "active": "True",
             "url": "https://docarabic.wordpress.com/"
         },
+        "dramacafe": {
+            "label": "Dramacafe",
+            "active": "False",
+            "url": "https://ab.dramacafe-tv.com:82/"
+        },
         "egyclub": {
             "label": "Egyclub",
             "active": "True",
@@ -163,7 +168,7 @@
         "egydead": {
             "label": "Egydead",
             "active": "True",
-            "url": "https://w4.egydead.live/"
+            "url": "https://w6.egydead.live/"
         },
         "ehna": {
             "label": "Ehna",
@@ -174,11 +179,6 @@
             "label": "Esseq",
             "active": "True",
             "url": "https://ee.e3sk.net/"
-        },
-        "familymoviz": {
-            "label": "Familymoviz",
-            "active": "True",
-            "url": "https://www.familymoviz.net/"
         },
         "fansubs": {
             "label": "Fansubstv",
@@ -248,7 +248,7 @@
         "mycima": {
             "label": "Mycima",
             "active": "True",
-            "url": "https://weciima.autos/"
+            "url": "https://wecimaa.beauty/"
         },
         "pakistani": {
             "label": "Pakistani",
@@ -258,7 +258,7 @@
         "prstej": {
             "label": "Prstej",
             "active": "True",
-            "url": "https://v.3rb.tv/"
+            "url": "https://ps.3rb.tv/"
         },
         "rotana": {
             "label": "Rotana",
