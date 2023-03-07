@@ -17,10 +17,10 @@ SITE_DESC = 'arabic vod'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
-RAMADAN_SERIES = (URL_MAIN + '/category/series/arabic-series/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d8%b1%d9%85%d8%b6%d8%a7%d9%86-2022/', 'showSeries')
+# RAMADAN_SERIES = (URL_MAIN + '/category/series/arabic-series/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d8%b1%d9%85%d8%b6%d8%a7%d9%86-2022/', 'showSeries')
 MOVIE_EN = (URL_MAIN + '/category/movies/english-movies/', 'showMovies')
 MOVIE_4k = (URL_MAIN + '/Quality/4k/', 'showMovies')
-MOVIE_AR = (URL_MAIN + '/category/movies/arabic-movies/', 'showMovies')
+# MOVIE_AR = (URL_MAIN + '/category/movies/arabic-movies/', 'showMovies')
 MOVIE_HI = (URL_MAIN + '/category/movies/indian-movies/', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + '/category/movies/asian-movies/', 'showMovies')
 KID_MOVIES = (URL_MAIN + '/category/anime-cartoon/cartoon/', 'showMovies')
@@ -28,7 +28,7 @@ SERIE_TR = (URL_MAIN + '/category/turkish-series-translated/', 'showSeries')
 
 SERIE_TR_AR = (URL_MAIN + '/category/turkish-series-dubbed/', 'showSeries')
 SERIE_EN = (URL_MAIN + '/category/series/english-series/', 'showSeries')
-SERIE_AR = (URL_MAIN + '/category/series/arabic-series/', 'showSeries')
+# SERIE_AR = (URL_MAIN + '/category/series/arabic-series/', 'showSeries')
 SERIE_ASIA = (URL_MAIN + '/category/series/asian-series/', 'showSeries')
 SERIE_HEND = (URL_MAIN + '/category/series/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d9%87%d9%86%d8%af%d9%8a%d8%a9/', 'showSeries')
 SERIE_LATIN = (URL_MAIN + '/category/series/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d9%85%d9%83%d8%b3%d9%8a%d9%83%d9%8a/', 'showSeries')
@@ -59,8 +59,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_4k[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', ' 4k أفلام', 'film.png', oOutputParameterHandler)
 
-    oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
+    # oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
  
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_ASIAN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'film.png', oOutputParameterHandler)
@@ -74,8 +74,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', SERIE_EN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أجنبية', 'mslsl.png', oOutputParameterHandler)
 
-    oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
+   # oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
+   # oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أسيوية', 'mslsl.png', oOutputParameterHandler)
@@ -101,8 +101,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', REPLAYTV_PLAY[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسرحيات', 'msrh.png', oOutputParameterHandler)
     
-    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + '/category/%d8%a8%d8%b1%d8%a7%d9%85%d8%ac-%d8%b9%d8%b1%d8%a8%d9%8a/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'برامج عربي', 'brmg.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + '/category/%d8%a8%d8%b1%d8%a7%d9%85%d8%ac-%d8%b9%d8%b1%d8%a8%d9%8a/')
+    # oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'برامج عربي', 'brmg.png', oOutputParameterHandler)
   
     oGui.setEndOfDirectory()
  
@@ -388,7 +388,7 @@ def showEps():
     oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
     oRequestHandler.addHeaderEntry('Cookie', cook)
     oRequestHandler.addHeaderEntry('X-Requested-With', 'XMLHttpRequest')
-    oRequestHandler.addHeaderEntry('origin', "https://tv.arlionz.one")
+    oRequestHandler.addHeaderEntry('origin', "https://arlionztv.cam")
     sHtmlContent = oRequestHandler.request()
 
 
@@ -458,7 +458,7 @@ def showHosters():
     oRequestHandler.addHeaderEntry('Cookie', cook)
     oRequestHandler.addHeaderEntry('X-Requested-With', 'XMLHttpRequest')
     oRequestHandler.addHeaderEntry('Referer', Quote(sUrl))
-    oRequestHandler.addHeaderEntry('origin', "arlionztv.com")
+    oRequestHandler.addHeaderEntry('origin', "arlionztv.cam")
     sHtmlContent = oRequestHandler.request()
 
     sPattern = '<li data-i="([^<]+)" data-id="([^<]+)" class'
@@ -470,7 +470,7 @@ def showHosters():
             cook = oRequestHandler.GetCookies()
             oRequestHandler.setRequestType(1)
             oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
-            oRequestHandler.addHeaderEntry('origin', "arlionztv.com")
+            oRequestHandler.addHeaderEntry('origin', "arlionztv.cam")
             oRequestHandler.addHeaderEntry('Cookie', cook)
             oRequestHandler.addHeaderEntry('X-Requested-With', 'XMLHttpRequest')
             oRequestHandler.addHeaderEntry('Referer', Quote(sUrl))
