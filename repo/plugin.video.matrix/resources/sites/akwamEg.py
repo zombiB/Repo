@@ -533,10 +533,10 @@ def showHosters():
         sHtmlContent = oRequest.request()
             
 # ([^<]+) .+? (.+?)
-    sPattern =  '<span style="color:white">.... لتخطي الحظر ....</span>.+?<br />.+?<a href="(.+?)"' 
+    sPattern =  '>Click here</span> to go for your link...</a>.+?<a href="(.+?)"' 
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0]:
-        murl =  aResult[1][0]
+        murl =  aResult[1][0].replace("akwam.to","ak4eg.cam")
         oRequest = cRequestHandler(murl)
         sHtmlContent = oRequest.request()
 
@@ -556,5 +556,50 @@ def showHosters():
               oHoster.setDisplayName(sTitle)
               oHoster.setFileName(sMovieTitle)
               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+                
+    oGui.setEndOfDirectory()
+
+def showHosters2():
+    oGui = cGui()
+    oInputParameterHandler = cInputParameterHandler()
+    sUrl = oInputParameterHandler.getValue('siteUrl')
+    sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
+    sThumb = oInputParameterHandler.getValue('sThumb')
+    
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request()
+
+    oParser = cParser()
+            
+    sPattern =  '<a href="([^<]+)" class="download-link"' 
+    aResult = oParser.parse(sHtmlContent,sPattern)
+    if aResult[0]:
+        murl =  aResult[1][0].replace("akwam.to","ak4eg.cam")
+        oRequest = cRequestHandler(murl)
+        sHtmlContent2 = oRequest.request()
+
+
+    # (.+?) .+? ([^<]+)
+               
+    sPattern = 'href="([^<]+)" download.+?style=".+?">(.+?)</a>'
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent2, sPattern)
+
+
+	
+    if aResult[0]: 
+       for aEntry in aResult[1]:      
+           url = aEntry[0]
+           sHost = aEntry[1]				
+           sTitle = ('%s  [COLOR coral]%sp[/COLOR]') % (sMovieTitle, sHost)
+				
+					
+            
+       sHosterUrl = url
+       oHoster = cHosterGui().checkHoster(sHosterUrl)
+       if oHoster:
+          oHoster.setDisplayName(sTitle)
+          oHoster.setFileName(sMovieTitle)
+          cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
                 
     oGui.setEndOfDirectory()
