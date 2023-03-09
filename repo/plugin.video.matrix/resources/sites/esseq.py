@@ -227,6 +227,7 @@ def showEps():
     oGui.setEndOfDirectory() 
 
 def showHosters():
+    import base64
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
@@ -279,8 +280,6 @@ def showHosters():
                url =  'https://www.youtube.com/watch?v='+url
             if url.startswith('//'):
                url = 'http:' + url
-				
-					
             
             sHosterUrl = url
             if 'userload' in sHosterUrl:

@@ -18,12 +18,12 @@
         "akwam": {
             "label": "Akwam",
             "active": "True",
-            "url": "https://on.akwam.in/"
+            "url": "https://akwam.to/"
         },
         "akwamEg": {
             "label": "AkwamEg",
             "active": "True",
-            "url": "https://ak4eg.cam/"
+            "url": "https://eg1.ak4eg.cam/"
         },
         "alarab": {
             "label": "Alarab",
@@ -73,7 +73,7 @@
         "arabseed": {
             "label": "Arabseed",
             "active": "True",
-            "url": "https://k1.arabseed.lol/"
+            "url": "https://arabseed.sbs/"
         },
         "aracinema_co": {
             "label": "Aramosalsal",
@@ -134,6 +134,11 @@
             "label": "Cimaclub",
             "active": "True",
             "url": "https://ciimaclub.click/"
+        },
+        "cimacity": {
+            "label": "CimaCity",
+            "active": "True",
+            "url": "https://www.cima-city.com/"
         },
         "cimanow": {
             "label": "Cimanow",

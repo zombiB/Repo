@@ -356,7 +356,7 @@ class cHosterGui:
         if ('myvi.' in sHostName):
             return self.getHoster('myvi')
 
-        if ('yodbox' in sHostName) or ('youdbox' in sHostName):
+        if ('yodbox' in sHostName) or ('youdbox' in sHostName) or ('youdboox' in sHostName):
             return self.getHoster('youdbox')
 
         if ('yandex' in sHostName) or ('yadi.sk' in sHostName):
@@ -378,6 +378,9 @@ class cHosterGui:
             return self.getHoster('hd_stream')
 
         if ('livestream' in sHostName):
+            return self.getHoster('lien_direct')
+
+        if ('embedo' in sHostName):
             return self.getHoster('lien_direct')
 
         # vidtodo et clone
