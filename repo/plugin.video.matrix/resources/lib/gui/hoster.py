@@ -381,7 +381,7 @@ class cHosterGui:
             return self.getHoster('lien_direct')
 
         if ('embedo' in sHostName):
-            return self.getHoster('lien_direct')
+            return self.getHoster('resolver')
 
         # vidtodo et clone
         val = next((x for x in ['vidtodo', 'vixtodo', 'viddoto', 'vidstodo'] if x in sHostName), None)
