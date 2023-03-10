@@ -173,7 +173,7 @@ c'est le changelog de la beta !        <setting label="30036" type="action" acti
 
         <setting type="sep"/>
         <setting id="UserResolveurl" type="bool" label="30066" default="false"/>
-        <setting label="30067" type="action" option="close" action="RunScript(plugin.video.matrix, urlresolver, ?site=globalRun&amp;function=urlresolver)"/>
+        <setting label="30067" type="action" option="close" action="RunScript(plugin.video.matrix, resolveurl, ?site=globalRun&amp;function=resolveurl)"/>
     </category>
 
     <!-- Outils -->

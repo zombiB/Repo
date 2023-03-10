@@ -25,10 +25,12 @@ class cHoster(iHoster):
         sHtmlContent = oRequestHandler.request()
 
         r2 = re.search(' src="([^<]+)" type="video/mp4">', sHtmlContent)
+
+
         if (r2):
-        	api_call = r2.group(1)
- 
+            api_call = r2.group(1)
+
         if api_call:
-        	return True, api_call  + '|User-Agent=' + UA + '&Referer=' + self._url
+            return True, api_call+ '|User-Agent=' + UA +'&Referer=' + self._url
 
         return False, False

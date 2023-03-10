@@ -227,7 +227,7 @@ def showSeries(sSearch = ''):
             oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
             oOutputParameterHandler.addParameter('sThumb', sThumb)
 			
-            oGui.addTV(SITE_IDENTIFIER, 'showEpisodes', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+            oGui.addTV(SITE_IDENTIFIER, 'showSeasons', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
 
         progress_.VSclose(progress_)
  
@@ -239,12 +239,44 @@ def showSeries(sSearch = ''):
     if not sSearch:
         oGui.setEndOfDirectory()
 
+def showSeasons():
+	oGui = cGui()
+    
+	oInputParameterHandler = cInputParameterHandler()
+	sUrl = oInputParameterHandler.getValue('siteUrl')
+	sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
+	sThumb = oInputParameterHandler.getValue('sThumb')
+ 
+	oRequestHandler = cRequestHandler(sUrl)
+	sHtmlContent = oRequestHandler.request()
+    # .+? ([^<]+)
+	sPattern = 'id="Season(.+?)'
 
-def showEpisodes():
+	oParser = cParser()
+	aResult = oParser.parse(sHtmlContent, sPattern)
+		
+	if aResult[0]:
+		oOutputParameterHandler = cOutputParameterHandler()
+		for aEntry in aResult[1]:
+			sS = aEntry[0]
+			sTitle = sMovieTitle+" S"+sS
+			siteUrl = sUrl
+			sThumb = ''
+			sDesc = ""
+			
+			oOutputParameterHandler.addParameter('siteUrl',siteUrl)
+			oOutputParameterHandler.addParameter('sSeason',sS)
+			oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
+			oOutputParameterHandler.addParameter('sThumb', sThumb)
+			oGui.addSeason(SITE_IDENTIFIER, 'showEps', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+        
+	oGui.setEndOfDirectory()
+def showEps():
     oGui = cGui()
     
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
+    sS = oInputParameterHandler.getValue('sSeason')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
  
@@ -254,9 +286,8 @@ def showEpisodes():
     oParser = cParser()
 
     
-  
-     # (.+?) ([^<]+) .+?
-    sPattern = "<a class=.+?title='.+?' href='([^<]+)'><li>([^<]+)</li>"
+    # (.+?) ([^<]+) .+?
+    sPattern = "class='' title='.+?' href='([^<]+)'><li>([^<]+)</li></a>"
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
     if aResult[0] :

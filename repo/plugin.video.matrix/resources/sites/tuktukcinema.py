@@ -150,10 +150,10 @@ def showPack(sSearch = ''):
                 oGui.addDir(SITE_IDENTIFIER, 'showMovies', sTitle, sThumb, oOutputParameterHandler)
  
         sNextPage = __checkForNextPage(sHtmlContent)
-        if sNextPage != False:
+        if sNextPage:
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
-            oGui.addDir(SITE_IDENTIFIER, 'showPack', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
+            oGui.addDir(SITE_IDENTIFIER, 'showSeries', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
  
     if not sSearch:
         oGui.setEndOfDirectory()
@@ -238,10 +238,10 @@ def showMovies(sSearch = ''):
         progress_.VSclose(progress_)
        
         sNextPage = __checkForNextPage(sHtmlContent)
-        oOutputParameterHandler = cOutputParameterHandler()
-        if sNextPage != False:
+        if sNextPage:
+            oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
-            oGui.addDir(SITE_IDENTIFIER, 'showMovies', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
+            oGui.addDir(SITE_IDENTIFIER, 'showSeries', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
  
     if not sSearch:
         oGui.setEndOfDirectory()
@@ -336,8 +336,8 @@ def showSeries(sSearch = ''):
         progress_.VSclose(progress_)
         
         sNextPage = __checkForNextPage(sHtmlContent)
-        oOutputParameterHandler = cOutputParameterHandler()
-        if sNextPage != False:
+        if sNextPage:
+            oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
             oGui.addDir(SITE_IDENTIFIER, 'showSeries', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
  
@@ -413,21 +413,12 @@ def showEpisodes():
   
      # (.+?)
 def __checkForNextPage(sHtmlContent):
-    sPattern = '<li><a href="([^<]+)"&laquo;</a></li>'
-	
+    sPattern = '<a class="next page-numbers" href="(.+?)">>&raquo;</a>'	
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
  
-    if aResult[0] is True:
-        return aResult[1][0]
-    sPattern = 'href="(.+?)">&laquo;</a>'
-	
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
- 
-    if aResult[0] is True:
-        return aResult[1][0]
-    return False
+    if aResult[0]:
+        return URL_MAIN+aResult[1][0]
 
 def showHosters():
     oGui = cGui()

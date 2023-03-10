@@ -149,9 +149,9 @@ class cHosterGui:
 
         if debrid:
             # L'user a active l'url resolver ?
-            if self.ADDON.getSetting('UserUrlResolver') == 'true':
-                import urlresolver
-                hmf = urlresolver.HostedMediaFile(url=sHosterUrl)
+            if self.ADDON.getSetting('UserResolveURL') == 'true':
+                import ResolveURL
+                hmf = ResolveURL.HostedMediaFile(url=sHosterUrl)
                 if hmf.valid_url():
                     tmp = self.getHoster('resolver')
                     RH = sHosterUrl.split('/')[2]
@@ -180,7 +180,7 @@ class cHosterGui:
                             'filepup', 'vimple', 'wstream', 'watchvideo', 'vidwatch', 'up2stream', 'tune', 'playtube',
                             'vidup', 'vidbull', 'vidlox', 'megaup', '33player' 'easyload', 'ninjastream', 'cloudhost',
                             'videobin', 'stagevu', 'gorillavid', 'daclips', 'hdvid', 'vshare', 'streamlare', 'vidload',
-                            'giga', 'megadrive', 'downace', 'clickopen', 'supervideo',
+                            'giga', 'megadrive', 'downace', 'cdnbom', 'clickopen', 'supervideo',
                             'jawcloud', 'kvid', 'soundcloud', 'mixcloud', 'ddlfr', 'vupload', 'dwfull', 'vidzstore',
                             'pdj', 'rapidstream', 'jetload', 'dustreaming', 'viki', 'flix555', 'onlystream',
                             'upstream', 'pstream', 'vudeo', 'dood', 'vidia', 'streamtape', 'uptobox', 'uplea',
