@@ -149,9 +149,9 @@ class cHosterGui:
 
         if debrid:
             # L'user a active l'url resolver ?
-            if self.ADDON.getSetting('UserResolveURL') == 'true':
-                import ResolveURL
-                hmf = ResolveURL.HostedMediaFile(url=sHosterUrl)
+            if self.ADDON.getSetting('Userresolveurl') == 'true':
+                import resolveurl
+                hmf = resolveurl.HostedMediaFile(url=sHosterUrl)
                 if hmf.valid_url():
                     tmp = self.getHoster('resolver')
                     RH = sHosterUrl.split('/')[2]
