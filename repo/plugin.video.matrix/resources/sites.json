@@ -18,7 +18,7 @@
         "akwam": {
             "label": "Akwam",
             "active": "True",
-            "url": "https://on.akwam.in/"
+            "url": "https://akw.am/"
         },
         "akwamEg": {
             "label": "AkwamEg",
@@ -133,7 +133,7 @@
         "cimaclub": {
             "label": "Cimaclub",
             "active": "True",
-            "url": "https://ciimaclub.click/"
+            "url": "https://ciimaclub.beauty/"
         },
         "cimacity": {
             "label": "CimaCity",
@@ -148,7 +148,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u1.site/"
+            "url": "https://cima4u1.beauty/"
         },
         "daddyhd": {
             "label": "DaddyHD",
@@ -248,17 +248,12 @@
         "lodynet": {
             "label": "Lodynet",
             "active": "True",
-            "url": "https://n.lodynet.ink/"
+            "url": "https://lodynet.link/"
         },
         "movizland": {
             "label": "Movizland",
             "active": "True",
             "url": "https://movizland.xyz/"
-        },
-        "mycima": {
-            "label": "Wecima",
-            "active": "True",
-            "url": "https://weecima.pics/"
         },
         "pakistani": {
             "label": "Pakistani",
@@ -334,6 +329,11 @@
             "label": "Watanflix",
             "active": "True",
             "url": "https://watanflix.com/"
+        },
+        "mycima": {
+            "label": "Wecima",
+            "active": "True",
+            "url": "https://weecima.homes/"
         },
         "xsanime": {
             "label": "Xsanime",
