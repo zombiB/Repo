@@ -17,18 +17,17 @@ SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
-oParser = cParser()
+#oParser = cParser()
  
-oRequestHandler = cRequestHandler(URL_MAIN)
-sHtmlContent = oRequestHandler.request()
-URL_MAIN='0'
-    # (.+?) ([^<]+)
+#oRequestHandler = cRequestHandler(URL_MAIN)
+#sHtmlContent = oRequestHandler.request()
+#URL_MAIN='0'
 
-sPattern = '<link rel="canonical" href="([^"]+)'
-aResult = oParser.parse(sHtmlContent, sPattern)
+#sPattern = '<link rel="canonical" href="([^"]+)'
+#aResult = oParser.parse(sHtmlContent, sPattern)
     
-if (aResult[0]):
-    URL_MAIN = aResult[1][0]
+#if (aResult[0]):
+#    URL_MAIN = aResult[1][0]
 
 MOVIE_TOP = (URL_MAIN + '/category/افلام/movies-english-افلام-اجنبي/list/best/', 'showMovies')
 MOVIE_POP = (URL_MAIN + '/category/افلام/movies-english-افلام-اجنبي/list/top/', 'showMovies')

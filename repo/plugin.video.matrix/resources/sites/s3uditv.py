@@ -225,7 +225,7 @@ def showSeries(sSearch = ''):
       # (.+?) ([^<]+) .+?
 	
 def __checkForNextPage(sHtmlContent):
-    sPattern = 'href="([^<]+)".+?>&raquo;</a>'
+    sPattern = '<li class="active"><a href="#".+?<li class=""><a href="([^"]+)".+?<li class="">'
 	
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)

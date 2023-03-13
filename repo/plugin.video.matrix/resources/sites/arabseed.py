@@ -149,7 +149,7 @@ def load():
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + '/category/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d8%b1%d9%85%d8%b6%d8%a7%d9%86-2021/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2021', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2021', 'rmdn.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
 

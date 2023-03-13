@@ -22,6 +22,8 @@ RAMADAN_SERIES = (URL_MAIN + '/category.php?cat=ramdan2022', 'showSeries')
 MOVIE_AR = (URL_MAIN + '/category.php?cat=moviearabic', 'showMovies')
 SERIE_AR = (URL_MAIN + '/category.php?cat=mosalsalatarabia', 'showSeries')
 SERIE_TR = (URL_MAIN + '/category.php?cat=turkish-series', 'showSeries')
+SERIE_ASIA = (URL_MAIN + '/category.php?cat=seriesasia', 'showSeries')
+SERIE_HEND = (URL_MAIN + '/category.php?cat=moslsl-hindi', 'showSeries')
 
 URL_SEARCH = (URL_MAIN + '/search.php?keywords=', 'showSeries')
 URL_SEARCH_MOVIES = (URL_MAIN + '/search.php?keywords=', 'showMovies')
@@ -37,7 +39,10 @@ def load():
 
     oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
     oGui.addDir(SITE_IDENTIFIER, 'showSeriesSearch', 'SEARCH_SERIES', 'search.png', oOutputParameterHandler)
-    
+
+    oOutputParameterHandler.addParameter('siteUrl', RAMADAN_SERIES[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان', 'rmdn.png', oOutputParameterHandler)
+
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'film.png', oOutputParameterHandler)
    
@@ -47,9 +52,22 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
 
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أسيوية', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', SERIE_TR[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات تركية', 'mslsl.png', oOutputParameterHandler)
-	
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_HEND[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + '/category.php?cat=ramdan2021')
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2021', 'rmdn.png', oOutputParameterHandler)
+
     oGui.setEndOfDirectory()
  
 def showSeriesSearch():
@@ -67,7 +85,7 @@ def showSearch():
  
     sSearchText = oGui.showKeyBoard()
     if sSearchText:
-        sUrl = URL_MAIN + '/search.php?keywords='+sSearchText
+        sUrl = URL_MAIN + '/search.php?keywords=فيلم+'+sSearchText
         showMovies(sUrl)
         oGui.setEndOfDirectory()
         return
@@ -83,13 +101,13 @@ def showMovies(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
-    sPattern = '</span><a href="([^<]+)" title="([^<]+)">.+?data-echo="([^<]+)" class="img-responsive">'
+    sPattern = '<a href="(.+?)".+?title="(.+?)".+?<img src=.+?data-echo="(.+?)"'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
 	
-    if aResult[0]:
+    if aResult[0] :
         total = len(aResult[1])
         progress_ = progress().VScreate(SITE_NAME)
         oOutputParameterHandler = cOutputParameterHandler()
@@ -152,13 +170,13 @@ def showSeries(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     # (.+?) .+? ([^<]+)   
-    sPattern = 'class="fa fa-clock-o.+?<a href="([^<]+)" title="(.+?)">.+?data-echo="(.+?)" class="img-responsive">'
-		
+    sPattern = '<div class="thumbnail">.+?<a href="(.+?)".+?title="(.+?)".+?<img src=.+?data-echo="(.+?)"'
+
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
 	
-    if aResult[0]:
+    if aResult[0] :
         total = len(aResult[1])
         progress_ = progress().VScreate(SITE_NAME)
         oOutputParameterHandler = cOutputParameterHandler()
@@ -203,13 +221,12 @@ def showSeries(sSearch = ''):
       # (.+?) ([^<]+) .+?
 	
 def __checkForNextPage(sHtmlContent):
-    sPattern = '<li class=""><a href="(.+?)">.+?</a></li></ul>'
+    sPattern = '<li class="active"><a href="#".+?<li class=""><a href="([^"]+)".+?<li class="">'
 	
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
     VSlog(aResult)
- 
-    if aResult[0]:
+    if aResult[0] :
         
         return URL_MAIN+aResult[1][0]
 
@@ -233,20 +250,20 @@ def showEpisodes():
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
 	
-    if aResult[0]:
+    if aResult[0] :
         oOutputParameterHandler = cOutputParameterHandler()  
         for aEntry in aResult[1]:
             sSeason = "S"+aEntry[0]
             sHtmlContent = aEntry[1]
  # ([^<]+) .+?
 
-            sPattern = '<a class="" href="(.+?)" title.+?<em>(.+?)</em><span>'
+            sPattern = '<a class=".+?href="(.+?)" title.+?<em>(.+?)</em><span>'
 
             oParser = cParser()
             aResult = oParser.parse(sHtmlContent, sPattern)
 	
 	
-            if aResult[0]:
+            if aResult[0] :
                 oOutputParameterHandler = cOutputParameterHandler()  
                 for aEntry in aResult[1]:
  
@@ -278,16 +295,24 @@ def showHosters():
 
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
+    oParser = cParser()
 
+    # (.+?) ([^<]+)
+
+    sPattern = '<a href="(.+?)"'
+    aResult = oParser.parse(sHtmlContent, sPattern)
+
+    if (aResult[0]):
+        URL_MAIN = aResult[1][0]
+        VSlog(URL_MAIN)
     # ([^<]+) .+?
                
 
     sPattern = "data-embed='([^<]+)' data"
-    oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 
 	
-    if aResult[0]:
+    if aResult[0] :
         for aEntry in aResult[1]:
             
             sHosterUrl = aEntry

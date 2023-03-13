@@ -52,7 +52,7 @@
     <description lang="en">Sports highlights and interviews</description>
     <platform>all</platform>
   </extension>
-</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.4e" provider-name="zombi">
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.4f" provider-name="zombi">
     <requires>
 
         <trycatch>
@@ -70,7 +70,6 @@
         <import addon="script.module.requests" />
         <import addon="script.module.resolveurl" version="5.1.00" />
         <import addon="script.module.dnspython" optional="true" />
-        <import addon="script.module.selenium" optional="true" />
         
     </requires>
 

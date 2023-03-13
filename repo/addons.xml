@@ -17,7 +17,6 @@
         <import addon="script.module.requests"/>
         <import addon="script.module.dnspython" optional="true"/>
         <import addon="script.module.resolveurl" optional="true"/>
-        <import addon="script.module.selenium" optional="true"/>
         <!-- Pour le DEBUG        <import addon="script.module.pydevd" version="4.4.0"/> -->
     </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
@@ -77,11 +76,6 @@
             <info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
-            </dir>
-            <dir>
-                <info compressed="false">https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master/addons.xml</info>
-                <checksum>https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master/addons.xml.md5</checksum>
-                <datadir zip="true">https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master</datadir>
             </dir>
             <dir>
                 <info compressed="false">https://raw.githubusercontent.com/Arias800/Fichier-divers/master/addon.xml</info>
