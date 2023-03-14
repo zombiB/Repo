@@ -20,11 +20,6 @@
             "active": "True",
             "url": "https://akw.am/"
         },
-        "akwamEg": {
-            "label": "AkwamEg",
-            "active": "True",
-            "url": "https://eg1.ak4eg.cam/"
-        },
         "alarab": {
             "label": "Alarab",
             "active": "True",
@@ -148,7 +143,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u1.boats/"
+            "url": "https://cima4u1.homes/"
         },
         "daddyhd": {
             "label": "DaddyHD",
@@ -333,7 +328,7 @@
         "mycima": {
             "label": "Wecima",
             "active": "True",
-            "url": "https://weecima.click/"
+            "url": "https://weciima.store/"
         },
         "xsanime": {
             "label": "Xsanime",

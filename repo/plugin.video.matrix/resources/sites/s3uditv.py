@@ -19,7 +19,7 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 MOVIE_AR = (URL_MAIN + 'category.php?cat=arabic-movies', 'showMovies')
 MOVIE_EN = (URL_MAIN + 'category.php?cat=english-movies', 'showMovies')
-RAMADAN_SERIES = (URL_MAIN + 'category.php?cat=8rmdan-2022', 'showSeries')
+RAMADAN_SERIES = (URL_MAIN + 'category.php?cat=8rmdan-2023', 'showSeries')
 SERIE_EN = (URL_MAIN + 'category.php?cat=english-series', 'showSeries')
 SERIE_AR = (URL_MAIN + 'category.php?cat=arabic-series3', 'showSeries')
 SERIE_HEND = (URL_MAIN + 'category.php?cat=moslsl-hindi', 'showSeries')
@@ -71,6 +71,10 @@ def load():
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', SERIE_HEND[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category.php?cat=8rmdan-2022')
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2022', 'rmdn.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
 
