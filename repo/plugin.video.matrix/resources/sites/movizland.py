@@ -19,7 +19,7 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 RAMADAN_SERIES = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
 MOVIE_FAM = (URL_MAIN + 'category/movies/foreign/?genre=%d8%b9%d8%a7%d8%a6%d9%84%d9%8a', 'showMovies')
-MOVIE_AR = (URL_MAIN + 'category/newmovies/arab/', 'showMovies')
+# MOVIE_AR = (URL_MAIN + 'category/newmovies/arab/', 'showMovies')
 MOVIE_EN = (URL_MAIN + 'category/newmovies/newforeign/', 'showMovies')
 MOVIE_4k = (URL_MAIN + 'category/movies/4k/', 'showMovies')
 MOVIE_HI = (URL_MAIN + 'category/newmovies/india/', 'showMovies')
@@ -31,7 +31,7 @@ MOVIE_PACK = (URL_MAIN + 'category/newmovies/backs/', 'showPacks')
 DOC_NEWS = (URL_MAIN + 'category/newmovies/documentary/', 'showMovies')
 
 SERIE_EN = (URL_MAIN + 'category/series/foreign-series/', 'showSeries')
-SERIE_AR = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
+# SERIE_AR = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
 SPORT_WWE = (URL_MAIN + 'category/series/wwe/', 'showMovies')
 
 SERIE_TR = (URL_MAIN + 'category/series/turkish-series/', 'showSeries')
@@ -58,8 +58,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_4k[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', ' 4k أفلام', 'film.png', oOutputParameterHandler)
 	
-    oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
+    # oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
  
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_ASIAN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'film.png', oOutputParameterHandler)
@@ -79,8 +79,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', SERIE_EN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أجنبية', 'mslsl.png', oOutputParameterHandler)
 
-    oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
+    # oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_TR[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات تركية', 'mslsl.png', oOutputParameterHandler)
@@ -128,7 +128,7 @@ def showSearchSeries(sSearch = ''):
 
       # (.+?) ([^<]+) .+?
 
-    sPattern = '<div class="BlockItem">.+?<a href="(.+?)">.+?data-src="(.+?)" class.+?<div class="BlockTitle">(.+?)</div>'
+    sPattern = '<div class="BlockItem">.+?<a href="(.+?)">.+?<img width=".+?" height=".+?" src="([^<]+)" class.+?class="BlockTitle">([^<]+)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
