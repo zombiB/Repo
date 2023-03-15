@@ -53,7 +53,7 @@
         "animeup": {
             "label": "Anime4up",
             "active": "True",
-            "url": "https://anime4up.tv/"
+            "url": "https://w1.anime4up.tv/"
         },
         "animezid": {
             "label": "Animezid",
@@ -143,7 +143,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u1.homes/"
+            "url": "https://cima4u1.lol/"
         },
         "daddyhd": {
             "label": "DaddyHD",
@@ -184,6 +184,11 @@
             "label": "Esseq",
             "active": "True",
             "url": "https://ee.e3sk.net/"
+        },
+        "esseqeg": {
+            "label": "Esseq Egypt",
+            "active": "True",
+            "url": "https://e3sk.com/"
         },
         "fansubs": {
             "label": "Fansubstv",
@@ -238,7 +243,7 @@
         "koralive": {
             "label": "Koralive",
             "active": "True",
-            "url": "https://cool.360kora.live"
+            "url": "https://koora.360kora.live"
         },
         "lodynet": {
             "label": "Lodynet",
@@ -338,7 +343,7 @@
         "yallalive": {
             "label": "Yallalive",
             "active": "True",
-            "url": "https://hd.yallalive.is/"
+            "url": "https://yallalive.art/"
         }
     }
 }
