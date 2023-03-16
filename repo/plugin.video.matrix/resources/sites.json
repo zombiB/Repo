@@ -273,7 +273,7 @@
         "s3uditv": {
             "label": "S3uditv",
             "active": "True",
-            "url": "https://m.s3udi.tv/"
+            "url": "https://eg.s3udi.tv:82/"
         },
         "shooflive": {
             "label": "Shooflive",

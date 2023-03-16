@@ -17,7 +17,7 @@ SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
-RAMADAN_SERIES = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
+# RAMADAN_SERIES = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
 MOVIE_FAM = (URL_MAIN + 'category/movies/foreign/?genre=%d8%b9%d8%a7%d8%a6%d9%84%d9%8a', 'showMovies')
 # MOVIE_AR = (URL_MAIN + 'category/newmovies/arab/', 'showMovies')
 MOVIE_EN = (URL_MAIN + 'category/newmovies/newforeign/', 'showMovies')
@@ -26,7 +26,7 @@ MOVIE_HI = (URL_MAIN + 'category/newmovies/india/', 'showMovies')
 KID_MOVIES = (URL_MAIN + 'category/newmovies/anime/', 'showMovies')
 MOVIE_TURK = (URL_MAIN + 'category/newmovies/turkey/', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + 'category/newmovies/asia/', 'showMovies')
-MOVIE_PACK = (URL_MAIN + 'category/newmovies/backs/', 'showPacks')
+# MOVIE_PACK = (URL_MAIN + 'category/newmovies/backs/', 'showPacks')
 
 DOC_NEWS = (URL_MAIN + 'category/newmovies/documentary/', 'showMovies')
 
@@ -90,8 +90,18 @@ def load():
 
     oOutputParameterHandler.addParameter('siteUrl', SPORT_WWE[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مصارعة', 'wwe.png', oOutputParameterHandler)
-	
- 
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/movies/3d/')
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', ' 3d أفلام', 'film.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/series/netflix-series/')
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات Netfilx', 'mslsl.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/newmovies/netflix/')
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'افلام Netfilx', 'film.png', oOutputParameterHandler)
     oGui.setEndOfDirectory()
  
 def showSeriesSearch():
