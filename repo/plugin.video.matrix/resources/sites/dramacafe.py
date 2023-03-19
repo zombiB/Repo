@@ -13,6 +13,7 @@ from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.parser import cParser
 from resources.lib.comaddon import progress, VSlog, siteManager
 from resources.lib.util import cUtil, Unquote
+from resources.lib.util import Quote
 
 
 	
@@ -176,7 +177,7 @@ def showMovies(sSearch = ''):
                 break
  
             sTitle = aEntry[1].replace("مشاهدة","").replace("بجوده","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("برنامج","").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
-            siteUrl = aEntry[0].replace('watch', 'embed')
+            siteUrl = aEntry[0]
             sThumb = aEntry[2]
             sDesc = ''
             sYear = ''
@@ -279,8 +280,11 @@ def showEpisodes():
             
             
             sTitle = sMovieTitle+'E'+aEntry[1]
-            siteUrl = URL_MAIN+aEntry[0].replace('watch', 'embed')
-            
+            siteUrl = URL_MAIN+aEntry[0]
+            import base64
+            if '?post=' in siteUrl:
+                url_tmp = siteUrl.split('?post=')[-1].replace('%3D','=')
+                siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')
             sThumb = sThumb
             sDesc = ''
 			
@@ -306,7 +310,6 @@ def __checkForNextPage(sHtmlContent):
 
 
 def showHosters():
-    import base64
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
@@ -316,37 +319,45 @@ def showHosters():
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
-
-    m3url = sUrl
-    oRequestHandler = cRequestHandler(m3url)
-    oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
-    oRequestHandler.addHeaderEntry('referer', URL_MAIN)
-    sHtmlContent = oRequestHandler.request() 
+            
+    sPattern =  '<a id="play-video" class="video-play-button" href="(.+?)" target=' 
+    aResult = oParser.parse(sHtmlContent,sPattern)
+    if aResult[0] is True:
+        m3url = aResult[1][0]
+        oRequestHandler = cRequestHandler(m3url)
+        oRequestHandler.addHeaderEntry('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0')
+        oRequestHandler.addHeaderEntry('referer', 'https://wwe.dramacafe-tv.com:81/')
+        sHtmlContent = oRequestHandler.request() 
 
     # (.+?) .+? ([^<]+)        	
-    sPattern = '<div id="video_player_container">.+?src="(.+?)"' 
+    sPattern = 'data-embed="(.+?)".+?<strong>(.+?)</strong>' 
     aResult = re.findall(sPattern, sHtmlContent)
-
 	
     if aResult:
         for aEntry in aResult:
             
-            sHosterUrl = aEntry
-            sTitle =  ""
-            if sHosterUrl.startswith('//'):
-                sHosterUrl = 'http:' + sHosterUrl
+            url = aEntry[0]
+            url = url.split("src='")[1]
+            url = url.split("' scrolling")[0]
+            host  = aEntry[1]
+            sTitle = sMovieTitle
+            if url.startswith('//'):
+               url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url
             if 'userload' in sHosterUrl:
                 sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             if 'moshahda' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
             if 'mystream' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN   
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN    
             oHoster = cHosterGui().checkHoster(sHosterUrl)
-            if oHoster:
-                oHoster.setDisplayName(sMovieTitle)
-                oHoster.setFileName(sMovieTitle)
-                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-                
+            if oHoster != False:
+               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
     oGui.setEndOfDirectory()
                 
    

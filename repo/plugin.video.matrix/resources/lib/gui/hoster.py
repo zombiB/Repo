@@ -159,6 +159,8 @@ class cHosterGui:
                     tmp.setRealHost(RH.split('.')[0].upper())
                     return tmp
 
+
+
             # L'user a activé alldebrid ?
             if self.ADDON.getSetting('hoster_alldebrid_premium') == 'true':
                 return self.getHoster('alldebrid')
@@ -174,6 +176,7 @@ class cHosterGui:
                 else:
                     return self.getHoster("lien_direct")
 
+                
         supported_player = ['film77', 'hdup', 'streamable', 'stardima', 'filescdn', 'vidgot', 'videott', 'vidlo', 'sendit', 'thevid', 'vidmoly', 'fastplay', 'cloudy', 'hibridvod', 'arabveturk', 'extremenow', 'yourupload', 'vidspeeds', 'moshahda', 'voe', 'faselhd', 'streamz', 'streamax', 'gounlimited', 'xdrive', 'mixdrop', 'mixloads', 'vidoza',
                             'rutube', 'megawatch', 'vidzi', 'filetrip', 'uptostream', 'speedvid', 'netu', 'letsupload',
                             'onevideo', 'playreplay', 'prostream', 'vidfast', 'uqload', 'letwatch',
@@ -196,6 +199,8 @@ class cHosterGui:
 
         if ('sbfull' in sHostName):
             return self.getHoster('resolver')
+        if ('videa' in sHostName):
+            return self.getHoster('resolver')
         if ('vanfem' in sHostName):
             return self.getHoster('resolver')
         if ('sblanh' in sHostName):
@@ -213,12 +218,13 @@ class cHosterGui:
         if ('tubeload' in sHostName):
             return self.getHoster('resolver')
         if ('vimeo' in sHostName):
-            return self.getHoster('vimeo')
+            return self.getHoster('resolver')
         if ('embed.scdn.' in sHostName):
             return self.getHoster('faselhd')
         if ('weecima' in sHostName):
             return self.getHoster('mycima')
-            
+        if ('weecima' in sHostName):
+            return self.getHoster('megavideo')            
         if ('megaupload.' in sHostName) or ('fansubs' in sHostName) or ('us.archive.' in sHostName) or ('ddsdd' in sHostName) or ('ffsff' in sHostName) or ('rrsrr' in sHostName)or ('fbcdn.net' in sHostName) or ('blogspot.com' in sHostName) or ('videodelivery' in sHostName) or ('bittube' in sHostName) or ('amazonaws.com' in sHostName):
             return self.getHoster('lien_direct')
 
@@ -258,8 +264,8 @@ class cHosterGui:
         if ('kingfoot' in sHostName):
             return self.getHoster('lien_direct')
             
-        if ('vidbm' in sHostName) or ('vadbam' in sHostName) or ('vedbom' in sHostName) or ('vadbom' in sHostName) or ('vidbam' in sHostName):
-            return self.getHoster('vidbm')
+        if ('vidbm' in sHostName) or ('vadbam' in sHostName) or ('vedbom' in sHostName) or ('vadbom' in sHostName) or ('vidbam' in sHostName) or ('viidshar' in sHostName) or ('allviid' in sHostName) or ('vidspeed' in sHostName):
+            return self.getHoster('vidbom')
 				
         if ('mail.ru' in sHostName):
             return self.getHoster('resolver')
@@ -281,7 +287,10 @@ class cHosterGui:
             
         if ('mediafire' in sHostName):
             return self.getHoster('mediafire')
-            
+
+        if ('workupload' in sHostName):
+            return self.getHoster('workupload')
+
         if ('upbam' in sHostName) or ('uppom' in sHostName) or ('uppboom' in sHostName):
             return self.getHoster('uppom')
             

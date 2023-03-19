@@ -23,7 +23,11 @@ class cHoster(iHoster):
         sHtmlContent = oRequest.request()
             #(.+?)([^<]+)
         oParser = cParser()
-        sPattern =  'aria-label="Download file".+?href="(.+?)"'
+        sStart = '<div class="dl-utility-nav">'
+        sEnd = '</span>'
+        sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
+
+        sPattern =  'href="(.+?)"'
         aResult = oParser.parse(sHtmlContent, sPattern)
         if (aResult[0]):
             api_call = aResult[1][0]

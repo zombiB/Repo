@@ -162,7 +162,7 @@
         },
         "dramacafe": {
             "label": "Dramacafe",
-            "active": "False",
+            "active": "True",
             "url": "https://www.dramacafe-tv.net/"
         },
         "egyclub": {
@@ -334,6 +334,11 @@
             "label": "Wecima",
             "active": "True",
             "url": "https://wecima.tube/"
+        },
+        "witanime": {
+            "label": "WitAnime",
+            "active": "True",
+            "url": "https://witanime.com/"
         },
         "xsanime": {
             "label": "Xsanime",

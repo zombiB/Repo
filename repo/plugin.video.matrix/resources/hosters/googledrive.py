@@ -20,7 +20,7 @@ UA = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:62.0) Gecko/20100101 Firefox/62.0'
 
 class cHoster(iHoster):
     def __init__(self):
-        iHoster.__init__(self, 'googledrive', 'GoogleDrive')
+        iHoster.__init__(self, 'googledrive', 'GoogleDrive', 'google')
 
     def __getIdFromUrl(self, sUrl):
         sPattern = 'google.+?([a-zA-Z0-9-_]{20,40})'
