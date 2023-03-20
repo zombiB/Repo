@@ -35,10 +35,10 @@ def load():
     oGui = cGui()
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'Search Movies', 'search.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'SEARCH_MOVIES', 'search.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', 'http://venom/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSearchSeries', 'Search Series', 'search.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeriesSearch', 'SEARCH_SERIES', 'search.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', RAMADAN_SERIES[0])
@@ -80,8 +80,8 @@ def load():
 
 def showSeriesSearch():
     oGui = cGui()
-    sSearchText = oGui.showKeyBoard()
  
+    sSearchText = oGui.showKeyBoard()
     if sSearchText:
         sUrl = URL_MAIN + '/search.php?keywords='+sSearchText
         showSeries(sUrl)
@@ -90,10 +90,10 @@ def showSeriesSearch():
  
 def showSearch():
     oGui = cGui()
-    sSearchText = oGui.showKeyBoard()
  
+    sSearchText = oGui.showKeyBoard()
     if sSearchText:
-        sUrl = URL_MAIN + '/search.php?keywords='+sSearchText
+        sUrl = URL_MAIN + '/search.php?keywords=فيلم+'+sSearchText
         showMovies(sUrl)
         oGui.setEndOfDirectory()
         return

@@ -13,7 +13,7 @@ from resources.lib.parser import cParser
  
  
 SITE_IDENTIFIER = 'aracinema_co'
-SITE_NAME = 'aradramtv'
+SITE_NAME = 'AradramTV'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)

@@ -65,10 +65,6 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'mslsl.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + '/category.php?cat=ramdan2021')
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2021', 'rmdn.png', oOutputParameterHandler)
-
-    oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category.php?cat=8rmdan-2022')
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2022', 'rmdn.png', oOutputParameterHandler)
 
