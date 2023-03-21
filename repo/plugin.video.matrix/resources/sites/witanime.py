@@ -134,9 +134,6 @@ def showMovies(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
-    sStart = '<div class="anime-list-content">'
-    sEnd = '<div class="space"></div>'
-    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
 
  # ([^<]+) .+? (.+?)
     sPattern = '<img class="img-responsive" src="([^<]+)" alt="([^<]+)" />.+?<h3><a href="([^<]+)">'
@@ -189,12 +186,9 @@ def showSeries(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
 
-    sStart = '<div class="anime-list-content">'
-    sEnd = '<div class="space"></div>'
-    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
 
  # ([^<]+) .+?
-    sPattern = '<img class="img-responsive" src="([^<]+)" alt="([^<]+)" />.+?<a href="([^<]+)" class="overlay"></a>'
+    sPattern = '<img class="img-responsive" src="([^<]+)" alt="([^<]+)" />.+?<h3><a href="([^<]+)">'
 
 
     oParser = cParser()
@@ -224,7 +218,7 @@ def showSeries(sSearch = ''):
             oOutputParameterHandler.addParameter('sYear', sYear)
             oOutputParameterHandler.addParameter('sDesc', sDesc)
 			
-            oGui.addTV(SITE_IDENTIFIER, 'ShowEps', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+            oGui.addTV(SITE_IDENTIFIER, 'ShowEps2', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
 
         progress_.VSclose(progress_)
  
@@ -237,17 +231,6 @@ def showSeries(sSearch = ''):
     if not sSearch:
         oGui.setEndOfDirectory()
  
-def __checkForNextPage(sHtmlContent):
-    sPattern = '<link rel="next" href="([^<]+)" />'
-	
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
- 
-    if aResult[0]:
-        return aResult[1][0]
-
-    return False
-
 def ShowEps():
     oGui = cGui()   
     oInputParameterHandler = cInputParameterHandler()
@@ -336,13 +319,20 @@ def ShowEps2():
             oGui.addEpisode(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler) 
        
     oGui.setEndOfDirectory()
-def showHosters():
-    oGui = cGui()
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
-    sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
-    sThumb = oInputParameterHandler.getValue('sThumb')
+
+def __checkForNextPage(sHtmlContent):
+    sPattern = '<link rel="next" href="([^<]+)" />'
+	
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
  
+    if aResult[0]:
+        
+        return aResult[1][0]
+
+    return False
+
+def showHosters():
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')

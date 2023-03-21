@@ -16,7 +16,7 @@ from resources.lib.util import cUtil, Unquote
 
 	
 SITE_IDENTIFIER = 'ciimalight'
-SITE_NAME = 'Ciimalight'
+SITE_NAME = 'Cimalight'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
@@ -27,9 +27,9 @@ MOVIE_EN = (URL_MAIN + 'category.php?cat=english-movies', 'showMovies')
 MOVIE_HI = (URL_MAIN + 'category.php?cat=indian-movies', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + 'category.php?cat=asian-movies', 'showMovies')
 MOVIE_TURK = (URL_MAIN + 'category.php?cat=turkish-movies', 'showMovies')
-RAMADAN_SERIES = (URL_MAIN + 'category.php?cat=ramdan-2022', 'showSeries')
+RAMADAN_SERIES = (URL_MAIN + 'category.php?cat=ramdan-2023', 'showSeries')
 SERIE_EN = (URL_MAIN + 'category.php?cat=english-series', 'showSeries')
-SERIE_AR = (URL_MAIN + 'category.php?cat=arabic-series', 'showSeries')
+SERIE_AR = (URL_MAIN + 'category.php?cat=arabic-series1', 'showSeries')
 SERIE_HEND = (URL_MAIN + 'category.php?cat=indian-series', 'showSeries')
 SERIE_ASIA = (URL_MAIN + 'category.php?cat=asian-series', 'showSeries')
 SERIE_TR = (URL_MAIN + 'category.php?cat=turkish-series', 'showSeries')
@@ -38,7 +38,7 @@ REPLAYTV_NEWS = (URL_MAIN + 'category.php?cat=tv-shows', 'showSeries')
 
 URL_SEARCH = (URL_MAIN + 'search.php?keywords=', 'showSeries')
 URL_SEARCH_MOVIES = (URL_MAIN + 'search.php?keywords=', 'showMovies')
-URL_SEARCH_SERIES = (URL_MAIN + 'search.php?keywords=', 'showSerie')
+URL_SEARCH_SERIES = (URL_MAIN + 'search.php?keywords=', 'showSeries')
 
 FUNCTION_SEARCH = 'showSeries'
 	
@@ -107,7 +107,10 @@ def load():
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', REPLAYTV_NEWS[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'برامج تلفزيونية', 'brmg.png', oOutputParameterHandler)
-	
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category.php?cat=2ramdan-2022')
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2022', 'rmdn.png', oOutputParameterHandler)	
     
     oGui.setEndOfDirectory()
 
@@ -157,7 +160,13 @@ def showMovies(sSearch = ''):
             progress_.VSupdate(progress_, total)
             if progress_.iscanceled():
                 break
- 
+
+            if "الحلقة" in aEntry[1]:
+                continue
+
+            if "مسلسل" in aEntry[1]:
+                continue
+
             sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("برنامج","").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
             siteUrl = aEntry[2].replace("watch.php","play.php")
             sThumb = aEntry[0]
@@ -214,7 +223,10 @@ def showSeries(sSearch = ''):
             progress_.VSupdate(progress_, total)
             if progress_.iscanceled():
                 break
- 
+
+            if "فيلم" in aEntry[1]:
+                continue
+
             sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("برنامج","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
             siteUrl = aEntry[2]
             sThumb = aEntry[0]
@@ -316,12 +328,14 @@ def showEps():
 	
 
 def __checkForNextPage(sHtmlContent):
-    sPattern = '<a href="([^<]+)"><i class="fa fa-arrow-left"></i></a>'	 
+    sPattern = '<li class="active"><a href="#".+?<li class=""><a href="([^"]+)".+?<li class="">'
+	
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
- 
+    VSlog(aResult)
     if aResult[0] :
-        return aResult[1][0]
+        
+        return URL_MAIN+aResult[1][0]
 
     return False
 

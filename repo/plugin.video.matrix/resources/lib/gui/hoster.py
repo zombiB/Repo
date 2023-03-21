@@ -202,7 +202,7 @@ class cHosterGui:
         if ('videa' in sHostName):
             return self.getHoster('resolver')
         if ('vanfem' in sHostName):
-            return self.getHoster('resolver')
+            return self.getHoster('fembed')
         if ('sblanh' in sHostName):
             return self.getHoster('resolver')
         if ('sbchill' in sHostName):
@@ -218,7 +218,7 @@ class cHosterGui:
         if ('tubeload' in sHostName):
             return self.getHoster('resolver')
         if ('vimeo' in sHostName):
-            return self.getHoster('resolver')
+            return self.getHoster('vimeo')
         if ('embed.scdn.' in sHostName):
             return self.getHoster('faselhd')
         if ('weecima' in sHostName):
@@ -264,7 +264,7 @@ class cHosterGui:
         if ('kingfoot' in sHostName):
             return self.getHoster('lien_direct')
             
-        if ('vidbm' in sHostName) or ('vadbam' in sHostName) or ('vedbom' in sHostName) or ('vadbom' in sHostName) or ('vidbam' in sHostName) or ('viidshar' in sHostName) or ('allviid' in sHostName) or ('vidspeed' in sHostName):
+        if ('vidbm' in sHostName) or ('vadbam' in sHostName) or ('vedbom' in sHostName) or ('vadbom' in sHostName) or ('vidbam' in sHostName) or ('viidshar' in sHostName):
             return self.getHoster('vidbom')
 				
         if ('mail.ru' in sHostName):
@@ -278,6 +278,9 @@ class cHosterGui:
 			
         if ('clicknupload' in sHostName):
             return self.getHoster('resolver')
+
+        if ('vidspeed' in sHostName):
+            return self.getHoster('vidspeeds')
 				
         if ('megaup.' in sHostName):
             return self.getHoster('megaup')
@@ -293,7 +296,10 @@ class cHosterGui:
 
         if ('upbam' in sHostName) or ('uppom' in sHostName) or ('uppboom' in sHostName):
             return self.getHoster('uppom')
-            
+
+        if ('allviid' in sHostName):
+            return self.getHoster('filemoon')
+
         if ('filemoon' in sHostName):
             return self.getHoster('filemoon')
             
@@ -461,7 +467,7 @@ class cHosterGui:
         val = next((x for x in ['french-vid', 'diasfem', 'yggseries', 'fembed', 'fem.tohds', 'feurl', 'fsimg', 'core1player',
                                 'vfsplayer', 'gotochus', 'suzihaza', 'sendvid', "femax"] if x in sHostName), None)
         if val:
-            return self.getHoster("resolver")
+            return self.getHoster("fembed")
 
         if ('directmoviedl' in sHostName) or ('moviesroot' in sHostName):
             return self.getHoster('directmoviedl')
@@ -484,7 +490,7 @@ class cHosterGui:
         if ('.mp4' in sHosterUrl):
             return self.getHoster('lien_direct')
 				
-        if ('nitroflare' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName or 'multiup' in sHostName):
+        if ('nitroflare' in sHostName or 'tubeload.' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName or 'multiup' in sHostName):
             return False
 
         return False

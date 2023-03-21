@@ -299,12 +299,14 @@ def showEpisodes():
 	
 
 def __checkForNextPage(sHtmlContent):
-    sPattern = '<a href="([^<]+)"><i class="fa fa-arrow-left"></i></a>'	 
+    sPattern = '<li class="active"><a href="#".+?<li class=""><a href="([^"]+)".+?<li class="">'
+	
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
- 
+    VSlog(aResult)
     if aResult[0] :
-        return aResult[1][0]
+        
+        return URL_MAIN+aResult[1][0]
 
     return False
 

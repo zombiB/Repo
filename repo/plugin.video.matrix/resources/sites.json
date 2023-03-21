@@ -18,7 +18,12 @@
         "akwam": {
             "label": "Akwam",
             "active": "True",
-            "url": "https://akw.am/"
+            "url": "https://akwam.cz/"
+        },
+        "akwameg": {
+            "label": "AkwamEg",
+            "active": "True",
+            "url": "https://akwnet.com/"
         },
         "alarab": {
             "label": "Alarab",
@@ -92,7 +97,7 @@
         },
         "awaan": {
             "label": "Awaan",
-            "active": "True",
+            "active": "False",
             "url": "https://www.awaan.ae/"
         },
         "beinmatch": {
@@ -192,7 +197,7 @@
         },
         "fansubs": {
             "label": "Fansubstv",
-            "active": "True",
+            "active": "False",
             "url": "https://fansubs.tv/"
         },
         "faselhd": {
