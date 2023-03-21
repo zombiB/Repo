@@ -148,7 +148,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u1.lol/"
+            "url": "https://cima4u1.yachts/"
         },
         "daddyhd": {
             "label": "DaddyHD",
@@ -228,7 +228,7 @@
         "halacima": {
             "label": "Halacima",
             "active": "True",
-            "url": "https://halacima.us/"
+            "url": "https://halacima.club/"
         },
         "hidaya": {
             "label": "Hidaya",
@@ -268,7 +268,7 @@
         "prstej": {
             "label": "3RBVideo",
             "active": "True",
-            "url": "https://sa.3rb.media/"
+            "url": "https://sa.3rb.lol/"
         },
         "rotana": {
             "label": "Rotana",
@@ -353,7 +353,7 @@
         "yallalive": {
             "label": "Yallalive",
             "active": "True",
-            "url": "https://yallalive.art/"
+            "url": "https://yallalive.id/"
         }
     }
 }
