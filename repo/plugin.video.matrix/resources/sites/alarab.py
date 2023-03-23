@@ -179,7 +179,8 @@ def showEps():
         oOutputParameterHandler = cOutputParameterHandler()
         for aEntry in aResult[1]:
             
-            sTitle = aEntry[2].replace("مشاهدة","").replace("HD رمضان 2022","").replace("HD رمضان 2023","").replace("حلقات كاملة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("برنامج","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مباشرة","").replace("HD","").replace("انتاج ","").replace("اونلاين","").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("الحلقة "," E").replace("حلقة "," E")            siteUrl = URL_MAIN+aEntry[0]
+            sTitle = aEntry[2].replace("مشاهدة","").replace("HD رمضان 2022","").replace("HD رمضان 2023","").replace("حلقات كاملة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("برنامج","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مباشرة","").replace("HD","").replace("انتاج ","").replace("اونلاين","").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("الحلقة "," E").replace("حلقة "," E")            
+            siteUrl = URL_MAIN+aEntry[0]
             sYear = ''
             m = re.search('([0-9]{4})', sTitle)
             if m:
@@ -249,7 +250,8 @@ def showSeries(sSearch = ''):
             if progress_.iscanceled():
                 break
        
-            sTitle = aEntry[2].replace("مشاهدة","").replace("HD رمضان 2022","").replace("HD رمضان 2023","").replace("حلقات كاملة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("برنامج","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مباشرة","").replace("HD","").replace("انتاج ","").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("الحلقة "," E").replace("حلقة "," E")            siteUrl = URL_MAIN+aEntry[0]
+            sTitle = aEntry[2].replace("مشاهدة","").replace("HD رمضان 2022","").replace("HD رمضان 2023","").replace("حلقات كاملة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("برنامج","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مباشرة","").replace("HD","").replace("انتاج ","").replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("الحلقة "," E").replace("حلقة "," E")            
+            siteUrl = URL_MAIN+aEntry[0]
             sThumb = aEntry[1]
             sDesc = ''
             sYear = ''
@@ -299,7 +301,7 @@ def showHosters():
     sThumb = oInputParameterHandler.getValue('sThumb')
     
     oRequestHandler = cRequestHandler(sUrl)
-    sHtmlContent = oRequestHandler.request();
+    sHtmlContent = oRequestHandler.request()
 
     oParser = cParser()
             
@@ -311,7 +313,8 @@ def showHosters():
            m3url = 'http:' + m3url 	
         oRequest = cRequestHandler(m3url)
         sHtmlContent = oRequest.request()
-    sPattern = '<a href="(.+?)" target='
+    
+    sPattern = '<a href="([^<]+)" target='
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
     

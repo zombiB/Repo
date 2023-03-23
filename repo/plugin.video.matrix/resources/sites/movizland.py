@@ -17,6 +17,18 @@ SITE_NAME = 'Movizland'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
+oParser = cParser()
+ 
+oRequestHandler = cRequestHandler(URL_MAIN)
+sHtmlContent = oRequestHandler.request()
+URL_MAIN='0'
+    # (.+?) ([^<]+)
+
+sPattern = '<a href="(.+?)" title="موفيز لاند MovizLand">'
+aResult = oParser.parse(sHtmlContent, sPattern)
+    
+if (aResult[0]):
+    URL_MAIN = aResult[1][0]+'/'
 
 # RAMADAN_SERIES = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
 MOVIE_FAM = (URL_MAIN + 'category/movies/foreign/?genre=%d8%b9%d8%a7%d8%a6%d9%84%d9%8a', 'showMovies')

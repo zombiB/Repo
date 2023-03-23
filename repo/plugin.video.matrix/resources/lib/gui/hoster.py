@@ -229,10 +229,9 @@ class cHosterGui:
             return self.getHoster('vimeo')
         if ('embed.scdn.' in sHostName):
             return self.getHoster('faselhd')
-        if ('weecima' in sHostName):
+        if ('/run/' in sHosterUrl):
             return self.getHoster('mycima')
-        if ('weecima' in sHostName):
-            return self.getHoster('megavideo')            
+                 
         if ('megaupload.' in sHostName) or ('fansubs' in sHostName) or ('us.archive.' in sHostName) or ('ddsdd' in sHostName) or ('ffsff' in sHostName) or ('rrsrr' in sHostName)or ('fbcdn.net' in sHostName) or ('blogspot.com' in sHostName) or ('videodelivery' in sHostName) or ('bittube' in sHostName) or ('amazonaws.com' in sHostName):
             return self.getHoster('lien_direct')
 
