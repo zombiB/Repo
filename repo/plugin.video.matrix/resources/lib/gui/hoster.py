@@ -199,10 +199,18 @@ class cHosterGui:
 
         if ('sbfull' in sHostName):
             return self.getHoster('resolver')
+        if ('sbbrisk' in sHostName):
+            return self.getHoster('resolver')
         if ('videa' in sHostName):
             return self.getHoster('resolver')
         if ('vanfem' in sHostName):
             return self.getHoster('fembed')
+        if ('streamhide' in sHostName):
+            return self.getHoster('resolver')
+        if ('vidpro' in sHostName):
+            return self.getHoster('samashare')
+        if ('streamvid' in sHostName):
+            return self.getHoster('resolver')
         if ('sblanh' in sHostName):
             return self.getHoster('resolver')
         if ('sbchill' in sHostName):
@@ -490,7 +498,7 @@ class cHosterGui:
         if ('.mp4' in sHosterUrl):
             return self.getHoster('lien_direct')
 				
-        if ('nitroflare' in sHostName or 'tubeload.' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName or 'multiup' in sHostName):
+        if ('nitroflare' in sHostName or 'tubeload.' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName):
             return False
 
         return False

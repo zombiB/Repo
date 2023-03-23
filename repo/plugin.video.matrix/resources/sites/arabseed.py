@@ -401,14 +401,7 @@ def showSeasons():
  
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
-    sURL_MAIN='0'
-    # (.+?) ([^<]+)
 
-    sPattern = 'HomeURL = "(.+?)";'
-    aResult = oParser.parse(sHtmlContent, sPattern)
-    
-    if (aResult[0]):
-        sURL_MAIN = aResult[1][0]
     # (.+?) .+? ([^<]+)
     sPattern = 'data-id="(.+?)" data-season="(.+?)"><i class="fa fa-folder"></i>الموسم <span>(.+?)</span></li>'
 
@@ -426,7 +419,7 @@ def showSeasons():
             s = requests.Session()            
             headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
             data = {'post_id':post,'season':pseason}
-            r = s.post(sURL_MAIN + '/wp-content/themes/Elshaikh2021/Ajaxat/Single/Episodes.php', headers=headers,data = data)
+            r = s.post(URL_MAIN + '/wp-content/themes/Elshaikh2021/Ajaxat/Single/Episodes.php', headers=headers,data = data)
             sHtmlContent = r.content.decode('utf8',errors='ignore')
             sPattern = 'href="([^<]+)">([^<]+)<em>([^<]+)</em>'
             aResult = oParser.parse(sHtmlContent, sPattern)

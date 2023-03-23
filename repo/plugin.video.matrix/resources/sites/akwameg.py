@@ -387,7 +387,7 @@ def showSeries(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="([^<]+)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="badge badge-pill badge-secondary ml-1">([^<]+)</span>'
+    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="(.+?)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="badge badge-pill badge-secondary ml-1">([^<]+)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)

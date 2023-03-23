@@ -21,13 +21,13 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 MOVIE_FAM = (URL_MAIN + 'getposts?genre=%D8%B9%D8%A7%D8%A6%D9%84%D9%8A&category=1', 'showMovies')
 MOVIE_TOP = (URL_MAIN + 'getposts?type=one&data=rating', 'showMovies')
 MOVIE_EN = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D8%AC%D9%86%D8%A8%D9%89-aflam-onilne15', 'showMovies')
-MOVIE_AR = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%B9%D8%B1%D8%A8%D9%8A-%D8%A7%D9%88%D9%86-%D9%84%D8%A7%D9%8A%D9%86', 'showMovies')
+# MOVIE_AR = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%B9%D8%B1%D8%A8%D9%8A-%D8%A7%D9%88%D9%86-%D9%84%D8%A7%D9%8A%D9%86', 'showMovies')
 MOVIE_TURK = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%AA%D8%B1%D9%83%D9%8A%D8%A9', 'showMovies')
 MOVIE_HI = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D9%87%D9%86%D8%AF%D9%8A', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + '/category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D8%B3%D9%8A%D9%88%D9%8A%D8%A9', 'showMovies')
 KID_MOVIES = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D9%86%D9%8A%D9%85%D9%8A%D8%B4%D9%86', 'showMovies')
 MOVIE_MOVIE = (True, 'load')
-RAMADAN_SERIES = (URL_MAIN + 'category/مسلسلات-رمضان-2022', 'showSerie')
+# RAMADAN_SERIES = (URL_MAIN + 'category/مسلسلات-رمضان-2022', 'showSerie')
 SERIE_LATIN = (URL_MAIN + 'category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%A8%D8%B1%D8%A7%D8%B2%D9%8A%D9%84%D9%8A%D8%A9', 'showSerie')
 SERIE_DUBBED = (URL_MAIN + '/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D9%85%D8%AF%D8%A8%D9%84%D8%AC%D9%87', 'showSerie')
 SERIE_ASIA = (URL_MAIN + 'category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D9%83%D9%88%D8%B1%D9%8A', 'showSerie')
@@ -58,8 +58,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'film.png', oOutputParameterHandler)
    
-    oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
+    # oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
  
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_ASIAN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'film.png', oOutputParameterHandler)
@@ -76,8 +76,8 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', SERIE_EN[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات أجنبية', 'mslsl.png', oOutputParameterHandler)
     
-    oOutputParameterHandler.addParameter('siteUrl', 'https://www.cima-club.cc:2096/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A93')
-    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A93')
+    # oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
    
     oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات أسيوية', 'mslsl.png', oOutputParameterHandler)
@@ -97,7 +97,7 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', SPORT_NEWS[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'مصارعة', 'wwe.png', oOutputParameterHandler)
     
-    oOutputParameterHandler.addParameter('siteUrl', 'https://www.cima-club.cc:2096/category/%D9%85%D8%B3%D8%B1%D8%AD%D9%8A%D8%A7%D8%AA-%D9%88%D8%B9%D8%B1%D9%88%D8%B6-%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D9%8A%D9%87')
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/%D9%85%D8%B3%D8%B1%D8%AD%D9%8A%D8%A7%D8%AA-%D9%88%D8%B9%D8%B1%D9%88%D8%B6-%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D9%8A%D9%87')
     oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'عروض تلفزيونيه', 'brmg.png', oOutputParameterHandler) 
     
     oGui.setEndOfDirectory()

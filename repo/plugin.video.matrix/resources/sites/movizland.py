@@ -10,6 +10,7 @@ from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
 from resources.lib.handler.requestHandler import cRequestHandler
 from resources.lib.comaddon import progress, VSlog, siteManager
 from resources.lib.parser import cParser
+from resources.lib.multihost import cMultiup
  
 SITE_IDENTIFIER = 'movizland'
 SITE_NAME = 'Movizland'
@@ -860,7 +861,30 @@ def showHosters2():
     sHtmlContent = oRequestHandler.request()
 
     # ([^<]+) (.+?)  .+?    
-				           
+    sPattern = '<button onclick=".+?" value="(.+?)" type="submit">'
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+
+	
+    if aResult[0] :
+        for aEntry in aResult[1]:
+            if 'multiup' in aEntry:
+                aResult = cMultiup().GetUrls(aEntry)
+                
+                if (aResult):
+                    for aEntry in aResult:
+                        sHosterUrl = aEntry
+                        oHoster = cHosterGui().checkHoster(sHosterUrl)
+                        if (oHoster):
+                            oHoster.setDisplayName(sMovieTitle)
+                            oHoster.setFileName(sMovieTitle)
+                            cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+            else:      
+                oHoster = cHosterGui().checkHoster(aEntry)
+                if (oHoster):
+                    oHoster.setDisplayName(sMovieTitle)
+                    oHoster.setFileName(sMovieTitle)
+                    cHosterGui().showHoster(oGui, oHoster, aEntry, sThumb)				           
 
     sPattern = 'allowfullscreen data-srcout="([^<]+)" FRAMEBORDER'
     oParser = cParser()
@@ -911,7 +935,7 @@ def showHosters2():
                 url = 'http:' + url
             
             sHosterUrl = url
-            if '?download_' in sHosterUrl:
+            if 'download_' in sHosterUrl:
                 sHosterUrl = sHosterUrl.replace("moshahda","ffsff")
                 sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
             if 'userload' in sHosterUrl:
