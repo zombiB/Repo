@@ -319,7 +319,7 @@ def showSeasons():
     oParser = cParser()
     
      # (.+?) .+?  ([^<]+)
-    sPattern = '<title>(.+?)</title>.+?<meta property="og:image" content="([^<]+)" />.+?<meta property="og:url" content="([^<]+)" />'
+    sPattern = '<title>(.+?)</title>.+?<meta property="og:image" content="([^<]+)" />.+?<link rel="canonical" href="([^"]+)'
     
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -439,7 +439,7 @@ def showEpisodes():
 
     oParser = cParser()
 
-    sStart = 'id="series-episodes">'
+    sStart = 'class="header-link text-white">الحلقات</span>'
     sEnd = '<div class="widget-4 widget widget-style-1 more mb-4">'
     sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
   
