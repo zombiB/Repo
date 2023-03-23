@@ -319,7 +319,7 @@ def showSeasons():
     oParser = cParser()
     
      # (.+?) .+?  ([^<]+)
-    sPattern = '<meta property="og:title" content="([^<]+)" />.+?<meta property="og:image" content="([^<]+)" />.+?<meta property="og:url" content="([^<]+)" />'
+    sPattern = '<title>(.+?)</title>.+?<meta property="og:image" content="([^<]+)" />.+?<meta property="og:url" content="([^<]+)" />'
     
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -344,7 +344,7 @@ def showSeasons():
  
             oGui.addSeason(SITE_IDENTIFIER, 'showEpisodes', sTitle, '', sThumb, sDesc, oOutputParameterHandler)  
     # (.+?) .+?  ([^<]+)
-    sPattern = '<a href="([^<]+)" class="text-white- ml-2 btn btn-light mb-2">([^<]+)</a>'
+    sPattern = '<a href="([^<]+)" class="text-white- ml-2 btn btn-light mb-2">(.+?)</a>'
     
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -387,7 +387,7 @@ def showSeries(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
-    sPattern = '<span class="label quality">([^<]+)</span>.+?<a href="(.+?)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="(.+?)".+?<span class="badge badge-pill badge-secondary ml-1">([^<]+)</span>'
+    sPattern = '<span class="label quality">.+?<a href="(.+?)" class="box">.+?data-src="([^<]+)" class="img-fluid w-100 lazy" alt="([^"]+)'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -402,10 +402,9 @@ def showSeries(sSearch = ''):
             if progress_.iscanceled():
                 break
  
-            sTitle = aEntry[3].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("برنامج","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
-            siteUrl = aEntry[1]
-            sThumb = aEntry[2]
-            sYear = aEntry[4]
+            sTitle = aEntry[2].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("برنامج","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
+            siteUrl = aEntry[0]
+            sThumb = aEntry[1]
             sTitle = sTitle.replace("الموسم العاشر","S10").replace("الموسم الحادي عشر","S11").replace("الموسم الثاني عشر","S12").replace("الموسم الثالث عشر","S13").replace("الموسم الرابع عشر","S14").replace("الموسم الخامس عشر","S15").replace("الموسم السادس عشر","S16").replace("الموسم السابع عشر","S17").replace("الموسم الثامن عشر","S18").replace("الموسم التاسع عشر","S19").replace("الموسم العشرون","S20").replace("الموسم الحادي و العشرون","S21").replace("الموسم الثاني و العشرون","S22").replace("الموسم الثالث و العشرون","S23").replace("الموسم الرابع والعشرون","S24").replace("الموسم الخامس و العشرون","S25").replace("الموسم السادس والعشرون","S26").replace("الموسم السابع و العشرون","S27").replace("الموسم الثامن والعشرون","S28").replace("الموسم التاسع والعشرون","S29").replace("الموسم الثلاثون","S30").replace("الموسم الحادي و الثلاثون","S31").replace("الموسم الثاني والثلاثون","S32").replace("الموسم الثالث و الثلاثون","S33").replace("الموسم الأول","S1").replace("الموسم الاول","S1").replace("الموسم الثاني","S2").replace("الموسم الثالث","S3").replace("الموسم الثالث","S3").replace("الموسم الرابع","S4").replace("الموسم الخامس","S5").replace("الموسم السادس","S6").replace("الموسم السابع","S7").replace("الموسم الثامن","S8").replace("الموسم التاسع","S9")
             sDesc = ''
 
@@ -445,7 +444,7 @@ def showEpisodes():
     sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
   
      # (.+?) ([^<]+) .+?
-    sPattern = 'class="text-white">([^<]+)</a>.+?<a href="([^<]+)">.+?<img src="([^<]+)" class="img-fluid" alt='
+    sPattern = 'class="text-white">(.+?)</a>.+?<a href="([^<]+)">.+?<img src="([^<]+)" class="img-fluid" alt='
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
     if aResult[0]:
