@@ -321,7 +321,7 @@ msgid "Search (Movie)"
 msgstr ""
 
 msgctxt "#30079"
-msgid "Search (Tvshow)"
+msgid "Search (TV Shows)"
 msgstr ""
 
 msgctxt "#30080"
@@ -357,7 +357,7 @@ msgid "Clear Cache matrix, Error"
 msgstr ""
 
 msgctxt "#30088"
-msgid "TMDB"
+msgid "Search [COLOR orange](Visual Search)[/COLOR]"
 msgstr ""
 
 msgctxt "#30089"
@@ -501,7 +501,7 @@ msgid "Programs"
 msgstr ""
 
 msgctxt "#30118"
-msgid "Search (Anim)"
+msgid "Search (Anime)"
 msgstr ""
 
 msgctxt "#30119"
@@ -529,7 +529,7 @@ msgid "Dramas"
 msgstr ""
 
 msgctxt "#30125"
-msgid "Continue watching"
+msgid "Continue Watching"
 msgstr ""
 
 msgctxt "#30126"
@@ -549,7 +549,19 @@ msgid "Clear Cache Kodi"
 msgstr ""
 
 msgctxt "#30130"
-msgid "Lists"
+msgid "My Videos"
+msgstr ""
+
+msgctxt "#30131"
+msgid "Streaming"
+msgstr ""
+
+msgctxt "#30132"
+msgid "Live"
+msgstr ""
+
+msgctxt "#30133"
+msgid "Movies"
 msgstr ""
 
 msgctxt "#30134"
@@ -597,7 +609,7 @@ msgid "Marked seen/Not seen"
 msgstr ""
 
 msgctxt "#30207"
-msgid "Bookmarks"
+msgid "My Bookmarks"
 msgstr ""
 
 msgctxt "#30208"
@@ -681,7 +693,7 @@ msgid "Records"
 msgstr ""
 
 msgctxt "#30227"
-msgid "Open settings"
+msgid "Open Settings"
 msgstr ""
 
 msgctxt "#30228"
@@ -689,7 +701,7 @@ msgid "Request registered"
 msgstr ""
 
 msgctxt "#30229"
-msgid "My downloads"
+msgid "My Downloads"
 msgstr ""
 
 msgctxt "#30300"
@@ -721,7 +733,7 @@ msgid "[COLOR khaki]Hello, %s[/COLOR]"
 msgstr ""
 
 msgctxt "#30308"
-msgid "Search history"
+msgid "Search History"
 msgstr ""
 
 msgctxt "#30309"
@@ -745,7 +757,7 @@ msgid "Recommended"
 msgstr ""
 
 msgctxt "#30314"
-msgid "BoxOffice"
+msgid "Box Office"
 msgstr ""
 
 msgctxt "#30315"
@@ -761,7 +773,7 @@ msgid "Most viewed of the month"
 msgstr ""
 
 msgctxt "#30318"
-msgid "Watchlist (seasons)"
+msgid "Watchlist (Seasons)"
 msgstr ""
 
 msgctxt "#30319"
@@ -773,7 +785,7 @@ msgid "You have successfully logged out"
 msgstr ""
 
 msgctxt "#30324"
-msgid "Library"
+msgid "Media Folders"
 msgstr ""
 
 msgctxt "#30325"
@@ -897,7 +909,7 @@ msgid "Show most monthly viewed"
 msgstr ""
 
 msgctxt "#30360"
-msgid "My personnal Trakt lists"
+msgid "My Personnal Trakt Lists"
 msgstr ""
 
 msgctxt "#31210"
@@ -1137,7 +1149,7 @@ msgid "Continue direct via UpToBox"
 msgstr ""
 
 msgctxt "#30455"
-msgid "My accounts"
+msgid "My Accounts"
 msgstr ""
 
 msgctxt "#30456"

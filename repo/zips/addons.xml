@@ -11,11 +11,6 @@
          <checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
          <datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
         </dir>
-        <dir>
-        <info compressed="false">https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master/addons.xml</info>
-        <checksum>https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master/addons.xml.md5</checksum>
-        <datadir zip="true">https://raw.githubusercontent.com/Ovni-crea/seleniumzip/master</datadir>
-        </dir>
          <dir>
         <info compressed="false">https://raw.githubusercontent.com/Arias800/Fichier-divers/master/addon.xml</info>
         <checksum>https://raw.githubusercontent.com/Arias800/Fichier-divers/master/addons.xml.md5</checksum>
@@ -52,7 +47,7 @@
     <description lang="en">Sports highlights and interviews</description>
     <platform>all</platform>
   </extension>
-</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.9a3" provider-name="zombi">
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.9b" provider-name="Yonn1981">
     <requires>
 
         <trycatch>

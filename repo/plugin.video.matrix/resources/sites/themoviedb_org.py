@@ -68,7 +68,7 @@ def load():
     oGui.addDir('topimdb', 'load', 'Top Imdb', 'star.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', 'http://')
-    oGui.addDir(SITE_IDENTIFIER, 'showFolderList', 'Listes TMDB', 'listes.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showFolderList', 'TMDB Lists', 'listes.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
 
@@ -291,7 +291,7 @@ def getAction():
 
     elif sAction == 'addtolist':
         if sCat == 'tv':
-            dialogs.VSinfo("Vous ne pouvez pas ajouter une série à une liste de films tmdb")
+            dialogs.VSinfo("You cannot add a series to a tmdb movie list")
             return
         result = grab.getUrl('account/%s/lists' % addons.getSetting('tmdb_account'), term='session_id=%s' % addons.getSetting('tmdb_session'))
         total = len(result)
@@ -310,7 +310,7 @@ def getAction():
 
     elif sAction == 'addtonewlist':
         if sCat == 'tv':
-            dialogs.VSinfo("Vous ne pouvez pas ajouter une série à une liste de films tmdb")
+            dialogs.VSinfo("You cannot add a series to a tmdb movie list")
             return        
         # nom de la nouvelle liste
         listname = oGui.showKeyBoard()
@@ -511,19 +511,18 @@ def showFolderList():
     oGui = cGui()
 
     liste = []
-    liste.append(['Top 50 des plus grands films', '10'])
-    liste.append(['Gagnants des Oscars', '31670'])
-    liste.append(['Les films fascinants ', '43'])
-    liste.append(['science-fiction', '3945'])
-    liste.append(['Les adaptations', '9883'])
+    liste.append(['Top 50 Greatest Movies', '10'])
+    liste.append(['Oscar winners', '31670'])
+    liste.append(['Fascinating movies ', '43'])
+    liste.append(['Science-Fiction', '3945'])
+    liste.append(['Adaptations', '9883'])
     liste.append(['Disney Classic', '338'])
     liste.append(['Pixar', '3700'])
     liste.append(['Marvel', '1'])
     liste.append(['DC Comics Universe', '3'])
     liste.append(['Top Manga', '31665'])
     liste.append(['Top Manga 2', '31695'])
-    liste.append(['Best séries', '36788'])
-    liste.append(['Films de Noel', '40944'])
+    liste.append(['Best Series', '36788'])
     # liste.append(['nom de la liste', 'ID de la liste'])
 
     oOutputParameterHandler = cOutputParameterHandler()

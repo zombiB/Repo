@@ -30,7 +30,7 @@ msgstr "Media informations"
 
 msgctxt "#30006"
 msgid "Search Metadata"
-msgstr "Search Metadata"
+msgstr "Metadata البجث في الـ"
 
 msgctxt "#30007"
 msgid "Posters Size"
@@ -42,7 +42,7 @@ msgstr "حجم  الFanarts"
 
 msgctxt "#30009"
 msgid "Use extendedinfo for the information windows"
-msgstr "استخدم extendedinfo"
+msgstr "استخدام extendedinfo"
 
 msgctxt "#30010"
 msgid "Color Text note"
@@ -74,15 +74,15 @@ msgstr "تمكين سجل البحث"
 
 msgctxt "#30017"
 msgid "[COLOR azure]Select page[/COLOR]"
-msgstr "[COLOR azure]Sélectionner page[/COLOR]"
+msgstr "[COLOR azure]اختر الصفحة[/COLOR]"
 
 msgctxt "#30018"
 msgid "[COLOR azure]Back to site[/COLOR]"
-msgstr "[COLOR azure]Retour Site[/COLOR]"
+msgstr "[COLOR azure]العودة للموقع[/COLOR]"
 
 msgctxt "#30019"
 msgid "Enter the page"
-msgstr "Entrer la page"
+msgstr "أدخل الصفحة"
 
 msgctxt "#30020"
 msgid "File not found"
@@ -321,8 +321,8 @@ msgid "Search (Movie)"
 msgstr " البحث في ( الأفلام ) "
 
 msgctxt "#30079"
-msgid "Search (Tvshow)"
-msgstr "البحث في ( المسلسلات و الأنمي )"
+msgid "Search (TV Shows)"
+msgstr "البحث في ( المسلسلات )"
 
 msgctxt "#30080"
 msgid "Search (Other category)"
@@ -357,7 +357,7 @@ msgid "Clear Cache matrix, Error"
 msgstr "مسح  ذاكرة التخزين المؤقت ، خطأ"
 
 msgctxt "#30088"
-msgid "TMDB"
+msgid "Search [COLOR orange](Visual Search)[/COLOR]"
 msgstr "TMDB"
 
 msgctxt "#30089"
@@ -501,12 +501,13 @@ msgid "Programs"
 msgstr "برامج"
 
 msgctxt "#30118"
-msgid "Search (Anim)"
-msgstr "Recherche (Animés)"
+msgid "Search (Anime)"
+msgstr "البحث في (الانمي)"
 
 msgctxt "#30119"
 msgid "Live"
-msgstr "En direct"
+msgstr "مباشر"
+
 msgctxt "#30120"
 msgid "Movies"
 msgstr "أفلام"
@@ -528,8 +529,8 @@ msgid "Dramas"
 msgstr "Dramas"
 
 msgctxt "#30125"
-msgid "Continue watching"
-msgstr "تابع المشاهدة"
+msgid "Continue Watching"
+msgstr "مواصلة المشاهدة"
 
 msgctxt "#30126"
 msgid "All categories"
@@ -548,8 +549,20 @@ msgid "Clear Cache Kodi"
 msgstr "امسح ذاكرة التخزين المؤقت لكودي"
 
 msgctxt "#30130"
-msgid "Lists"
-msgstr "القوائم"
+msgid "My Videos"
+msgstr "قائمة فيديواتي"
+
+msgctxt "#30131"
+msgid "Streaming"
+msgstr "البث"
+
+msgctxt "#30132"
+msgid "Live"
+msgstr "مباشر"
+
+msgctxt "#30133"
+msgid "Movies"
+msgstr "الأفلام"
 
 msgctxt "#30134"
 msgid "Football"
@@ -596,7 +609,7 @@ msgid "Marked seen/Not seen"
 msgstr "وضع علامة مشاهد / غير مشاهد"
 
 msgctxt "#30207"
-msgid "Bookmarks"
+msgid "My Bookmarks"
 msgstr "المفضلة"
 
 msgctxt "#30208"
@@ -748,12 +761,12 @@ msgid "You have successfully logged out"
 msgstr "لقد قمت بتسجيل الخروج بنجاح"
 
 msgctxt "#30324"
-msgid "Library"
+msgid "Media Folders"
 msgstr "المكتبة"
 
 msgctxt "#30325"
 msgid "Add to UpToBox"
-msgstr "Add to UpToBox"
+msgstr "UpToBox إضافة إلى"
 
 msgctxt "#30326"
 msgid "Download and Play"
@@ -790,6 +803,7 @@ msgstr "Activer Premium"
 msgctxt "#30334"
 msgid "Free or Premium Token"
 msgstr "Token Premium ou gratuit"
+
 msgctxt "#30340"
 msgid "Trakt integration"
 msgstr "Trakt integration"
@@ -1217,47 +1231,47 @@ msgstr "Vue: Episodes (recommandé 50-51-500-501-508)"
 
 msgctxt "#31203"
 msgid "IP address for Flaresolverr"
-msgstr "Adresse IP pour Flaresolverr"
+msgstr "Flaresolverr الخاص بـ IP عنوان الـ "
 
 msgctxt "#31204"
 msgid "Display season and episode in title"
-msgstr "Afficher la saison et l'épisode dans le titre"
+msgstr "عرض الموسم والحلقة في العنوان"
 
 msgctxt "#31205"
 msgid "Display"
-msgstr "Affichage"
+msgstr "عرض"
 
 msgctxt "#31208"
 msgid "Remaining sites: %s"
-msgstr "Sites restants : %s"
+msgstr "المواقع المتبقية : %s"
 
 msgctxt "#31209"
 msgid "Results: %s"
-msgstr "Résultats : [COLOR deepskyblue]%s[/COLOR]"
+msgstr "النتائج : [COLOR deepskyblue]%s[/COLOR]"
 
 msgctxt "#30224"
 msgid "Downloads"
-msgstr "Téléchargements"
+msgstr "التحميلات"
 
 msgctxt "#30225"
 msgid "Records"
-msgstr "Enregistrements TV"
+msgstr "التسجيلات التلفزيونية"
 
 msgctxt "#30226"
 msgid "Records"
-msgstr "Enregistrement du direct"
+msgstr "تسجيل مباشر"
 
 msgctxt "#30227"
-msgid "Open settings"
-msgstr "Ouvrir les paramètres"
+msgid "Open Settings"
+msgstr "الإعدادات"
 
 msgctxt "#30228"
 msgid "Request registered"
-msgstr "Demande enregistrée"
+msgstr "تم تسجيل الطلب"
 
 msgctxt "#30229"
-msgid "My downloads"
-msgstr "Mes téléchargements"
+msgid "My Downloads"
+msgstr "ملفاتي المحملة"
 
 msgctxt "#30140"
 msgid "Loading"

@@ -22,7 +22,7 @@ ANIM_NEWS = (URL_MAIN+'/episode/' , 'showSeries')
 ANIM_LIST = (True, 'showAnimesList')
 
 URL_SEARCH = (URL_MAIN + '/?search_param=animes&s=', 'showMovies')
-URL_SEARCH_SERIES = (URL_MAIN + '/?search_param=animes&s=', 'showSeries')
+URL_SEARCH_ANIMS = (URL_MAIN + '/?search_param=animes&s=', 'showSeries')
 
 FUNCTION_SEARCH = 'showMovies'
  

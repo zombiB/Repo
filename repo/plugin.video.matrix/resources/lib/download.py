@@ -331,7 +331,7 @@ class cDownload:
         sPluginHandle = cPluginHandler().getPluginHandle()
         sPluginPath = cPluginHandler().getPluginPath()
         sItemUrl = '%s?site=%s&function=%s&title=%s' % (sPluginPath, SITE_IDENTIFIER, 'StartDownloadList', 'title')
-        item = xbmcgui.ListItem('Démarrer la liste')
+        item = xbmcgui.ListItem('Start downloading from list')
         item.setArt({'icon':'special://home/addons/plugin.video.matrix/resources/art/download.png'})
         xbmcplugin.addDirectoryItem(sPluginHandle, sItemUrl, item, isFolder=False)
 
