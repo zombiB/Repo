@@ -56,37 +56,37 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSearchAll', 'Search All', 'search.png', oOutputParameterHandler)
     
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'agnab2.png', oOutputParameterHandler)
    
     # oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
-    # oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'film.png', oOutputParameterHandler)
+    # oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'arab2.png', oOutputParameterHandler)
  
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_ASIAN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'asia2.png', oOutputParameterHandler)
    
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_TURK[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام تركية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام تركية', 'turk2.png', oOutputParameterHandler)
     
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_HI[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام هندية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام هندية', 'hend2.png', oOutputParameterHandler)
    
     oOutputParameterHandler.addParameter('siteUrl', KID_MOVIES[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كرتون', 'crtoon.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كرتون', 'anim.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_EN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات أجنبية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات أجنبية', 'agnab.png', oOutputParameterHandler)
     
     # oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%B9%D8%B1%D8%A8%D9%8A%D8%A93')
-    # oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
+    # oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات عربية', 'arab.png', oOutputParameterHandler)
    
     oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات أسيوية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات أسيوية', 'asia.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_TR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات تركية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات تركية', 'turk.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', ANIM_NEWS[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات إنمي', 'anime.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSerie', 'مسلسلات إنمي', 'crtoon.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', DOC_NEWS[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام وثائقية', 'doc.png', oOutputParameterHandler)

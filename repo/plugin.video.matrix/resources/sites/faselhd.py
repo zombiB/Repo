@@ -48,15 +48,15 @@ def load():
 
     
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'agnab2.png', oOutputParameterHandler)
  
     
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_ASIAN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أسيوية', 'asia2.png', oOutputParameterHandler)
     
     
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_HI[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام هندية', 'film.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام هندية', 'hend2.png', oOutputParameterHandler)
    
     
     oOutputParameterHandler.addParameter('siteUrl', ANIM_MOVIES[0])
@@ -72,11 +72,11 @@ def load():
 
     
     oOutputParameterHandler.addParameter('siteUrl', SERIE_EN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أجنبية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أجنبية', 'agnab.png', oOutputParameterHandler)
 
     
     oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أسيوية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أسيوية', 'asia.png', oOutputParameterHandler)
   
     
     oOutputParameterHandler.addParameter('siteUrl', DOC_SERIES[0])

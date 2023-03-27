@@ -25,7 +25,7 @@ def load():
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', ISLAM_QURAN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'ISLAM_QURAN', 'search.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'ISLAM_QURAN', 'quran.png', oOutputParameterHandler)
 
             
     oGui.setEndOfDirectory()

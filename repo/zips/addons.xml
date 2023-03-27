@@ -47,7 +47,7 @@
     <description lang="en">Sports highlights and interviews</description>
     <platform>all</platform>
   </extension>
-</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.9b" provider-name="Yonn1981">
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.6.9d" provider-name="Yonn1981">
     <requires>
 
         <trycatch>

@@ -37,22 +37,22 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSearch', 'Search Series', 'search.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'arab.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أسيوية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أسيوية', 'asia.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_TR[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات تركية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات تركية', 'turk.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_HEND[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'mslsl.png', oOutputParameterHandler)  
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'hend.png', oOutputParameterHandler)  
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_LATIN [0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات لاتنية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات لاتنية', 'latin.png', oOutputParameterHandler)
     
     oOutputParameterHandler.addParameter('siteUrl', SERIE_DUBBED [0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مدبلجة', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مدبلجة', 'mdbljt.png', oOutputParameterHandler)
     
     oOutputParameterHandler.addParameter('siteUrl', RAMADAN_SERIES[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات رمضان', 'rmdn.png', oOutputParameterHandler)
@@ -64,7 +64,7 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات تاريخية', 'mslsl.png', oOutputParameterHandler)
         
     oOutputParameterHandler.addParameter('siteUrl', 'https://a.tvfun.me/ts,mosalsalat-mexicia/')
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مكسيكية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مكسيكية', 'latin.png', oOutputParameterHandler)
     
     oOutputParameterHandler.addParameter('siteUrl', 'https://a.tvfun.me/dessin-animee/')
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'انمي', 'anime.png', oOutputParameterHandler)

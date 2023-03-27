@@ -36,10 +36,10 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام-باكستانية', 'film.png', oOutputParameterHandler)
 	
     oOutputParameterHandler.addParameter('siteUrl', SERIE_PAK[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات باكستانية', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات باكستانية', 'paki.png', oOutputParameterHandler)
 
     oOutputParameterHandler.addParameter('siteUrl', SERIE_DUBBED[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مدبلجة', 'mslsl.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات مدبلجة', 'mdbljt.png', oOutputParameterHandler)
     
 
     oGui.setEndOfDirectory()

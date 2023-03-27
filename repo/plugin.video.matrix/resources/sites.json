@@ -148,7 +148,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u2.autos/"
+            "url": "https://cima4u2.store/"
         },
         "daddyhd": {
             "label": "DaddyHD",
@@ -170,6 +170,11 @@
             "active": "True",
             "url": "https://wwi.dramacafe-tv.com/"
         },
+        "jawaltv": {
+            "label": "jawaltv",
+            "active": "False",
+            "url": "http://jawaltv.com"
+        },
         "egyclub": {
             "label": "Egyclub",
             "active": "True",
@@ -188,12 +193,12 @@
         "esseq": {
             "label": "Esseq",
             "active": "True",
-            "url": "https://ee.e3sk.net/"
+            "url": "https://es.e3sk.net/"
         },
         "esseqeg": {
             "label": "Esseq Egypt",
             "active": "True",
-            "url": "https://e3sk.com/"
+            "url": "https://eyshq.net/"
         },
         "fansubs": {
             "label": "Fansubstv",
@@ -268,7 +273,7 @@
         "prstej": {
             "label": "3RBVideo",
             "active": "True",
-            "url": "https://sa.3rb.lol/"
+            "url": "https://r.3rb.cam/"
         },
         "rotana": {
             "label": "Rotana",
@@ -318,7 +323,7 @@
         "tuktukcinema": {
             "label": "Tuktukcinema",
             "active": "True",
-            "url": "https://tuktukcinema.pro/"
+            "url": "https://w.tuktukcinema.co/"
         },
         "tvfun": {
             "label": "Tvfun",

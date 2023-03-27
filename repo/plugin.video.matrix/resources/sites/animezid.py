@@ -37,10 +37,10 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSearchSeries', 'SEARCH SERIES', 'search.png', oOutputParameterHandler)
  
     oOutputParameterHandler.addParameter('siteUrl', KID_MOVIES[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كرتون', 'crtoon.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام كرتون', 'anime.png', oOutputParameterHandler)
  
     oOutputParameterHandler.addParameter('siteUrl', KID_CARTOON[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات كرتون', 'crtoon.png', oOutputParameterHandler)
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات كرتون', 'anime.png', oOutputParameterHandler)
   
     oGui.setEndOfDirectory()
  
