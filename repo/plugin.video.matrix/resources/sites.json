@@ -255,6 +255,11 @@
             "active": "True",
             "url": "https://koora.360kora.live"
         },
+        "laroza": {
+            "label": "Laroza",
+            "active": "True",
+            "url": "https://w.laroza.one/"
+        },
         "lodynet": {
             "label": "Lodynet",
             "active": "True",
