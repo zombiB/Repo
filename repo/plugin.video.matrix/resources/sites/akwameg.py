@@ -333,7 +333,7 @@ def showSeasons():
     oParser = cParser()
     
      # (.+?) .+?  ([^<]+)
-    sPattern = '<title>(.+?)</title>.+?<meta property="og:image" content="([^<]+)" />.+?<link rel="canonical" href="([^"]+)'
+    sPattern = '<meta property="og:title" content="([^<]+)" />.+?<meta property="og:image" content="([^<]+)" />.+?<meta property="og:url" content="([^<]+)" />'
     
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -358,7 +358,7 @@ def showSeasons():
  
             oGui.addSeason(SITE_IDENTIFIER, 'showEpisodes', sTitle, '', sThumb, sDesc, oOutputParameterHandler)  
     # (.+?) .+?  ([^<]+)
-    sPattern = '<a href="([^<]+)" class="text-white- ml-2 btn btn-light mb-2">(.+?)</a>'
+    sPattern = '<a href="([^<]+)" class="text-white- ml-2 btn btn-light mb-2">([^<]+)</a>'
     
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
