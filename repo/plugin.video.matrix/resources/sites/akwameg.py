@@ -38,7 +38,7 @@ aResult = oParser.parse(sHtmlContent, sPattern)
 
 if (aResult[0]):
     URL_MAIN = aResult[1][0]
-    URL_MAIN = URL_MAIN.split("/watch")[0]
+    URL_MAIN = URL_MAIN.split("/download")[0]
 
 MOVIE_FAM = (URL_MAIN + '/movies?section=0&category=33&rating=0&year=0&language=0&formats=0&quality=0', 'showMovies')
 MOVIE_AR = (URL_MAIN + '/movies?section=29', 'showMovies')
