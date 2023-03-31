@@ -5,7 +5,6 @@ import json
 
 from resources.lib.handler.premiumHandler import cPremiumHandler
 from resources.lib.handler.requestHandler import cRequestHandler
-from resources.lib.parser import cParser
 from resources.hosters.hoster import iHoster
 from resources.lib.comaddon import VSlog
 
@@ -15,7 +14,6 @@ class cHoster(iHoster):
         iHoster.__init__(self, 'alldebrid', 'Alldebrid', 'violet')
 
     def _getMediaLinkForGuest(self):
-        VSlog(self._url)
         token_Alldebrid = cPremiumHandler(self.getPluginIdentifier()).getToken()
         if token_Alldebrid:
             sUrl_Bypass = "https://api.alldebrid.com/v4/link/unlock?agent=service&version=1.0-&apikey=" + \

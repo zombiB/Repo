@@ -49,7 +49,7 @@ class cGuiElement:
         self.__Season = ''
         self.__Episode = ''
         self.__sIcon = self.DEFAULT_FOLDER_ICON
-        self.__sFanart = ''
+        self.__sFanart = 'special://home/addons/plugin.video.matrix/fanart.jpg'
         self.poster = 'https://image.tmdb.org/t/p/%s' % self.addons.getSetting('poster_tmdb')
         self.fanart = 'https://image.tmdb.org/t/p/%s' % self.addons.getSetting('backdrop_tmdb')
         # For meta search
@@ -277,7 +277,10 @@ class cGuiElement:
 			
         # on repasse en utf-8
         if not isMatrix():
-            sTitle = sTitle.encode('utf-8')
+            try:
+                sTitle = sTitle.encode('utf-8')
+            except:
+                pass
 				
         # on reformate SXXEXX Titre [tag] (Annee)
         sTitle2 = ''
@@ -324,6 +327,7 @@ class cGuiElement:
             self.__sCleanTitle = re.sub('\[.+?\]|\(.+?\)', '', sTitle)
             if not self.__sCleanTitle:
                 self.__sCleanTitle = sTitle.replace('[', '').replace(']', '').replace('(', '').replace(')', '')
+
         if isMatrix():
             # Python 3 decode sTitle
             try:
@@ -357,10 +361,10 @@ class cGuiElement:
         # Py3
         if isMatrix():
             try:
-
-                self.__sDescription = str(sDescription.encode('latin-1'),'utf-8')
-
-
+                if 'Ã' in sDescription or '\\xc' in sDescription:
+                    self.__sDescription = str(sDescription.encode('latin-1'), 'utf-8')
+                else:
+                    self.__sDescription = sDescription
             except:
                 self.__sDescription = sDescription
         else:

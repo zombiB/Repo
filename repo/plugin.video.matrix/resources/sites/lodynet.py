@@ -19,14 +19,13 @@ MOVIE_TURK = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d8%aa%d8%b1%
 MOVIE_HI = (URL_MAIN + '/category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D9%87%D9%86%D8%AF%D9%8A%D8%A9/', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d8%a7%d8%b3%d9%8a%d9%88%d9%8a%d8%a9-a/', 'showMovies')
 KID_MOVIES = (URL_MAIN + '/category/%d8%a7%d9%86%d9%8a%d9%85%d9%8a/', 'showMovies')
-SERIE_TR = (URL_MAIN + '/turkish-series-1b/', 'showSerie')
-SERIE_TR_AR = (URL_MAIN + '/dubbed-turkish-series-i/', 'showSerie')
+SERIE_TR = (URL_MAIN + '/turkish-series-2b/', 'showSerie')
+SERIE_TR_AR = (URL_MAIN + '/dubbed-turkish-series-g/', 'showSerie')
 SERIE_HEND = (URL_MAIN + '/bالمسلسلات-هندية-مترجمة/', 'showSerie')
-SERIE_HEND_AR = (URL_MAIN + '/dubbed-indian-series-m6/', 'showSerie')
-SERIE_ASIA = (URL_MAIN + '/korean-series-a/', 'showSerie')
+SERIE_HEND_AR = (URL_MAIN + '/dubbed-indian-series-p4/', 'showSerie')
+SERIE_ASIA = (URL_MAIN + '/tag/new-asia/', 'showSerie')
 SERIE_PAK = (URL_MAIN + '/category/%d8%a7%d9%84%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d8%a8%d8%a7%d9%83%d8%b3%d8%aa%d8%a7%d9%86%d9%8a%d8%a9/', 'showSerie')
 SERIE_LATIN = (URL_MAIN + '/category/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d9%85%d9%83%d8%b3%d9%8a%d9%83%d9%8a%d8%a9-a/', 'showSerie')
-SERIE_GENRES = (True, 'showGenres')
 
 URL_SEARCH = (URL_MAIN + '/search/', 'showMovies')
 URL_SEARCH_SERIES = (URL_MAIN + '/search/', 'showSearchSerie')
@@ -98,38 +97,12 @@ def showSearch():
  
     sSearchText = oGui.showKeyBoard()
     if sSearchText:
-        sUrl = 'https://m.lodynet.art/search/'+sSearchText
+        sUrl = URL_MAIN + '/search/'+sSearchText
         showSearchSerie(sUrl)
         oGui.setEndOfDirectory()
         return
 		
-def showGenres():
-    oGui = cGui()
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
- 
-    liste = []
-    liste.append( ["مسلسلات-هندية","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D9%87%D9%86%D8%AF%D9%8A%D8%A9/"] )
-    liste.append( ["مسلسلات-هندية-مدبلجة","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D9%87%D9%86%D8%AF%D9%8A%D8%A9-%D9%85%D8%AF%D8%A8%D9%84%D8%AC%D8%A9/"] )
-    liste.append( ["مسلسلات-تركية-مدبلجة","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%AA%D8%B1%D9%83%D9%8A%D8%A9-%D9%85%D8%AF%D8%A8%D9%84%D8%AC%D8%A9/"] )
-    liste.append( ["مسلسلات-مكسيكية","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D9%85%D9%83%D8%B3%D9%8A%D9%83%D9%8A%D8%A9/"] )
-    liste.append( ["korean series","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D9%83%D9%88%D8%B1%D9%8A%D8%A9/"] )
-    liste.append( ["مسلسلات-باكستانية","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%A8%D8%A7%D9%83%D8%B3%D8%AA%D8%A7%D9%86%D9%8A%D8%A9/"] )
-    liste.append( ["مسلسلات-رمضان-2015","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%B1%D9%85%D8%B6%D8%A7%D9%86-2015/"] )
-    liste.append( ["مسلسلات-رمضان-2016","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%B1%D9%85%D8%B6%D8%A7%D9%86-2016/"] )
-    liste.append( ["مسلسلات-تايلاندية","https://www.lodynet.co/category/%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%AA%D8%A7%D9%8A%D9%84%D8%A7%D9%86%D8%AF%D9%8A%D8%A9/"] )
 
-    
-	            
-    for sTitle,sUrl in liste:
-        
-        oOutputParameterHandler = cOutputParameterHandler()
-        oOutputParameterHandler.addParameter('siteUrl', sUrl)
-        oGui.addDir(SITE_IDENTIFIER, 'showSerie', sTitle, 'genres.png', oOutputParameterHandler)
-       
-    oGui.setEndOfDirectory()   
-
- 
 def showMoviesSearch(sSearch = ''):
     oGui = cGui()
     if sSearch:
