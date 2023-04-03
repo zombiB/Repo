@@ -30,6 +30,8 @@ aResult = oParser.parse(sHtmlContent, sPattern)
 if (aResult[0]):
     URL_MAIN = aResult[1][0]+'/'
 
+UA = 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'
+
 # RAMADAN_SERIES = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
 MOVIE_FAM = (URL_MAIN + 'category/movies/foreign/?genre=%d8%b9%d8%a7%d8%a6%d9%84%d9%8a', 'showMovies')
 # MOVIE_AR = (URL_MAIN + 'category/newmovies/arab/', 'showMovies')
@@ -565,7 +567,7 @@ def showHosters():
 
   # ([^<]+) .+?
     headers = {'Host': 'movizland.top',
-     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
+     'User-Agent': UA,
      'Accept': '*/*',
      'Accept-Language': 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3',
      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -734,7 +736,7 @@ def showHosters1():
 
   # ([^<]+) .+?
     headers = {'Host': 'movizland.top',
-     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0',
+     'User-Agent': UA,
      'Accept': '*/*',
      'Accept-Language': 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3',
      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -873,6 +875,7 @@ def showHosters2():
     sHtmlContent = oRequestHandler.request()
 
     # ([^<]+) (.+?)  .+?    
+				           
     sPattern = '<button onclick=".+?" value="(.+?)" type="submit">'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -896,44 +899,18 @@ def showHosters2():
                 if (oHoster):
                     oHoster.setDisplayName(sMovieTitle)
                     oHoster.setFileName(sMovieTitle)
-                    cHosterGui().showHoster(oGui, oHoster, aEntry, sThumb)				           
-
-    sPattern = 'allowfullscreen data-srcout="([^<]+)" FRAMEBORDER'
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
-
-	
-    if aResult[0]:
-        for aEntry in aResult[1]:
-            
-            url = aEntry
-            if url.startswith('//'):
-                url = 'http:' + url
-            
-            sHosterUrl = url 
-            if 'userload' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-            if 'moshahda' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
-            if 'mystream' in sHosterUrl:
-                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN  
-            oHoster = cHosterGui().checkHoster(sHosterUrl)
-            if oHoster:
-                oHoster.setDisplayName(sMovieTitle)
-                oHoster.setFileName(sMovieTitle)
-                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-    
+                    cHosterGui().showHoster(oGui, oHoster, aEntry, sThumb)
     #Recuperation infos
     # ([^<]+) (.+?)  .+?   
-
+ 
     sPattern = 'name="code" value="(.+?)">.+?name="siteUrl" value="(.+?)">'
     aResult = oParser.parse(sHtmlContent, sPattern)
     
     if (aResult[0]):
         scode = aResult[1][0][0]
         ssite = aResult[1][0][1]
-		
-    sPattern = '</td><td>(.+?)</td>.+?name="download" value="(.+?)" type="submit">'
+
+    sPattern = '<td>.+?</td>.+?<td>(.+?)</td>.+?<td>.+?B</td>.+?name="download" value="(.+?)" type="submit">'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 
@@ -986,7 +963,59 @@ def showHosters2():
                oHoster.setDisplayName(sMovieTitle)
                oHoster.setFileName(sMovieTitle)
                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-				
+    # ([^<]+) (.+?)  .+?   
+ 
+    sPattern = 'class="postPlayer">.+?<a href="(.+?)" rel="nofollow">'
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    
+    if (aResult[0]):
+        ssite = aResult[1][0]
+        oRequestHandler = cRequestHandler(ssite)
+        oRequestHandler.addHeaderEntry('Referer', URL_MAIN)
+        oRequestHandler.addHeaderEntry('User-Agent', UA)
+        data = oRequestHandler.request() 
+        sPattern = 'data-srcout="(.+?)" FRAMEBORDER'
+        aResult = oParser.parse(data, sPattern)
+        if aResult[0]:
+           for aEntry in aResult[1]:
+            
+               url = aEntry
+               sHosterUrl = url
+               if url.startswith('//'):
+                  url = 'https:' + url
+               if 'moshahda' in sHosterUrl:
+                   sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
+            
 
-                
+               oHoster = cHosterGui().checkHoster(sHosterUrl)
+               if oHoster:
+                   oHoster.setDisplayName(sMovieTitle)
+                   oHoster.setFileName(sMovieTitle)
+                   cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb) 
+    
+    sPattern = 'allowfullscreen data-srcout="([^<]+)" FRAMEBORDER'
+    oParser = cParser()
+    aResult = oParser.parse(sHtmlContent, sPattern)
+
+	
+    if aResult[0]:
+        for aEntry in aResult[1]:
+            
+            url = aEntry
+            if url.startswith('//'):
+                url = 'http:' + url
+            
+            sHosterUrl = url 
+            if 'userload' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+            if 'moshahda' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN 
+            if 'mystream' in sHosterUrl:
+                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN  
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster:
+                oHoster.setDisplayName(sMovieTitle)
+                oHoster.setFileName(sMovieTitle)
+                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+           
     oGui.setEndOfDirectory()

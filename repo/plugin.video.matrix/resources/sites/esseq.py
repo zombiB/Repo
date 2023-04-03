@@ -200,7 +200,7 @@ def showEps():
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     # (.+?) .+?  ([^<]+)
-    sPattern = '<article class="postEp">.+?<a href="(.+?)" title=.+?<div class="poster"><div class="imgSer" style="background-image:url(.+?);">.+?class="title">(.+?)</div>'
+    sPattern = '<article class="postEp">.+?<a href="([^"]+)".+?class="title">(.+?)</div>'
     
 
     oParser = cParser()
@@ -212,8 +212,12 @@ def showEps():
         for aEntry in aResult[1]:
 
  
-            sTitle = aEntry[2].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("الموسم"," S").replace("S ","S").replace("الحلقة "," E").replace("حلقة "," E")
+            sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("الموسم"," S").replace("S ","S").replace("الحلقة "," E").replace("حلقة "," E")
             siteUrl = aEntry[0] 
+            import base64
+            if '?url=' in siteUrl or '?post=' in siteUrl:
+                url_tmp = siteUrl.split('?url=')[-1].replace('%3D','=')
+                siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')
             sThumb = sThumb
             sDesc = ''
  
@@ -227,7 +231,6 @@ def showEps():
     oGui.setEndOfDirectory() 
 
 def showHosters():
-    import base64
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
