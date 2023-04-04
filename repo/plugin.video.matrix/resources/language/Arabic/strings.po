@@ -760,6 +760,10 @@ msgctxt "#30320"
 msgid "You have successfully logged out"
 msgstr "لقد قمت بتسجيل الخروج بنجاح"
 
+msgctxt "#30321"
+msgid "My Viewing History"
+msgstr "سجل المشاهدة الخاص بي"
+
 msgctxt "#30324"
 msgid "Media Folders"
 msgstr "المكتبة"

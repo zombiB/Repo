@@ -784,6 +784,10 @@ msgctxt "#30320"
 msgid "You have successfully logged out"
 msgstr ""
 
+msgctxt "#30321"
+msgid "My Viewing History"
+msgstr ""
+
 msgctxt "#30324"
 msgid "Media Folders"
 msgstr ""

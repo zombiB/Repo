@@ -22,14 +22,15 @@ from resolveurl.plugins.__resolve_generic__ import ResolveGeneric
 
 class StreamHideResolver(ResolveGeneric):
     name = 'StreamHide'
-    domains = ['streamhide.to']
-    pattern = r'(?://|\.)(streamhide\.to)/(?:e|d|w)/([0-9a-zA-Z]+)'
+    domains = ['streamhide.to', 'guccihide.com']
+    pattern = r'(?://|\.)((?:stream|gucci)hide\.(?:to|com))/(?:e|d|w)/([0-9a-zA-Z]+)'
 
     def get_media_url(self, host, media_id):
         return helpers.get_media_url(
             self.get_url(host, media_id),
             patterns=[r'''sources:\s*\[{file:\s*["'](?P<url>[^"']+)'''],
-            generic_patterns=False
+            generic_patterns=False,
+            referer=False
         )
 
     def get_url(self, host, media_id):
