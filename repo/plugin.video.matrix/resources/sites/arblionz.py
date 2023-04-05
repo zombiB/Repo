@@ -24,7 +24,7 @@ MOVIE_4k = (URL_MAIN + '/Quality/4k/', 'showMovies')
 MOVIE_HI = (URL_MAIN + '/category/movies/indian-movies/', 'showMovies')
 MOVIE_ASIAN = (URL_MAIN + '/category/movies/asian-movies/', 'showMovies')
 KID_MOVIES = (URL_MAIN + '/category/anime-cartoon/cartoon/', 'showMovies')
-SERIE_TR = (URL_MAIN + '/category/turkish-series-translated/', 'showSeries')
+SERIE_TR = (URL_MAIN + '/category/series/turkish-series-translated-20221/', 'showSeries')
 
 SERIE_TR_AR = (URL_MAIN + '/category/turkish-series-dubbed/', 'showSeries')
 SERIE_EN = (URL_MAIN + '/category/series/english-series/', 'showSeries')
@@ -35,9 +35,10 @@ SERIE_LATIN = (URL_MAIN + '/category/series/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7
 
 ANIM_NEWS = (URL_MAIN + '/category/series/anime/', 'showSeries')
 
-REPLAYTV_NEWS = (URL_MAIN + '/category/tv-show/', 'showSeries')
-REPLAYTV_PLAY = (URL_MAIN + '/category/other-shows/theater/', 'showSeries')
+REPLAYTV_NEWS = (URL_MAIN + '/category/برامج-اجنبي/', 'showSeries')
+# REPLAYTV_PLAY = (URL_MAIN + '/category/other-shows/theater/', 'showSeries')
 # SPORT_FOOT = (URL_MAIN + '/category/other-shows/sport/', 'showMovies')
+SPORT_WWE = (URL_MAIN + '/category/other-shows/wrestling/', 'showMovies')
 URL_SEARCH = (URL_MAIN + '/search/', 'showMovies')
 URL_SEARCH_MOVIES = (URL_MAIN + '/search/', 'showMovies')
 URL_SEARCH_SERIES = (URL_MAIN + '/search/', 'showSeries')
@@ -98,8 +99,11 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', REPLAYTV_NEWS[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'برامج تلفزيونية', 'brmg.png', oOutputParameterHandler)
     
-    oOutputParameterHandler.addParameter('siteUrl', REPLAYTV_PLAY[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسرحيات', 'msrh.png', oOutputParameterHandler)
+    # oOutputParameterHandler.addParameter('siteUrl', REPLAYTV_PLAY[0])
+    # oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسرحيات', 'msrh.png', oOutputParameterHandler)
+
+    oOutputParameterHandler.addParameter('siteUrl', SPORT_WWE[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'مصارعة', 'wwe.png', oOutputParameterHandler)
     
     # oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + '/category/%d8%a8%d8%b1%d8%a7%d9%85%d8%ac-%d8%b9%d8%b1%d8%a8%d9%8a/')
     # oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'برامج عربي', 'brmg.png', oOutputParameterHandler)
@@ -155,10 +159,10 @@ def showMovies(sSearch = ''):
             if progress_.iscanceled():
                 break
  
-            if "فيلم" not in aEntry[1]:
+            if "فيلم" not in aEntry[1] and "عرض" not in aEntry[1]:
                 continue
  
-            sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("برنامج","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
+            sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("برنامج","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","").replace("عرض","").replace("الرو","").replace("بالتعليق العربي","[COLOR gold]- Arabic Commentary -[/COLOR]")
             siteUrl = aEntry[0]
             sThumb = aEntry[2]
             sDesc = ''
@@ -166,7 +170,7 @@ def showMovies(sSearch = ''):
             m = re.search('([0-9]{4})', sTitle)
             if m:
                 sYear = str(m.group(0))
-                sTitle = sTitle.replace(sYear,'')
+                sTitle = sTitle.replace(sYear,'[COLOR gold]' + sYear + '[/COLOR]')
 
             oOutputParameterHandler.addParameter('siteUrl',siteUrl)
             oOutputParameterHandler.addParameter('sMovieTitle', sTitle)

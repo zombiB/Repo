@@ -77,7 +77,7 @@ def showMovies(sSearch = ''):
 
      # (.+?) ([^<]+) .+?
 
-    sPattern = '<article class="post">.+?<a href="(.+?)" title=.+?<div class="posterThumb"><div class="imgBg" style="background-image:url(.+?);"></div></div> <div class="title">(.+?)</div>'
+    sPattern = '<article class.+?<a href="(.+?)" title=.+?style="background-image:url(.+?);">.+?class="title">(.+?)</div>'
  
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
