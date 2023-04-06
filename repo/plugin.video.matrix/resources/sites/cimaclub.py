@@ -24,7 +24,7 @@ MOVIE_EN = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D8%AC%D9%
 # MOVIE_AR = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%B9%D8%B1%D8%A8%D9%8A-%D8%A7%D9%88%D9%86-%D9%84%D8%A7%D9%8A%D9%86', 'showMovies')
 MOVIE_TURK = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%AA%D8%B1%D9%83%D9%8A%D8%A9', 'showMovies')
 MOVIE_HI = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D9%87%D9%86%D8%AF%D9%8A', 'showMovies')
-MOVIE_ASIAN = (URL_MAIN + '/category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D8%B3%D9%8A%D9%88%D9%8A%D8%A9', 'showMovies')
+MOVIE_ASIAN = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D8%B3%D9%8A%D9%88%D9%8A%D8%A9', 'showMovies')
 KID_MOVIES = (URL_MAIN + 'category/%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D9%86%D9%8A%D9%85%D9%8A%D8%B4%D9%86', 'showMovies')
 MOVIE_MOVIE = (True, 'load')
 # RAMADAN_SERIES = (URL_MAIN + 'category/مسلسلات-رمضان-2022', 'showSerie')
@@ -218,7 +218,7 @@ def showSerie(sSearch = ''):
     sHtmlContent = oRequestHandler.request()
  
      # (.+?) ([^<]+) .+?
-    sPattern = '<div class="content-box">.+?<a href="([^<]+)" data-src="([^<]+)" class="image"></a>.+?<em>(.+?)</em>.+?<h3>([^<]+)</h3></a>'
+    sPattern = '<div class="content-box">.+?<a href="([^"]+)" data-src="([^<]+)" class="image"></a>.+?<h3>([^<]+)</h3></a>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -233,63 +233,21 @@ def showSerie(sSearch = ''):
             if progress_.iscanceled():
                 break
  
-            sTitle = aEntry[3].replace("مشاهدة","").replace("مشاهده","").replace("مسلسل","").replace("انيمي","").replace("انمي","").replace("انمى","").replace("مترجمة","").replace("برنامج","").replace("مترجم","").replace("مترجمة","").replace("فيلم","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مترجم ","").replace("مدبلج للعربية","مدبلج").replace("مشاهدة وتحميل","").replace("اون لاين","").replace("انيمي","").replace("كامل","")  
+            sTitle = aEntry[2].replace("مشاهدة","").replace("مشاهده","").replace("مسلسل","").replace("انيمي","").replace("انمي","").replace("انمى","").replace("مترجمة","").replace("برنامج","").replace("مترجم","").replace("مترجمة","").replace("فيلم","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مترجم ","").replace("مدبلج للعربية","مدبلج").replace("مشاهدة وتحميل","").replace("اون لاين","").replace("انيمي","").replace("كامل","")  
             siteUrl = aEntry[0].replace("/episode/","/watch/").replace("/post/","/watch/")
             sThumb = aEntry[1].replace("(","").replace(")","")
             sDesc = ''
             sDisplayTitle = sTitle.replace("الموسم العاشر","S10").replace("الموسم الحادي عشر","S11").replace("الموسم الثاني عشر","S12").replace("الموسم الثالث عشر","S13").replace("الموسم الرابع عشر","S14").replace("الموسم الخامس عشر","S15").replace("الموسم السادس عشر","S16").replace("الموسم السابع عشر","S17").replace("الموسم الثامن عشر","S18").replace("الموسم التاسع عشر","S19").replace("الموسم العشرون","S20").replace("الموسم الحادي و العشرون","S21").replace("الموسم الثاني و العشرون","S22").replace("الموسم الثالث و العشرون","S23").replace("الموسم الرابع والعشرون","S24").replace("الموسم الخامس و العشرون","S25").replace("الموسم السادس والعشرون","S26").replace("الموسم السابع والعشرون","S27").replace("الموسم الثامن والعشرون","S28").replace("الموسم التاسع والعشرون","S29").replace("الموسم الثلاثون","S30").replace("الموسم الحادي و الثلاثون","S31").replace("الموسم الثاني والثلاثون","S32").replace("الموسم الاول","S1").replace("الموسم الثانى","S2").replace("الموسم الثاني","S2").replace("الموسم الثالث","S3").replace("الموسم الثالث","S3").replace("الموسم الرابع","S4").replace("الموسم الخامس","S5").replace("الموسم السادس","S6").replace("الموسم السابع","S7").replace("الموسم الثامن","S8").replace("الموسم التاسع","S9").replace("الموسم","S").replace("S ","S").split('الحلقة')[0].replace("الاخيرة","").replace("مترجم","").replace(" الحادي عشر","11").replace(" الثاني عشر","12").replace(" الثالث عشر","13").replace(" الرابع عشر","14").replace(" الخامس عشر","15").replace(" السادس عشر","16").replace(" السابع عشر","17").replace(" الثامن عشر","18").replace(" التاسع عشر","19").replace(" العشرون","20").replace(" الحادي و العشرون","21").replace(" الثاني و العشرون","22").replace(" الثالث و العشرون","23").replace(" الرابع والعشرون","24").replace(" الخامس و العشرون","25").replace(" السادس والعشرون","26").replace(" السابع والعشرون","27").replace(" الثامن والعشرون","28").replace(" التاسع والعشرون","29").replace(" الثلاثون","30").replace(" الحادي و الثلاثون","31").replace(" الثاني والثلاثون","32").replace(" الاول","1").replace(" الثاني","2").replace(" الثانى","2").replace(" الثالث","3").replace(" الرابع","4").replace(" الخامس","5").replace(" السادس","6").replace(" السابع","7").replace(" الثامن","8").replace(" التاسع","9").replace(" العاشر","10")
  
-            if "E" not in sDisplayTitle:
-                sDisplayTitle=sDisplayTitle+" E"+aEntry[2]
-
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl',siteUrl)
             oOutputParameterHandler.addParameter('sMovieTitle', sDisplayTitle)
             oOutputParameterHandler.addParameter('sThumb', sThumb)
 			
-            oGui.addTV(SITE_IDENTIFIER, 'showServers', sDisplayTitle, '', sThumb, sDesc, oOutputParameterHandler)
+            oGui.addTV(SITE_IDENTIFIER, 'showSeasons', sDisplayTitle, '', sThumb, sDesc, oOutputParameterHandler)
 
         progress_.VSclose(progress_)
  
-     # (.+?) ([^<]+) .+?
-    sPattern = '<div class="content-box">.+?<a href="([^<]+)" data-src="([^<]+)" class="image"></a>.+?<h3>([^<]+)</h3></a>'
-
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
-	
-	
-    if aResult[0]:
-        total = len(aResult[1])
-        progress_ = progress().VScreate(SITE_NAME)
-        oOutputParameterHandler = cOutputParameterHandler()  
-        for aEntry in aResult[1]:
-            progress_.VSupdate(progress_, total)
-            if progress_.iscanceled():
-                break
- 
-            if "الحلقة" in aEntry[2]:
-                continue
- 
-            if "فيلم" in aEntry[2]:
-                continue
- 
-            sTitle = aEntry[2].replace("مشاهدة","").replace("مشاهده","").replace("مسلسل","").replace("انمي","").replace("انمى","").replace("مترجمة","").replace("برنامج","").replace("مترجم","").replace("مترجمة","").replace("فيلم","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("مترجم ","").replace("مشاهدة وتحميل","").replace("اون لاين","").replace("كامل","").replace("انيمي","") 
-            siteUrl = aEntry[0].replace("/episode/","/watch/").replace("/post/","/watch/")
-            sThumb = aEntry[1].replace("(","").replace(")","")
-            sDesc = ''
-            sDisplayTitle = sTitle.replace("الموسم العاشر","S10").replace("الموسم الحادي عشر","S11").replace("الموسم الثاني عشر","S12").replace("الموسم الثالث عشر","S13").replace("الموسم الرابع عشر","S14").replace("الموسم الخامس عشر","S15").replace("الموسم السادس عشر","S16").replace("الموسم السابع عشر","S17").replace("الموسم الثامن عشر","S18").replace("الموسم التاسع عشر","S19").replace("الموسم العشرون","S20").replace("الموسم الحادي و العشرون","S21").replace("الموسم الثاني و العشرون","S22").replace("الموسم الثالث و العشرون","S23").replace("الموسم الرابع والعشرون","S24").replace("الموسم الخامس و العشرون","S25").replace("الموسم السادس والعشرون","S26").replace("الموسم السابع والعشرون","S27").replace("الموسم الثامن والعشرون","S28").replace("الموسم التاسع والعشرون","S29").replace("الموسم الثلاثون","S30").replace("الموسم الحادي و الثلاثون","S31").replace("الموسم الثاني والثلاثون","S32").replace("الموسم الاول","S1").replace("الموسم الثاني","S2").replace("الموسم الثالث","S3").replace("الموسم الثالث","S3").replace("الموسم الرابع","S4").replace("الموسم الخامس","S5").replace("الموسم السادس","S6").replace("الموسم السابع","S7").replace("الموسم الثامن","S8").replace("الموسم التاسع","S9").replace("الموسم","S").replace("موسم","S").replace("S ","S").split('الحلقة')[0]
-
-
-            oOutputParameterHandler.addParameter('siteUrl',siteUrl)
-            oOutputParameterHandler.addParameter('sMovieTitle', sDisplayTitle)
-            oOutputParameterHandler.addParameter('sThumb', sThumb)
-			
-            if 'season' in siteUrl:
-                oGui.addTV(SITE_IDENTIFIER, 'showEpisodes1', sDisplayTitle, '', sThumb, '', oOutputParameterHandler)
-            else:
-                oGui.addTV(SITE_IDENTIFIER, 'showEpisodes', sDisplayTitle, '', sThumb, '', oOutputParameterHandler)
-
-        progress_.VSclose(progress_)
  
         sNextPage = __checkForNextPage(sHtmlContent)
         if sNextPage:
@@ -299,7 +257,46 @@ def showSerie(sSearch = ''):
  
     if not sSearch:
         oGui.setEndOfDirectory()
-			
+
+def showSeasons():
+    oGui = cGui()
+   
+    oInputParameterHandler = cInputParameterHandler()
+    sUrl = oInputParameterHandler.getValue('siteUrl')
+    sMovieTitle = oInputParameterHandler.getValue('sDisplayTitle')
+    sThumb = oInputParameterHandler.getValue('sThumb')
+
+
+
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request()
+    
+    oParser = cParser()
+    
+    sStart = '<ul class="Seasons">'
+    sEnd = '</ul>'
+    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
+    sPattern = 'href="([^"]+)" title="([^"]+)'
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    
+    if (aResult[0]):
+        oOutputParameterHandler = cOutputParameterHandler() 
+        for aEntry in aResult[1]:
+            sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("كامل","").replace("برنامج","").replace("فيلم","").replace("الموسم العاشر","S10").replace("الموسم الحادي عشر","S11").replace("الموسم الثاني عشر","S12").replace("الموسم الثالث عشر","S13").replace("الموسم الرابع عشر","S14").replace("الموسم الخامس عشر","S15").replace("الموسم السادس عشر","S16").replace("الموسم السابع عشر","S17").replace("الموسم الثامن عشر","S18").replace("الموسم التاسع عشر","S19").replace("الموسم العشرون","S20").replace("الموسم الحادي و العشرون","S21").replace("الموسم الثاني و العشرون","S22").replace("الموسم الثالث و العشرون","S23").replace("الموسم الرابع والعشرون","S24").replace("الموسم الخامس و العشرون","S25").replace("الموسم السادس والعشرون","S26").replace("الموسم السابع والعشرون","S27").replace("الموسم الثامن والعشرون","S28").replace("الموسم التاسع والعشرون","S29").replace("الموسم الثلاثون","S30").replace("الموسم الحادي و الثلاثون","S31").replace("الموسم الثاني والثلاثون","S32").replace("الموسم الاول","S1").replace("الموسم الأول","S1").replace("الموسم الثاني","S2").replace("الموسم الثالث","S3").replace("الموسم الثالث","S3").replace("الموسم الرابع","S4").replace("الموسم الخامس","S5").replace("الموسم السادس","S6").replace("الموسم السابع","S7").replace("الموسم الثامن","S8").replace("الموسم التاسع","S9").replace("الموسم","S").replace("موسم","S").replace("S ","S")
+            siteUrl = aEntry[0]
+            sThumb = sThumb
+            sDesc = ""
+
+            oOutputParameterHandler.addParameter('siteUrl',siteUrl)
+            oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
+            oOutputParameterHandler.addParameter('sMovieUrl', sUrl)
+            oOutputParameterHandler.addParameter('sThumb', sThumb)
+            oGui.addSeason(SITE_IDENTIFIER, 'showEpisodes', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+    else:
+            oGui.addEpisode(SITE_IDENTIFIER, 'showServers', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+       
+    oGui.setEndOfDirectory() 
+
 def showEpisodes():
     oGui = cGui()
     
@@ -323,10 +320,7 @@ def showEpisodes():
         for aEntry in aResult[1]:
  
             siteUrl = aEntry[0].replace("/episode/","/watch/").replace("/post/","/watch/")
-            if 'season' in siteUrl:
-                sTitle = sMovieTitle+" S"+aEntry[2]
-            else:
-                sTitle = sMovieTitle+" E"+aEntry[2]
+            sTitle = sMovieTitle+" E"+aEntry[2]
             sThumb = sThumb
             sDesc = ""
 			
@@ -336,10 +330,7 @@ def showEpisodes():
             oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
             oOutputParameterHandler.addParameter('sThumb', sThumb)
 			
-            if 'season' in siteUrl:
-                oGui.addSeason(SITE_IDENTIFIER, 'showEpisodes1', sMovieTitle+" S"+aEntry[2], '', sThumb, '', oOutputParameterHandler)
-            else:
-                oGui.addEpisode(SITE_IDENTIFIER, 'showServers', sMovieTitle.replace(" موسم "," S")+" E"+aEntry[2], '', sThumb, '', oOutputParameterHandler)
+            oGui.addEpisode(SITE_IDENTIFIER, 'showServers', sMovieTitle.replace(" موسم "," S")+" E"+aEntry[2], '', sThumb, '', oOutputParameterHandler)
         
  
         sNextPage = __checkForNextPage(sHtmlContent)
@@ -350,95 +341,7 @@ def showEpisodes():
        
     oGui.setEndOfDirectory()
 	
-def showEpisodes1():
-    oGui = cGui()
-    
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
-    sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
-    sThumb = oInputParameterHandler.getValue('sThumb')
- 
-    oRequestHandler = cRequestHandler(sUrl)
-    sHtmlContent = oRequestHandler.request()
- # ([^<]+) .+?
-
-    sPattern = '<a href="([^<]+)" class="col-6 col-s-4 col-m-3 col-l-1 button-block"><h3>([^<]+)<span>([^<]+)</span></h3></a>'
-
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
 	
-	
-    if aResult[0]:
-        oOutputParameterHandler = cOutputParameterHandler()  
-        for aEntry in aResult[1]:
- 
-            if 'season' in aEntry[0]:
-                continue
- 
-            sTitle = ""
-            siteUrl = aEntry[0].replace("/episode/","/watch/").replace("/post/","/watch/")
-            sThumb = sThumb
-            sDesc = ""
-			
-
-            oOutputParameterHandler.addParameter('siteUrl',siteUrl)
-            oOutputParameterHandler.addParameter('sMovieTitle', sMovieTitle+" E"+aEntry[2])
-            oOutputParameterHandler.addParameter('sThumb', sThumb)
-
-            oGui.addEpisode(SITE_IDENTIFIER, 'showServers', sMovieTitle+" E"+aEntry[2], '', sThumb, '', oOutputParameterHandler)
-       
- 
-        sNextPage = __checkForNextPage(sHtmlContent)
-        if sNextPage:
-            oOutputParameterHandler = cOutputParameterHandler()
-            oOutputParameterHandler.addParameter('siteUrl', sNextPage)
-            oGui.addDir(SITE_IDENTIFIER, 'showEpisodes', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
-       
-    oGui.setEndOfDirectory()
-	
-def showSeries():
-    oGui = cGui()
-    
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
-    sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
-    sThumb = oInputParameterHandler.getValue('sThumb')
- 
-    oRequestHandler = cRequestHandler(sUrl)
-    sHtmlContent = oRequestHandler.request()
- 
-    sPattern = 'id="WatchBTn" href="([^<]+)" class'
-
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
-	
-	
-    if aResult[0]:
-        oOutputParameterHandler = cOutputParameterHandler()  
-        for aEntry in aResult[1]:
- 
-            sTitle = sMovieTitle
-            siteUrl = aEntry
-			
-
-            oOutputParameterHandler.addParameter('siteUrl',siteUrl)
-            oOutputParameterHandler.addParameter('sMovieTitle', aEntry[1])
-            oOutputParameterHandler.addParameter('sThumb', sThumb)
-			
-            if 'seasons' in sUrl:
-                oGui.addSeason(SITE_IDENTIFIER, 'showSeries', aEntry[1], '', sThumb, '', oOutputParameterHandler)
-            else:
-                oGui.addEpisode(SITE_IDENTIFIER, 'showServers', aEntry[1], '', sThumb, '', oOutputParameterHandler)
-        
- 
-        sNextPage = __checkForNextPage(sHtmlContent)
-        if sNextPage:
-            oOutputParameterHandler = cOutputParameterHandler()
-            oOutputParameterHandler.addParameter('siteUrl', sNextPage)
-            oGui.addDir(SITE_IDENTIFIER, 'showMovies', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
-       
-        oGui.setEndOfDirectory()
- 
 def __checkForNextPage(sHtmlContent):
     sPattern = '<li class="active"><a href="javascript:;">.+?</a></li><li><a href="(.+?)">'
 	

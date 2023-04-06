@@ -12,18 +12,22 @@ from resources.lib.comaddon import progress, VSlog, siteManager
 from resources.lib.parser import cParser
  
 SITE_IDENTIFIER = 'prstej'
-SITE_NAME = '3RB Video'
+SITE_NAME = 'Prstej'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
-MOVIE_EN = (URL_MAIN + '/category.php?cat=movieenglish', 'showMovies')
+#MOVIE_EN = (URL_MAIN + '/category102.php?cat=aflamajnby2023', 'showMovies')
 RAMADAN_SERIES = (URL_MAIN + '/category.php?cat=ramdan2023', 'showSeries')
-MOVIE_AR = (URL_MAIN + '/category.php?cat=moviearabic', 'showMovies')
-SERIE_AR = (URL_MAIN + '/category.php?cat=mosalsalatarabia', 'showSeries')
-SERIE_TR = (URL_MAIN + '/category.php?cat=turkish-series', 'showSeries')
-SERIE_ASIA = (URL_MAIN + '/category.php?cat=seriesasia', 'showSeries')
-SERIE_HEND = (URL_MAIN + '/category.php?cat=moslsl-hindi', 'showSeries')
+MOVIE_AR = (URL_MAIN + '/category102.php?cat=aflam2023', 'showMovies')
+MOVIE_TURK = (URL_MAIN + '/category102.php?cat=turkish-movies2023', 'showMovies')
+SERIE_AR = (URL_MAIN + '/category102.php?cat=arab2023', 'showSeries')
+SERIE_EN = (URL_MAIN + '/category102.php?cat=english2023', 'showSeries')
+SERIE_TR = (URL_MAIN + '/category102.php?cat=ty-2023', 'showSeries')
+SERIE_ASIA = (URL_MAIN + '/category102.php?cat=asia', 'showSeries')
+SERIE_HEND = (URL_MAIN + '/category102.php?cat=indeasreses2022', 'showSeries')
+
+ANIM_NEWS = (URL_MAIN + '/category102.php?cat=anmei', 'showSeries')
 
 URL_SEARCH = (URL_MAIN + '/search.php?keywords=', 'showSeries')
 URL_SEARCH_MOVIES = (URL_MAIN + '/search.php?keywords=', 'showMovies')
@@ -43,14 +47,21 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', RAMADAN_SERIES[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان', 'rmdn.png', oOutputParameterHandler)
 
-    oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'agnab2.png', oOutputParameterHandler)
-   
+    # oOutputParameterHandler.addParameter('siteUrl', MOVIE_EN[0])
+    # oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام أجنبية', 'agnab2.png', oOutputParameterHandler)
+
+    oOutputParameterHandler.addParameter('siteUrl', MOVIE_TURK[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام تركية', 'turk2.png', oOutputParameterHandler)
+
     oOutputParameterHandler.addParameter('siteUrl', MOVIE_AR[0])
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'arab2.png', oOutputParameterHandler)
 	
     oOutputParameterHandler.addParameter('siteUrl', SERIE_AR[0])
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات عربية', 'arab.png', oOutputParameterHandler)
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_EN[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات أجنبية', 'agnab.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', SERIE_ASIA[0])
@@ -65,7 +76,11 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات هندية', 'hend.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category.php?cat=8rmdan-2022')
+    oOutputParameterHandler.addParameter('siteUrl', ANIM_NEWS[0])
+    oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات إنمي', 'anime.png', oOutputParameterHandler)  
+
+    oOutputParameterHandler = cOutputParameterHandler()
+    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category102.php?cat=rm-2022')
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'رمضان 2022', 'rmdn.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
@@ -101,7 +116,7 @@ def showMovies(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
-    sPattern = '<a href="(.+?)".+?title="(.+?)".+?<img src=.+?data-echo="(.+?)"'
+    sPattern = '<div class="thumbnail">.+?<a href="(.+?)".+?title="(.+?)".+?data-echo="(.+?)"'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -170,7 +185,7 @@ def showSeries(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     # (.+?) .+? ([^<]+)   
-    sPattern = '<div class="thumbnail">.+?<a href="(.+?)".+?title="(.+?)".+?<img src=.+?data-echo="(.+?)"'
+    sPattern = '<div class="thumbnail">.+?<a href="(.+?)".+?title="(.+?)".+?data-echo="(.+?)"'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -308,7 +323,7 @@ def showHosters():
     # ([^<]+) .+?
                
 
-    sPattern = "data-embed='([^<]+)' data"
+    sPattern = "data-embed-url='([^<]+)'>"
     aResult = oParser.parse(sHtmlContent, sPattern)
 
 	
