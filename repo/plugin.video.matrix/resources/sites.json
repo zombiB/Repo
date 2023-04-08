@@ -175,11 +175,6 @@
             "active": "True",
             "url": "https://wwk.dramacafe-tv.com/"
         },
-        "jawaltv": {
-            "label": "jawaltv",
-            "active": "False",
-            "url": "http://jawaltv.com"
-        },
         "egyclub": {
             "label": "Egyclub",
             "active": "True",
@@ -224,6 +219,11 @@
             "label": "Fushaar",
             "active": "True",
             "url": "https://www.fushaar.com/"
+        },
+        "freebox": {
+            "label": "Freebox",
+            "active": "True",
+            "url": "https://iptv-org.github.io/"
         },
         "gateanime": {
             "label": "Gateanime",
