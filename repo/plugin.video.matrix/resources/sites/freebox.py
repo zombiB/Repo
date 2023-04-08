@@ -30,7 +30,7 @@ CHAINE_TV = (URL_WEB, 'showWeb')
 UA = 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/48.0.2564.116 Chrome/48.0.2564.116 Safari/537.36'
 
 icon = 'tv.png'
-sRootArt = 'special://home/addons/plugin.video.vstream/resources/art/tv'
+sRootArt = 'special://home/addons/plugin.video.matrix/resources/art/tv'
 ADDON = addon()
 
 
@@ -138,12 +138,9 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
     if not playlist:
         oOutputParameterHandler = cOutputParameterHandler()
         oOutputParameterHandler.addParameter('siteUrl', 'http://')
-        oGui.addText(SITE_IDENTIFIER, '[COLOR red]Problème de lecture avec la playlist[/COLOR]')
+        oGui.addText(SITE_IDENTIFIER, '[COLOR red]Error getting playlist[/COLOR]')
 
     else:
-        cEpg = cePg()
-        EPG = cEpg.getEpg('', 'direct',noTextBox=True)
-
         total = len(playlist)
         progress_ = progress().VScreate(SITE_NAME)
         for track in playlist:
@@ -154,8 +151,6 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
             if not sThumb:
                 sThumb = 'tv.png'
 
-            channelName = track.title.replace('sport','sports').replace('(en clair)','')
-            sDesc = cEpg.getChannelEpg(EPG, channelName)
 
             # les + ne peuvent pas passer
             url2 = track.path.replace('+', 'P_L_U_S')
@@ -166,13 +161,11 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
             oOutputParameterHandler.addParameter('siteUrl', url2)
             oOutputParameterHandler.addParameter('sMovieTitle', track.title)
             oOutputParameterHandler.addParameter('sThumbnail', thumb)
-            oOutputParameterHandler.addParameter('sDesc', sDesc)
-            oOutputParameterHandler.addParameter('EpgData', EPG)
 
             oGuiElement = cGuiElement()
             oGuiElement.setSiteName(SITE_IDENTIFIER)
             oGuiElement.setFunction('play__')
-            oGuiElement.setDescription(sDesc)
+
             oGuiElement.setTitle(track.title)
             oGuiElement.setFileName(track.title)
             
@@ -192,39 +185,6 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
     oGui.setEndOfDirectory()
 
 
-def direct_epg():  # Code qui gerent l'epg
-    # oGuiElement = cGuiElement()
-    oInputParameterHandler = cInputParameterHandler()
-    # aParams = oInputParameterHandler.getAllParameter()
-    sTitle = oInputParameterHandler.getValue('sMovieTitle')
-    text = oInputParameterHandler.getValue('EpgData')
-    cePg().view_epg(sTitle, 'direct', text=text)
-
-
-def soir_epg():  # Code qui gerent l'epg
-    # oGuiElement = cGuiElement()
-    oInputParameterHandler = cInputParameterHandler()
-    sTitle = oInputParameterHandler.getValue('sMovieTitle')
-    cePg().view_epg(sTitle, 'soir')
-
-
-def enregistrement():  # Code qui gerent l'enregistrement
-    # oGuiElement = cGuiElement()
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl').replace('P_L_U_S', '+')
-
-    enregistrementIsActif = ADDON.getSetting('enregistrement_activer')
-    if enregistrementIsActif == 'false':
-        dialog().VSok('Merci d\'activer l\'enregistrement dans les options')
-        return
-
-    if '[' in sUrl and ']' in sUrl:
-        sUrl = getRealUrl(sUrl)
-
-    if 'plugin' in sUrl:
-        url = re.findall('url=(.+?)&amp', ''.join(sUrl))
-        sUrl = Unquote(url[0])
-    cEnregistremement().programmation_enregistrement(sUrl)
 
 
 def showAZ():
