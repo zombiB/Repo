@@ -21,14 +21,14 @@ SITE_DESC = 'Watch Livetelevision'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 URL_WEB = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/Resources/webtv2.m3u'
-URL_RADIO = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/Resources/radio.m3u'
+
 
 TV_TV = (True, 'showMenuTV')
 
 UA = 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/48.0.2564.116 Chrome/48.0.2564.116 Safari/537.36'
 
 icon = 'tv.png'
-sRootArt = 'special://home/addons/plugin.video.matrix/resources/art/tv'
+sRootArt = ''
 ADDON = addon()
 
 
@@ -47,7 +47,7 @@ def load():
 
     oOutputParameterHandler = cOutputParameterHandler()
     oGui.addDir(SITE_IDENTIFIER, 'showMenuTV', addons.VSlang(30115), 'tv.png', oOutputParameterHandler)
-    oGui.addDir(SITE_IDENTIFIER, 'showMenuMusic', addons.VSlang(30137), 'music.png', oOutputParameterHandler)
+
     oGui.setEndOfDirectory()
 
 
@@ -58,17 +58,6 @@ def showMenuTV():
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', URL_WEB)
     oGui.addDir(SITE_IDENTIFIER, 'showWeb', addons.VSlang(30332), 'tv.png', oOutputParameterHandler)
-    oGui.setEndOfDirectory()
-
-
-def showMenuMusic():
-    oGui = cGui()
-    addons = addon()
-
-    oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', URL_RADIO)
-    oGui.addDir('radio', 'showWeb', addons.VSlang(30203), 'music.png', oOutputParameterHandler)
-
     oGui.setEndOfDirectory()
 
 
@@ -115,8 +104,7 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
     sUrl = oInputParameterHandler.getValue('siteUrl')
     if sUrl == 'TV':
         sUrl = URL_WEB
-    elif sUrl == 'RADIO':
-        sUrl = URL_RADIO
+
 
     playlist = parseM3U(sUrl=sUrl)
 
@@ -139,7 +127,7 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
             progress_.VSupdate(progress_, total)
             if progress_.iscanceled():
                 break
-            sThumb = track.icon
+            sThumb = icon
             if not sThumb:
                 sThumb = 'tv.png'
 
@@ -147,7 +135,7 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
             # les + ne peuvent pas passer
             url2 = track.path.replace('+', 'P_L_U_S')
 
-            thumb = '/'.join([sRootArt, sThumb])
+            thumb = icon
 
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', url2)
@@ -194,25 +182,6 @@ def showAZ():
         oOutputParameterHandler.addParameter('siteUrl', sUrl)
         oOutputParameterHandler.addParameter('AZ', i)
         oGui.addDir(SITE_IDENTIFIER, 'showTV', i, 'az.png', oOutputParameterHandler)
-
-    oGui.setEndOfDirectory()
-
-
-def showAZRadio():
-    oGui = cGui()
-    oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl')
-
-    oOutputParameterHandler = cOutputParameterHandler()
-    for i in string.digits:
-        oOutputParameterHandler.addParameter('siteUrl', sUrl)
-        oOutputParameterHandler.addParameter('AZ', i)
-        oGui.addDir(SITE_IDENTIFIER, 'showWeb', i, 'az.png', oOutputParameterHandler)
-
-    for i in string.ascii_uppercase:
-        oOutputParameterHandler.addParameter('siteUrl', sUrl)
-        oOutputParameterHandler.addParameter('AZ', i)
-        oGui.addDir(SITE_IDENTIFIER, 'showWeb', i, 'az.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
 

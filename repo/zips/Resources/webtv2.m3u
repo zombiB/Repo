@@ -20,7 +20,7 @@ https://5ab29cc78f681.streamlock.net/afarinTV/livestream/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/hVNIwgE.png",Ajman TV
 https://dacastmmd.mmdlive.lldns.net/dacastmmd/d3e9fc3b874a46159ce3724d802e3f8d/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",Al Kafeel
+#EXTINF:-1 tvg-logo="https://shialivetv.com/shialive/assets/img/ziy/baynul.jpg",Al Kafeel
 https://stream.alkafeel.net/live/alkafeel/rAa5PGot1/manifest.m3u8
 
 #EXTINF:-1 tvg-logo="https://i.imgur.com/df7D3KR.png",Al Aoula Europe
@@ -194,7 +194,7 @@ https://5c7b683162943.streamlock.net/live/ngrp:bahraintvmain_all/playlist.m3u8
 #EXTINF:-1 tvg-id="BaynounahTV.ae" tvg-logo="https://i.imgur.com/n2nczHO.png",Baynounah TV
 https://baynounah.cdn.mangomolo.com/btv/smil:btv.stream.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",BBC Arabic
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b8/Logo_BBC_Arabic.png",BBC Arabic
 https://vs-hls-pushb-ww-live.akamaized.net/x=3/i=urn:bbc:pips:service:bbc_arabic_tv/t=3840/v=pv14/b=5070016/main.m3u8
 
 #EXTINF:-1 tvg-id="Beity.sa" tvg-logo="https://i.imgur.com/WyRsj6l.png" group-title="Outdoor",Beity
@@ -206,11 +206,11 @@ https://shls-cartoon-net-prod-dub.shahid.net/out/v1/dc4aa87372374325a66be458f29e
 #EXTINF:-1 tvg-id="CBC.eg" tvg-logo="https://i.imgur.com/8apNaLP.png",CBC
 https://ythls.onrender.com/channel/UCUHq39HXLyAjjMPIjsNRLpw.m3u8
 
-#EXTINF:-1 tvg-logo="",CBC
+#EXTINF:-1 tvg-logo="https://i.imgur.com/8apNaLP.png",CBC
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1265
-#EXTINF:-1 tvg-logo="",CBC Drama
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/ar/d/dc/%D8%B3%D9%8A_%D8%A8%D9%8A_%D8%B3%D9%8A_%D8%AF%D8%B1%D8%A7%D9%85%D8%A7.jpg",CBC Drama
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1264
-#EXTINF:-1 tvg-logo="",CBC Sofra
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cbc_sofra_logo.png/800px-Cbc_sofra_logo.png",CBC Sofra
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/2881
 
 #EXTINF:-1 tvg-id="CharityTV.lb" tvg-logo="https://i.imgur.com/U9z8WBY.png" group-title="Religious",Charity TV
@@ -225,11 +225,13 @@ https://ythls.onrender.com/channel/UCsHdPPJXT-yKVTLGkn3DSvQ.m3u8
 #EXTINF:-1 tvg-id="CopticTV.eg" tvg-logo="https://www.ctvchannel.tv/images/CTV-logo-white.png" group-title="Religious",Coptic TV
 https://58cc65c534c67.streamlock.net/ctvchannel.tv/ctv.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",DMC
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/DmcTv.jpg",DMC
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1263
-#EXTINF:-1 tvg-logo="",DMC Drama
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Dmc_drama_logo.png/280px-Dmc_drama_logo.png",DMC Drama
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1262
-#EXTINF:-1 tvg-logo="",DMC Masraheyat
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/DmcTv.jpg",DMC Masraheyat
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/270756
 
 #EXTINF:-1 tvg-id="DubaiOne.ae" tvg-logo="https://i.imgur.com/Dj16oKL.png" group-title="General",Dubai One
@@ -265,7 +267,7 @@ https://ghaasiflu.online/alhqeqa/index.m3u8
 #EXTINF:-1 tvg-id="Falastini.ps" tvg-logo="https://i.imgur.com/h1N60QR.png" group-title="Music",Falastini
 https://cdg8.edge.technocdn.com/palestiniantv_source/live/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",Fatafeat
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fatafeat_Logo_Final.jpg/640px-Fatafeat_Logo_Final.jpg",Fatafeat
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/4883
 
 #EXTINF:-1 tvg-id="FebruaryChannel.ly" tvg-logo="https://i.imgur.com/WdMIpsA.png",February Channel

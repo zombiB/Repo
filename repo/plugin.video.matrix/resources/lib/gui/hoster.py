@@ -255,8 +255,9 @@ class cHosterGui:
         if ('nextcdn' in sHostName):
             return self.getHoster('lien_direct')
 
-        if ('akwam' in sHostName):
+        if ('akwam' in sHostName) or ('onesav' in sHostName):
             return self.getHoster('lien_direct')
+    
 
         if ('.vimeocdn.' in sHostName):
             return self.getHoster('lien_direct')

@@ -16,7 +16,7 @@ class cHoster(iHoster):
         VSlog(self._url)
 
         oRequest = cRequestHandler(self._url)
-        oRequest.addHeaderEntry('Referer', 'https://cima-club.bar/')
+        oRequest.addHeaderEntry('Referer', 'https://ciimaclub.beauty/')
         oRequest.addHeaderEntry('User-Agent', UA)
         sHtmlContent = oRequest.request()
         oParser = cParser()

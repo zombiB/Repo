@@ -30,7 +30,7 @@ oParser = cParser()
 
 oRequestHandler = cRequestHandler(URL_MAIN)
 sHtmlContent = oRequestHandler.request()
-URL_MAIN='0'
+
     # (.+?) ([^<]+)
 
 sPattern = '<a href="([^"]+).+?>لمصر <span style='

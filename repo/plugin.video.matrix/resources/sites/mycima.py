@@ -21,7 +21,7 @@ oParser = cParser()
  
 oRequestHandler = cRequestHandler(URL_MAIN)
 sHtmlContent = oRequestHandler.request()
-URL_MAIN='0'
+
 
 sPattern = '<link rel="canonical" href="([^"]+)'
 aResult = oParser.parse(sHtmlContent, sPattern)
