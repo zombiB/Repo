@@ -223,7 +223,11 @@ https://ythls.onrender.com/channel/UCsHdPPJXT-yKVTLGkn3DSvQ.m3u8
 https://58cc65c534c67.streamlock.net/ctvchannel.tv/ctv.smil/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="",DMC
-https://tv.ipslow.com/tv192_www.elahmad.com_dmc/tracks-v1a1/mono.m3u8?token=df7837528a63b428b8e605f7676e30925ed9d340-dfba2bcdacecbfbb0f08472b10616df8-1680937096-1680926296
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1263
+#EXTINF:-1 tvg-logo="",DMC Drama
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1262
+#EXTINF:-1 tvg-logo="",DMC Masraheyat
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/270756
 
 #EXTINF:-1 tvg-id="DubaiOne.ae" tvg-logo="https://i.imgur.com/Dj16oKL.png" group-title="General",Dubai One
 http://dminnvll.cdn.mangomolo.com/dubaione/smil:dubaione.stream.smil/playlist.m3u8
@@ -301,7 +305,7 @@ http://82.212.74.2:8000/live/7311.m3u8
 http://82.212.74.2:8000/live/hls/7311.m3u8
 
 #EXTINF:-1 tvg-logo="https://i.imgur.com/mkzRTuE.png",Karbala TV
-https://www.youtube.com/watch?v=ImkPhxXlfvI
+http://82.212.74.2:8000/live/hls/7311.m3u8
 
 #EXTINF:-1 tvg-id="KoogiTV.eg" tvg-logo="https://i.imgur.com/zojMTP9.png" group-title="Kids",Koogi TV
 https://5d658d7e9f562.streamlock.net/koogi.tv/koogi.smil/playlist.m3u8
