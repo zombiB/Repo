@@ -191,6 +191,9 @@ https://5c7b683162943.streamlock.net/live/ngrp:bahraintvmain_all/playlist.m3u8
 #EXTINF:-1 tvg-id="BaynounahTV.ae" tvg-logo="https://i.imgur.com/n2nczHO.png",Baynounah TV
 https://baynounah.cdn.mangomolo.com/btv/smil:btv.stream.smil/playlist.m3u8
 
+#EXTINF:-1 tvg-logo="",BBC Arabic
+https://vs-hls-pushb-ww-live.akamaized.net/x=3/i=urn:bbc:pips:service:bbc_arabic_tv/t=3840/v=pv14/b=5070016/main.m3u8
+
 #EXTINF:-1 tvg-id="Beity.sa" tvg-logo="https://i.imgur.com/WyRsj6l.png" group-title="Outdoor",Beity
 http://82.212.74.2:8000/live/7312.m3u8
 
@@ -200,8 +203,12 @@ https://shls-cartoon-net-prod-dub.shahid.net/out/v1/dc4aa87372374325a66be458f29e
 #EXTINF:-1 tvg-id="CBC.eg" tvg-logo="https://i.imgur.com/8apNaLP.png",CBC
 https://ythls.onrender.com/channel/UCUHq39HXLyAjjMPIjsNRLpw.m3u8
 
+#EXTINF:-1 tvg-logo="",CBC
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1265
+#EXTINF:-1 tvg-logo="",CBC Drama
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1264
 #EXTINF:-1 tvg-logo="",CBC Sofra
-https://elahmad.ipslow.com/tv192_www.elahmad.com_cbc_sofra/tracks-v1a1/mono.m3u8?token=40708d1144e778c15b86c798262590d9363f4fbb-33ed97a15863a94bb69384a6ea8f584e-1680938273-1680927473
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/2881
 
 #EXTINF:-1 tvg-id="CharityTV.lb" tvg-logo="https://i.imgur.com/U9z8WBY.png" group-title="Religious",Charity TV
 http://185.105.4.236:1935/live/ngrp:livestream_all/live.m3u8
@@ -216,7 +223,11 @@ https://ythls.onrender.com/channel/UCsHdPPJXT-yKVTLGkn3DSvQ.m3u8
 https://58cc65c534c67.streamlock.net/ctvchannel.tv/ctv.smil/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="",DMC
-https://tv.ipslow.com/tv192_www.elahmad.com_dmc/tracks-v1a1/mono.m3u8?token=df7837528a63b428b8e605f7676e30925ed9d340-dfba2bcdacecbfbb0f08472b10616df8-1680937096-1680926296
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1263
+#EXTINF:-1 tvg-logo="",DMC Drama
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1262
+#EXTINF:-1 tvg-logo="",DMC Masraheyat
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/270756
 
 #EXTINF:-1 tvg-id="DubaiOne.ae" tvg-logo="https://i.imgur.com/Dj16oKL.png" group-title="General",Dubai One
 http://dminnvll.cdn.mangomolo.com/dubaione/smil:dubaione.stream.smil/playlist.m3u8
@@ -250,6 +261,9 @@ https://ghaasiflu.online/alhqeqa/index.m3u8
 
 #EXTINF:-1 tvg-id="Falastini.ps" tvg-logo="https://i.imgur.com/h1N60QR.png" group-title="Music",Falastini
 https://cdg8.edge.technocdn.com/palestiniantv_source/live/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="",Fatafeat
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/4883
 
 #EXTINF:-1 tvg-id="FebruaryChannel.ly" tvg-logo="https://i.imgur.com/WdMIpsA.png",February Channel
 https://b01c02nl.mediatriple.net/videoonlylive/mtfknklgwrlive/broadcast_5dc818c793576.smil/playlist.m3u8
@@ -289,6 +303,9 @@ http://82.212.74.2:8000/live/7311.m3u8
 
 #EXTINF:-1 tvg-id="KaifTV.sa" tvg-logo="https://i.imgur.com/mkzRTuE.png" group-title="Religious",Kaif TV
 http://82.212.74.2:8000/live/hls/7311.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/mkzRTuE.png",Karbala TV
+https://www.youtube.com/watch?v=ImkPhxXlfvI
 
 #EXTINF:-1 tvg-id="KoogiTV.eg" tvg-logo="https://i.imgur.com/zojMTP9.png" group-title="Kids",Koogi TV
 https://5d658d7e9f562.streamlock.net/koogi.tv/koogi.smil/playlist.m3u8
@@ -445,6 +462,15 @@ https://live.paltodaytv.com/paltv/live/playlist.m3u8
 
 #EXTINF:-1 tvg-id="PanoramaFM.sa" tvg-logo="https://i.imgur.com/JkDD3bK.png" group-title="Music",Panorama FM
 https://shls-panoramafm-prod-dub.shahid.net/out/v1/66262e420d824475aaae794dc2d69f14/index.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/N5RB4sp.png",Jeem TV
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1251
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/N5RB4sp.png",Qatar TV
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1227
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/N5RB4sp.png",Qatar TV 2
+http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/275952
 
 #EXTINF:-1 tvg-id="QatarTV.qa" tvg-logo="https://i.imgur.com/N5RB4sp.png" group-title="General",Qatar TV
 https://qatartv.akamaized.net/hls/live/2026573/qtv1/master.m3u8
