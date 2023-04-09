@@ -16,6 +16,18 @@ SITE_NAME = 'Laroza'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
+oParser = cParser()
+ 
+oRequestHandler = cRequestHandler(URL_MAIN)
+sHtmlContent = oRequestHandler.request()
+
+    # (.+?) ([^<]+)
+
+sPattern = '<li><a href="(.+?)zika.9">الصفحة الرئيسية</a></li>'
+aResult = oParser.parse(sHtmlContent, sPattern)
+    
+if (aResult[0]):
+    URL_MAIN = aResult[1][0]
 
 MOVIE_AR = (URL_MAIN + 'category.php?cat=arabic-movies10', 'showMovies')
 MOVIE_EN = (URL_MAIN + 'category.php?cat=english-movies2', 'showMovies')

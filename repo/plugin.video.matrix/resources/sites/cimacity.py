@@ -40,7 +40,7 @@ SERIE_HEND = (URL_MAIN + '/category.php?cat=hindia-series', 'showSeries')
 SERIE_EN = (URL_MAIN + '/category.php?cat=moslslat-agnabya', 'showSeries')
 SERIE_AR = (URL_MAIN + '/category.php?cat=moslslat-arabia', 'showSeries')
 
-RAMADAN_SERIES = (URL_MAIN + '/category.php?cat=moslslat-ramdan-2022', 'showSeries')
+RAMADAN_SERIES = (URL_MAIN + '/category.php?cat=ramdan-2023', 'showSeries')
 ANIM_NEWS = (URL_MAIN + '/category.php?cat=animation-series', 'showSeries')
 
 REPLAYTV_PLAY = (URL_MAIN + '/category.php?cat=tv-programs', 'showMovies')

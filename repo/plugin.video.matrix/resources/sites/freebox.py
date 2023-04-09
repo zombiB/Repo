@@ -24,8 +24,6 @@ URL_WEB = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/Reso
 URL_RADIO = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/zips/Resources/radio.m3u'
 
 TV_TV = (True, 'showMenuTV')
-CHAINE_TV = (URL_WEB, 'showWeb')
-
 
 UA = 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/48.0.2564.116 Chrome/48.0.2564.116 Safari/537.36'
 
@@ -70,12 +68,6 @@ def showMenuMusic():
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', URL_RADIO)
     oGui.addDir('radio', 'showWeb', addons.VSlang(30203), 'music.png', oOutputParameterHandler)
-
-    oOutputParameterHandler.addParameter('siteUrl', 'http://')
-    oGui.addDir('radio', 'showGenres', addons.VSlang(30203) + ' (Genres)', 'genres.png', oOutputParameterHandler)
-
-    oOutputParameterHandler.addParameter('siteUrl', URL_RADIO)
-    oGui.addDir('radio', 'showAZ', addons.VSlang(30203) + ' (Alphabétique)', 'az.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
 

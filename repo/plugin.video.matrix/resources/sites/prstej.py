@@ -16,6 +16,18 @@ SITE_NAME = 'Prstej'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
+oParser = cParser()
+ 
+oRequestHandler = cRequestHandler(URL_MAIN)
+sHtmlContent = oRequestHandler.request()
+
+    # (.+?) ([^<]+)
+
+sPattern = '"url": "(.+?)/ind5"'
+aResult = oParser.parse(sHtmlContent, sPattern)
+    
+if (aResult[0]):
+    URL_MAIN = aResult[1][0]
 
 #MOVIE_EN = (URL_MAIN + '/category102.php?cat=aflamajnby2023', 'showMovies')
 RAMADAN_SERIES = (URL_MAIN + '/category.php?cat=ramdan2023', 'showSeries')

@@ -246,6 +246,9 @@ class cHosterGui:
         if ('archive.org/download' in sHostName):
             return self.getHoster('lien_direct')
 
+        if ('iptvtree' in sHostName):
+            return self.getHoster('lien_direct')
+
         if ('ak-download' in sHostName):
             return self.getHoster('lien_direct')
 
