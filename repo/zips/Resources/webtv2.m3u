@@ -20,7 +20,7 @@ https://5ab29cc78f681.streamlock.net/afarinTV/livestream/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/hVNIwgE.png",Ajman TV
 https://dacastmmd.mmdlive.lldns.net/dacastmmd/d3e9fc3b874a46159ce3724d802e3f8d/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",Al Kafeel
+#EXTINF:-1 tvg-logo="https://shialivetv.com/shialive/assets/img/ziy/baynul.jpg",Al Kafeel
 https://stream.alkafeel.net/live/alkafeel/rAa5PGot1/manifest.m3u8
 
 #EXTINF:-1 tvg-logo="https://i.imgur.com/df7D3KR.png",Al Aoula Europe
@@ -194,7 +194,7 @@ https://5c7b683162943.streamlock.net/live/ngrp:bahraintvmain_all/playlist.m3u8
 #EXTINF:-1 tvg-id="BaynounahTV.ae" tvg-logo="https://i.imgur.com/n2nczHO.png",Baynounah TV
 https://baynounah.cdn.mangomolo.com/btv/smil:btv.stream.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",BBC Arabic
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b8/Logo_BBC_Arabic.png",BBC Arabic
 https://vs-hls-pushb-ww-live.akamaized.net/x=3/i=urn:bbc:pips:service:bbc_arabic_tv/t=3840/v=pv14/b=5070016/main.m3u8
 
 #EXTINF:-1 tvg-id="Beity.sa" tvg-logo="https://i.imgur.com/WyRsj6l.png" group-title="Outdoor",Beity
@@ -206,11 +206,13 @@ https://shls-cartoon-net-prod-dub.shahid.net/out/v1/dc4aa87372374325a66be458f29e
 #EXTINF:-1 tvg-id="CBC.eg" tvg-logo="https://i.imgur.com/8apNaLP.png",CBC
 https://ythls.onrender.com/channel/UCUHq39HXLyAjjMPIjsNRLpw.m3u8
 
-#EXTINF:-1 tvg-logo="",CBC
+#EXTINF:-1 tvg-logo="https://i.imgur.com/8apNaLP.png",CBC
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1265
-#EXTINF:-1 tvg-logo="",CBC Drama
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/ar/d/dc/%D8%B3%D9%8A_%D8%A8%D9%8A_%D8%B3%D9%8A_%D8%AF%D8%B1%D8%A7%D9%85%D8%A7.jpg",CBC Drama
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1264
-#EXTINF:-1 tvg-logo="",CBC Sofra
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cbc_sofra_logo.png/800px-Cbc_sofra_logo.png",CBC Sofra
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/2881
 
 #EXTINF:-1 tvg-id="CharityTV.lb" tvg-logo="https://i.imgur.com/U9z8WBY.png" group-title="Religious",Charity TV
@@ -225,11 +227,13 @@ https://ythls.onrender.com/channel/UCsHdPPJXT-yKVTLGkn3DSvQ.m3u8
 #EXTINF:-1 tvg-id="CopticTV.eg" tvg-logo="https://www.ctvchannel.tv/images/CTV-logo-white.png" group-title="Religious",Coptic TV
 https://58cc65c534c67.streamlock.net/ctvchannel.tv/ctv.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",DMC
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/DmcTv.jpg",DMC
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1263
-#EXTINF:-1 tvg-logo="",DMC Drama
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Dmc_drama_logo.png/280px-Dmc_drama_logo.png",DMC Drama
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1262
-#EXTINF:-1 tvg-logo="",DMC Masraheyat
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/DmcTv.jpg",DMC Masraheyat
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/270756
 
 #EXTINF:-1 tvg-id="DubaiOne.ae" tvg-logo="https://i.imgur.com/Dj16oKL.png" group-title="General",Dubai One
@@ -265,7 +269,7 @@ https://ghaasiflu.online/alhqeqa/index.m3u8
 #EXTINF:-1 tvg-id="Falastini.ps" tvg-logo="https://i.imgur.com/h1N60QR.png" group-title="Music",Falastini
 https://cdg8.edge.technocdn.com/palestiniantv_source/live/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="",Fatafeat
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fatafeat_Logo_Final.jpg/640px-Fatafeat_Logo_Final.jpg",Fatafeat
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/4883
 
 #EXTINF:-1 tvg-id="FebruaryChannel.ly" tvg-logo="https://i.imgur.com/WdMIpsA.png",February Channel
@@ -631,3 +635,236 @@ https://ythls.onrender.com/channel/UCOll3M-P7oKs5cSrQ9ytt6g.m3u8
 
 #EXTINF:-1 tvg-id="ZagrosTV.iq" tvg-logo="https://i.imgur.com/9Mspf32.png" group-title="General",Zagros TV
 https://5a3ed7a72ed4b.streamlock.net/zagrostv/SMIL:myStream.smil/playlist.m3u8
+
+#EXTINF:-1,QA: Al Kass 3
+http://iptvtree.net:8080/nika/ee07c53d/265157
+#EXTINF:-1,QA: Al Kass Extra Three
+http://iptvtree.net:8080/nika/ee07c53d/297007
+#EXTINF:-1,QA: Al Kass Extra Two
+http://iptvtree.net:8080/nika/ee07c53d/11899
+#EXTINF:-1,QA: Al Kass Five
+http://iptvtree.net:8080/nika/ee07c53d/11901
+#EXTINF:-1,QA: Al Kass Four
+http://iptvtree.net:8080/nika/ee07c53d/11900
+#EXTINF:-1,QA: Al Kass One
+http://iptvtree.net:8080/nika/ee07c53d/26389
+#EXTINF:-1,QA: Al Rayyan
+http://iptvtree.net:8080/nika/ee07c53d/11322
+#EXTINF:-1,QA: Al Rayyan Al Qadeem
+http://iptvtree.net:8080/nika/ee07c53d/201997
+#EXTINF:-1,QA: AlJazeera
+http://iptvtree.net:8080/nika/ee07c53d/144822
+#EXTINF:-1,QA: Aljazeera Documentary
+http://iptvtree.net:8080/nika/ee07c53d/1287
+#EXTINF:-1,QA: Aljazeera English
+http://iptvtree.net:8080/nika/ee07c53d/193553
+#EXTINF:-1,QA: Aljazeera Mubasher
+http://iptvtree.net:8080/nika/ee07c53d/1286
+#EXTINF:-1,QA: AMC
+http://iptvtree.net:8080/nika/ee07c53d/280250
+#EXTINF:-1,QA: Baby TV
+http://iptvtree.net:8080/nika/ee07c53d/283180
+#EXTINF:-1,QA: Baraem
+http://iptvtree.net:8080/nika/ee07c53d/1272
+#EXTINF:-1,QA: BBC Earth
+http://iptvtree.net:8080/nika/ee07c53d/296077
+#EXTINF:-1,QA: Be Junior
+http://iptvtree.net:8080/nika/ee07c53d/2838
+#EXTINF:-1,QA: beIN 4K
+http://iptvtree.net:8080/nika/ee07c53d/295854
+#EXTINF:-1,QA: beIN Box Office 1
+http://iptvtree.net:8080/nika/ee07c53d/225322
+#EXTINF:-1,QA: beIN Drama 1
+http://iptvtree.net:8080/nika/ee07c53d/2835
+#EXTINF:-1,QA: beIN Gourmet
+http://iptvtree.net:8080/nika/ee07c53d/2840
+#EXTINF:-1,QA: beIN Movies Action 2
+http://iptvtree.net:8080/nika/ee07c53d/1270
+#EXTINF:-1,QA: beIN Movies Drama 3
+http://iptvtree.net:8080/nika/ee07c53d/3735
+#EXTINF:-1,QA: beIN Movies Family 4
+http://iptvtree.net:8080/nika/ee07c53d/1268
+#EXTINF:-1,QA: beIN Movies Premiere 1
+http://iptvtree.net:8080/nika/ee07c53d/267063
+#EXTINF:-1,QA: beIN Series 1
+http://iptvtree.net:8080/nika/ee07c53d/2833
+#EXTINF:-1,QA: beIN Series 2
+http://iptvtree.net:8080/nika/ee07c53d/7619
+#EXTINF:-1,QA: beIN Sports
+http://iptvtree.net:8080/nika/ee07c53d/280725
+#EXTINF:-1,QA: beIN Sports 1
+http://iptvtree.net:8080/nika/ee07c53d/100
+#EXTINF:-1,QA: beIN Sports 2
+http://iptvtree.net:8080/nika/ee07c53d/101
+#EXTINF:-1,QA: beIN Sports 3
+http://iptvtree.net:8080/nika/ee07c53d/102
+#EXTINF:-1,QA: beIN Sports 4
+http://iptvtree.net:8080/nika/ee07c53d/103
+#EXTINF:-1,QA: beIN Sports 5
+http://iptvtree.net:8080/nika/ee07c53d/104
+#EXTINF:-1,QA: beIN Sports 6
+http://iptvtree.net:8080/nika/ee07c53d/105
+#EXTINF:-1,QA: beIN Sports 7
+http://iptvtree.net:8080/nika/ee07c53d/106
+#EXTINF:-1,QA: beIN Sports English 1
+http://iptvtree.net:8080/nika/ee07c53d/110
+#EXTINF:-1,QA: beIN Sports English 3
+http://iptvtree.net:8080/nika/ee07c53d/267769
+#EXTINF:-1,QA: beIN Sports Max 1
+http://iptvtree.net:8080/nika/ee07c53d/296991
+#EXTINF:-1,QA: beIN Sports Max 2
+http://iptvtree.net:8080/nika/ee07c53d/199001
+#EXTINF:-1,QA: beIN Sports Max 4
+http://iptvtree.net:8080/nika/ee07c53d/13813
+#EXTINF:-1,QA: beIN Sports NBA
+http://iptvtree.net:8080/nika/ee07c53d/15962
+#EXTINF:-1,QA: beIN Sports News
+http://iptvtree.net:8080/nika/ee07c53d/1266
+#EXTINF:-1,QA: beIN Sports Premium 1
+http://iptvtree.net:8080/nika/ee07c53d/109
+#EXTINF:-1,QA: beIN Sports Premium 2
+http://iptvtree.net:8080/nika/ee07c53d/280145
+#EXTINF:-1,QA: beIN Sports Premium 3
+http://iptvtree.net:8080/nika/ee07c53d/280249
+#EXTINF:-1,QA: beIN Sports Xtra 1
+http://iptvtree.net:8080/nika/ee07c53d/290037
+#EXTINF:-1,QA: beIN Sports Xtra 2
+http://iptvtree.net:8080/nika/ee07c53d/283294
+#EXTINF:-1,QA: Cartoon Network Arabic
+http://iptvtree.net:8080/nika/ee07c53d/283184
+#EXTINF:-1,QA: Fatafeat
+http://iptvtree.net:8080/nika/ee07c53d/284463
+#EXTINF:-1,QA: Fox Action Movies
+http://iptvtree.net:8080/nika/ee07c53d/283181
+#EXTINF:-1,QA: Jeem TV
+http://iptvtree.net:8080/nika/ee07c53d/1251
+#EXTINF:-1,QA: Qatar TV
+http://iptvtree.net:8080/nika/ee07c53d/1227
+#EXTINF:-1,QA: Qatar TV 2
+http://iptvtree.net:8080/nika/ee07c53d/275952
+#EXTINF:-1,QA: Star Movies
+http://iptvtree.net:8080/nika/ee07c53d/280254
+#EXTINF:-1,QA: Star World
+http://iptvtree.net:8080/nika/ee07c53d/225567
+#EXTINF:-1,SA: Al Majd
+http://iptvtree.net:8080/nika/ee07c53d/225298
+#EXTINF:-1,SA: Al Majd Quran
+http://iptvtree.net:8080/nika/ee07c53d/17224
+#EXTINF:-1,SA: Alresalah TV
+http://iptvtree.net:8080/nika/ee07c53d/225180
+#EXTINF:-1,SA: ART Aflam 1
+http://iptvtree.net:8080/nika/ee07c53d/1278
+#EXTINF:-1,SA: ART Aflam 2
+http://iptvtree.net:8080/nika/ee07c53d/1277
+#EXTINF:-1,SA: ART Cinema
+http://iptvtree.net:8080/nika/ee07c53d/1279
+#EXTINF:-1,SA: ART Hekayat
+http://iptvtree.net:8080/nika/ee07c53d/1276
+#EXTINF:-1,SA: ART Hekayat 2
+http://iptvtree.net:8080/nika/ee07c53d/1275
+#EXTINF:-1,SA: SBC
+http://iptvtree.net:8080/nika/ee07c53d/147121
+#EXTINF:-1,SA: SSC 1
+http://iptvtree.net:8080/nika/ee07c53d/280132
+#EXTINF:-1,SA: SSC 2
+http://iptvtree.net:8080/nika/ee07c53d/280137
+#EXTINF:-1,SA: SSC 3
+http://iptvtree.net:8080/nika/ee07c53d/280134
+#EXTINF:-1,SA: SSC 4
+http://iptvtree.net:8080/nika/ee07c53d/280133
+#EXTINF:-1,SA: SSC 5
+http://iptvtree.net:8080/nika/ee07c53d/280135
+#EXTINF:-1,SA: SSC Extra 1
+http://iptvtree.net:8080/nika/ee07c53d/280136
+#EXTINF:-1,SA: SSC Extra 2
+http://iptvtree.net:8080/nika/ee07c53d/281462
+#EXTINF:-1,AE: Abu Dhabi Sports 1
+http://iptvtree.net:8080/nika/ee07c53d/1296
+#EXTINF:-1,AE: Abu Dhabi Sports 2
+http://iptvtree.net:8080/nika/ee07c53d/1295
+#EXTINF:-1,AE: Abu Dhabi Sports 3
+http://iptvtree.net:8080/nika/ee07c53d/11023
+#EXTINF:-1,AE: Abu Dhabi Sports Asia 2
+http://iptvtree.net:8080/nika/ee07c53d/296837
+#EXTINF:-1,AE: Abu Dhabi Sports Premium 1
+http://iptvtree.net:8080/nika/ee07c53d/296836
+#EXTINF:-1,AE: Abu Dhabi Sports Premium 2
+http://iptvtree.net:8080/nika/ee07c53d/296835
+#EXTINF:-1,AE: MBC Action
+http://iptvtree.net:8080/nika/ee07c53d/1244
+#EXTINF:-1,AE: MBC Bollywood
+http://iptvtree.net:8080/nika/ee07c53d/1243
+#EXTINF:-1,AE: MBC Drama
+http://iptvtree.net:8080/nika/ee07c53d/1242
+#EXTINF:-1,AE: MBC Drama+
+http://iptvtree.net:8080/nika/ee07c53d/3689
+#EXTINF:-1,AE: MBC FM
+http://iptvtree.net:8080/nika/ee07c53d/283292
+#EXTINF:-1,AE: MBC Maser
+http://iptvtree.net:8080/nika/ee07c53d/1238
+#EXTINF:-1,AE: MBC Maser 2
+http://iptvtree.net:8080/nika/ee07c53d/297542
+#EXTINF:-1,AE: MBC Max
+http://iptvtree.net:8080/nika/ee07c53d/1240
+#EXTINF:-1,AE: MBC Variety+
+http://iptvtree.net:8080/nika/ee07c53d/1239
+#EXTINF:-1,AE: Music Now
+http://iptvtree.net:8080/nika/ee07c53d/11952
+#EXTINF:-1,AE: NAT GEO Abu Dhabi
+http://iptvtree.net:8080/nika/ee07c53d/217285
+#EXTINF:-1,AE: NAT GEO Wild
+http://iptvtree.net:8080/nika/ee07c53d/3704
+#EXTINF:-1,AE: Noor Dubai
+http://iptvtree.net:8080/nika/ee07c53d/1259
+#EXTINF:-1,AE: OSN Action
+http://iptvtree.net:8080/nika/ee07c53d/2860
+#EXTINF:-1,AE: OSN Box Office 1
+http://iptvtree.net:8080/nika/ee07c53d/43903
+#EXTINF:-1,AE: OSN Box Office 2
+http://iptvtree.net:8080/nika/ee07c53d/3701
+#EXTINF:-1,AE: OSN Box Office 3
+http://iptvtree.net:8080/nika/ee07c53d/3702
+#EXTINF:-1,AE: OSN Comedy
+http://iptvtree.net:8080/nika/ee07c53d/2859
+#EXTINF:-1,AE: OSN Enigma
+http://iptvtree.net:8080/nika/ee07c53d/2856
+#EXTINF:-1,AE: OSN Kids
+http://iptvtree.net:8080/nika/ee07c53d/3694
+#EXTINF:-1,AE: OSN Kidz Zone
+http://iptvtree.net:8080/nika/ee07c53d/13828
+#EXTINF:-1,AE: OSN Living
+http://iptvtree.net:8080/nika/ee07c53d/22478
+#EXTINF:-1,AE: OSN Mezze
+http://iptvtree.net:8080/nika/ee07c53d/122553
+#EXTINF:-1,AE: OSN Movies Action
+http://iptvtree.net:8080/nika/ee07c53d/297226
+#EXTINF:-1,AE: OSN Movies Disney
+http://iptvtree.net:8080/nika/ee07c53d/13666
+#EXTINF:-1,AE: OSN Movies First
+http://iptvtree.net:8080/nika/ee07c53d/2858
+#EXTINF:-1,AE: OSN Movies First +2
+http://iptvtree.net:8080/nika/ee07c53d/16917
+#EXTINF:-1,AE: OSN Movies Hollywood
+http://iptvtree.net:8080/nika/ee07c53d/71110
+#EXTINF:-1,AE: OSN Play
+http://iptvtree.net:8080/nika/ee07c53d/13825
+#EXTINF:-1,AE: OSN Play 2
+http://iptvtree.net:8080/nika/ee07c53d/297952
+#EXTINF:-1,AE: OSN Play 3
+http://iptvtree.net:8080/nika/ee07c53d/297953
+#EXTINF:-1,AE: OSN Play 4
+http://iptvtree.net:8080/nika/ee07c53d/297954
+#EXTINF:-1,AE: OSN Premiere
+http://iptvtree.net:8080/nika/ee07c53d/22118
+#EXTINF:-1,AE: OSN Series First
+http://iptvtree.net:8080/nika/ee07c53d/281472
+#EXTINF:-1,AE: OSN Series First 2
+http://iptvtree.net:8080/nika/ee07c53d/2848
+#EXTINF:-1,AE: OSN Woman
+http://iptvtree.net:8080/nika/ee07c53d/282771
+#EXTINF:-1,AE: OSN Ya Hala Cinema
+http://iptvtree.net:8080/nika/ee07c53d/2851
+#EXTINF:-1,AE: OSN Yahala
+http://iptvtree.net:8080/nika/ee07c53d/2850
+#EXTINF:-1,AE: OSN Yahala Bil Arabi
+http://iptvtree.net:8080/nika/ee07c53d/54573
