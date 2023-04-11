@@ -51,7 +51,7 @@ class cClear:
             return
 
         elif (env == 'changelog_old'):
-            sUrl = 'https://raw.githubusercontent.com/zombiB/zombi-addons/master/plugin.video.matrix/changelog.txt'
+            sUrl = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/plugin.video.matrix/changelog.txt'
             try:
                 oRequest = urllib2.Request(sUrl)
                 oResponse = urllib2.urlopen(oRequest)
@@ -83,7 +83,7 @@ class cClear:
                     self.getControl(1).setLabel('ChangeLog')
                     self.button.setLabel('OK')
 
-                    sUrl = 'https://api.github.com/repos/zombiB/zombi-addons/commits'
+                    sUrl = 'https://api.github.com/repos/Yonn1981/repo/commits'
                     oRequest = urllib2.Request(sUrl)
                     oResponse = urllib2.urlopen(oRequest)
 
@@ -130,7 +130,7 @@ class cClear:
             return
 
         elif (env == 'soutient'):
-            sUrl = 'https://raw.githubusercontent.com/Kodi-matrix/venom-xbmc-addons/master/plugin.video.matrix/soutient.txt'
+            sUrl = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/plugin.video.matrix/soutient.txt'
             try:
                 oRequest = urllib2.Request(sUrl)
                 oResponse = urllib2.urlopen(oRequest)
@@ -171,8 +171,8 @@ class cClear:
             return
 
         elif (env == 'clean'):
-            liste = ['Historiques des recherches', 'Marque-Pages', 'En cours de lecture',
-                     'Niveau de lecture', 'Marqués vues', 'Téléchargements']
+            liste = ['Search history', 'Marque-Pages', 'Now Playing',
+                     'Readings', 'Tagged views', 'Downloads']
             ret = self.DIALOG.VSselect(liste, self.ADDON.VSlang(30110))
             cached_DB = "special://home/userdata/addon_data/plugin.video.matrix/matrix.db"
             # important seul xbmcvfs peux lire le special

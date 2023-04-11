@@ -208,9 +208,11 @@ https://ythls.onrender.com/channel/UCUHq39HXLyAjjMPIjsNRLpw.m3u8
 
 #EXTINF:-1 tvg-logo="https://i.imgur.com/8apNaLP.png",CBC
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1265
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/ar/d/dc/%D8%B3%D9%8A_%D8%A8%D9%8A_%D8%B3%D9%8A_%D8%AF%D8%B1%D8%A7%D9%85%D8%A7.jpg",CBC Drama
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/8apNaLP.png",CBC Drama
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/1264
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cbc_sofra_logo.png/800px-Cbc_sofra_logo.png",CBC Sofra
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/8apNaLP.png",CBC Sofra
 http://iptvtree.net:8080/Jonsno/NKr806GHd4YZN3Cn/2881
 
 #EXTINF:-1 tvg-id="CharityTV.lb" tvg-logo="https://i.imgur.com/U9z8WBY.png" group-title="Religious",Charity TV

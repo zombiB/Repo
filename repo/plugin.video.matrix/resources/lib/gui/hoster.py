@@ -248,6 +248,9 @@ class cHosterGui:
 
         if ('iptvtree' in sHostName):
             return self.getHoster('lien_direct')
+        
+        if ('ugeen' in sHostName):
+            return self.getHoster('lien_direct')
 
         if ('ak-download' in sHostName):
             return self.getHoster('lien_direct')

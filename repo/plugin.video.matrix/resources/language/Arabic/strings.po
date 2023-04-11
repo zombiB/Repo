@@ -1340,3 +1340,7 @@ msgstr "كلاسيكية"
 msgctxt "#70013"
 msgid "Pack"
 msgstr "سلسلة"
+
+msgctxt "#70014"
+msgid "TV (Premium)"
+msgstr "بريميم ويب تي في"

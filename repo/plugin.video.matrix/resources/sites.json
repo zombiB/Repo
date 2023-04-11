@@ -250,6 +250,11 @@
             "active": "True",
             "url": "https://honadrama.us/"
         },
+        "iptv": {
+            "label": "IPTV",
+            "active": "True",
+            "url": "http://ugeen.live/"
+        },
         "katkoute": {
             "label": "Katkoute",
             "active": "True",
@@ -263,7 +268,7 @@
         "laroza": {
             "label": "Laroza",
             "active": "True",
-            "url": "https://m.laro-zavideo.site/"
+            "url": "https://r.laro-zavideo.cfd/"
         },
         "lodynet": {
             "label": "Lodynet",
@@ -283,7 +288,7 @@
         "prstej": {
             "label": "Prstej",
             "active": "True",
-            "url": "https://sa.prstejj12.xyz/"
+            "url": "https://sa.prstejj13.xyz/"
         },
         "rotana": {
             "label": "Rotana",
@@ -368,7 +373,7 @@
         "yallalive": {
             "label": "Yallalive",
             "active": "True",
-            "url": "https://yallalive.life/"
+            "url": "https://yallalive.lat/"
         }
     }
 }
