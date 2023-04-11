@@ -17,7 +17,7 @@ from resources.lib.parser import cParser
 from resources.lib.util import Unquote
 
 SITE_IDENTIFIER = 'iptv'
-SITE_NAME = 'Premium IPTV'
+SITE_NAME = '[COLOR orange]Premium IPTV[/COLOR]'
 SITE_DESC = 'Watch Live television'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)

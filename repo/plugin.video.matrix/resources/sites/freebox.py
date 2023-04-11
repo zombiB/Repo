@@ -16,7 +16,7 @@ from resources.lib.parser import cParser
 from resources.lib.util import Unquote
 
 SITE_IDENTIFIER = 'freebox'
-SITE_NAME = 'Free TV'
+SITE_NAME = '[COLOR orange]Free TV[/COLOR]'
 SITE_DESC = 'Watch Livetelevision'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
