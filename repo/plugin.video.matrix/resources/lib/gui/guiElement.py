@@ -267,8 +267,6 @@ class cGuiElement:
         # enleve les crochets et les parentheses si elles sont vides
         if sa or ep:
             sTitle = sTitle.replace('()', '').replace('[]', '').replace('- -', '-')
-            # vire espace et - a la fin
-            sTitle = re.sub('[- –_\.]+$', '', sTitle)
 
         if sa:
             self.__Season = sa
@@ -279,10 +277,7 @@ class cGuiElement:
 			
         # on repasse en utf-8
         if not isMatrix():
-            try:
-                sTitle = sTitle.encode('utf-8')
-            except:
-                pass
+            sTitle = sTitle.encode('utf-8')
 				
         # on reformate SXXEXX Titre [tag] (Annee)
         sTitle2 = ''
@@ -329,7 +324,6 @@ class cGuiElement:
             self.__sCleanTitle = re.sub('\[.+?\]|\(.+?\)', '', sTitle)
             if not self.__sCleanTitle:
                 self.__sCleanTitle = sTitle.replace('[', '').replace(']', '').replace('(', '').replace(')', '')
-
         if isMatrix():
             # Python 3 decode sTitle
             try:
@@ -363,10 +357,10 @@ class cGuiElement:
         # Py3
         if isMatrix():
             try:
-                if 'Ã' in sDescription or '\\xc' in sDescription:
-                    self.__sDescription = str(sDescription.encode('latin-1'), 'utf-8')
-                else:
-                    self.__sDescription = sDescription
+
+                self.__sDescription = str(sDescription.encode('latin-1'),'utf-8')
+
+
             except:
                 self.__sDescription = sDescription
         else:
@@ -439,7 +433,7 @@ class cGuiElement:
         if not self.getTitleWatched():
             return 0
 
-        meta = {'titleWatched': self.getTitleWatched(),
+        meta = {'title': self.getTitleWatched(),
                 'site': self.getSiteUrl(),
                 'cat': self.getCat()
                 }

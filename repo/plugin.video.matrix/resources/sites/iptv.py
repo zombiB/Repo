@@ -134,15 +134,15 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
             progress_.VSupdate(progress_, total)
             if progress_.iscanceled():
                 break
-            sThumb = icon
+            sThumb = track.icon
             if not sThumb:
-                sThumb = 'tv.png'
+                sThumb = 'https://raw.githubusercontent.com/Yonn1981/Repo/master/repo/plugin.video.matrix/resources/art/tv.png'
 
 
             # les + ne peuvent pas passer
             url2 = track.path.replace('+', 'P_L_U_S')
 
-            thumb = icon
+            thumb = ''.join([sRootArt, sThumb])
 
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', url2)
@@ -162,8 +162,8 @@ def showWeb():  # Code qui s'occupe de liens TV du Web
             oGuiElement.setDirectTvFanart()
             oGuiElement.setCat(6)
 
-            oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'direct_epg', 'Guide tv Direct')
-            oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'soir_epg', 'Guide tv Soir')
+            # oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'direct_epg', 'Guide tv Direct')
+            # oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'soir_epg', 'Guide tv Soir')
             # oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'enregistrement', 'Enregistrement')
             oGui.addFolder(oGuiElement, oOutputParameterHandler)
 
@@ -238,8 +238,8 @@ def showTV():
             oGuiElement.setDirectTvFanart()
             oGuiElement.setCat(6)
 
-            oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'direct_epg', 'Guide tv Direct')
-            oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'soir_epg', 'Guide tv Soir')
+            # oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'direct_epg', 'Guide tv Direct')
+            # oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'soir_epg', 'Guide tv Soir')
             # oGui.createSimpleMenu(oGuiElement, oOutputParameterHandler, SITE_IDENTIFIER, SITE_IDENTIFIER, 'enregistrement', 'Enregistrement')
             oGui.createContexMenuBookmark(oGuiElement, oOutputParameterHandler)
             oGui.addFolder(oGuiElement, oOutputParameterHandler)

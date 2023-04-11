@@ -227,27 +227,12 @@ class cPlayer(xbmc.Player):
                     # Mais on a tout de meme terminé donc le temps actuel est egal au temps total.
                     if (pourcent > 0.90) or (pourcent == 0.0 and self.currentTime == self.totalTime):
         
-                        # Marquer VU dans la BDD matrix
+                        # Marquer VU dans la BDD matrixs
                         sTitleWatched = self.infotag.getOriginalTitle()
                         if sTitleWatched:
                             meta = {}
+                            meta['title'] = sTitleWatched
                             meta['cat'] = self.sCat
-                            meta['title'] = self.sTitle
-                            meta['titleWatched'] = sTitleWatched
-                            if self.movieUrl and self.movieFunc:
-                                meta['siteurl'] = self.movieUrl
-                                meta['fav'] = self.movieFunc
-                            else:
-                                meta['siteurl'] = self.sSite
-                                meta['fav'] = self.sFav
-
-                            meta['tmdbId'] = self.sTmdbId
-                            meta['site'] = self.sSource
-
-                            if self.sSaison:
-                                meta['season'] = self.sSaison
-                            meta['seasonUrl'] = self.saisonUrl
-                            meta['seasonFunc'] = self.nextSaisonFunc
                             db.insert_watched(meta)
         
                             # RAZ du point de reprise
@@ -255,6 +240,8 @@ class cPlayer(xbmc.Player):
                             
                             # Sortie des LECTURE EN COURS pour les films, pour les séries la suppression est manuelle
                             if self.sCat == '1':
+                                meta['titleWatched'] = sTitleWatched
+                                meta['cat'] = self.sCat
                                 db.del_viewing(meta)
                             elif self.sCat == '8':      # A la fin de la lecture d'un episode, on met la saison en "Lecture en cours" 
                                 saisonViewing = True
@@ -267,8 +254,7 @@ class cPlayer(xbmc.Player):
                         sTitleWatched = self.infotag.getOriginalTitle()
                         if sTitleWatched:
                             meta = {}
-                            meta['title'] = self.sTitle
-                            meta['titleWatched'] = sTitleWatched
+                            meta['title'] = sTitleWatched
                             meta['site'] = self.sSite
                             meta['point'] = self.currentTime
                             meta['total'] = self.totalTime
@@ -289,6 +275,8 @@ class cPlayer(xbmc.Player):
                                 if self.sCat == '5' and self.totalTime < 2700:
                                     pass
                                 else:
+                                    meta['title'] = self.sTitle
+                                    meta['titleWatched'] = sTitleWatched
                                     if self.movieUrl and self.movieFunc:
                                         meta['siteurl'] = self.movieUrl
                                         meta['fav'] = self.movieFunc
@@ -336,14 +324,14 @@ class cPlayer(xbmc.Player):
                 sTitleWatched = self.infotag.getOriginalTitle()
                 if sTitleWatched:
                     meta = {}
-                    meta['titleWatched'] = sTitleWatched
+                    meta['title'] = sTitleWatched
                     resumePoint, total = db.get_resume(meta)
                     if resumePoint:
                         h = resumePoint//3600
                         ms = resumePoint-h*3600
                         m = ms//60
                         s = ms-m*60
-                        ret = dialog().VSselect(['Resume from %02d:%02d:%02d' %(h, m, s), 'Play from the beginning'], 'Resume')
+                        ret = dialog().VSselect(['Resume from %02d:%02d:%02d' %(h, m, s), 'Play from the beginning'], 'Resume Play')
                         if ret == 0:
                             self.seekTime(resumePoint)
                         elif ret == 1:
@@ -353,11 +341,12 @@ class cPlayer(xbmc.Player):
 
 
     def __setWatchlist(self, sEpisode=''):
-        # Suivi de lecture dans Trakt
+        # Suivi de lecture dans Trakt si compte
+        if self.ADDON.getSetting('bstoken') == '':
+            return
         plugins = __import__('resources.lib.trakt', fromlist=['trakt']).cTrakt()
         function = getattr(plugins, 'getAction')
         function(Action = "SetWatched", sEpisode = sEpisode)
-        return
 
     def __getPlayerType(self):
         sPlayerType = self.ADDON.getSetting('playerType')
@@ -376,3 +365,4 @@ class cPlayer(xbmc.Player):
                 return xbmc.PLAYER_CORE_DVDPLAYER
         except:
             return False
+

@@ -71,111 +71,111 @@ http://ugeen.live:8080/username/password/3540
 http://ugeen.live:8080/username/password/3291
 #EXTINF:-1 tvg-logo="",راديو سعد الغامدى
 http://ugeen.live:8080/username/password/3444
-#EXTINF:-1 tvg-logo="",•●★★--- beIN Sport Full HD ---★★●•
+#EXTINF:-1 tvg-id="" tvg-name="•●★★--- beIN Sport Full HD ---★★●•" tvg-logo="" group-title="beIN SPORTS [FHD] ⚽",•●★★--- beIN Sport Full HD ---★★●•
 http://ugeen.live:8080/username/password/3220
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM1 [FHD]
+#EXTINF:-1 tvg-id="beinsports1premiumar.qa" tvg-name="beIN SPORTS PREMIUM1 [FHD]" tvg-logo="https://i.imgur.com/TGzCVTR.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS PREMIUM1 [FHD]
 http://ugeen.live:8080/username/password/3221
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM2 [FHD]
+#EXTINF:-1 tvg-id="beinsports2premiumar.qa" tvg-name="beIN SPORTS PREMIUM2 [FHD]" tvg-logo="https://i.imgur.com/x6lC9BB.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS PREMIUM2 [FHD]
 http://ugeen.live:8080/username/password/3222
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM3 [FHD]
+#EXTINF:-1 tvg-id="beinsports3premiumar.qa" tvg-name="beIN SPORTS PREMIUM3 [FHD]" tvg-logo="https://i.imgur.com/dsiOly2.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS PREMIUM3 [FHD]
 http://ugeen.live:8080/username/password/3223
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD1
+#EXTINF:-1 tvg-id="beinsports1ar.qa" tvg-name="beIN SPORTS FullHD1" tvg-logo="https://i.imgur.com/dmuw7ic.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD1
 http://ugeen.live:8080/username/password/3224
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD2
+#EXTINF:-1 tvg-id="beinsports2ar.qa" tvg-name="beIN SPORTS FullHD2" tvg-logo="https://i.imgur.com/dEB3RXR.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD2
 http://ugeen.live:8080/username/password/3225
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD3
+#EXTINF:-1 tvg-id="beinsports3ar.qa" tvg-name="beIN SPORTS FullHD3" tvg-logo="https://i.imgur.com/reVgvcf.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD3
 http://ugeen.live:8080/username/password/3226
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD4
+#EXTINF:-1 tvg-id="beinsports4ar.qa" tvg-name="beIN SPORTS FullHD4" tvg-logo="https://i.imgur.com/TYOj4Vw.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD4
 http://ugeen.live:8080/username/password/3227
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD5
+#EXTINF:-1 tvg-id="beinsports5ar.qa" tvg-name="beIN SPORTS FullHD5" tvg-logo="https://i.imgur.com/N3cv3PA.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD5
 http://ugeen.live:8080/username/password/3228
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD6
+#EXTINF:-1 tvg-id="beinsports6ar.qa" tvg-name="beIN SPORTS FullHD6" tvg-logo="https://i.imgur.com/6TuruRl.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD6
 http://ugeen.live:8080/username/password/3230
-#EXTINF:-1 tvg-logo="",beIN SPORTS FullHD7
+#EXTINF:-1 tvg-id="beinsports7ar.qa" tvg-name="beIN SPORTS FullHD7" tvg-logo="https://i.imgur.com/ArD2FmL.png" group-title="beIN SPORTS [FHD] ⚽",beIN SPORTS FullHD7
 http://ugeen.live:8080/username/password/4033
-#EXTINF:-1 tvg-logo="",•●★★--- beIN SPORTS [HVEC_H265] ---★★●•
+#EXTINF:-1 tvg-id="" tvg-name="•●★★--- beIN SPORTS [HVEC_H265] ---★★●•" tvg-logo="" group-title="beIN SPORTS [HVEC_H265] ⚽",•●★★--- beIN SPORTS [HVEC_H265] ---★★●•
 http://ugeen.live:8080/username/password/3703
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM1 [HEVC]
+#EXTINF:-1 tvg-id="beinsports1premiumar.qa" tvg-name="beIN SPORTS PREMIUM1 [HEVC]" tvg-logo="https://i.imgur.com/TGzCVTR.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS PREMIUM1 [HEVC]
 http://ugeen.live:8080/username/password/459
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM2 [HEVC]
+#EXTINF:-1 tvg-id="beinsports2premiumar.qa" tvg-name="beIN SPORTS PREMIUM2 [HEVC]" tvg-logo="https://i.imgur.com/x6lC9BB.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS PREMIUM2 [HEVC]
 http://ugeen.live:8080/username/password/450
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM3 [HEVC]
+#EXTINF:-1 tvg-id="beinsports3premiumar.qa" tvg-name="beIN SPORTS PREMIUM3 [HEVC]" tvg-logo="https://i.imgur.com/dsiOly2.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS PREMIUM3 [HEVC]
 http://ugeen.live:8080/username/password/451
-#EXTINF:-1 tvg-logo="",beIN SPORTS1 [H265]
+#EXTINF:-1 tvg-id="beinsports1ar.qa" tvg-name="beIN SPORTS1 [H265]" tvg-logo="https://i.imgur.com/dmuw7ic.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS1 [H265]
 http://ugeen.live:8080/username/password/452
-#EXTINF:-1 tvg-logo="",beIN SPORTS2 [H265]
+#EXTINF:-1 tvg-id="beinsports2ar.qa" tvg-name="beIN SPORTS2 [H265]" tvg-logo="https://i.imgur.com/dEB3RXR.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS2 [H265]
 http://ugeen.live:8080/username/password/453
-#EXTINF:-1 tvg-logo="",beIN SPORTS3 [H265]
+#EXTINF:-1 tvg-id="beinsports3ar.qa" tvg-name="beIN SPORTS3 [H265]" tvg-logo="https://i.imgur.com/reVgvcf.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS3 [H265]
 http://ugeen.live:8080/username/password/3875
-#EXTINF:-1 tvg-logo="",beIN SPORTS4 [H265]
+#EXTINF:-1 tvg-id="beinsports4ar.qa" tvg-name="beIN SPORTS4 [H265]" tvg-logo="https://i.imgur.com/TYOj4Vw.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS4 [H265]
 http://ugeen.live:8080/username/password/455
-#EXTINF:-1 tvg-logo="",beIN SPORTS5 [H265]
+#EXTINF:-1 tvg-id="beinsports5ar.qa" tvg-name="beIN SPORTS5 [H265]" tvg-logo="https://i.imgur.com/N3cv3PA.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS5 [H265]
 http://ugeen.live:8080/username/password/4002
-#EXTINF:-1 tvg-logo="",beIN SPORTS6 [H265]
+#EXTINF:-1 tvg-id="beinsports6ar.qa" tvg-name="beIN SPORTS6 [H265]" tvg-logo="https://i.imgur.com/6TuruRl.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS6 [H265]
 http://ugeen.live:8080/username/password/457
-#EXTINF:-1 tvg-logo="",beIN SPORTS7 [H265]
+#EXTINF:-1 tvg-id="beinsports7ar.qa" tvg-name="beIN SPORTS7 [H265]" tvg-logo="https://i.imgur.com/ArD2FmL.png" group-title="beIN SPORTS [HVEC_H265] ⚽",beIN SPORTS7 [H265]
 http://ugeen.live:8080/username/password/4003
-#EXTINF:-1 tvg-logo="",•●★★--- beIN SPORTS ᴴᴰ ---★★●•
+#EXTINF:-1 tvg-id="" tvg-name="•●★★--- beIN SPORTS ᴴᴰ ---★★●•" tvg-logo="https://i.imgur.com/AF9RoE2.png" group-title="beIN SPORTS [HD] ⚽",•●★★--- beIN SPORTS ᴴᴰ ---★★●•
 http://ugeen.live:8080/username/password/117
-#EXTINF:-1 tvg-logo="",beIN SPORTS News
+#EXTINF:-1 tvg-id="beinsportsnewsar.qa" tvg-name="beIN SPORTS News" tvg-logo="https://i.imgur.com/WOwcw3U.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS News
 http://ugeen.live:8080/username/password/2051
-#EXTINF:-1 tvg-logo="",beIN SPORTS HD (Global)
+#EXTINF:-1 tvg-id="beinsportsglobal.qa" tvg-name="beIN SPORTS HD (Global)" tvg-logo="https://i.imgur.com/GqXvBgS.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS HD (Global)
 http://ugeen.live:8080/username/password/960
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM 1 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports1premiumar.qa" tvg-name="beIN SPORTS PREMIUM 1 ᴴᴰ" tvg-logo="https://i.imgur.com/TGzCVTR.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS PREMIUM 1 ᴴᴰ
 http://ugeen.live:8080/username/password/46
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM 2 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports2premium.qa" tvg-name="beIN SPORTS PREMIUM 2 ᴴᴰ" tvg-logo="https://i.imgur.com/x6lC9BB.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS PREMIUM 2 ᴴᴰ
 http://ugeen.live:8080/username/password/47
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM 3 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports3premiumar.qa" tvg-name="beIN SPORTS PREMIUM 3 ᴴᴰ" tvg-logo="https://i.imgur.com/dsiOly2.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS PREMIUM 3 ᴴᴰ
 http://ugeen.live:8080/username/password/48
-#EXTINF:-1 tvg-logo="",beIN SPORTS 1 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports1ar.qa" tvg-name="beIN SPORTS 1 ᴴᴰ" tvg-logo="https://i.imgur.com/dmuw7ic.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS 1 ᴴᴰ
 http://ugeen.live:8080/username/password/49
-#EXTINF:-1 tvg-logo="",beIN SPORTS 2 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports2ar.qa" tvg-name="beIN SPORTS 2 ᴴᴰ" tvg-logo="https://i.imgur.com/dEB3RXR.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS 2 ᴴᴰ
 http://ugeen.live:8080/username/password/50
-#EXTINF:-1 tvg-logo="",beIN SPORTS 3 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports3ar.qa" tvg-name="beIN SPORTS 3 ᴴᴰ" tvg-logo="https://i.imgur.com/reVgvcf.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS 3 ᴴᴰ
 http://ugeen.live:8080/username/password/51
-#EXTINF:-1 tvg-logo="",beIN SPORTS 4 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports4ar.qa" tvg-name="beIN SPORTS 4 ᴴᴰ" tvg-logo="https://i.imgur.com/TYOj4Vw.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS 4 ᴴᴰ
 http://ugeen.live:8080/username/password/52
-#EXTINF:-1 tvg-logo="",beIN SPORTS 5 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports5ar.qa" tvg-name="beIN SPORTS 5 ᴴᴰ" tvg-logo="https://i.imgur.com/N3cv3PA.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS 5 ᴴᴰ
 http://ugeen.live:8080/username/password/53
-#EXTINF:-1 tvg-logo="",beIN SPORTS 6 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports6ar.qa" tvg-name="beIN SPORTS 6 ᴴᴰ" tvg-logo="https://i.imgur.com/6TuruRl.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS 6 ᴴᴰ
 http://ugeen.live:8080/username/password/54
-#EXTINF:-1 tvg-logo="",beIN SPORTS7 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports7ar.qa" tvg-name="beIN SPORTS7 ᴴᴰ" tvg-logo="https://i.imgur.com/ArD2FmL.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS7 ᴴᴰ
 http://ugeen.live:8080/username/password/4034
-#EXTINF:-1 tvg-logo="",beIN SPORTS XTRA 1 ᴴᴰ
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS XTRA 1 ᴴᴰ" tvg-logo="" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS XTRA 1 ᴴᴰ
 http://ugeen.live:8080/username/password/4095
-#EXTINF:-1 tvg-logo="",beIN SPORTS XTRA 2 ᴴᴰ
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS XTRA 2 ᴴᴰ" tvg-logo="" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS XTRA 2 ᴴᴰ
 http://ugeen.live:8080/username/password/4096
-#EXTINF:-1 tvg-logo="", beIN SPORTS  ENGLISH 1 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports1enar.qa" tvg-name=" beIN SPORTS  ENGLISH 1 ᴴᴰ" tvg-logo="https://i.imgur.com/Z03QVfY.png" group-title="beIN SPORTS [HD] ⚽", beIN SPORTS  ENGLISH 1 ᴴᴰ
 http://ugeen.live:8080/username/password/3001
-#EXTINF:-1 tvg-logo="",beIN SPORTS ENGLISH 2 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports2enar.qa" tvg-name="beIN SPORTS ENGLISH 2 ᴴᴰ" tvg-logo="https://i.imgur.com/vcMsL1Z.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS ENGLISH 2 ᴴᴰ
 http://ugeen.live:8080/username/password/3002
-#EXTINF:-1 tvg-logo="",beIN SPORTS ENGLISH 3ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports3enar.qa" tvg-name="beIN SPORTS ENGLISH 3ᴴᴰ" tvg-logo="https://i.imgur.com/9mX3sZM.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS ENGLISH 3ᴴᴰ
 http://ugeen.live:8080/username/password/3970
-#EXTINF:-1 tvg-logo="",beIN SPORTS  FRENCH 1 ᴴᴰ
+#EXTINF:-1 tvg-id="beinsports1frar.qa" tvg-name="beIN SPORTS  FRENCH 1 ᴴᴰ" tvg-logo="https://i.imgur.com/MUYDHty.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS  FRENCH 1 ᴴᴰ
 http://ugeen.live:8080/username/password/3972
-#EXTINF:-1 tvg-logo="",beIN SPORTS NBA 
+#EXTINF:-1 tvg-id="beinsportsnba.qa" tvg-name="beIN SPORTS NBA " tvg-logo="https://i.imgur.com/rkG4f3c.png" group-title="beIN SPORTS [HD] ⚽",beIN SPORTS NBA 
 http://ugeen.live:8080/username/password/3973
-#EXTINF:-1 tvg-logo="",•●★★--- beIN SPORTS SD ---★★●•
+#EXTINF:-1 tvg-id="" tvg-name="•●★★--- beIN SPORTS SD ---★★●•" tvg-logo="" group-title="beIN SPORTS [SD] ⚽",•●★★--- beIN SPORTS SD ---★★●•
 http://ugeen.live:8080/username/password/2873
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM1 SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS PREMIUM1 SD" tvg-logo="https://i.imgur.com/TGzCVTR.png" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS PREMIUM1 SD
 http://ugeen.live:8080/username/password/56
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM2 SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS PREMIUM2 SD" tvg-logo="https://i.imgur.com/x6lC9BB.png" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS PREMIUM2 SD
 http://ugeen.live:8080/username/password/57
-#EXTINF:-1 tvg-logo="",beIN SPORTS PREMIUM3 SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS PREMIUM3 SD" tvg-logo="https://i.imgur.com/dsiOly2.png" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS PREMIUM3 SD
 http://ugeen.live:8080/username/password/58
-#EXTINF:-1 tvg-logo="",beIN SPORTS 1SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 1SD" tvg-logo="https://i.imgur.com/dmuw7ic.png" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 1SD
 http://ugeen.live:8080/username/password/59
-#EXTINF:-1 tvg-logo="",beIN SPORTS 2SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 2SD" tvg-logo="https://i.imgur.com/dEB3RXR.png" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 2SD
 http://ugeen.live:8080/username/password/60
-#EXTINF:-1 tvg-logo="",beIN SPORTS 3SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 3SD" tvg-logo="[]" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 3SD
 http://ugeen.live:8080/username/password/93
-#EXTINF:-1 tvg-logo="",beIN SPORTS 4SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 4SD" tvg-logo="[]" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 4SD
 http://ugeen.live:8080/username/password/92
-#EXTINF:-1 tvg-logo="",beIN SPORTS 5SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 5SD" tvg-logo="[]" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 5SD
 http://ugeen.live:8080/username/password/91
-#EXTINF:-1 tvg-logo="",beIN SPORTS 6SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 6SD" tvg-logo="https://i.imgur.com/6TuruRl.png" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 6SD
 http://ugeen.live:8080/username/password/61
-#EXTINF:-1 tvg-logo="",beIN SPORTS 7SD
+#EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS 7SD" tvg-logo="" group-title="beIN SPORTS [SD] ⚽",beIN SPORTS 7SD
 http://ugeen.live:8080/username/password/4035
 #EXTINF:-1 tvg-logo="",•●★★--- SSC Sports - Serie A---★★●•
 http://ugeen.live:8080/username/password/4039

@@ -7,7 +7,8 @@ import xbmc
 import xbmcplugin
 import sys
 
-from resources.lib.comaddon import listitem, addon, dialog, window, isNexus, progress, VSlog
+from resources.lib.tmdb import cTMDb
+from resources.lib.comaddon import listitem, addon, dialog, window, isKrypton, isNexus, progress, VSlog
 from resources.lib.gui.contextElement import cContextElement
 from resources.lib.gui.guiElement import cGuiElement
 from resources.lib.handler.inputParameterHandler import cInputParameterHandler
@@ -15,7 +16,13 @@ from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
 from resources.lib.handler.pluginHandler import cPluginHandler
 from resources.lib.parser import cParser
 from resources.lib.util import QuotePlus
+import re
 
+try:  # Python 2
+    import urllib2
+
+except ImportError:  # Python 3
+    import urllib.request as urllib2
 
 class cGui:
 
@@ -30,6 +37,9 @@ class cGui:
     # Gérer les résultats de la recherche
     searchResults = {}
     searchResultsSemaphore = threading.Semaphore()
+
+    # if isKrypton():
+    #     CONTENT = 'addons'
 
     def getEpisodeListing(self):
         return self.episodeListing
@@ -73,11 +83,10 @@ class cGui:
         if sCat and not oOutputParameterHandler.getValue('sTmdbId'):
             oInputParameterHandler = cInputParameterHandler()
             sPreviousMeta = int(oInputParameterHandler.getValue('sMeta'))
-            if 0 < sPreviousMeta < 7:
+            if sPreviousMeta > 0 and sPreviousMeta < 7:
                 sTmdbID = oInputParameterHandler.getValue('sTmdbId')
                 if sTmdbID:
                     oOutputParameterHandler.addParameter('sTmdbId', sTmdbID)
-
         oOutputParameterHandler.addParameter('sFav', sFunction)
 
         resumeTime = oOutputParameterHandler.getValue('ResumeTime')
@@ -146,7 +155,6 @@ class cGui:
             oOutputParameterHandler.addParameter('nextSaisonFunc', sFunction)
 
         return self.addNewDir('tvshows', sId, sFunction, sLabel, sIcon, sThumbnail, sDesc, oOutputParameterHandler, 2, 9)
-
     def addMisc(self, sId, sFunction, sLabel, sIcon, sThumbnail, sDesc, oOutputParameterHandler=''):
         if sThumbnail or sDesc:
             type = 'videos'
@@ -264,7 +272,6 @@ class cGui:
                   'sTmdbId': oGuiElement.setTmdbId,
                   'sYear': oGuiElement.setYear,
                   'sRes': oGuiElement.setRes}
-
         try:  # Py2
             for sParam, callback in params.iteritems():
                 value = oOutputParameterHandler.getValue(sParam)
@@ -279,19 +286,18 @@ class cGui:
 
         oListItem = self.createListItem(oGuiElement)
 
-    # affiche tag HD
+ #affiche tag HD
         # https://alwinesch.github.io/group__python__xbmcgui__listitem.html#ga99c7bf16729b18b6378ea7069ee5b138
         sRes = oGuiElement.getRes()
         if sRes:
             if '2160' in sRes:
-                oListItem.addStreamInfo('video', {'width': 3840, 'height': 2160})
+                oListItem.addStreamInfo('video', { 'width':3840, 'height' : 2160 })
             elif '1080' in sRes:
-                oListItem.addStreamInfo('video', {'width': 1920, 'height': 1080})
+                oListItem.addStreamInfo('video', { 'width':1920, 'height' : 1080 })
             elif '720' in sRes:
-                oListItem.addStreamInfo('video', {'width': 1280, 'height': 720})
+                oListItem.addStreamInfo('video', { 'width':1280, 'height' : 720 })
             elif '480' in sRes:
-                oListItem.addStreamInfo('video', {'width': 720, 'height': 576})
-
+                oListItem.addStreamInfo('video', { 'width':720, 'height' : 576 })
         sCat = oGuiElement.getCat()
         if sCat:
             cGui.sCat = sCat
@@ -303,7 +309,7 @@ class cGui:
 
         oListItem = self.__createContextMenu(oGuiElement, oListItem)
 
-        if _isFolder is True:
+        if _isFolder :
             # oListItem.setProperty('IsPlayable', 'true')
             if sCat:    # 1 = movies, moviePack; 2 = series, animes, episodes; 5 = MISC
                 if oGuiElement.getMeta():
@@ -333,25 +339,21 @@ class cGui:
         return oListItem
 
     def createListItem(self, oGuiElement):
-    
         # Récupération des metadonnées par thread
         if oGuiElement.getMeta() and oGuiElement.getMetaAddon() == 'true':
             return self.createListItemThread(oGuiElement)
-
         # pas de meta, appel direct
         return self._createListItem(oGuiElement)
-
-
     # Utilisation d'un Thread pour un chargement des metas en parallèle
     def createListItemThread(self, oGuiElement):
         itemTitle = oGuiElement.getTitle()
         oListItem = listitem(itemTitle)
-        t = threading.Thread(target=self._createListItem, name=itemTitle, args=(oGuiElement, oListItem))
+        t = threading.Thread(target = self._createListItem, name = itemTitle, args=(oGuiElement,oListItem))
         self.thread_listing.append(t)
         t.start()
         return oListItem
 
-    def _createListItem(self, oGuiElement, oListItem=None):
+    def _createListItem(self, oGuiElement, oListItem = None):
         # Enleve les elements vides
         data = {key: val for key, val in oGuiElement.getItemValues().items() if val != ""}
 
@@ -539,6 +541,20 @@ class cGui:
         oOutputParameterHandler.addParameter('sCat', oGuiElement.getCat())
 
         self.createSimpleMenu(oGuiElement, oOutputParameterHandler, 'cGui', oGuiElement.getSiteName(), 'viewSimil', self.ADDON.VSlang(30213))
+    #MenuParents 
+    def createContexMenuParents(self, oGuiElement, oOutputParameterHandler=''):
+        oOutputParameterHandler = cOutputParameterHandler()
+        oOutputParameterHandler.addParameter('sFileName', oGuiElement.getFileName())
+        oOutputParameterHandler.addParameter('sTitle', oGuiElement.getTitle())
+        oOutputParameterHandler.addParameter('sTmdbId', oGuiElement.getTmdbId())
+        oOutputParameterHandler.addParameter('sImdbId', oGuiElement.getImdbId())
+        oOutputParameterHandler.addParameter('sYear', oGuiElement.getYear())
+        oOutputParameterHandler.addParameter('sCat', oGuiElement.getCat())
+        sType = cGui.CONTENT.replace('tvshows', 'tvshow').replace('movies', 'movie')
+        oOutputParameterHandler.addParameter('sType', sType)
+
+        self.createSimpleMenu(oGuiElement, oOutputParameterHandler, 'cGui', oGuiElement.getTmdbId(), 'viewParents', self.ADDON.VSlang(33213))
+
 
     def createSimpleMenu(self, oGuiElement, oOutputParameterHandler, sFile, sName, sFunction, sTitle):
         oContext = cContextElement()
@@ -570,10 +586,8 @@ class cGui:
                 sDecoColor = self.ADDON.getSetting('deco_color')
                 titleMenu = '[COLOR %s]%s[/COLOR]' % (sDecoColor, oContextItem.getTitle())
                 aContextMenus += [(titleMenu, 'RunPlugin(%s)' % sTest)]
-
             oListItem.addContextMenuItems(aContextMenus)
         oListItem.setProperty('nbcontextmenu', str(nbContextMenu))
-
         return oListItem
 
     def __createItemUrl(self, oGuiElement, oOutputParameterHandler=''):
@@ -606,15 +620,15 @@ class cGui:
 
         # attendre l'arret des thread utilisés pour récupérer les métadonnées
         total = len(self.thread_listing)
-        if total > 0:
+        if total>0 :
             progress_ = progress().VScreate(addon().VSlang(30141))
             for thread in self.thread_listing:
                 progress_.VSupdate(progress_, total)
                 thread.join(100)
             progress_.VSclose(progress_)
 
-        del self.thread_listing[:]
 
+        del self.thread_listing[:]
         xbmcplugin.addDirectoryItems(iHandler, self.listing, len(self.listing))
         xbmcplugin.setPluginCategory(iHandler, '')
         xbmcplugin.setContent(iHandler, cGui.CONTENT)
@@ -688,7 +702,69 @@ class cGui:
         else:
             # On appel la fonction integrer a Kodi pour charger les infos.
             xbmc.executebuiltin('Action(Info)')
-				
+		
+    def viewParents(self):
+        oInputParameterHandler = cInputParameterHandler()
+        sFileName = oInputParameterHandler.getValue('sFileName')
+        sFileName = sFileName.split('مدبلج')[0]
+        sType = oInputParameterHandler.getValue('sType')
+        sImdbId = oInputParameterHandler.getValue('sImdbId')
+        sTmdbId = oInputParameterHandler.getValue('sTmdbId')
+        sIMDb = 'tt9536846'
+        if 'movie'in sType:
+            meta = cTMDb().get_meta(sType, sFileName, imdb_id = xbmc.getInfoLabel('ListItem.Property(ImdbId)'))
+            sIMDb = meta['imdb_id']
+            sUrl = 'https://www.imdb.com/title/'+sIMDb+'/parentalguide?ref_=tt_stry_pg'
+        else:
+            meta = cTMDb().search_tvshow_id(sTmdbId)
+            sIMDb = meta['external_ids']['imdb_id']
+            sUrl = 'https://www.imdb.com/title/'+sIMDb+'/parentalguide?ref_=tt_stry_pg'
+        oRequest = urllib2.Request(sUrl)
+        oResponse = urllib2.urlopen(oRequest)
+        DIALOG = dialog()
+
+                # En python 3 on doit décoder la reponse
+        if xbmc.getInfoLabel('system.buildversion')[0:2] >= '19':
+            sContent = oResponse.read().decode('utf-8')
+        else:
+            sContent = oResponse.read()
+        Stext = "لم يقع تصنيف المحتوى"
+        Stext0 = ""
+        oParser = cParser()
+        sPattern = '>MPAA</td>.+?<td>([^<]+)<'
+        aResult = oParser.parse(sContent, sPattern)
+        if (aResult[0]):
+            Stext0 = aResult[1][0]
+        if 'Rated R' in Stext0 and 'sex' not in Stext0:
+            Stext = 'غير مناسب للمشاهدة العائلية'
+        if 'Rated R' in Stext0 and 'sex'  in Stext0 or 'nudity'  in Stext0:
+            Stext = 'تحذير غير مناسب للمشاهدة وجود أو تكرار مشاهد تحتوي على عُري أو لقطات خادشة للحياء'
+        if 'Rated R' not in Stext0:
+            sPattern = 'Nudity</h4>.+?ipl-status-pill.+?">([^<]+)</span>'
+            aResult = oParser.parse(sContent, sPattern)
+            if (aResult[0]):
+               Stext2 = aResult[1][0]
+               if 'None'  in Stext2:
+                  Stext = '  مناسب للمشاهدة العائلية'
+               if 'Mild'  in Stext2:
+                  Stext = '   بعض المواد قد لا تكون مناسبة'
+               if 'Moderate'  in Stext2:
+                  Stext = '   غير مناسب للمشاهدة العائلية'
+               if 'Severe'  in Stext2:
+                  Stext = 'تحذير غير مناسب للمشاهدة وجود أو تكرار مشاهد تحتوي على عُري أو لقطات خادشة للحياء'
+            Stext1 = re.findall('class="ipl-zebra-list__item">([^<]+)<div', sContent, re.S) 
+            if Stext1:
+               Stext1 = ' '.join(Stext1)
+               if 'kiss'  in Stext1:
+                  Stext = Stext+"\n"+' قد يحتوي بعض القبلات '
+               if 'cleavage'  in Stext1 or 'bikini'  in Stext1:
+                  Stext = Stext+"\n"+' ملابس غير ملائمة في بعض المشاهد '
+               if 'have sex'  in Stext1 or 'topless'  in Stext1:
+                  Stext = Stext+"\n"+' لقطات غير مناسبة للمشاهدة العائلية '
+        Stextf = Stext+"\n"+Stext0
+
+        ret = DIALOG.VSok(Stextf)
+						
     def viewSimil(self):
         sPluginPath = cPluginHandler().getPluginPath()
 
@@ -711,7 +787,6 @@ class cGui:
 
         xbmc.executebuiltin('Container.Update(%s)' % sTest)
         return False
- 
     def selectPage(self):
         sPluginPath = cPluginHandler().getPluginPath()
         oInputParameterHandler = cInputParameterHandler()
@@ -767,30 +842,17 @@ class cGui:
         if True:
             # Use matrix database
             oInputParameterHandler = cInputParameterHandler()
-            sSite = oInputParameterHandler.getValue('sId')
-            sSiteUrl = oInputParameterHandler.getValue('siteUrl')
-            sTitle = oInputParameterHandler.getValue('sMovieTitle')
-            sTitleWatched = oInputParameterHandler.getValue('sTitleWatched')
+            sSite = oInputParameterHandler.getValue('siteUrl')
+            sTitle = oInputParameterHandler.getValue('sTitleWatched')
             sCat = oInputParameterHandler.getValue('sCat')
-            sFav = oInputParameterHandler.getValue('sFav')
-            sSeason = oInputParameterHandler.getValue('sSeason')
-            sTmdbId = oInputParameterHandler.getValue('sTmdbId')
-            sSeasonUrl = oInputParameterHandler.getValue('saisonUrl')
-            sSeasonFunc = oInputParameterHandler.getValue('nextSaisonFunc')
             if not sTitle:
                 return
 
             meta = {}
             meta['title'] = sTitle
-            meta['titleWatched'] = sTitleWatched
+            meta['titleWatched'] = sTitle
             meta['site'] = sSite
-            meta['siteurl'] = sSiteUrl
             meta['cat'] = sCat
-            meta['fav'] = sFav
-            meta['season'] = sSeason
-            meta['seasonUrl'] = sSeasonUrl
-            meta['seasonFunc'] = sSeasonFunc
-            meta['tmdbId'] = sTmdbId
 
             from resources.lib.db import cDb
             with cDb() as db:
@@ -858,7 +920,7 @@ class cGui:
             cGui.searchResults[searchSiteId] = []
 
         cGui.searchResults[searchSiteId].append({'guiElement': oGuiElement,
-                                                 'params': copy.deepcopy(oOutputParameterHandler)})
+            'params': copy.deepcopy(oOutputParameterHandler)})
         cGui.searchResultsSemaphore.release()
 
     def resetSearchResult(self):
