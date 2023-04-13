@@ -512,6 +512,9 @@ class cHosterGui:
         if ('.m3u8' in sHosterUrl):
             return self.getHoster('lien_direct')
 
+        if ('clientsportals' in sHosterUrl):
+            return self.getHoster('lien_direct')
+
         if ('.mp4' in sHosterUrl):
             return self.getHoster('lien_direct')
 				
