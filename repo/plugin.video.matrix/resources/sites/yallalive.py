@@ -40,8 +40,9 @@ def showMovies():
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
+
 	# (.+?) .+? 
-    sPattern = '<a class="alba_sports_events_link" href="(.+?)".+?target="_blank" title.+?<div class="h3 alba_sports_events-event_mask_inner_text orange">(.+?)</div>.+?<div class="event_inner"><div class="team-aria team-first"><div class="team"><div class="alba-team_logo"><img alt="(.+?)" title=.+?<div class="matchTime">(.+?)</div>.+?<img alt="(.+?)" title='
+    sPattern = '<a class="alba_sports_events_link" href="(.+?)"target="_blank" title.+?<div class="h3 alba_sports_events-event_mask_inner_text ">(.+?)</div>.+?<img alt="(.+?)" title=.+?<div class="matchTime">(.+?)</div>.+?<img alt="(.+?)"'
 
 
     aResult = oParser.parse(sHtmlContent, sPattern)

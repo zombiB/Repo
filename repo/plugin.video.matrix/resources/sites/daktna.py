@@ -168,6 +168,8 @@ def showEpisodes():
             oOutputParameterHandler.addParameter('sThumb', sThumb)
 
             oGui.addEpisode(SITE_IDENTIFIER, 'showHosters', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
+        progress_.VSclose(progress_)
+        
     oGui.setEndOfDirectory()
 
 
