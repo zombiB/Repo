@@ -14,21 +14,10 @@ from resources.lib.parser import cParser
 SITE_IDENTIFIER = 'laroza'
 SITE_NAME = 'Laroza'
 SITE_DESC = 'arabic vod'
- 
+
+UA = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.48 Mobile Safari/537.36'
+
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
-
-oParser = cParser()
-
-oRequestHandler = cRequestHandler(URL_MAIN)
-sHtmlContent = oRequestHandler.request()
-
-    # (.+?) ([^<]+)
-
-sPattern = '<li><a href="(.+?)zika.9">الصفحة الرئيسية</a></li>'
-aResult = oParser.parse(sHtmlContent, sPattern)
-
-if (aResult[0]):
-    URL_MAIN = aResult[1][0]
 
 MOVIE_AR = (URL_MAIN + 'category.php?cat=arabic-movies10', 'showMovies')
 MOVIE_EN = (URL_MAIN + 'category.php?cat=english-movies2', 'showMovies')
@@ -108,6 +97,7 @@ def showMovies(sSearch = ''):
         sUrl = oInputParameterHandler.getValue('siteUrl')
 
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
     sPattern = '<div class="thumbnail">.+?<i class="fa fa-clock-o">.+?<a href="(.+?)".+?title="(.+?)".+?<img src=.+?data-echo="(.+?)"'
@@ -177,6 +167,7 @@ def showSeries(sSearch = ''):
 
 
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
     # (.+?) .+? ([^<]+)   
     sPattern = '<div class="thumbnail">.+?<i class="fa fa-clock-o">.+?<a href="(.+?)".+?title="(.+?)".+?<img src=.+?data-echo="(.+?)"'
@@ -250,6 +241,7 @@ def showEpisodes():
     sThumb = oInputParameterHandler.getValue('sThumb')
  
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
 
@@ -303,6 +295,7 @@ def showHosters():
 
 
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
 
     # ([^<]+) .+?
