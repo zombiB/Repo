@@ -584,6 +584,10 @@ msgctxt "#30160"
 msgid "Quality HD"
 msgstr ""
 
+msgctxt "#30200"
+msgid "Channels"
+msgstr ""
+
 msgctxt "#30201"
 msgid "Playlist"
 msgstr ""
@@ -702,6 +706,10 @@ msgstr ""
 
 msgctxt "#30229"
 msgid "My Downloads"
+msgstr ""
+
+msgctxt "#30230"
+msgid "Daily List"
 msgstr ""
 
 msgctxt "#30300"

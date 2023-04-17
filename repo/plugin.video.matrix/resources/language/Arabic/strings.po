@@ -584,6 +584,10 @@ msgctxt "#30160"
 msgid "Quality HD"
 msgstr "جودة HD"
 
+msgctxt "#30200"
+msgid "Channels"
+msgstr "القنوات"
+
 msgctxt "#30201"
 msgid "Playlist"
 msgstr "قائمة التشغيل"
@@ -1284,6 +1288,10 @@ msgstr "جاري التحميل"
 msgctxt "#30141"
 msgid "Loading infos"
 msgstr "جاري التحميل"
+
+msgctxt "#30230"
+msgid "Daily List"
+msgstr "قائمة يومية"
 
 msgctxt "#70001"
 msgid "TOP"

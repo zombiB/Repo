@@ -170,7 +170,10 @@ class cHome:
 
         oOutputParameterHandler.addParameter('siteUrl', 'TV')
         oGui.addDir('iptv', 'showWeb', self.addons.VSlang(70014), 'tv.png', oOutputParameterHandler)
-  
+
+        oOutputParameterHandler.addParameter('siteUrl', 'TV')
+        oGui.addDir('daily', 'showDailyList', '%s (%s)' % (self.addons.VSlang(30138), self.addons.VSlang(30230)),'tv.png', oOutputParameterHandler)
+
         oOutputParameterHandler.addParameter('siteUrl', 'TV_TV')
         oGui.addDir(SITE_IDENTIFIER, 'callpluging', '%s (%s)' % (self.addons.VSlang(30138), self.addons.VSlang(30200)), 'host.png', oOutputParameterHandler)
  

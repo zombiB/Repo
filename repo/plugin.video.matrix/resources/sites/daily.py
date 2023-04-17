@@ -19,15 +19,17 @@ SITE_NAME = '[COLOR orange]Daily IPTV List[/COLOR]'
 SITE_DESC = 'Watch IPTV Channels'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
+URL_WEB = URL_MAIN
 URL_EUROPE = URL_MAIN + 'iptv-uk/'
 URL_AMERICA = URL_MAIN + 'iptv-usa/'
-URL_ARAB = URL_MAIN + '/iptv-arabic-2023-2/'
+URL_ARAB = URL_MAIN + 'iptv-arabic-2023-2/'
 URL_SPORT = URL_MAIN + 'iptv-sports-2023-2/'
 
-
+TV_TV = (True, 'showDailyList')
 
 def load():
     oGui = cGui()
+
 
     oOutputParameterHandler = cOutputParameterHandler()
     oOutputParameterHandler.addParameter('siteUrl', URL_MAIN)
@@ -45,7 +47,6 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', URL_SPORT)
     oGui.addDir(SITE_IDENTIFIER, 'showDailyList', 'Sports IPTV List', 'tv.png', oOutputParameterHandler)
 
-
     oGui.setEndOfDirectory()
 
 
@@ -53,7 +54,8 @@ def showDailyList():
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')
-
+    if sUrl == 'TV':
+        sUrl = URL_WEB
 
 
     oRequestHandler = cRequestHandler(sUrl)
