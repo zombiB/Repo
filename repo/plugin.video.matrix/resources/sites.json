@@ -148,7 +148,12 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u2.quest/"
+            "url": "https://cima4u3.store/"
+        },
+        "daily": {
+            "label": "Daily IPTV List",
+            "active": "True",
+            "url": "https://d.tousecurity.com/"
         },
         "daktna": {
             "label": "Daktna",

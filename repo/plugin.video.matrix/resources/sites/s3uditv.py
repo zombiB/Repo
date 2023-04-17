@@ -15,6 +15,8 @@ SITE_IDENTIFIER = 's3uditv'
 SITE_NAME = 'S3udi-TV'
 SITE_DESC = 'arabic vod'
 
+UA = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.48 Mobile Safari/537.36'
+
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 MOVIE_AR = (URL_MAIN + 'category.php?cat=arabic-movies', 'showMovies')
@@ -107,6 +109,7 @@ def showMovies(sSearch = ''):
         sUrl = oInputParameterHandler.getValue('siteUrl')
 
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
     sPattern = '<a href="([^<]+)" class="movie" title="([^<]+)".+?data-src="([^<]+)">' 
@@ -176,6 +179,7 @@ def showSeries(sSearch = ''):
 
 
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
     sPattern = '<a href="([^<]+)" class="movie" title="([^<]+)">.+?data-src="([^<]+)">' 
@@ -250,6 +254,7 @@ def showEpisodes():
     sThumb = oInputParameterHandler.getValue('sThumb')
  
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+? (.+?)
 
@@ -303,6 +308,7 @@ def showHosters():
 
 
     oRequestHandler = cRequestHandler(sUrl)
+    oRequestHandler.addHeaderEntry('User-Agent', UA)
     sHtmlContent = oRequestHandler.request()
 
     # ([^<]+) .+?

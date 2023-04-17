@@ -303,11 +303,11 @@ class cHosterGui:
 				
         if ('megaup.' in sHostName):
             return self.getHoster('megaup')
-            
+
         if ('linkbox' in sHostName) or ('sharezweb' in sHostName):
             return self.getHoster('resolver')
 
-        if ('vidoba' in sHostName):
+        if ('vidoba' in sHostName) or ('vidroba' in sHostName):
             return self.getHoster('vidoba')
             
         if ('mediafire' in sHostName):
@@ -520,7 +520,8 @@ class cHosterGui:
 				
         if ('nitroflare' in sHostName or 'tubeload.' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName):
             return False
-
+        else:
+            return self.getHoster('lien_direct')            
         return False
 
     def getHoster(self, sHosterFileName):
