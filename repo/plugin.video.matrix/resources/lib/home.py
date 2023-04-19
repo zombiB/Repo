@@ -8,7 +8,7 @@ from resources.lib.search import cSearch
 from resources.lib.handler.pluginHandler import cPluginHandler
 from resources.lib.handler.inputParameterHandler import cInputParameterHandler
 from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
-from resources.lib.comaddon import addon, window
+from resources.lib.comaddon import addon
 
 SITE_IDENTIFIER = 'cHome'
 SITE_NAME = 'Home'
@@ -59,7 +59,7 @@ class cHome:
         oGui.addDir('globalSources', 'globalSources', self.addons.VSlang(30138), 'host.png', oOutputParameterHandler)
 
         view = False
-        if (self.addons.getSetting('active-view') == 'true'):
+        if self.addons.getSetting('active-view') == 'true':
             view = self.addons.getSetting('accueil-view')
 
         oGui.setEndOfDirectory(view)
@@ -116,7 +116,7 @@ class cHome:
         oOutputParameterHandler.addParameter('sCat', '5')
         oGui.addDir(SITE_IDENTIFIER, 'showSearchText', self.addons.VSlang(30080), 'search.png', oOutputParameterHandler)
 
-        if (self.addons.getSetting('history-view') == 'true'):
+        if self.addons.getSetting('history-view') == 'true':
             oOutputParameterHandler.addParameter('siteUrl', 'http://venom')
             oGui.addDir('cHome', 'showHistory', self.addons.VSlang(30308), 'annees.png', oOutputParameterHandler)
 

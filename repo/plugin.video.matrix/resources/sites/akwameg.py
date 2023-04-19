@@ -33,7 +33,7 @@ sHtmlContent = oRequestHandler.request()
 
     # (.+?) ([^<]+)
 
-sPattern = '<a href="([^"]+).+?>لمصر <span style='
+sPattern = '<div class="d-none d-md-block">.+?<a href="([^"]+)".+?<div class="d-md-none">'
 aResult = oParser.parse(sHtmlContent, sPattern)
 
 if (aResult[0]):
