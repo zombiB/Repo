@@ -67,13 +67,15 @@ class cTMDb:
     else:
         REALCACHE = VSPath(CACHE)
 
-    def __init__(self, api_key='', debug=False, lang='en'):
+    def __init__(self, api_key='', debug=False):
 
         self.ADDON = addon()
 
         self.api_key = self.ADDON.getSetting('api_tmdb')
         self.debug = debug
-        self.lang = lang
+        self.lang = self.ADDON.getSetting('tmdb_lang')
+        if not self.lang:
+            self.lang = 'ar'
         self.poster = 'https://image.tmdb.org/t/p/%s' % self.ADDON.getSetting('poster_tmdb')
         self.fanart = 'https://image.tmdb.org/t/p/%s' % self.ADDON.getSetting('backdrop_tmdb')
 
@@ -725,7 +727,7 @@ class cTMDb:
                 cert = meta['release_dates']
                 if len(cert['results']) >0:
                     for data in cert['results']:
-                        if 'fr' in data['iso_3166_1']:
+                        if 'ar' in data['iso_3166_1']:
                             _meta['mpaa'] = data['release_dates'][0]['certification']
                             break
                     if not _meta['mpaa']:
@@ -741,6 +743,19 @@ class cTMDb:
         return _meta
 
     def _clean_title(self, title):
+        # vire accent
+        try:
+            bMatrix = isMatrix()
+            if not bMatrix:
+                title = unicode(title, 'utf-8')
+            title = unicodedata.normalize('NFD', title).encode('ascii', 'ignore').decode('unicode_escape')
+            if not bMatrix:
+                title = title.encode('utf-8')  # on repasse en utf-8
+        except Exception as e:
+            pass
+
+        # Vire tous les caracteres non alphabetiques
+        title = re.sub('[^%s]' % (string.ascii_lowercase + string.digits), '', title.lower())
         return title
 
     def _cache_search(self, media_type, name, tmdb_id='', year='', season='', episode=''):
