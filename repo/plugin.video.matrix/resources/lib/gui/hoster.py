@@ -167,7 +167,10 @@ class cHosterGui:
 
             # L'user a activé alldebrid ?
             if self.ADDON.getSetting('hoster_alldebrid_premium') == 'true':
-                return self.getHoster('alldebrid')
+                f = self.getHoster('alldebrid')
+                #mise a jour du nom
+                f.setRealHost(sHostName)
+                return f
 					
             # L'user a activé realbrid ?
             if self.ADDON.getSetting('hoster_realdebrid_premium') == 'true':
@@ -210,8 +213,6 @@ class cHosterGui:
             return self.getHoster('resolver')
         if ('vanfem' in sHostName):
             return self.getHoster('fembed')
-        if ('streamhide' in sHostName):
-            return self.getHoster('resolver')
         if ('vidpro' in sHostName):
             return self.getHoster('samashare')
         if ('streamvid' in sHostName):
@@ -336,7 +337,10 @@ class cHosterGui:
 				
         if (('anavids' in sHostName) or ('anavidz' in sHostName)):
             return self.getHoster('anavids')
-				
+
+        if ('guccihide' in sHostName) or ('streamhide' in sHostName):
+            return self.getHoster('streamhide')
+
         if (('anonfile' in sHostName) or ('govid.xyz' in sHostName) or ('file.bz' in sHostName) or ('myfile.is' in sHostName) or ('upload.st' in sHostName)):
             return self.getHoster('anonfile')
 

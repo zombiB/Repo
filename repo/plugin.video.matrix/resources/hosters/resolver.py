@@ -7,14 +7,15 @@ import resolveurl
 class cHoster(iHoster):
 
     def __init__(self):
-        iHoster.__init__(self, 'resolver', 'RSLVR-')
-        self.__sRealHost = '???'
+        iHoster.__init__(self, 'resolver', 'Re-Solver')
+        self.__sRealHost = ''
+
+    def setRealHost(self, host):
+        self.__sRealHost = "/" + host
 
     def setDisplayName(self, displayName):
         self._displayName = displayName + ' [COLOR violet]'+ self._defaultDisplayName + self.__sRealHost + '[/COLOR]'
 
-    def setRealHost(self, sName):
-        self.__sRealHost = sName
 
     def _getMediaLinkForGuest(self):
         hmf = resolveurl.HostedMediaFile(url=self._url)
