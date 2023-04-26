@@ -102,6 +102,12 @@ def showHosters():
     #([^<]+) (.+?)
                
 
+    oParser = cParser()
+     # (.+?) ([^<]+) .+?
+    sStart = '<div class="entry-content">'
+    sEnd = '</div>'
+    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
+
     sPattern = '<a href="(.+?)"'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)

@@ -18,7 +18,7 @@ SITE_DESC = 'arabic vod'
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
  
 KID_MOVIES = (URL_MAIN + '/films.html', 'showMovies')
-KID_CARTOON = (URL_MAIN + '/cartoon2549.html', 'showSeries')
+KID_CARTOON = (URL_MAIN + '/cats.html', 'showSeries')
 
  
 def load():
@@ -59,7 +59,7 @@ def showMovies(sSearch = ''):
                 break
  
             sTitle = aEntry[1]
-            siteUrl = URL_MAIN+'/'+aEntry[0]
+            siteUrl = aEntry[0]
             sThumb = aEntry[2]
             sDesc = ""
 
@@ -110,7 +110,7 @@ def showSeries(sSearch = ''):
     sHtmlContent = oRequestHandler.request()
     
  
-    sPattern = '<li><a href="([^<]+)">([^<]+)</a></li'
+    sPattern = '<div class="cartoon_cat_pic"><a href="([^<]+)" title="([^<]+)"><img src="([^<]+)" alt'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -126,8 +126,9 @@ def showSeries(sSearch = ''):
                 break
  
             sTitle = aEntry[1].replace("الموسم العاشر","S10").replace("الموسم الحادي عشر","S11").replace("الموسم الثاني عشر","S12").replace("الموسم الثالث عشر","S13").replace("الموسم الرابع عشر","S14").replace("الموسم الخامس عشر","S15").replace("الموسم السادس عشر","S16").replace("الموسم السابع عشر","S17").replace("الموسم الثامن عشر","S18").replace("الموسم التاسع عشر","S19").replace("الموسم العشرون","S20").replace("الموسم الحادي و العشرون","S21").replace("الموسم الثاني و العشرون","S22").replace("الموسم الثالث و العشرون","S23").replace("الموسم الرابع والعشرون","S24").replace("الموسم الخامس و العشرون","S25").replace("الموسم السادس والعشرون","S26").replace("الموسم السابع والعشرون","S27").replace("الموسم الثامن والعشرون","S28").replace("الموسم التاسع والعشرون","S29").replace("الموسم الثلاثون","S30").replace("الموسم الحادي و الثلاثون","S31").replace("الموسم الثاني والثلاثون","S32").replace("الموسم الاول","S1").replace("الموسم الثاني","S2").replace("الموسم الثالث","S3").replace("الموسم الثالث","S3").replace("الموسم الرابع","S4").replace("الموسم الخامس","S5").replace("الموسم السادس","S6").replace("الموسم السابع","S7").replace("الموسم الثامن","S8").replace("الموسم التاسع","S9").replace("الجزء","الموسم").replace("الموسم","S").replace("موسم","S").replace("S ","S")
-            siteUrl = URL_MAIN+'/'+aEntry[0]
-            sThumb = ""
+            siteUrl = aEntry[0]
+            sThumb = aEntry[2]
+            sDesc = ""
 			
 
 
@@ -135,7 +136,7 @@ def showSeries(sSearch = ''):
             oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
             oOutputParameterHandler.addParameter('sThumb', sThumb)
 
-            oGui.addTV(SITE_IDENTIFIER, 'showEps', sTitle, '', sThumb, '', oOutputParameterHandler)
+            oGui.addTV(SITE_IDENTIFIER, 'showEps', sTitle, '', sThumb, sDesc, oOutputParameterHandler)
         
         progress_.VSclose(progress_)
  
@@ -207,15 +208,12 @@ def showLink():
     sname = '0'
 
     sPage='0'
-
-    # (.+?) ([^<]+)
-    sPattern = '&id=(.+?)"'
-
     oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
-    
-    if (aResult[0]):
-        sname = aResult[1][0]
+    # (.+?) ([^<]+)
+
+    sStart = '<div class="servers">'
+    sEnd = '<div class="videoshow">'
+    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
 
     sPattern = "server_ch([^<]+),'(.+?)'"
 
@@ -237,7 +235,7 @@ def showLink():
             oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
             sData = oRequestHandler.request()
    
-            sPattern = 'src="(.+?)"'
+            sPattern = '<iframe.+?src="(.+?)"'
             oParser = cParser()
             aResult = oParser.parse(sData, sPattern)
 	

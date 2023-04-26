@@ -7,7 +7,7 @@ import resolveurl
 class cHoster(iHoster):
 
     def __init__(self):
-        iHoster.__init__(self, 'resolver', 'Re-Solver')
+        iHoster.__init__(self, 'resolver', 'ResolveURL')
         self.__sRealHost = ''
 
     def setRealHost(self, host):

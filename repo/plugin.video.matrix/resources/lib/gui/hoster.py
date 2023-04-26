@@ -174,7 +174,10 @@ class cHosterGui:
 					
             # L'user a activé realbrid ?
             if self.ADDON.getSetting('hoster_realdebrid_premium') == 'true':
-                return self.getHoster('realdebrid')
+                f = self.getHoster('realdebrid')
+                #mise a jour du nom
+                f.setRealHost(sHostName)
+                return f
 					
             # L'user a activé debrid_link ?
             if self.ADDON.getSetting('hoster_debridlink_premium') == 'true':
@@ -206,31 +209,64 @@ class cHosterGui:
             return self.getHoster('vidshare')
 
         if ('sbfull' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('sbbrisk' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('videa' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('vanfem' in sHostName):
             return self.getHoster('fembed')
         if ('vidpro' in sHostName):
             return self.getHoster('samashare')
         if ('streamvid' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('sblanh' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('sbchill' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('sbthe' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('sbbrisk' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('sbanh' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('viewsb' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('tubeload' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
         if ('vimeo' in sHostName):
             return self.getHoster('vimeo')
         if ('embed.scdn.' in sHostName):
@@ -288,16 +324,28 @@ class cHosterGui:
             return self.getHoster('vidbm')
 				
         if ('mail.ru' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 				
         if ('streamcherry' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 			
         if ('twitch' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 			
         if ('clicknupload' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 
         if ('vidspeed' in sHostName):
             return self.getHoster('vidspeeds')
@@ -351,7 +399,10 @@ class cHosterGui:
             return self.getHoster('myvid')
             
         if ('streamwire' in sHostName) or ('vup' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
             
         if ('vidhd' in sHostName) or ('oktube' in sHostName):
             return self.getHoster('vidhd')
@@ -466,7 +517,10 @@ class cHosterGui:
             return self.getHoster('thevideo_me')
 
         if ('drive.google.com' in sHostName) or ('docs.google.com' in sHostName):
-            return self.getHoster('resolver')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 
         if ('stream.moe' in sHostName):
             return self.getHoster('streammoe')
