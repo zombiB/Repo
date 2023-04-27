@@ -35,7 +35,7 @@ UA = 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML,
 # RAMADAN_SERIES = (URL_MAIN + 'category/series/arab-series/', 'showSeries')
 MOVIE_FAM = (URL_MAIN + 'category/movies/foreign/?genre=%d8%b9%d8%a7%d8%a6%d9%84%d9%8a', 'showMovies')
 # MOVIE_AR = (URL_MAIN + 'category/newmovies/arab/', 'showMovies')
-MOVIE_EN = (URL_MAIN + 'category/newmovies/newforeign/', 'showMovies')
+MOVIE_EN = (URL_MAIN + 'category/newmovies/foreign/', 'showMovies')
 MOVIE_4k = (URL_MAIN + 'category/movies/4k/', 'showMovies')
 MOVIE_HI = (URL_MAIN + 'category/newmovies/india/', 'showMovies')
 KID_MOVIES = (URL_MAIN + 'category/newmovies/anime/', 'showMovies')
@@ -114,9 +114,6 @@ def load():
     oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/series/netflix-series/')
     oGui.addDir(SITE_IDENTIFIER, 'showSeries', 'مسلسلات Netfilx', 'mslsl.png', oOutputParameterHandler)
 
-    oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', URL_MAIN + 'category/newmovies/netflix/')
-    oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'افلام Netfilx', 'film.png', oOutputParameterHandler)
     oGui.setEndOfDirectory()
  
 def showSeriesSearch():
