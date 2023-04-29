@@ -57,8 +57,7 @@ def showMovies(sSearch = ''):
     sHtmlContent = oRequestHandler.request()
 
   # .+? ([^<]+) (.+?) .+?
-
-    sPattern = '<img src="([^<]+)" alt="([^<]+)".+?data.+?<a href="([^<]+)"><div '
+    sPattern = '<article.+?<img src="([^<]+)" alt="([^<]+)"><div.+?href="([^<]+)"><div.+?</article>'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
@@ -79,6 +78,10 @@ def showMovies(sSearch = ''):
             sThumb = aEntry[0]
             sDub = ''
             m = re.search('باﻷلوان', sTitle)
+            if m:
+                sDub = str(m.group(0))
+                sTitle = sTitle.replace(sDub,'')
+            m = re.search('Colorized', sTitle)
             if m:
                 sDub = str(m.group(0))
                 sTitle = sTitle.replace(sDub,'')
@@ -145,8 +148,28 @@ def showServer():
     sUrl = 'https://alwanfilm.com/wp-json/dooplayer/v2/'+sId+'/movie/'+sNO
     oRequestHandler = cRequestHandler(sUrl)
     sData = oRequestHandler.request()
-    
+    sData = sData.replace('\\', '')
     # (.+?) .+? ([^<]+)        	
+    sPattern = 'src="([^<]+)" frameborder'
+    oParser = cParser()
+    aResult = oParser.parse(sData, sPattern)
+
+	
+    if aResult[0]:
+        for aEntry in aResult[1]:
+            
+            url = aEntry
+            if url.startswith('//'):
+               url = 'http:' + url
+				
+					
+            
+            sHosterUrl = url 
+            oHoster = cHosterGui().checkHoster(sHosterUrl)
+            if oHoster:
+               oHoster.setDisplayName(sMovieTitle)
+               oHoster.setFileName(sMovieTitle)
+               cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)        	
     sPattern = '"embed_url":"(.+?)",'
     oParser = cParser()
     aResult = oParser.parse(sData, sPattern)
