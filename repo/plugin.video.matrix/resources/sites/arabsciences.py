@@ -84,19 +84,16 @@ def showSearch():
 def showMovies(sSearch = ''):
     oGui = cGui()
     if sSearch:
-        sUrl = sSearch
- 
-        oRequestHandler = cRequestHandler(sUrl)
-        sHtmlContent = oRequestHandler.request()
-        sPattern = '<a aria-label="(.+?)" href="(.+?)" class="post-thumb">.+?src="(.+?)" class=.+?<p class="post-excerpt">(.+?)</p>'
+      sUrl = sSearch
     else:
         oInputParameterHandler = cInputParameterHandler()
         sUrl = oInputParameterHandler.getValue('siteUrl')
-        oRequestHandler = cRequestHandler(sUrl)
-        sHtmlContent = oRequestHandler.request()
  
-# ([^<]+) .+? (.+?)
-        sPattern = '<a aria-label="(.+?)" href="(.+?)" class="post-thumb">.+?data-breeze="(.+?)" src.+?class="post-excerpt">([^<]+)</p>'
+    oRequestHandler = cRequestHandler(sUrl)
+    sHtmlContent = oRequestHandler.request()
+ 
+# ([^<]+) .+?
+    sPattern = '<a aria-label="(.+?)" href="(.+?)" class="post-thumb">.+?data-breeze="(.+?)" data.+?class="post-excerpt">([^<]+)</p>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)

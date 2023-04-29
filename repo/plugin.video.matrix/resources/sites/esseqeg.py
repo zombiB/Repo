@@ -17,7 +17,7 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 
 SERIE_TR = (URL_MAIN + '/all-series/', 'showSeries')
-MOVIE_TURK = (URL_MAIN + '/category/%d8%a7%d9%84%d8%a3%d9%81%d9%84%d8%a7%d9%85-%d8%a7%d9%84%d8%aa%d8%b1%d9%83%d9%8a%d8%a9/', 'showMovies')
+MOVIE_TURK = (URL_MAIN + '/category/الأفلام-التركية/', 'showMovies')
 
 URL_SEARCH = (URL_MAIN + '/search/', 'showSeries')
 URL_SEARCH_MOVIES = (URL_MAIN + '/search/', 'showMovies')
@@ -77,7 +77,7 @@ def showMovies(sSearch = ''):
 
      # (.+?) ([^<]+) .+?
 
-    sPattern = '<article class.+?<a href="(.+?)" title=.+?style="background-image:url(.+?);">.+?class="title">(.+?)</div>'
+    sPattern = '<article class="post">.+?<a href="(.+?)" title=.+?<div class="posterThumb"><div class="imgBg" style="background-image:url(.+?);"></div></div> <div class="title">(.+?)</div>'
  
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -200,7 +200,7 @@ def showEps():
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     # (.+?) .+?  ([^<]+)
-    sPattern = '<article class="postEp">.+?<a href="([^"]+)".+?class="title">(.+?)</div>'
+    sPattern = '<article class="postEp">.+?<a href="(.+?)" title=.+?<div class="poster"><div class="imgSer" style="background-image:url(.+?);">.+?class="title">(.+?)</div>'
     
 
     oParser = cParser()
@@ -212,12 +212,8 @@ def showEps():
         for aEntry in aResult[1]:
 
  
-            sTitle = aEntry[1].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("الموسم"," S").replace("S ","S").replace("الحلقة "," E").replace("حلقة "," E")
+            sTitle = aEntry[2].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("الموسم"," S").replace("S ","S").replace("الحلقة "," E").replace("حلقة "," E")
             siteUrl = aEntry[0] 
-            import base64
-            if '?url=' in siteUrl or '?post=' in siteUrl:
-                url_tmp = siteUrl.split('?url=')[-1].replace('%3D','=')
-                siteUrl = base64.b64decode(url_tmp).decode('utf8',errors='ignore')
             sThumb = sThumb
             sDesc = ''
  
@@ -231,6 +227,7 @@ def showEps():
     oGui.setEndOfDirectory() 
 
 def showHosters():
+    import base64
     oGui = cGui()
     oInputParameterHandler = cInputParameterHandler()
     sUrl = oInputParameterHandler.getValue('siteUrl')

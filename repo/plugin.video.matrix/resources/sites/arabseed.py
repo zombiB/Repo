@@ -32,9 +32,8 @@ aResult = oParser.parse(sHtmlContent, sPattern)
 if (aResult[0]):
     URL_MAIN = aResult[1][0]
 
-
 MOVIE_CLASSIC = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d9%83%d9%84%d8%a7%d8%b3%d9%8a%d9%83%d9%8a%d9%87/', 'showMovies')
-MOVIE_EN = (URL_MAIN + '/category/foreign-movies/', 'showMovies')
+MOVIE_EN = (URL_MAIN + '/category/foreign-movies4/', 'showMovies')
 MOVIE_AR = (URL_MAIN + '/category/arabic-movies-5/', 'showMovies')
 MOVIE_DUBBED = (URL_MAIN + '/category/%d8%a7%d9%81%d9%84%d8%a7%d9%85-%d9%85%d8%af%d8%a8%d9%84%d8%ac%d8%a9/', 'showMovies')
 MOVIE_HI = (URL_MAIN + '/category/indian-movies/', 'showMovies')
@@ -49,7 +48,7 @@ SERIE_EN = (URL_MAIN + '/category/foreign-series/', 'showSeries')
 SERIE_AR = (URL_MAIN + '/category/arabic-series/', 'showSeries')
 SPORT_WWE = (URL_MAIN + '/category/%d9%85%d8%b5%d8%a7%d8%b1%d8%b9%d8%a9/', 'showMovies')
 
-RAMADAN_SERIES = (URL_MAIN + '/category/ramadan-series-2023/', 'showSeries')
+RAMADAN_SERIES = (URL_MAIN + '/category/series-ar/ramadan-series-2023/', 'showSeries')
 ANIM_NEWS = (URL_MAIN + '/category/%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d9%83%d8%b1%d8%aa%d9%88%d9%86/', 'showSeries')
 
 REPLAYTV_PLAY = (URL_MAIN + '/category/%D9%85%D8%B3%D8%B1%D8%AD%D9%8A%D8%A7%D8%AA-%D8%B9%D8%B1%D8%A8%D9%8A%D9%87/', 'showMovies')
@@ -193,7 +192,7 @@ def showMovies(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+?
-    sPattern = '</div><a href="(.+?)">.+?data-src="([^"]+)".+?alt="(.+?)">'
+    sPattern = '</div><a href="(.+?)">.+?data-src="(.+?)" alt="(.+?)">'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -250,7 +249,7 @@ def showPacks(sSearch = ''):
       # (.+?) ([^<]+) .+?
 
 
-    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^"]+)".+?class.+?<div class="BlockTitle">([^<]+)</div>'
+    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -303,7 +302,7 @@ def showPack():
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
      # (.+?) ([^<]+) .+?
-    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^"]+)".+?class.+?<div class="BlockTitle">([^<]+)</div>'
+    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -352,7 +351,7 @@ def showSeries(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
  # ([^<]+) .+?
-    sPattern = '<div class="Movie.+?">.+?<a href="([^<]+)">.+?data-src="([^"]+)".+?alt="([^<]+)">'
+    sPattern = '<div class="Movie.+?">.+?<a href="([^<]+)">.+?data-src="([^<]+)" alt="([^<]+)">'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
