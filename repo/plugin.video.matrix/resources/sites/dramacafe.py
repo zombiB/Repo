@@ -279,7 +279,7 @@ def showEpisodes():
  
             
             
-            sTitle = sMovieTitle+'E'+aEntry[1]
+            sTitle = 'E'+aEntry[1]+sMovieTitle
             siteUrl = URL_MAIN+aEntry[0]
             import base64
             if '?post=' in siteUrl:
