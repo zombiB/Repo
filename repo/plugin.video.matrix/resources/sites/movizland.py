@@ -214,7 +214,7 @@ def showMovies(sSearch = ''):
       # (.+?) ([^<]+) .+?
 
 
-    sPattern = '<div class="BlockItem">.+?<a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
+    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
 	
@@ -271,7 +271,7 @@ def showPacks(sSearch = ''):
 
       # (.+?) ([^<]+) .+?
 
-    sPattern = '<div class="BlockItem">.+?<a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
+    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -322,7 +322,7 @@ def showPack():
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
      # (.+?) ([^<]+) .+?
-    sPattern = '<div class="BlockItem">.+?<a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
+    sPattern = '<div class="BlockItem"><a href="([^<]+)">.+?src="([^<]+)" class.+?<div class="BlockTitle">([^<]+)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -367,7 +367,7 @@ def showSeries(sSearch = ''):
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
-    sPattern = '<div class="BlockItem">.+?<a href="(.+?)">.+?<img width=".+?" height=".+?" src="([^<]+)" class.+?class="BlockTitle">([^<]+)</div>'
+    sPattern = '<div class="BlockItem"><a href="(.+?)">.+?<img width=".+?" height=".+?" src="([^<]+)" class.+?class="BlockTitle">([^<]+)</div>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -501,30 +501,7 @@ def showEpisodes():
 
       # (.+?) ([^<]+) .+?
 
-    sPattern = 'property="og:title" content="([^<]+)" />'
 
-    oParser = cParser()
-    aResult = oParser.parse(sHtmlContent, sPattern)
-	
-	
-    if aResult[0]:
-        oOutputParameterHandler = cOutputParameterHandler() 
-        for aEntry in aResult[1]:
- 
-
-            siteUrl = sUrl
-            sTitle = aEntry.replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("و الأخيرة","").replace("والأخيرة","").replace("والأخيره","").replace("والاخيرة","").replace("اون لاين","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("4K","").replace("All","").replace("BDRip","").replace("HDCAM","").replace("HDTC","").replace("HDTV","").replace("HD","").replace("720","").replace("HDCam","").replace("Full HD","").replace("1080","").replace("HC","").replace("Web-dl","").replace("بجودة","").replace("بجوده","").replace("اونلاين","").replace("كامل","").replace("الحلقة "," E").split('ال')[0].replace('&raquo;', '')
-            sThumb = sThumb
-            sDesc = ""
-
-
-            oOutputParameterHandler.addParameter('siteUrl',siteUrl)
-            oOutputParameterHandler.addParameter('sMovieTitle', sTitle)
-            oOutputParameterHandler.addParameter('sThumb', sThumb)
-            if '/series/' in siteUrl:
-                oGui.addSeason(SITE_IDENTIFIER, 'showEpisodes', sDisplayTitle, '', sThumb, sDesc, oOutputParameterHandler)
-            else:
-                oGui.addEpisode(SITE_IDENTIFIER, 'showHosters2', sDisplayTitle, '', sThumb, sDesc,  oOutputParameterHandler)   
         
        
     oGui.setEndOfDirectory()

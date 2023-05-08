@@ -267,10 +267,10 @@ class cHosterGui:
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
-        if ('viewsb' in sHostName):
-            f = self.getHoster('resolver')
+#        if ('viewsb' in sHostName):
+#            f = self.getHoster('resolver')
             #mise a jour du nom
-            f.setRealHost(sHostName)
+#            f.setRealHost(sHostName)
             return f
         if ('tubeload' in sHostName):
             f = self.getHoster('resolver')

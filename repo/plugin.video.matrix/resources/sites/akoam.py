@@ -34,7 +34,7 @@ MOVIE_AR = (URL_MAIN + 'cat/155/%D8%A7%D9%84%D8%A3%D9%81%D9%84%D8%A7%D9%85-%D8%A
 MOVIE_HI = (URL_MAIN + 'cat/168/%D8%A7%D9%84%D8%A7%D9%81%D9%84%D8%A7%D9%85-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A%D8%A9', 'showMovies')
 REPLAYTV_NEWS = (URL_MAIN + 'cat/81/%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D9%85%D8%AC-%D8%A7%D9%84%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D9%8A%D8%A9', 'showSeries')
 SERIE_AR = (URL_MAIN + 'cat/80/%D8%A7%D9%84%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9', 'showSeries')
-SERIE_EN = (URL_MAIN + '/cat/166/%d8%a7%d9%84%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d8%a7%d9%84%d8%a7%d8%ac%d9%86%d8%a8%d9%8a%d8%a9', 'showSeries')
+SERIE_EN = (URL_MAIN + 'cat/166/%d8%a7%d9%84%d9%85%d8%b3%d9%84%d8%b3%d9%84%d8%a7%d8%aa-%d8%a7%d9%84%d8%a7%d8%ac%d9%86%d8%a8%d9%8a%d8%a9', 'showSeries')
 SERIE_DUBBED = (URL_MAIN + 'cat/190/%D8%A7%D9%84%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%AF%D8%A8%D9%84%D8%AC%D8%A9', 'showSeries')
 SERIE_ASIA = (URL_MAIN + 'cat/185/%D8%A7%D9%84%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D9%8A%D9%88%D9%8A%D8%A9', 'showSeries')
 SERIE_TR = (URL_MAIN + 'cat/190/%D8%A7%D9%84%D9%85%D8%B3%D9%84%D8%B3%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%AF%D8%A8%D9%84%D8%AC%D8%A9', 'showSeries')
@@ -278,7 +278,7 @@ def showMovies(sSearch = ''):
     sHtmlContent = oRequestHandler.request()
       # (.+?) ([^<]+) .+?
 
-    sPattern = '<a href="(.+?)">.+?<img src="(.+?)" alt.+?<h3>(.+?)</h3>'
+    sPattern = '<div class="subject_box shape" >.+?<a href="(.+?)">.+?<img src="(.+?)" alt.+?<h3>(.+?)</h3>'
 		
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -466,7 +466,7 @@ def showSeries(sSearch = ''):
     oRequestHandler.addHeaderEntry('Accept-Language', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3')
     sHtmlContent = oRequestHandler.request()
 # ([^<]+) .+? (.+?)
-    sPattern = '<a href="(.+?)">.+?<img src="(.+?)" alt.+?<h3>(.+?)</h3>'
+    sPattern = '<div class="subject_box shape" >.+?<a href="([^"]+)".+?<img src="([^"]+)" alt.+?<h3>(.+?)</h3>.+?<span class="desc">(.+?)</span>'
 
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
@@ -484,7 +484,7 @@ def showSeries(sSearch = ''):
 
             sTitle = aEntry[2].replace("مشاهدة","").replace("مترجمة","").replace("مترجم","").replace("فيلم","").replace("اون لاين","").replace("برنامج","").replace("مسلسل","").replace("الانمي","").replace("انمي","").replace("WEB-DL","").replace("BRRip","").replace("720p","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("1080p","").replace("WEBRip","").replace("WEB-dl","").replace("4K","").replace("All","").replace("BDRip","").replace("HDCAM","").replace("HDTC","").replace("HDTV","").replace("HD","").replace("720","").replace("HDCam","").replace("Full HD","").replace("1080","").replace("HC","").replace("Web-dl","").replace("مدبلج للعربية","مدبلج")
             siteUrl = aEntry[0]
-            sDesc = ''
+            sDesc = aEntry[3]
             sYear = ''
             m = re.search('([0-9]{4})', sTitle)
             if m:
