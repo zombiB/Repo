@@ -6,7 +6,7 @@ from resources.lib.gui.contextElement import cContextElement
 from resources.lib.handler.inputParameterHandler import cInputParameterHandler
 from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
 from resources.lib.comaddon import dialog, addon, VSlog
-
+import re
 
 class cHosterGui:
     SITE_NAME = 'cHosterGui'
@@ -258,20 +258,11 @@ class cHosterGui:
             f.setRealHost(sHostName)
             return f
         if ('sbhight' in sHostName):
-            f = self.getHoster('resolver')
-            #mise a jour du nom
-            f.setRealHost(sHostName)
-            return f
+            return self.getHoster('viewsb')
         if ('sbface' in sHostName):
-            f = self.getHoster('resolver')
-            #mise a jour du nom
-            f.setRealHost(sHostName)
-            return f
-#        if ('viewsb' in sHostName):
-#            f = self.getHoster('resolver')
-            #mise a jour du nom
-#            f.setRealHost(sHostName)
-            return f
+            return self.getHoster('viewsb')
+        if ('viewsb' in sHostName):
+            return self.getHoster('viewsb')
         if ('tubeload' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
@@ -588,11 +579,14 @@ class cHosterGui:
 
         if ('.mp4' in sHosterUrl):
             return self.getHoster('lien_direct')
-				
+
+        if re.search(r"\d+$", sHosterUrl):
+            return self.getHoster('lien_direct')
+        
         if ('nitroflare' in sHostName or 'tubeload.' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName):
             return False
-        else:
-            return self.getHoster('lien_direct')            
+ #       else:
+ #           return self.getHoster('lien_direct')            
         return False
 
     def getHoster(self, sHosterFileName):
