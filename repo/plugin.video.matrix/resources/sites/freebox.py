@@ -12,6 +12,7 @@ from resources.lib.gui.hoster import cHosterGui
 from resources.lib.handler.inputParameterHandler import cInputParameterHandler
 from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
 from resources.lib.handler.requestHandler import cRequestHandler
+from resources.lib.handler.premiumHandler import cPremiumHandler
 from resources.lib.parser import cParser
 from resources.lib.util import Unquote
 
@@ -243,9 +244,13 @@ def showTV():
 
 
 def play__():  # Lancer les liens
+    addons = addon()
     oGui = cGui()
+
+    Iuser = addons.getSetting('hoster_iptvt_username')
+    Ipass = addons.getSetting('hoster_iptvt_password')
     oInputParameterHandler = cInputParameterHandler()
-    sUrl = oInputParameterHandler.getValue('siteUrl').replace('P_L_U_S', '+')
+    sUrl = oInputParameterHandler.getValue('siteUrl').replace('P_L_U_S', '+').replace('username', Iuser).replace('password', Ipass)
     sTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumbnail = oInputParameterHandler.getValue('sThumbnail')
     sDesc = oInputParameterHandler.getValue('sDesc')

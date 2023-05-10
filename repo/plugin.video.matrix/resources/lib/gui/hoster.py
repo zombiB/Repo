@@ -196,7 +196,7 @@ class cHosterGui:
                             'giga', 'vidbom', 'upvid', 'cloudvid', 'megadrive', 'downace', 'cdnbom', 'clickopen', 'supervideo',
                             'jawcloud', 'kvid', 'soundcloud', 'mixcloud', 'ddlfr', 'vupload', 'dwfull', 'vidzstore',
                             'pdj', 'rapidstream', 'jetload', 'dustreaming', 'viki', 'flix555', 'onlystream',
-                            'upstream', 'pstream', 'vudeo', 'dood', 'vidia', 'streamtape', 'vidbem', 'uptobox', 'uplea',
+                            'upstream', 'pstream', 'vudeo', 'dood', 'vidia', 'vidbem', 'uptobox', 'uplea',
                             'sibnet', 'vidplayer', 'userload', 'aparat', 'evoload', 'vidshar', 'abcvideo', 'plynow', '33player', 'filerio', 'videoraj', 'brightcove', 'detectiveconanar',
                             'myvi', '33player', 'videovard', 'viewsb', 'yourvid', 'vf-manga', 'oneupload']
 
@@ -225,6 +225,7 @@ class cHosterGui:
             return f
         if ('vanfem' in sHostName):
             return self.getHoster('fembed')
+        
         if ('vidpro' in sHostName):
             return self.getHoster('samashare')
         if ('streamvid' in sHostName):
@@ -232,46 +233,64 @@ class cHosterGui:
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        
         if ('sblanh' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        
         if ('sbchill' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        
         if ('sbthe' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        
         if ('sbbrisk' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        
         if ('sbanh' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+
+        if ('streamtape' in sHostName):
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+
         if ('sbhight' in sHostName):
             return self.getHoster('viewsb')
+        
         if ('sbface' in sHostName):
             return self.getHoster('viewsb')
+        
         if ('viewsb' in sHostName):
             return self.getHoster('viewsb')
+        
         if ('tubeload' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        
         if ('vimeo' in sHostName):
             return self.getHoster('vimeo')
+        
         if ('embed.scdn.' in sHostName):
             return self.getHoster('faselhd')
+        
         if ('/run/' in sHosterUrl):
             return self.getHoster('mycima')
                  
