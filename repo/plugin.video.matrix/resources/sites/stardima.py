@@ -392,7 +392,7 @@ def showHosters():
     from resources.lib.util import Quote
     cook = oRequestHandler.GetCookies()
             
-    sPattern =  "data-type='(.+?)' data-post='(.+?)' data-nume='(.+?)'>" 
+    sPattern =  'data-type="(.+?)" data-post="(.+?)" data-nume="(.+?)">'
     aResult = oParser.parse(sHtmlContent,sPattern)
     if aResult[0]:
        total = len(aResult[1])
