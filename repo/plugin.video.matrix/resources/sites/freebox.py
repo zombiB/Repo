@@ -261,7 +261,15 @@ def play__():  # Lancer les liens
 
     # Bug specifique au flux france TV
     # eof detectedL
-    if 'ftven.fr' in sUrl:
+    if 'youtube' in sUrl:
+        oHoster = cHosterGui().checkHoster(sUrl)
+
+        if oHoster:
+            oHoster.setDisplayName(sTitle)
+            oHoster.setFileName(sTitle)
+            cHosterGui().showHoster(oGui, oHoster, sUrl, sThumbnail)
+
+    else:
         oGuiElement = cGuiElement()
         oGuiElement.setSiteName(SITE_IDENTIFIER)
         oGuiElement.setTitle(sTitle)
@@ -275,16 +283,10 @@ def play__():  # Lancer les liens
         oPlayer.clearPlayList()
         oPlayer.addItemToPlaylist(oGuiElement)
         oPlayer.startPlayer()
+        
+        return False, False
 
-    else:
-        oHoster = cHosterGui().checkHoster(sUrl)
-
-        if oHoster:
-            oHoster.setDisplayName(sTitle)
-            oHoster.setFileName(sTitle)
-            cHosterGui().showHoster(oGui, oHoster, sUrl, sThumbnail)
-
-        oGui.setEndOfDirectory()
+    oGui.setEndOfDirectory()
 
 
 """

@@ -277,7 +277,7 @@ def showEpisodes():
             sHtmlContent = aEntry[1]
  # ([^<]+) .+?
 
-            sPattern = '<a class=".+?href="(.+?)" title.+?<em>(.+?)</em><span>'
+            sPattern = 'href="(.+?)" title=.+?<em>(.+?)</em><span>'
 
             oParser = cParser()
             aResult = oParser.parse(sHtmlContent, sPattern)

@@ -225,7 +225,10 @@ class cHosterGui:
             return f
         if ('vanfem' in sHostName):
             return self.getHoster('fembed')
-        
+
+        if ('diasfem' in sHosterUrl):
+            return self.getHoster('fembed')
+
         if ('vidpro' in sHostName):
             return self.getHoster('samashare')
         if ('streamvid' in sHostName):
