@@ -59,7 +59,7 @@ class cGuiElement:
         self.__ImdbId = ''
         self.__Year = ''
 
-        self.__sRes = '' # resolution
+        self.__sRes = ''  # resolution
 
         self.__aItemValues = {}
         self.__aProperties = {}
@@ -118,13 +118,13 @@ class cGuiElement:
         return self.__Year
 
     def setRes(self, data):
-        if data.upper() in ('1080P', 'FHD', 'FULLHD'): 
+        if data.upper() in ('1080P', 'FHD', 'FULLHD'):
             data = '1080p'
-        elif data.upper() in ('720P', 'DVDRIP', 'DVDSCR', 'HD', 'HDLIGHT', 'HDRIP', 'BDRIP', 'BRRIP'): 
+        elif data.upper() in ('720P', 'DVDRIP', 'DVDSCR', 'HD', 'HDLIGHT', 'HDRIP', 'BDRIP', 'BRRIP'):
             data = '720p'
-        elif data.upper() in ('4K', 'UHD', '2160P'): 
+        elif data.upper() in ('4K', 'UHD', '2160P'):
             data = '2160p'
-        
+
         self.__sRes = data
 
     def getRes(self):
@@ -179,11 +179,7 @@ class cGuiElement:
         return self.__sSiteName
 
     def setFileName(self, sFileName):
-        if isMatrix():
-            self.__sFileName = sFileName
-        else:
-            self.__sFileName = cUtil().titleWatched(sFileName)
-
+        self.__sFileName = cUtil().titleWatched(sFileName)
 
     def getFileName(self):
         return self.__sFileName
@@ -199,18 +195,18 @@ class cGuiElement:
         # convertion unicode ne fonctionne pas avec les accents
         try:
             # traitement du titre pour retirer le - quand c'est une Saison. Tiret, tiret moyen et cadratin
-            sTitle = sTitle.replace('Season', 'season').replace('Saison', 'season')
+            sTitle = sTitle.replace('Season', 'season').replace('Saison', 'season').replace('SEASON', 'season')\
+                           .replace('Saison', 'season').replace('SAISON', 'season')
             sTitle = sTitle.replace(' - saison', ' season').replace(' – saison', ' season')\
                            .replace(' — saison', ' season')
             sTitle = sTitle.replace("WEB-DL","").replace("BRRip","").replace("HD-TC","").replace("HDRip","").replace("HD-CAM","").replace("DVDRip","").replace("BluRay","").replace("WEBRip","").replace("DvDrip","").replace("DvDRip","").replace("DVBRip","").replace("TVRip","").replace("WEB Dl","").replace("WeB Dl","").replace("WEB DL","").replace("WeB DL","").replace("Web DL","").replace("WEB-dl","").replace("4K","").replace("BDRip","").replace("HDCAM","").replace("HDTC","").replace("HDTV","").replace("HD","").replace("HDCam","").replace("Full HD","").replace("HC","").replace("Web-dl","")
             sTitle = sTitle.replace("مدبلج عربي","[COLOR yellow]مدبلج[/COLOR]").replace("مدبلجة","[COLOR yellow]مدبلجة[/COLOR]").replace("مدبلجه","[COLOR yellow]مدبلجة[/COLOR]").replace("مدبلج بالمصري","[COLOR yellow]مدبلج بالمصري[/COLOR]").replace("مدبلج مصري","[COLOR yellow]مدبلج بالمصري[/COLOR]").replace("مدبلج للعربية","مدبلج").replace("مدبلج","[COLOR yellow]مدبلج[/COLOR]")
-           
             if not isMatrix():
                 sTitle = sTitle.decode('utf-8')
         except:
             pass
 
-        """ Début Nettoyage du titre """
+        """ Début du nettoyage du titre """
         # vire doubles espaces et double points
         sTitle = re.sub(' +', ' ', sTitle)
         sTitle = re.sub('\.+', '.', sTitle)
@@ -218,13 +214,12 @@ class cGuiElement:
         # enleve les crochets et les parentheses si elles sont vides
         sTitle = sTitle.replace('()', '').replace('[]', '').replace('- -', '-')
 
-        # vire espace et - a la fin (/!\ il y a 2 tirets differents meme si invisible a l'oeil nu et un est en unicode)
-        sTitle = re.sub('[- –]+$', '', sTitle)
+        # vire espace et - a la fin
+        sTitle = re.sub('[- –_\.\[]+$', '', sTitle)
         # et au debut
-        if sTitle.startswith(' '):
-            sTitle = sTitle[1:]
+        sTitle = re.sub('^[- –_\.]+', '', sTitle)
 
-        """ Fin Nettoyage du titre """
+        """ Fin du nettoyage du titre """
 
         # recherche l'année, uniquement si entre caractere special a cause de 2001 odysse de l'espace ou k2000
         string = re.search('[^\w ]([0-9]{4})[^\w ]', sTitle)
@@ -265,6 +260,8 @@ class cGuiElement:
         # enleve les crochets et les parentheses si elles sont vides
         if sa or ep:
             sTitle = sTitle.replace('()', '').replace('[]', '').replace('- -', '-')
+            # vire espace et - a la fin
+            sTitle = re.sub('[- –_\.\[]+$', '', sTitle)
 
         if sa:
             self.__Season = sa
@@ -272,11 +269,14 @@ class cGuiElement:
         if ep:
             self.__Episode = ep
             self.addItemValues('Episode', self.__Episode)
-			
+
         # on repasse en utf-8
         if not isMatrix():
-            sTitle = sTitle.encode('utf-8')
-				
+            try:
+                sTitle = sTitle.encode('utf-8')
+            except:
+                pass
+
         # on reformate SXXEXX Titre [tag] (Annee)
         sTitle2 = ''
         if self.__Season:
@@ -322,6 +322,7 @@ class cGuiElement:
             self.__sCleanTitle = re.sub('\[.+?\]|\(.+?\)', '', sTitle)
             if not self.__sCleanTitle:
                 self.__sCleanTitle = sTitle.replace('[', '').replace(']', '').replace('(', '').replace(')', '')
+
         if isMatrix():
             # Python 3 decode sTitle
             try:
@@ -345,8 +346,8 @@ class cGuiElement:
     def getCleanTitle(self):
         return self.__sCleanTitle
 
-#    def setTitleWatched(self, sTitleWatched):
-#        self.__sTitleWatched = sTitleWatched
+   # def setTitleWatched(self, sTitleWatched):
+       # self.__sTitleWatched = sTitleWatched
 
     def getTitleWatched(self):
         return self.__sTitleWatched
@@ -355,10 +356,10 @@ class cGuiElement:
         # Py3
         if isMatrix():
             try:
-
-                self.__sDescription = str(sDescription.encode('latin-1'),'utf-8')
-
-
+                if 'Ã' in sDescription or '\\xc' in sDescription:
+                    self.__sDescription = str(sDescription.encode('latin-1'), 'utf-8')
+                else:
+                    self.__sDescription = sDescription
             except:
                 self.__sDescription = sDescription
         else:
@@ -431,7 +432,7 @@ class cGuiElement:
         if not self.getTitleWatched():
             return 0
 
-        meta = {'title': self.getTitleWatched(),
+        meta = {'titleWatched': self.getTitleWatched(),
                 'site': self.getSiteUrl(),
                 'cat': self.getCat()
                 }

@@ -18,7 +18,7 @@ class cHoster(iHoster):
 
     def setDisplayName(self, displayName):
         self._displayName = displayName + ' [COLOR violet]'+ self._defaultDisplayName + self.__sRealHost + '[/COLOR]'
-
+        
     def _getMediaLinkForGuest(self):
         token = cPremiumHandler(self.getPluginIdentifier()).getToken()
         if not token:

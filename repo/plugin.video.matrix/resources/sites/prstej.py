@@ -329,7 +329,7 @@ def showHosters():
     # ([^<]+) .+?
                
 
-    sPattern = "data-embed-url='([^<]+)'>"
+    sPattern = 'data-embed-url="([^<]+)">'
     aResult = oParser.parse(sHtmlContent, sPattern)
 
 	
