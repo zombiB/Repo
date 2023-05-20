@@ -22,7 +22,7 @@ SITE_IDENTIFIER = 'cimanow'
 SITE_NAME = 'Cimanow'
 SITE_DESC = 'arabic vod'
 
-UA = 'ipad'
+UA = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.48 Mobile Safari/537.36'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
@@ -126,6 +126,7 @@ def showMovies(sSearch = ''):
         sUrl = oInputParameterHandler.getValue('siteUrl')
     
     oRequest = cRequestHandler(sUrl)
+    oRequest.addHeaderEntry('User-Agent', UA)
     data = oRequest.request()
 
 
@@ -148,7 +149,7 @@ def showMovies(sSearch = ''):
                     page = page + chr(nb)
             #VSlog(page)
  
-            sPattern = '<article aria-label="post"><a href="([^<]+)">.+?<li aria-label="year">(.+?)</li>.+?<li aria-label="title">([^<]+)<em>.+?data-src="(.+?)" width'
+            sPattern = '<article aria-label="post"><a href="([^"]+).+?<li aria-label="year">(.+?)</li>.+?<li aria-label="title">([^<]+)<em>.+?data-src="(.+?)" width'
 
             oParser = cParser()
             aResult = oParser.parse(page, sPattern)
@@ -228,11 +229,8 @@ def showSeries(sSearch = ''):
         oInputParameterHandler = cInputParameterHandler()
         sUrl = oInputParameterHandler.getValue('siteUrl')
  
-    oRequestHandler = cRequestHandler(sUrl)
-    sHtmlContent = oRequestHandler.request()
-     # (.+?) ([^<]+) .+?
-
     oRequest = cRequestHandler(sUrl)
+    oRequest.addHeaderEntry('User-Agent', UA)
     data = oRequest.request()
 
 
@@ -340,15 +338,16 @@ def showSeasons():
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
  
+    # (.+?) .+?  ([^<]+)
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
     sStart = '<section aria-label="seasons">'
     sEnd = '<ul class="tabcontent" id="related">'
     sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
-    # (.+?) .+?  ([^<]+)
 
     oRequest = cRequestHandler(sUrl)
+    oRequest.addHeaderEntry('User-Agent', UA)
     data = oRequest.request()
 
 
@@ -404,16 +403,16 @@ def showEps():
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
- 
+
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
     sStart = '<section aria-label="seasons">'
     sEnd = '<ul class="tabcontent" id="related">'
     sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
-    # (.+?) .+?  ([^<]+)
-
+    
     oRequest = cRequestHandler(sUrl)
+    oRequest.addHeaderEntry('User-Agent', UA)
     data = oRequest.request()
 
 
@@ -474,22 +473,19 @@ def showServer():
     sUrl = oInputParameterHandler.getValue('siteUrl')
     sMovieTitle = oInputParameterHandler.getValue('sMovieTitle')
     sThumb = oInputParameterHandler.getValue('sThumb')
-    host = URL_MAIN.split('/')[2]
+    host = sUrl.split('/')[2]
+    URL_MAIN = 'https://' + host
     VSlog(host)
  
-    oRequestHandler = cRequestHandler(sUrl)
-    cook = oRequestHandler.GetCookies()
-    hdr = {'User-Agent' : 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Mobile Safari/537.36','Accept-Encoding' : 'gzip','cookie' : cook,'host' : host,'referer' : URL_MAIN}
-    St=requests.Session()
-    sHtmlContent = St.get(sUrl,headers=hdr)
-    sHtmlContent = sHtmlContent.content.decode('utf8')  
-    oParser = cParser()
-
-
     oRequest = cRequestHandler(sUrl)
-    data = oRequest.request()
+    cook = oRequest.GetCookies()
+    hdr = {'User-Agent' : UA,'Accept-Encoding' : 'gzip','cookie' : cook,'host' : host,'referer' : URL_MAIN}
+    St=requests.Session()
+    data = St.get(sUrl,headers=hdr)
+    data = data.content.decode('utf8')  
 
 
+    oParser = cParser()
      # (.+?) ([^<]+) .+?
 
     if 'adilbo' in data:
@@ -596,28 +592,22 @@ def showServer():
                     cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
 
     #Recuperation infos
-            sId = ''
-            sPattern = 'data-id="([^"]+)"'
+
+            sPattern = 'data-index="(.+?)" data-id="([^"]+)'
             aResult = oParser.parse(page, sPattern)
     
-            if (aResult[0]):
-                sId = aResult[1][0]
-     # (.+?) ([^<]+) .+?
-
-            sPattern = 'data-index="([^"]+)"'
-            aResult = oParser.parse(page, sPattern)
-            #VSlog(aResult)
-
-   
             if aResult[0]:
                 for aEntry in aResult[1]:
+                    sIndex = aEntry[0]
+                    sId = aEntry[1]
+     # (.+?) ([^<]+) .+?
 
+                    siteUrl = URL_MAIN + '/wp-content/themes/Cima%20Now%20New/core.php?action=switch&index='+sIndex+'&id='+sId
                     sTitle = 'server '
-                    siteUrl = URL_MAIN + '/wp-content/themes/Cima%20Now%20New/core.php?action=switch&index='+aEntry+'&id='+sId
                     hdr = {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:66.0) Gecko/20100101 Firefox/66.0','host' : host,'referer' : URL_MAIN}
                     params = {'action':'switch','index':aEntry,'id':sId}
                     St=requests.Session()
-                    sHtmlContent = St.get(siteUrl,headers=hdr,params=params)
+                    sData = St.get(siteUrl,headers=hdr,params=params)
                     oRequestHandler = cRequestHandler(siteUrl)
                     sData = oRequestHandler.request()
                   
@@ -635,7 +625,7 @@ def showServer():
                                 t_ch = re.findall('\d+', c_elm, re.S)
                                 if t_ch:
                                     nb = int(t_ch[0])+int(t_int[0])
-                                    spage = page + chr(nb)
+                                    spage = spage + chr(nb)
 
                             sPattern = '<iframe src="(.+?)" scrolling'
                             oParser = cParser()
@@ -660,7 +650,6 @@ def showServer():
                                         oHoster.setDisplayName(sMovieTitle)
                                     oHoster.setFileName(sMovieTitle)
                                     cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
-
 
                 
     oGui.setEndOfDirectory()

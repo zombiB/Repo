@@ -754,8 +754,6 @@ class cTMDb:
         except Exception as e:
             pass
 
-        # Vire tous les caracteres non alphabetiques
-        title = re.sub('[^%s]' % (string.ascii_lowercase + string.digits), '', title.lower())
         return title
 
     def _cache_search(self, media_type, name, tmdb_id='', year='', season='', episode=''):
