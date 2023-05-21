@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-# vStream https://github.com/Kodi-vStream/venom-xbmc-addons
-import xbmc
-
-from resources.lib.comaddon import dialog, addon, isMatrix
+# https://github.com/Kodi-vStream/venom-xbmc-addons
+# Venom.
+from resources.lib.comaddon import dialog, addon, xbmc, isMatrix
 from resources.lib.db import cDb
 from resources.lib.handler.inputParameterHandler import cInputParameterHandler
 from resources.lib.handler.outputParameterHandler import cOutputParameterHandler
@@ -61,16 +60,16 @@ class cViewing:
         addons = addon()
 
         oOutputParameterHandler = cOutputParameterHandler()
-        oGui.addDir(SITE_IDENTIFIER, 'getViewing', addons.VSlang(30126), 'genres.png', oOutputParameterHandler)
+        oGui.addDir(SITE_IDENTIFIER, 'getViewing', addons.VSlang(30126), 'replay.png', oOutputParameterHandler)
 
         oOutputParameterHandler = cOutputParameterHandler()
-        oOutputParameterHandler.addParameter('sCat', '1')  # films
+        oOutputParameterHandler.addParameter('sCat', '1')       # films
         oGui.addDir(SITE_IDENTIFIER, 'getViewing', addons.VSlang(30120), 'films.png', oOutputParameterHandler)
 
-        oOutputParameterHandler.addParameter('sCat', '4')  # saisons
+        oOutputParameterHandler.addParameter('sCat', '4')       # saisons
         oGui.addDir(SITE_IDENTIFIER, 'getViewing', '%s/%s' % (self.ADDON.VSlang(30121), self.ADDON.VSlang(30122)), 'series.png', oOutputParameterHandler)
 
-        oOutputParameterHandler.addParameter('sCat', '5')  # Divers
+        oOutputParameterHandler.addParameter('sCat', '5')       # Divers
         oGui.addDir(SITE_IDENTIFIER, 'getViewing', self.ADDON.VSlang(30410), 'buzz.png', oOutputParameterHandler)
 
         oGui.setEndOfDirectory()
@@ -127,7 +126,7 @@ class cViewing:
 
                     # pourcentage de lecture
                     meta = {}
-                    meta['titleWatched'] = sTitleWatched
+                    meta['title'] = sTitleWatched
                     resumetime, totaltime = DB.get_resume(meta)
                     oOutputParameterHandler.addParameter('ResumeTime', resumetime)
                     oOutputParameterHandler.addParameter('TotalTime', totaltime)
