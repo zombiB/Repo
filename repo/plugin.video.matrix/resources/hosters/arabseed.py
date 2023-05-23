@@ -11,7 +11,7 @@ UA = 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 
 class cHoster(iHoster):
 
     def __init__(self):
-        iHoster.__init__(self, 'arabseed', 'arabseed')
+        iHoster.__init__(self, 'arabseed', 'Arabseed')
 
     def isDownloadable(self):
         return True

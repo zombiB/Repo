@@ -223,6 +223,22 @@ class cHosterGui:
             #mise a jour du nom
             f.setRealHost(sHostName)
             return f
+        if ('streamwish' in sHostName):
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+        if ('filelions' in sHostName):
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+        if ('vidello' in sHostName):
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+        
         if ('vanfem' in sHostName):
             return self.getHoster('fembed')
 
@@ -442,7 +458,7 @@ class cHosterGui:
         if ('seeeed' in sHostName):
             return self.getHoster('arabseed')
             
-        if ('reviewtech' in sHostName):
+        if ('reviewtech' in sHostName) or ('reviewrate' in sHostName):
             return self.getHoster('arabseed')
             
         if ('4shared' in sHostName):

@@ -1,5 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
-# zombi https://github.com/zombiB/zombi-addons/
+#############################################################
+# Yonn1981 https://github.com/Yonn1981/Repo
+#############################################################
 
 import re
 	
@@ -364,24 +366,6 @@ def showServer():
     sHtmlContent = oRequestHandler.request()
     oParser = cParser()
             
-# ([^<]+) .+? (.+?)
-    sPattern =  '<a class="xtgo" href="([^<]+)"'
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0]:
-        murl =  aResult[1][0]
-        oRequest = cRequestHandler(murl)
-        sHtmlContent = oRequest.request()
-    oParser = cParser()
-				     
-
-# ([^<]+) .+? (.+?)
-    sPattern =  '<li class="activeWatchServer">.+?<a href="([^<]+)">'
-    aResult = oParser.parse(sHtmlContent,sPattern)
-    if aResult[0]:
-        murl =  aResult[1][0]
-        oRequest = cRequestHandler(murl)
-        sHtmlContent = oRequest.request()
-    oParser = cParser()
 
     sPattern = '<a href="([^<]+)server=(.+?)"'
     aResult = oParser.parse(sHtmlContent, sPattern)

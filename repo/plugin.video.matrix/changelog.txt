@@ -1,6 +1,6 @@
 ==============================================================
 version="5.8.*"
-- Addon base updated to vstream 2.5.0 
+- Addon base updates
 - New Sites
 - Many sites fixes
 - If errors encountered ->uninstall and reinstall addon as new

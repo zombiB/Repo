@@ -19,7 +19,7 @@ import re
 import base64
 
 SITE_IDENTIFIER = 'cimanow'
-SITE_NAME = 'Cimanow'
+SITE_NAME = 'CimaNow'
 SITE_DESC = 'arabic vod'
 
 UA = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.48 Mobile Safari/537.36'

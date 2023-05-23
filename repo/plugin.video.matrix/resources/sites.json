@@ -131,12 +131,12 @@
             "url": "https://cdrama.in/"
         },
         "ciimalight": {
-            "label": "Ciimalight",
+            "label": "CiimaLight",
             "active": "True",
             "url": "https://we.cimalight.vip/"
         },
         "cimaclub": {
-            "label": "Cimaclub",
+            "label": "CimaClub",
             "active": "True",
             "url": "https://cmaclb.mom/"
         },
@@ -145,8 +145,13 @@
             "active": "True",
             "url": "https://ww.cima-city.site/"
         },
+        "cimaking": {
+            "label": "CimaKing",
+            "active": "True",
+            "url": "https://cimaking.com/"
+        },
         "cimanow": {
-            "label": "Cimanow",
+            "label": "CimaNow",
             "active": "True",
             "url": "https://cimanow.cc/"
         },
@@ -154,6 +159,11 @@
             "label": "Cima4u",
             "active": "True",
             "url": "https://cima4u5.sbs/"
+        },
+        "cinemana": {
+            "label": "Cinemana",
+            "active": "True",
+            "url": "https://cinemana.work/"
         },
         "daily": {
             "label": "Daily IPTV List",
@@ -374,6 +384,11 @@
             "label": "Xsanime",
             "active": "True",
             "url": "https://v.xsanime.com/"
+        },
+        "yalladrama": {
+            "label": "Yalladrama",
+            "active": "True",
+            "url": "https://mb.yalladrama.co/"
         },
         "yallalive": {
             "label": "Yallalive",

@@ -1,5 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
-# zombi https://github.com/zombiB/zombi-addons/
+#############################################################
+# Yonn1981 https://github.com/Yonn1981/Repo
+#############################################################
 
 import re
 	
@@ -21,7 +23,7 @@ except ImportError:  # Python 3
     from urllib.error import URLError as UrlError
 	
 SITE_IDENTIFIER = 'honadrama'
-SITE_NAME = 'Honadrama'
+SITE_NAME = 'HonaDrama'
 SITE_DESC = 'arabic vod'
 
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)

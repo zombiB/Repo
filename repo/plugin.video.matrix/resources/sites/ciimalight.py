@@ -16,7 +16,7 @@ from resources.lib.util import cUtil, Unquote
 
 	
 SITE_IDENTIFIER = 'ciimalight'
-SITE_NAME = 'Cimalight'
+SITE_NAME = 'CimaLight'
 SITE_DESC = 'arabic vod'
  
 URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
