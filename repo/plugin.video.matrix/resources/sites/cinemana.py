@@ -355,7 +355,7 @@ def showHosters():
     oParser = cParser()   
     sPattern = '<a data-like="likeCount" data-id="([^"]+)'
     aResult = oParser.parse(sHtmlContent, sPattern)
-    VSlog(aResult)
+    #VSlog(aResult)
     
     if aResult[0]:
         sId = aResult[1][0]
@@ -380,11 +380,11 @@ def showHosters():
             sPattern =  '<iframe.+?src="([^"]+)"'
             oParser = cParser()
             aResult = oParser.parse(sHtmlContent, sPattern)
-            VSlog(aResult)
+            #VSlog(aResult)
             if aResult[0]:
                 for aEntry in aResult[1]:
             
-                    url = aEntry
+                    url = aEntry.split('\\')[0]
                     sTitle = " "
                     if url.startswith('//'):
                        url = 'http:' + url

@@ -593,63 +593,46 @@ def showServer():
 
     #Recuperation infos
 
-            sPattern = 'data-index="(.+?)" data-id="([^"]+)'
+            sPattern = 'data-index="([^"]+)".+?data-id="([^"]+)"' 
             aResult = oParser.parse(page, sPattern)
-    
+            VSlog(aResult)
             if aResult[0]:
                 for aEntry in aResult[1]:
                     sIndex = aEntry[0]
                     sId = aEntry[1]
      # (.+?) ([^<]+) .+?
 
-                    siteUrl = URL_MAIN + '/wp-content/themes/Cima%20Now%20New/core.php?action=switch&index='+sIndex+'&id='+sId
                     sTitle = 'server '
-                    hdr = {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:66.0) Gecko/20100101 Firefox/66.0','host' : host,'referer' : URL_MAIN}
-                    params = {'action':'switch','index':aEntry,'id':sId}
+                    siteUrl = URL_MAIN + '/wp-content/themes/Cima%20Now%20New/core.php?action=switch&index='+sIndex+'&id='+sId
+                    hdr = {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:66.0) Gecko/20100101 Firefox/66.0','referer' : URL_MAIN}
+                    params = {'action':'switch','index':sIndex,'id':sId}                
                     St=requests.Session()
-                    sData = St.get(siteUrl,headers=hdr,params=params)
-                    oRequestHandler = cRequestHandler(siteUrl)
-                    sData = oRequestHandler.request()
-                  
-                    if 'adilbo' in sData:
-                        t_script = re.findall('<script.*?;.*?\'(.*?);', sData, re.S)
-                        t_int = re.findall('/g.....(.*?)\)', sData, re.S)
-                        if t_script and t_int:
-                            script = t_script[0].replace("'",'')
-                            script = script.replace("+",'')
-                            script = script.replace("\n",'')
-                            sc = script.split('.')
-                            spage = ''
-                            for elm in sc:
-                                c_elm = base64.b64decode(elm+'==').decode()
-                                t_ch = re.findall('\d+', c_elm, re.S)
-                                if t_ch:
-                                    nb = int(t_ch[0])+int(t_int[0])
-                                    spage = spage + chr(nb)
-
-                            sPattern = '<iframe src="(.+?)" scrolling'
-                            oParser = cParser()
-                            aResult = oParser.parse(spage, sPattern)
-                            if aResult[0]:
-                                for aEntry in aResult[1]:
+                    sHtmlContent = St.get(siteUrl,headers=hdr,params=params)
+                    sHtmlContent = sHtmlContent.content
+                    sPattern =  '<iframe.+?src="([^"]+)"'
+                    oParser = cParser()
+                    aResult = oParser.parse(sHtmlContent, sPattern)
+                    VSlog(aResult)
+                    if aResult[0]:
+                        for aEntry in aResult[1]:
             
-                                    url = aEntry
-                                    sTitle = sMovieTitle
-                                    if url.startswith('//'):
-                                        url = 'http:' + url
+                            url = aEntry
+                            sTitle = sMovieTitle
+                            if url.startswith('//'):
+                                url = 'http:' + url
             
-                                    sHosterUrl = url
-                                    if 'userload' in sHosterUrl:
-                                        sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-                                    if 'moshahda' in sHosterUrl:
-                                        sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
-                                    if 'mystream' in sHosterUrl:
-                                        sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN   
-                                    oHoster = cHosterGui().checkHoster(sHosterUrl)
-                                    if oHoster:
-                                        oHoster.setDisplayName(sMovieTitle)
-                                    oHoster.setFileName(sMovieTitle)
-                                    cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
+                            sHosterUrl = url
+                            if 'userload' in sHosterUrl:
+                                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+                            if 'moshahda' in sHosterUrl:
+                                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+                            if 'mystream' in sHosterUrl:
+                                sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN   
+                            oHoster = cHosterGui().checkHoster(sHosterUrl)
+                            if oHoster:
+                                oHoster.setDisplayName(sMovieTitle)
+                                oHoster.setFileName(sMovieTitle)
+                                cHosterGui().showHoster(oGui, oHoster, sHosterUrl, sThumb)
 
                 
     oGui.setEndOfDirectory()
