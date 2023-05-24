@@ -363,7 +363,10 @@ class cHosterGui:
             return self.getHoster('lien_direct')
             
         if ('vidbm' in sHostName) or ('vadbam' in sHostName) or ('vedbom' in sHostName) or ('vadbom' in sHostName) or ('vidbam' in sHostName):
-            return self.getHoster('vidbm')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 				
         if ('mail.ru' in sHostName):
             f = self.getHoster('resolver')

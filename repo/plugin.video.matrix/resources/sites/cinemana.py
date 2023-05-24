@@ -26,9 +26,9 @@ MOVIE_AR = (URL_MAIN + '/page/arabic-movies/', 'showMovies')
 SERIES_GENRES = (True, 'seriesGenres')
 MOVIES_GENRES = (True, 'moviesGenres')
 
-URL_SEARCH = (URL_MAIN + '/search.php?keywords=', 'showSeries')
-URL_SEARCH_MOVIES = (URL_MAIN + '/search.php?keywords=', 'showMovies')
-URL_SEARCH_SERIES = (URL_MAIN + '/search.php?keywords=', 'showSeries')
+URL_SEARCH = (URL_MAIN + '/?s=', 'showSeries')
+URL_SEARCH_MOVIES = (URL_MAIN + 'https://cinemana.work/search/?search=%D9%81%D9%8A%D9%84%D9%85+', 'showMovies')
+URL_SEARCH_SERIES = (URL_MAIN + '/search/?search=مسلسل+', 'showSeries')
 FUNCTION_SEARCH = 'showSearch'
  
 def load():

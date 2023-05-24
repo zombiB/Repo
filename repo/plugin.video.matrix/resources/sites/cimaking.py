@@ -149,12 +149,16 @@ def showMovies(sSearch = ''):
 
         progress_.VSclose(progress_)
  
-    if not sSearch:
-        bvalid, sNextPage, sNumPage = __checkForNextPage(sHtmlContent, sUrl)
-        if (bvalid == True):
+        sNextPage = __checkForNextPage(sHtmlContent)
+        if sNextPage:
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
-            oGui.addNext(SITE_IDENTIFIER, 'showMovies', 'Page ' + sNumPage, oOutputParameterHandler)
+            oGui.addDir(SITE_IDENTIFIER, 'showMovies', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
+
+        progress_.VSclose(progress_)
+ 
+    if not sSearch:
+
         oGui.setEndOfDirectory()  
 
  
@@ -207,12 +211,16 @@ def showSeries(sSearch = ''):
         progress_.VSclose(progress_)
  
  
-    if not sSearch:
-        bvalid, sNextPage, sNumPage = __checkForNextPage(sHtmlContent, sUrl)
-        if (bvalid == True):
+        sNextPage = __checkForNextPage(sHtmlContent)
+        if sNextPage:
             oOutputParameterHandler = cOutputParameterHandler()
             oOutputParameterHandler.addParameter('siteUrl', sNextPage)
-            oGui.addNext(SITE_IDENTIFIER, 'showSeries', 'Page ' + sNumPage, oOutputParameterHandler)
+            oGui.addDir(SITE_IDENTIFIER, 'showSeries', '[COLOR teal]Next >>>[/COLOR]', 'next.png', oOutputParameterHandler)
+
+        progress_.VSclose(progress_)
+ 
+    if not sSearch:
+
         oGui.setEndOfDirectory()  
 
 
@@ -428,7 +436,17 @@ def showServer():
                     if 'moshahda' in sHosterUrl:
                         sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
                     if 'mystream' in sHosterUrl:
-                        sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN   
+                        sHosterUrl = sHosterUrl + "|Referer=" + URL_MAIN
+                    if 'watchservice' in sHosterUrl:
+                        oRequestHandler = cRequestHandler(sHosterUrl)                        
+                        sHtmlContent = oRequestHandler.request()
+                        sPattern = 'src="([^"]+)'
+                        oParser = cParser()
+                        aResult = oParser.parse(sHtmlContent, sPattern)
+                        VSlog(aResult)
+                        if aResult[0]:
+                            for aEntry in aResult[1]:            
+                                sHosterUrl = aEntry
                     oHoster = cHosterGui().checkHoster(sHosterUrl)
                     if oHoster:
                        sDisplayTitle = sTitle
@@ -439,40 +457,28 @@ def showServer():
       
     oGui.setEndOfDirectory()  
 
-def __checkForNextPage(sHtml, sUrl):
-    # pas de lien next page on crée l'url et on verifie l'index de la derniere page
-    sMax = ''
-    iMax = 0
-    sPattern = 'page/(\d+)/'
+def __checkForNextPage(sHtmlContent):
     oParser = cParser()
-    aResult = oParser.parse(sHtml, sPattern)
+    sPattern = '<link rel="canonical" href="([^"]+)'
+    aResult = oParser.parse(sHtmlContent, sPattern)
+    VSlog(aResult)
     if aResult[0]:
         for aEntry in aResult[1]:
-            sCurrentMax = aEntry
-            iCurrentMax = int(sCurrentMax)
-            if iCurrentMax > iMax:
-                iMax = iCurrentMax
-                sMax = sCurrentMax
+            sLink = aEntry.split('/page')[0]
+            sPage = aEntry.split('/page/')[-1].replace('/','')
+            sNext = '2'
+            if '2' in sPage:
+                        sNext = '3'
+            if '3' in sPage:
+                        sNext = '4'
+            if '4' in sPage:
+                        sNext = '5'
+            if '5' in sPage:
+                        sNext = '6'
+            if '6' in sPage:
+                        sNext = '7'
 
-    sPattern = 'page.(\d+)'
-    oParser = cParser()
-    aResult = oParser.parse(sUrl, sPattern)
-    if aResult[0]:
-        sCurrent = aResult[1][0]
-        iCurrent = int(sCurrent)
-        iNext = iCurrent + 1
-        sNext = str(iNext)
-        pCurrent = 'page/' + sCurrent
-        pNext = 'page/' + sNext
-        sUrlNext = sUrl.replace(pCurrent, pNext)
+            NewLink = sLink+'/page/'+sNext+'/'
+        return NewLink
 
-    else:
-        return False, False, False
-
-    if iMax != 0 and iMax >= iNext:
-        return True, sUrlNext, sNext + '/' + sMax
-
-    elif iNext == 0:  # c'est un bug de programmation
-        return False, False, False
-
-    return False, False, False
+    return False
