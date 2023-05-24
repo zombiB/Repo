@@ -163,8 +163,9 @@ def showMovies(sSearch = ''):
                         break
  
                     sTitle = aEntry[2].replace("مشاهدة","").replace("مسلسل","").replace("انمي","").replace("مترجمة","").replace("مترجم","").replace("برنامج","").replace("فيلم","").replace("والأخيرة","").replace("مدبلج للعربية","مدبلج").replace("والاخيرة","").replace("كاملة","").replace("حلقات كاملة","").replace("اونلاين","").replace("مباشرة","").replace("انتاج ","").replace("جودة عالية","").replace("كامل","").replace("HD","").replace("السلسلة الوثائقية","").replace("الفيلم الوثائقي","").replace("اون لاين","")
+                    sTitle = str(sTitle.encode('latin-1'),'utf-8')
                     siteUrl = aEntry[0] + '/watching/'
-                    sThumb = aEntry[3]
+                    sThumb = str(aEntry[3].encode('latin-1'),'utf-8')
                     if sThumb.startswith('//'):
                         sThumb = 'http:' + sThumb
                     sYear = aEntry[1]
@@ -273,8 +274,9 @@ def showSeries(sSearch = ''):
                         continue
  
                     sTitle = aEntry[2]
+                    sTitle = str(sTitle.encode('latin-1'),'utf-8')
                     siteUrl = aEntry[0]
-                    sThumb = aEntry[3]
+                    sThumb = str(aEntry[3].encode('latin-1'),'utf-8')
                     if sThumb.startswith('//'):
                         sThumb = 'http:' + sThumb
                     sDesc = ''
@@ -380,7 +382,8 @@ def showSeasons():
                 for aEntry in aResult[1]:
 
  
-                    sTitle = sMovieTitle+aEntry[1].replace("الموسم"," S").replace("S ","S")
+                    sSeason = str(aEntry[1].encode('latin-1'),'utf-8')
+                    sTitle = sMovieTitle+sSeason.replace("الموسم"," S").replace("S ","S")
                     siteUrl = aEntry[0]
                     sThumb = sThumb
                     sDesc = ""
@@ -449,7 +452,7 @@ def showEps():
  
                     sTitle = sMovieTitle+' E'+aEntry[2] 
                     siteUrl = aEntry[0] + 'watching/'
-                    sThumb = aEntry[1]
+                    sThumb = str(aEntry[1].encode('latin-1'),'utf-8')
                     sDesc = ""
 
                     oOutputParameterHandler.addParameter('siteUrl', siteUrl)
