@@ -194,9 +194,9 @@ class cHosterGui:
                             'vidup', 'vidbull', 'vidlox', 'megaup', '33player' 'easyload', 'ninjastream', 'cloudhost',
                             'videobin', 'stagevu', 'gorillavid', 'daclips', 'hdvid', 'vshare', 'streamlare', 'vidload',
                             'giga', 'vidbom', 'upvid', 'cloudvid', 'megadrive', 'downace', 'cdnbom', 'clickopen', 'supervideo',
-                            'jawcloud', 'kvid', 'soundcloud', 'mixcloud', 'ddlfr', 'vupload', 'dwfull', 'vidzstore',
+                            'jawcloud', 'soundcloud', 'mixcloud', 'ddlfr', 'vupload', 'dwfull', 'vidzstore',
                             'pdj', 'rapidstream', 'jetload', 'dustreaming', 'viki', 'flix555', 'onlystream',
-                            'upstream', 'pstream', 'vudeo', 'dood', 'vidia', 'vidbem', 'uptobox', 'uplea',
+                            'upstream', 'pstream', 'vudeo', 'vidia', 'vidbem', 'uptobox', 'uplea',
                             'sibnet', 'vidplayer', 'userload', 'aparat', 'evoload', 'vidshar', 'abcvideo', 'plynow', '33player', 'filerio', 'videoraj', 'brightcove', 'detectiveconanar',
                             'myvi', '33player', 'videovard', 'viewsb', 'yourvid', 'vf-manga', 'oneupload']
 
@@ -209,10 +209,9 @@ class cHosterGui:
             return self.getHoster('vidshare')
 
         if ('sbfull' in sHostName):
-            f = self.getHoster('resolver')
-            #mise a jour du nom
-            f.setRealHost(sHostName)
-            return f
+            return self.getHoster('viewsb')
+        if ('sbrapid' in sHostName):
+            return self.getHoster('viewsb')
         if ('sbbrisk' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
@@ -227,7 +226,12 @@ class cHosterGui:
             f = self.getHoster('resolver')
             #mise a jour du nom
             f.setRealHost(sHostName)
-            return f
+        if ('dooood' in sHostName):
+            return self.getHoster('dood')
+        if ('dood' in sHostName):
+            return self.getHoster('dood')
+        if ('film77' in sHostName):
+            return self.getHoster('film77')
         if ('filelions' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
@@ -473,7 +477,7 @@ class cHosterGui:
         if ('goved' in sHostName) or ('govad' in sHostName) or ('govid.me' in sHostName):
             return self.getHoster('govidme')
             
-        if ('govid' in sHostName) or ('gvid.' in sHosterUrl) or ('govid.' in sHostName) or ('kopatube' in sHostName) or ('kobatube' in sHostName):
+        if ('govid' in sHostName) or ('drkvid' in sHosterUrl) or ('gvid.' in sHosterUrl) or ('govid.' in sHostName) or ('kopatube' in sHostName) or ('kobatube' in sHostName):
             return self.getHoster('govid')
             
         if ('vid4up' in sHostName):

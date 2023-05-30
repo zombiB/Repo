@@ -14,14 +14,6 @@ from resources.lib.parser import cParser
 from resources.lib.comaddon import progress, VSlog, siteManager
 from resources.lib.util import cUtil, Unquote
 
-try:  # Python 2
-    import urllib2
-    from urllib2 import URLError as UrlError
-
-except ImportError:  # Python 3
-    import urllib.request as urllib2
-    from urllib.error import URLError as UrlError
-	
 SITE_IDENTIFIER = 'cimacity'
 SITE_NAME = 'CimaCity'
 SITE_DESC = 'arabic vod'

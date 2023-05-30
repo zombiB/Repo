@@ -461,7 +461,7 @@ def __checkForNextPage(sHtmlContent):
     oParser = cParser()
     sPattern = '<link rel="canonical" href="([^"]+)'
     aResult = oParser.parse(sHtmlContent, sPattern)
-    VSlog(aResult)
+
     if aResult[0]:
         for aEntry in aResult[1]:
             sLink = aEntry.split('/page')[0]

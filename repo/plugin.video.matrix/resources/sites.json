@@ -225,6 +225,11 @@
             "active": "True",
             "url": "https://www.faselhd.vip/"
         },
+        "filmihq": {
+            "label": "FilmiHQ",
+            "active": "True",
+            "url": "https://filmihq.su/"
+        },
         "fnteam": {
             "label": "Fnteam",
             "active": "True",

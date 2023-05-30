@@ -23,11 +23,11 @@ URL_MAIN = siteManager().getUrlMain(SITE_IDENTIFIER)
 
 MOVIE_EN = (URL_MAIN + '/movies/', 'showMovies')
 MOVIE_AR = (URL_MAIN + '/page/arabic-movies/', 'showMovies')
-SERIES_GENRES = (True, 'seriesGenres')
-MOVIES_GENRES = (True, 'moviesGenres')
+SERIE_GENRES = (True, 'seriesGenres')
+MOVIE_GENRES = (True, 'moviesGenres')
 
 URL_SEARCH = (URL_MAIN + '/?s=', 'showSeries')
-URL_SEARCH_MOVIES = (URL_MAIN + 'https://cinemana.work/search/?search=%D9%81%D9%8A%D9%84%D9%85+', 'showMovies')
+URL_SEARCH_MOVIES = (URL_MAIN + '/search/?search=%D9%81%D9%8A%D9%84%D9%85+', 'showMovies')
 URL_SEARCH_SERIES = (URL_MAIN + '/search/?search=مسلسل+', 'showSeries')
 FUNCTION_SEARCH = 'showSearch'
  
@@ -50,12 +50,12 @@ def load():
     oGui.addDir(SITE_IDENTIFIER, 'showMovies', 'أفلام عربية', 'arab2.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', SERIES_GENRES[0])
-    oGui.addDir(SITE_IDENTIFIER, SERIES_GENRES[1], 'المسلسلات (الأنواع)', 'mslsl.png', oOutputParameterHandler)
+    oOutputParameterHandler.addParameter('siteUrl', SERIE_GENRES[0])
+    oGui.addDir(SITE_IDENTIFIER, SERIE_GENRES[1], 'المسلسلات (الأنواع)', 'mslsl.png', oOutputParameterHandler)
 
     oOutputParameterHandler = cOutputParameterHandler()
-    oOutputParameterHandler.addParameter('siteUrl', MOVIES_GENRES[0])
-    oGui.addDir(SITE_IDENTIFIER, MOVIES_GENRES[1], 'الأفلام (الأنواع)', 'film.png', oOutputParameterHandler)
+    oOutputParameterHandler.addParameter('siteUrl', MOVIE_GENRES[0])
+    oGui.addDir(SITE_IDENTIFIER, MOVIE_GENRES[1], 'الأفلام (الأنواع)', 'film.png', oOutputParameterHandler)
 
     oGui.setEndOfDirectory()
  
@@ -89,7 +89,7 @@ def seriesGenres():
     liste.append(['تاريخي', URL_MAIN + 'search/?search=مسلسل&genre=25'])
     liste.append(['كوميديا', URL_MAIN + 'search/?search=مسلسل&genre=8'])
     liste.append(['موسيقى', URL_MAIN + 'search/?search=مسلسل&genre=131'])
-    liste.append(['رياضي', URL_MAIN + 'ssearch/?search=مسلسل&genre=17986'])
+    liste.append(['رياضي', URL_MAIN + 'search/?search=مسلسل&genre=17986'])
     liste.append(['دراما', URL_MAIN + 'search/?search=مسلسل&genre=27'])
     liste.append(['رعب', URL_MAIN + 'search/?search=مسلسل&genre=225'])
     liste.append(['عائلى', URL_MAIN + 'search/?search=مسلسل&genre=237'])
@@ -120,9 +120,9 @@ def moviesGenres():
     liste.append(['تاريخي', URL_MAIN + 'search/?search=فيلم&genre=25'])
     liste.append(['كوميديا', URL_MAIN + 'search/?search=فيلم&genre=8'])
     liste.append(['موسيقى', URL_MAIN + 'search/?search=فيلم&genre=131'])
-    liste.append(['رياضي', URL_MAIN + 'ssearch/?search=فيلم&genre=17986'])
+    liste.append(['رياضي', URL_MAIN + 'search/?search=فيلم&genre=17986'])
     liste.append(['دراما', URL_MAIN + 'search/?search=فيلم&genre=27'])
-    liste.append(['رعب', URL_MAIN + '/page/افلام-رعب/'])
+    liste.append(['رعب', URL_MAIN + 'page/افلام-رعب/'])
     liste.append(['عائلى', URL_MAIN + 'search/?search=فيلم&genre=237'])
     liste.append(['فانتازيا', URL_MAIN + 'search/?search=فيلم&genre=73'])
     liste.append(['حروب', URL_MAIN + 'search/?search=فيلم&genre=79'])
