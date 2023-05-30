@@ -138,7 +138,7 @@
         "cimaclub": {
             "label": "CimaClub",
             "active": "True",
-            "url": "https://cmacb.icu/"
+            "url": "https://cmacb.sbs/"
         },
         "cimacity": {
             "label": "CimaCity",
@@ -158,7 +158,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://w20.cima4u1.art/"
+            "url": "https://cima4u6.sbs/"
         },
         "cinemana": {
             "label": "Cinemana",
@@ -398,7 +398,7 @@
         "yallalive": {
             "label": "Yallalive",
             "active": "True",
-            "url": "https://yallalive.cfd/"
+            "url": "https://yallalive.icu/"
         }
     }
 }

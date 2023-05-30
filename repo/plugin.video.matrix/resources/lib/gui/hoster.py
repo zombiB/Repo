@@ -223,9 +223,7 @@ class cHosterGui:
             f.setRealHost(sHostName)
             return f
         if ('streamwish' in sHostName):
-            f = self.getHoster('resolver')
-            #mise a jour du nom
-            f.setRealHost(sHostName)
+            return self.getHoster('streamwish')
         if ('dooood' in sHostName):
             return self.getHoster('dood')
         if ('dood' in sHostName):
@@ -233,10 +231,7 @@ class cHosterGui:
         if ('film77' in sHostName):
             return self.getHoster('film77')
         if ('filelions' in sHostName):
-            f = self.getHoster('resolver')
-            #mise a jour du nom
-            f.setRealHost(sHostName)
-            return f
+            return self.getHoster('filelions')
         if ('vidello' in sHostName):
             f = self.getHoster('resolver')
             #mise a jour du nom
