@@ -10,6 +10,11 @@
             "active": "True",
             "url": "https://aflaam.com/"
         },
+        "askmovie": {
+            "label": "Ask4movie",
+            "active": "True",
+            "url": "https://ask4movie.net/"
+        },
         "ahdaf": {
             "label": "Ahdaf",
             "active": "True",
@@ -212,7 +217,7 @@
         },
         "esseqeg": {
             "label": "Esseq Egypt",
-            "active": "True",
+            "active": "False",
             "url": "https://eyshq.net/"
         },
         "fansubs": {

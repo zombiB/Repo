@@ -413,11 +413,23 @@ class cHosterGui:
             return self.getHoster('uppom')
 
         if ('allviid' in sHostName):
-            return self.getHoster('filemoon')
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
 
         if ('filemoon' in sHostName):
-            return self.getHoster('filemoon')
-            
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+
+        if ('hexupload' in sHostName):
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+
         if ('veehd.' in sHostName):
             return self.getHoster('veehd')
 				

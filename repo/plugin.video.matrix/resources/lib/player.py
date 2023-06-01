@@ -154,7 +154,7 @@ class cPlayer(xbmc.Player):
                 self.showSubtitles(True)
             else:
                 self.showSubtitles(False)
-                dialog().VSinfo('Des sous-titres sont disponibles', 'Sous-titres', 4)
+                dialog().VSinfo('الترجمة متوفرة', 'ترجمات', 4)
 
         waitingNext = 0
         
