@@ -430,6 +430,12 @@ class cHosterGui:
             f.setRealHost(sHostName)
             return f
 
+        if ('rabbitstream' in sHostName) or ('dokicloud' in sHostName):
+            f = self.getHoster('resolver')
+            #mise a jour du nom
+            f.setRealHost(sHostName)
+            return f
+
         if ('veehd.' in sHostName):
             return self.getHoster('veehd')
 				

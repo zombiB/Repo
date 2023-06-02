@@ -143,7 +143,7 @@
         "cimaclub": {
             "label": "CimaClub",
             "active": "True",
-            "url": "https://cmacb.sbs/"
+            "url": "https://cmacb.click/"
         },
         "cimacity": {
             "label": "CimaCity",
@@ -163,7 +163,7 @@
         "cimau": {
             "label": "Cima4u",
             "active": "True",
-            "url": "https://cima4u6.sbs/"
+            "url": "https://w60.cima4u6.site/"
         },
         "cinemana": {
             "label": "Cinemana",
@@ -193,7 +193,7 @@
         "dramacafe": {
             "label": "Dramacafe",
             "active": "True",
-            "url": "https://wwq.dramacafe-tv.com/"
+            "url": "https://wwr.dramacafe-tv.com/"
         },
         "egyclub": {
             "label": "Egyclub",
@@ -288,7 +288,7 @@
         "koralive": {
             "label": "Koralive",
             "active": "True",
-            "url": "https://askora.360koralive.com/"
+            "url": "https://egy.360koralive.com/"
         },
         "laroza": {
             "label": "Laroza",
@@ -324,6 +324,11 @@
             "label": "S3uditv",
             "active": "True",
             "url": "https://h.s-3udi.cfd/"
+        },
+        "sflix": {
+            "label": "sFlix",
+            "active": "True",
+            "url": "https://sflix.to"
         },
         "shooflive": {
             "label": "Shooflive",
