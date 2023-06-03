@@ -122,8 +122,7 @@ class HostedMediaFile:
         regex = r"(?:www\.)?([\w\-]*\.[\w\-]{2,5}(?:\.[\w\-]{2,5})?)$"
         res = re.search(regex, domain)
         if res:
-            # domain = res.group(1)
-            domain = '.'.join(res.group(1).split('.')[-2:])
+            domain = res.group(1)
         domain = domain.lower()
         return domain
 
