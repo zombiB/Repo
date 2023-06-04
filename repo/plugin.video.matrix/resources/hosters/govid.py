@@ -14,6 +14,7 @@ class cHoster(iHoster):
 			
     def setUrl(self, sUrl):
         self._url = str(sUrl)
+        VSlog(sUrl)
         if '/down/'  in sUrl:
             self._url = self._url.replace("/2down/","/play/").replace("/down/","/play/")
     def _getMediaLinkForGuest(self):
@@ -32,22 +33,33 @@ class cHoster(iHoster):
         sPattern =  '"playbackUrl": "(.+?)"' 
         aResult = oParser.parse(sHtmlContent,sPattern)
         if aResult[0]:
-            url2 = aResult[1][0].replace("hhttps","https")
+            url2 = aResult[1][0].replace("hhttps","https").replace('api.govid.co/api','d10o.drkvid.site/api')
+
             oRequest = cRequestHandler(url2)
             oRequest.addHeaderEntry('Referer', surl)
             oRequest.addHeaderEntry('User-Agent', UA)
             sHtmlContent2 = oRequest.request()
             VSlog(sHtmlContent2) 
-            sPattern = 'PROGRAM-ID.+?RESOLUTION=(\w+).+?(https.+?m3u8)'
+            sPattern = '(https.+?m3u8)'
             aResult = oParser.parse(sHtmlContent2, sPattern)
             for aEntry in aResult[1]:
-                list_q.append(aEntry[0].split('x')[1]+"p") 
-                list_url.append(aEntry[1]) 
-
-                if list_url:
-                   api_call = dialog().VSselectqual(list_q,list_url)
+            
+                api_call = aEntry
 
 
                 if api_call:
                    return True, api_call+ '|User-Agent=' + UA+'&AUTH=TLS&verifypeer=false' + '&Referer=' + surl
+
+        sPattern =  'sources: (.+?),' 
+        aResult = oParser.parse(sHtmlContent,sPattern)
+        VSlog(sHtmlContent)
+        if aResult[0]:
+            for aEntry in aResult[1]:
+            
+                api_call = aEntry.replace('["','').replace('"]','')
+
+
+                if api_call:
+                   return True, api_call+ '|User-Agent=' + UA+'&AUTH=TLS&verifypeer=false' + '&Referer=' + surl
+
         return False, False

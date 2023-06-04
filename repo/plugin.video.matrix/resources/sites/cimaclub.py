@@ -307,6 +307,14 @@ def showEpisodes():
  
     oRequestHandler = cRequestHandler(sUrl)
     sHtmlContent = oRequestHandler.request()
+
+
+    oParser = cParser()
+     # (.+?) ([^<]+) .+?
+    sStart = '<h2 class="title ti-list-numbered f13"> جميع الحلقات </h2>'
+    sEnd = '</div>'
+    sHtmlContent = oParser.abParse(sHtmlContent, sStart, sEnd)
+
  # ([^<]+) .+?
 
     sPattern = '<a href="([^<]+)" class="col-6 col-s-4 col-m-3 col-l-1 button-block"><h3>([^<]+)<span>([^<]+)</span></h3></a>'
