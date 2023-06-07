@@ -22,7 +22,7 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="plugin.video.matrix" name="matrix" version="5.8.4h" provider-name="Yonn1981">
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.8.4h1" provider-name="Yonn1981">
     <requires>
 
         <trycatch>
@@ -42,6 +42,7 @@
         <import addon="script.module.resolveurl" version="5.1.0" />
         <import addon="script.module.dnspython" optional="true" />
         <import addon="plugin.video.torrest" optional="true" />
+        <import addon="repository.github" optional="true" />
         
     </requires>
 
@@ -104,35 +105,34 @@
             <screenshot>screenshot-04.jpg</screenshot>
         </assets>
     </extension>
-</addon><addon id="plugin.video.torrest" name="Torrest" provider-name="i96751414" version="0.0.17">
+</addon><addon id="repository.github" name="GitHub Add-on repository" provider-name="i96751414" version="0.0.7">
     <requires>
         
-        <import addon="script.module.requests" version="2.22.0" />
-        <import addon="script.module.routing" version="0.2.3" />
     </requires>
-    <extension point="xbmc.python.pluginsource" library="navigation.py">
-        <provides>video</provides>
+    <extension point="xbmc.addon.repository">
+        <dir>
+            <info>http://127.0.0.1:61234/addons.xml</info>
+            <checksum>http://127.0.0.1:61234/addons.xml.md5</checksum>
+            <datadir>http://127.0.0.1:61234/</datadir>
+        </dir>
     </extension>
+    <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.service" library="service.py" />
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
-        <license>See https://github.com/i96751414/plugin.video.torrest/blob/master/LICENSE</license>
-        <source>https://github.com/i96751414/plugin.video.torrest</source>
-        <summary lang="en">Torrest on Kodi</summary>
-        <description lang="en">Torrest is a service with a rest API which allows torrent streaming.</description>
+        <license>See https://github.com/i96751414/repository.github/blob/master/LICENSE</license>
+        <source>https://github.com/i96751414/repository.github</source>
+        <summary lang="en">GitHub virtual Add-on repository</summary>
+        <description lang="en">Customizable repository which acts as a proxy for defined GitHub users' add-ons updates.</description>
         <news>
-- Update for torrest 0.0.4 (https://github.com/i96751414/torrest-cpp/releases/tag/v0.0.4)
-- Allow forcing torrest binary
-- Allow custom user-agent definitions
+            - Add platform check support
+            - Fix arch detection for aarch with 32 bits
+            - Add support to Kodi 20
+            - Small improvements (os_platform, logging)
         </news>
         <assets>
             <icon>icon.png</icon>
-            <screenshot>resources/screenshots/screenshot-1.jpg</screenshot>
-            <screenshot>resources/screenshots/screenshot-2.jpg</screenshot>
-            <screenshot>resources/screenshots/screenshot-3.jpg</screenshot>
-            <screenshot>resources/screenshots/screenshot-4.jpg</screenshot>
         </assets>
-        <reuselanguageinvoker>true</reuselanguageinvoker>
     </extension>
 </addon><addon id="script.module.resolveurl" name="ResolveURL" version="5.1.99b" provider-name="gujal">
     <requires>
