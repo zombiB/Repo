@@ -326,7 +326,7 @@ def showEps():
  
             sEp = aEntry[1].replace("حلقة ","E")
             sEp = sEp.replace(" ","")
-            sTitle = aEntry[2]+' '+sEp
+            sTitle = sMovieTitle+' '+sEp
             siteUrl = aEntry[0]
             sThumb = sThumb
             sDesc = ''

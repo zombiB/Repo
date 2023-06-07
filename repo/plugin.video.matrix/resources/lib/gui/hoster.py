@@ -641,6 +641,9 @@ class cHosterGui:
         if re.search(r"\d+$", sHosterUrl):
             return self.getHoster('lien_direct')
         
+        if ('torrent' in sHosterUrl) or ('magnet:' in sHosterUrl):
+            return self.getHoster('torrent')
+        
         if ('nitroflare' in sHostName or 'tubeload.' in sHostName or 'Facebook' in sHostName  or 'fastdrive' in sHostName or 'megaup.net' in sHostName  or 'openload' in sHostName):
             return False
  #       else:

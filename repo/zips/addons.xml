@@ -22,7 +22,7 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="plugin.video.matrix" name="matrix" version="5.8.4f" provider-name="Yonn1981">
+</addon><addon id="plugin.video.matrix" name="matrix" version="5.8.4h" provider-name="Yonn1981">
     <requires>
 
         <trycatch>
@@ -41,6 +41,7 @@
         <import addon="plugin.video.youtube" version="2.0.0" />
         <import addon="script.module.resolveurl" version="5.1.0" />
         <import addon="script.module.dnspython" optional="true" />
+        <import addon="plugin.video.torrest" optional="true" />
         
     </requires>
 
@@ -103,7 +104,37 @@
             <screenshot>screenshot-04.jpg</screenshot>
         </assets>
     </extension>
-</addon><addon id="script.module.resolveurl" name="ResolveURL" version="5.1.98z_tests" provider-name="gujal">
+</addon><addon id="plugin.video.torrest" name="Torrest" provider-name="i96751414" version="0.0.17">
+    <requires>
+        
+        <import addon="script.module.requests" version="2.22.0" />
+        <import addon="script.module.routing" version="0.2.3" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="navigation.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>See https://github.com/i96751414/plugin.video.torrest/blob/master/LICENSE</license>
+        <source>https://github.com/i96751414/plugin.video.torrest</source>
+        <summary lang="en">Torrest on Kodi</summary>
+        <description lang="en">Torrest is a service with a rest API which allows torrent streaming.</description>
+        <news>
+- Update for torrest 0.0.4 (https://github.com/i96751414/torrest-cpp/releases/tag/v0.0.4)
+- Allow forcing torrest binary
+- Allow custom user-agent definitions
+        </news>
+        <assets>
+            <icon>icon.png</icon>
+            <screenshot>resources/screenshots/screenshot-1.jpg</screenshot>
+            <screenshot>resources/screenshots/screenshot-2.jpg</screenshot>
+            <screenshot>resources/screenshots/screenshot-3.jpg</screenshot>
+            <screenshot>resources/screenshots/screenshot-4.jpg</screenshot>
+        </assets>
+        <reuselanguageinvoker>true</reuselanguageinvoker>
+    </extension>
+</addon><addon id="script.module.resolveurl" name="ResolveURL" version="5.1.99b" provider-name="gujal">
     <requires>
         
         <import addon="script.module.six" />
